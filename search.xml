@@ -450,6 +450,18 @@ max(f(i-1,j),f(i,j-1)), &amp; else \\
 <li>i = i + 1； // 自增 i 的值</li>
 </ol>
 <p>所以，最终变量 a 的值等于变量 i 的初始值，而变量 i 的值则是初始值加一。</p>
+<h4 id="while--index-先---后比较index0">while(--index) 先-- 后比较index&gt;0</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">while</span> (--index &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.print(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>stdout</p>
+<p>1</p>
+<h4 id="whileindex---先比较-后--">while(index--) 先比较 后--</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">while</span> (index-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.print(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>stdout</p>
+<p>10</p>
+<h4 id="system.out.print--index-先---后打印">System.out.print(--index) 先-- 后打印</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">while</span> (index &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.print(--index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>stdout</p>
+<p>10</p>
 <h4 id="滑动数组">滑动数组</h4>
 <ol type="1">
 <li>时间复杂度：<span class="math inline">\(O(n)\)</span></li>
@@ -466,6 +478,26 @@ max(f(i-1,j),f(i,j-1)), &amp; else \\
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] generateMatrix(<span class="type">int</span> n) &#123;</span><br><span class="line">        <span class="comment">// 用笔画一个n=5的矩阵作为例子</span></span><br><span class="line">        <span class="comment">// 遍历顺序：从左到右(左闭右开)，从上到下(上闭下开)，从右到左(右闭左开)，从下到上(下闭上开)</span></span><br><span class="line">        <span class="comment">// 建立n行n列的矩阵</span></span><br><span class="line">        <span class="type">int</span>[][] matrix = <span class="keyword">new</span> <span class="title class_">int</span>[n][n];</span><br><span class="line">        <span class="comment">// 遍历次数</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">traverseTime</span> <span class="operator">=</span> n / <span class="number">2</span>;</span><br><span class="line">        <span class="type">int</span> i, j;</span><br><span class="line">        <span class="comment">// 写入数组的数</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">data</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// cur:当前遍历伦茨</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">cur</span> <span class="operator">=</span> <span class="number">0</span>; cur &lt; traverseTime; ++cur) &#123;</span><br><span class="line">            <span class="comment">// 从左到右(左闭右开)</span></span><br><span class="line">            <span class="keyword">for</span> (j = cur; j &lt; n - cur - <span class="number">1</span>; ++j) &#123;</span><br><span class="line">                matrix[cur][j] = data++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 从上到下(上闭下开)</span></span><br><span class="line">            <span class="keyword">for</span> (i = cur; i &lt; n - cur - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">                matrix[i][j] = data++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 从右到左(右闭左开)</span></span><br><span class="line">            <span class="keyword">for</span> (; j &gt; cur; --j) &#123;</span><br><span class="line">                matrix[i][j] = data++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 从下到上(下闭上开)</span></span><br><span class="line">            <span class="keyword">for</span> (; i &gt; cur; --i) &#123;</span><br><span class="line">                matrix[i][j] = data++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// debug</span></span><br><span class="line">            <span class="comment">// for (int a = 0; a &lt; n; ++a) &#123;</span></span><br><span class="line">            <span class="comment">//     for (int b = 0; b &lt; n; ++b) &#123;</span></span><br><span class="line">            <span class="comment">//         System.out.print(matrix[a][b]);</span></span><br><span class="line">            <span class="comment">//     &#125;</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>)</span><br><span class="line">            matrix[traverseTime][traverseTime] = n * n;</span><br><span class="line">        <span class="keyword">return</span> matrix;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230406150937452.png" alt="image-20230406150937452" style="zoom:50%;" /></p>
+<h2 id="linkedlist">LinkedList</h2>
+<h3 id="移除链表元素"><a href="https://leetcode.cn/problems/remove-linked-list-elements/">203. 移除链表元素</a></h3>
+<h4 id="解题思路在面对链表树有关创建删除操作无脑dummyhead能省去不少边界判定的功夫">解题思路：在面对链表、树有关创建、删除操作，无脑dummyHead！能省去不少边界判定的功夫。</h4>
+<ol type="1">
+<li>初始化：dummyHead指向head，dummyHead赋值给pre，head赋值给cur</li>
+<li>当cur的值等于所求val，pre指向cur的下一个节点</li>
+<li>当cur的值不等于val，pre移动到cur，cur往后移一位</li>
+<li>返回dummyHead的下一个节点。</li>
+</ol>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407173513851.png" alt="image-20230407173513851" style="zoom:50%;" /></p>
+<h3 id="设计链表"><a href="https://leetcode.cn/problems/design-linked-list/">707. 设计链表</a></h3>
+<h4 id="注意事项dummyhead-size"><strong>注意事项：DummyHead + size</strong></h4>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407211111582.png" alt="image-20230407211111582" style="zoom:50%;" /></p>
+<h3 id="反转链表"><a href="https://leetcode.cn/problems/reverse-linked-list/">206. 反转链表</a></h3>
+<p>用笔模拟一下指针pre，cur，next的过程</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407213816337.png" alt="image-20230407213816337" style="zoom:50%;" /></p>
+<ol type="1">
+<li><p>时间复杂度：<span class="math inline">\(O(n^2)\)</span></p></li>
+<li><p>空间复杂度：<span class="math inline">\(O(1)\)</span></p></li>
+</ol>
 ]]></content>
   </entry>
 </search>
