@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>12</title>
-    <url>/2023/04/07/12/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Algorithms</title>
     <url>/2023/04/07/Algorithms/</url>
     <content><![CDATA[<h1 id="LeetCode-Solutions"><a href="#LeetCode-Solutions" class="headerlink" title="LeetCode Solutions"></a>LeetCode Solutions</h1><h2 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h2><h3 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">printDp</span><span class="params">(<span class="type">int</span>[] dp, <span class="type">int</span> i)</span> &#123;</span><br><span class="line">    System.out.print(i + <span class="string">&quot;: &quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> maxValue : dp)&#123;</span><br><span class="line">        System.out.print(maxValue + <span class="string">&quot;   &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -445,8 +440,5 @@
 
 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230406150937452.png" alt="image-20230406150937452" style="zoom:50%;" /> 
 ]]></content>
-      <tags>
-        <tag>algorithms,</tag>
-      </tags>
   </entry>
 </search>
