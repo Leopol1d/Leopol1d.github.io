@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-04-07 16:06:11 / 修改时间：21:43:15" itemprop="dateCreated datePublished" datetime="2023-04-07T16:06:11+08:00">2023-04-07</time>
+              <time title="创建时间：2023-04-07 16:06:11" itemprop="dateCreated datePublished" datetime="2023-04-07T16:06:11+08:00">2023-04-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-08 16:29:20" itemprop="dateModified" datetime="2023-04-08T16:29:20+08:00">2023-04-08</time>
+              </span>
 
           
 
@@ -726,6 +732,70 @@ max(f(i-1,j),f(i,j-1)), &amp; else \\
 <li><p>时间复杂度：<span class="math inline">\(O(n^2)\)</span></p></li>
 <li><p>空间复杂度：<span class="math inline">\(O(1)\)</span></p></li>
 </ol>
+<h3 id="两两交换链表中的节点"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/swap-nodes-in-pairs/">24. 两两交换链表中的节点</a></h3>
+<h4 id="注意要点用纸和笔模拟一下指针precurnext的过程记得创建dummyhead">注意要点：用纸和笔模拟一下指针pre，cur，next的过程，记得创建dummyHead</h4>
+<ol type="1">
+<li><p>时间复杂度：<span class="math inline">\(O(n)\)</span></p></li>
+<li><p>空间复杂度：<span class="math inline">\(O(1)\)</span></p></li>
+</ol>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230408115746409.png" alt=" " style="zoom:50%;" /></p>
+<h3 id="删除链表的倒数第-n-个结点"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第 N 个结点</a></h3>
+<ol type="1">
+<li>使用dummyHead，从dummyHead，找到倒数第N个节点的前一个节点node，需要走链表长度size - N步，即可把node指向下一个节点的下一个节点即可完成删除操作。<br />
+</li>
+<li>但是链表的长度是未知的，可以先遍历一遍链表的长度，求出size，再走size-N步完成删除操作。</li>
+<li>也可以使用快慢指针，fast与slow的起始点都为dummyHead，fast先走N步，再让fast与slow一起右移，当fast走到最后一个节点时(fast.next == null时)，slow右移了size - N步，到达倒数第N个节点的上一个节点，即可完成删除操作。</li>
+<li>时间复杂度：<span class="math inline">\(O(n)\)</span></li>
+<li>空间复杂度：<span class="math inline">\(O(1)\)</span></li>
+</ol>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230408131407107.png" alt="image-20230408131407107" style="zoom:50%;" /></p>
+<h3 id="面试题-02.07.-链表相交"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/">面试题 02.07. 链表相交</a></h3>
+<h4 id="方法一hashset">方法一：HashSet</h4>
+<ol type="1">
+<li>用指针A,B分别指向两个链表头</li>
+<li>开始循环，循环的终止条件为A,B都为空，每次循环先将A,B指向的节点放入HashSet，再向后移</li>
+<li>当遍历到某个已经存入HashSet的节点时，这个节点就是相交节点；否则没有相交节点</li>
+<li>时间复杂度：<span class="math inline">\(O(m + n)\)</span>，其中m，n分别为两个链表的长度</li>
+<li>空间复杂度：<span class="math inline">\(O(m + n)\)</span></li>
+</ol>
+<h4 id="方法二双指针-1">方法二：双指针</h4>
+<p><strong>解题思路</strong>：A,B分别指向headA,headB，如果有公共节点，设公共节点长度为c，链表A和B长度分别为a,b。向右遍历，如何为空，则指向另一个链表的头。如果两个链表相交，则A向右移动了a+c+b步，B向右移动了b+c+a时相交，返回A；如果两个链表不相交，则A向右移动了a+b步，B向右移动了b+a步，都为空，退出循环返回null。</p>
+<ol type="1">
+<li>用指针A,B分别指向两个链表头headA,headB</li>
+<li>开始循环，循环的条件是A和B不都为空，如果A为空，则A指向headB，否则向后移；如果B为空，则B指向headA，否则向后移</li>
+<li>开始循环，循环的终止条件为A,B都为空，每次循环先将A,B指向的节点放入HashSet，再向后移</li>
+<li>当遍历到某个已经存入HashSet的节点时，这个节点就是相交节点；否则没有相交节点</li>
+<li>时间复杂度：<span class="math inline">\(O(m + n)\)</span>，其中m，n分别为两个链表的长度</li>
+<li>空间复杂度：<span class="math inline">\(O(m + n)\)</span></li>
+</ol>
+<p>一个错误代码实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">null</span> || headB == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pA</span> <span class="operator">=</span> headA, pB = headB;</span><br><span class="line">        <span class="keyword">while</span> (pA != <span class="literal">null</span> || pB != <span class="literal">null</span>) &#123;</span><br><span class="line">            pA = pA == <span class="literal">null</span> ? headB : pA.next;</span><br><span class="line">            pB = pB == <span class="literal">null</span> ? headA : pB.next;</span><br><span class="line">            <span class="keyword">if</span> (pA == pB)</span><br><span class="line">                <span class="keyword">return</span> pA;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>错误如下，当两个链表只有公共部分节点1时，上述代码没有先判断，先向右移，结果指向A,B都为空，返回空。</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230408141854779.png" alt="image-20230408141854779" style="zoom:50%;" /></p>
+<p>所以解决方案是把判断AB相等的语句放在指针移动上面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">null</span> || headB == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pA</span> <span class="operator">=</span> headA, pB = headB;</span><br><span class="line">        <span class="keyword">while</span> (pA != <span class="literal">null</span> || pB != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pA == pB)</span><br><span class="line">                <span class="keyword">return</span> pA;</span><br><span class="line">            pA = pA == <span class="literal">null</span> ? headB : pA.next;</span><br><span class="line">            pB = pB == <span class="literal">null</span> ? headA : pB.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>成功</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230408142109879.png" alt="image-20230408142109879" style="zoom:50%;" /></p>
+<h6 id="优化">优化</h6>
+<ol type="1">
+<li>当A,B只有公共部分时，直接返回结果</li>
+<li>当A,B有自己的部分也相交时
+<ol type="1">
+<li>当A,B公共部分前面节点数量相同时，遍历到相交节点直接返回结果</li>
+<li>当A,B公共部分前面节点数量不同时，遍历a+b+c步也会相交，返回结果</li>
+</ol></li>
+<li>当A,B不相交时，遍历完a+ 1(null) + b + 1(null) 步后，A和B都为null，返回的A为null，表示不相交</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">null</span> || headB == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pA</span> <span class="operator">=</span> headA, pB = headB;</span><br><span class="line">        <span class="keyword">while</span> (pA != pB) &#123;</span><br><span class="line">            pA = pA == <span class="literal">null</span> ? headB : pA.next;</span><br><span class="line">            pB = pB == <span class="literal">null</span> ? headA : pB.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="环形链表-ii"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/">142. 环形链表 II</a></h3>
+<p><strong>解题思路：</strong>快慢指针，慢指针走一步，快指针走两步，如果有环，快指针总能在环中追上慢指针。当快指针和慢指针指向同一节点时，把快节点指向头节点，慢节点不动，快慢指针一起走，再次相遇时，指向的节点就是入环的第一个节点。</p>
+<ol type="1">
+<li>时间复杂度：<span class="math inline">\(O(m + n)\)</span>，其中m，n分别为两个链表的长度</li>
+<li>空间复杂度：<span class="math inline">\(O(m + n)\)</span></li>
+</ol>
+<hr />
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">detectCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">fast</span> <span class="operator">=</span> head.next.next, slow = head.next;</span><br><span class="line">        <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            <span class="keyword">if</span> (fast == slow) &#123;</span><br><span class="line">                fast = head;</span><br><span class="line">                <span class="keyword">while</span> (fast != slow) &#123;</span><br><span class="line">                    fast = fast.next;</span><br><span class="line">                    slow = slow.next;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">return</span> fast;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230408150523230.png" alt="image-20230408150523230" style="zoom:50%;" /></p>
 
       
     </div>
