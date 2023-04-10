@@ -617,8 +617,10 @@ max(f(i-1,j),f(i,j-1)), &amp; else \\
 <h4 id="方法二hashmap">方法二：HashMap</h4>
 <p><strong>解题思路</strong>：</p>
 <ol type="1">
-<li>建立一个HashMap，key为数组的值，value为数组索引。</li>
-<li>遍历一遍，每次遍历判断哈希表中是否存在key为target-nums[i]，如果有，则这个key对应的value与i即为所求。</li>
+<li>建立一个HashMap，key为数组的值，value为数组索引</li>
+<li>遍历一遍，每次遍历判断哈希表中是否存在key为target-nums[i]，如果有，则这个key对应的value与i即为所求</li>
+<li>时间复杂度：<span class="math inline">\(O(n)\)</span></li>
+<li>空间复杂度：<span class="math inline">\(O(n)\)</span></li>
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(target - nums[i])) </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;map.get(target - nums[i]), i&#125;;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230410113139219.png" alt="image-20230410113139219" style="zoom:50%;" /></p>
