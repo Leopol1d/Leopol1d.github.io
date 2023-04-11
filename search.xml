@@ -188,142 +188,76 @@ max(f(i-1,j),f(i,j-1)), &amp; else \\
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230330112546180.png" alt="image-20230330112546180" style="zoom:50%;" /></p>
 <h4 id="优化空间..">优化空间..</h4>
 <h3 id="买卖股票的最佳时机-iii"><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/">123. 买卖股票的最佳时机 III</a></h3>
-<p><strong>解题思路：</strong></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">```
-
-
-
-## <span class="token class-name">Binary</span> <span class="token class-name">Tree</span>
-
-### <span class="token punctuation">[</span><span class="token number">144.</span> 二叉树的前序遍历<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>binary<span class="token operator">-</span>tree<span class="token operator">-</span>preorder<span class="token operator">-</span>traversal<span class="token operator">/</span><span class="token punctuation">)</span>
-
-递归与非递归
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320111737785.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230320111737785"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span>  
-
-### <span class="token punctuation">[</span><span class="token number">94.</span> 二叉树的中序遍历<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>binary<span class="token operator">-</span>tree<span class="token operator">-</span>inorder<span class="token operator">-</span>traversal<span class="token operator">/</span><span class="token punctuation">)</span>
-
-递归与非递归
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320113039413.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230320113039413"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 
-
-### <span class="token punctuation">[</span><span class="token number">145.</span> 二叉树的后序遍历<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>binary<span class="token operator">-</span>tree<span class="token operator">-</span>postorder<span class="token operator">-</span>traversal<span class="token operator">/</span><span class="token punctuation">)</span>
-
-递归与非递归
-
-<span class="token operator">*</span><span class="token operator">*</span>非递归中，需要利用一个pre指针来判断当前节点的右子树有没有被访问过。<span class="token operator">*</span><span class="token operator">*</span>
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320115618376.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230320115618376"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 
-
-### <span class="token punctuation">[</span><span class="token number">102.</span> 二叉树的层序遍历<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>binary<span class="token operator">-</span>tree<span class="token operator">-</span>level<span class="token operator">-</span>order<span class="token operator">-</span>traversal<span class="token operator">/</span><span class="token punctuation">)</span>
-
-借助队列实现，<span class="token operator">*</span><span class="token operator">*</span>关键在于通过queue<span class="token punctuation">.</span>size来判断下一层的节点数！<span class="token operator">*</span><span class="token operator">*</span>
-
-<span class="token operator">*</span><span class="token class-name">Queue</span><span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>的话，size为<span class="token number">1</span>！<span class="token operator">*</span>
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320152504462.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230320152504462"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 
-
-### <span class="token punctuation">[</span><span class="token number">226.</span> 翻转二叉树<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>invert<span class="token operator">-</span>binary<span class="token operator">-</span>tree<span class="token operator">/</span><span class="token punctuation">)</span>
-
-这道题目背后有一个让程序员心酸的故事，听说 <span class="token class-name">Homebrew</span>的作者<span class="token class-name">Max</span> <span class="token class-name">Howell</span>，就是因为没在白板上写出翻转二叉树，最后被<span class="token class-name">Google</span>拒绝了。（真假不做判断，权当一个乐子哈）
-
-要求：左右子树交换位置
-
-解法：<span class="token operator">*</span><span class="token operator">*</span>bfs层级遍历<span class="token operator">*</span><span class="token operator">*</span>
-
-<span class="token operator">*</span><span class="token operator">*</span>时间复杂度<span class="token operator">*</span><span class="token operator">*</span>：所有节点都需要入队，出队一次，所以是$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-<span class="token operator">*</span><span class="token operator">*</span>空间复杂度<span class="token operator">*</span><span class="token operator">*</span>：在最坏的情况下，给定的树是满二叉树，所有叶节点<span class="token punctuation">(</span>$n<span class="token operator">/</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span>$<span class="token punctuation">)</span>都要入队，所以是$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320161332491.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230320161332491"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 
-
-### <span class="token punctuation">[</span><span class="token number">101.</span> 对称二叉树<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>symmetric<span class="token operator">-</span>tree<span class="token operator">/</span><span class="token punctuation">)</span>
-
-#### 方法一：拷贝<span class="token operator">+</span>翻转<span class="token operator">+</span>判断<span class="token punctuation">(</span>高情商：刷一道，解三道！低情商：只会笨方法？还是看看远方的复杂度吧<span class="token punctuation">)</span>
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321093745686.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230321093745686"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 写了<span class="token number">80</span>行，一题三解！不分析复杂度了。。
-
-#### 方法二：<span class="token constant">BFS</span>
-
-假设树上一共有<span class="token operator">*</span>n<span class="token operator">*</span> 个节点。
-
-<span class="token operator">*</span><span class="token operator">*</span>时间复杂度<span class="token operator">*</span><span class="token operator">*</span>：遍历了整棵树，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-<span class="token operator">*</span><span class="token operator">*</span>空间复杂度<span class="token operator">*</span><span class="token operator">*</span>：和使用的队列大小相关，在最坏的情况下，给定的树是满二叉树，所有叶节点<span class="token punctuation">(</span>$n<span class="token operator">/</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span>$<span class="token punctuation">)</span>都要入队，所以是$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-#### 方法三：<span class="token constant">DFS</span>
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321100900158.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230321100900158"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> <span class="token constant">YYDS</span>
-
-假设树上一共有<span class="token operator">*</span>n<span class="token operator">*</span> 个节点。
-
-<span class="token operator">*</span><span class="token operator">*</span>时间复杂度<span class="token operator">*</span><span class="token operator">*</span>：遍历了整棵树，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-<span class="token operator">*</span><span class="token operator">*</span>空间复杂度<span class="token operator">*</span><span class="token operator">*</span>：和递归使用的栈大小相关，递归层数不超过<span class="token function">n</span><span class="token punctuation">(</span>一叉树<span class="token punctuation">)</span>，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-### <span class="token punctuation">[</span><span class="token number">100.</span> 相同的树<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>same<span class="token operator">-</span>tree<span class="token operator">/</span><span class="token punctuation">)</span>
-
-<span class="token operator">*</span><span class="token operator">*</span>对称二叉树<span class="token operator">*</span><span class="token operator">*</span>方法一中用到了这个笨方法，顺手做了吧。
-
-#### 方法一：<span class="token constant">DFS</span>
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321102148975.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230321102148975"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 
-
-假设树上一共有$n$个节点
-
-<span class="token operator">*</span><span class="token operator">*</span>时间复杂度<span class="token operator">*</span><span class="token operator">*</span>：遍历了整棵树，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-<span class="token operator">*</span><span class="token operator">*</span>空间复杂度<span class="token operator">*</span><span class="token operator">*</span>：和递归使用的栈大小相关，递归层数不超过n，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-#### 方法二：<span class="token constant">BFS</span>
-
-只是和<span class="token operator">*</span><span class="token operator">*</span>对称二叉树<span class="token operator">*</span><span class="token operator">*</span><span class="token constant">BFS</span>解法中的入队顺序改变一点。
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321103126806.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230321103126806"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 
-
-假设树上一共有<span class="token operator">*</span>n<span class="token operator">*</span> 个节点。
-
-<span class="token operator">*</span><span class="token operator">*</span>时间复杂度<span class="token operator">*</span><span class="token operator">*</span>：遍历了整棵树，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-<span class="token operator">*</span><span class="token operator">*</span>空间复杂度<span class="token operator">*</span><span class="token operator">*</span>：和使用的队列大小相关，在最坏的情况下，给定的树是满二叉树，所有叶节点<span class="token punctuation">(</span>$n<span class="token operator">/</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span>$<span class="token punctuation">)</span>都要入队，所以是$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-### <span class="token punctuation">[</span><span class="token number">104.</span> 二叉树的最大深度<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>maximum<span class="token operator">-</span>depth<span class="token operator">-</span>of<span class="token operator">-</span>binary<span class="token operator">-</span>tree<span class="token operator">/</span><span class="token punctuation">)</span>
-
-#### 方法一：<span class="token constant">BFS</span>
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321110400024.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230321110400024"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 
-
-假设树上有$n$个节点
-
-<span class="token operator">*</span><span class="token operator">*</span>时间复杂度<span class="token operator">*</span><span class="token operator">*</span>：遍历整棵树，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-<span class="token operator">*</span><span class="token operator">*</span>空间复杂度<span class="token operator">*</span><span class="token operator">*</span>：和使用的队列大小相关，在最坏情况下，给定的二叉树是满二叉树，$n<span class="token operator">/</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span>$个叶节点要入队，所以是$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-#### 方法二：<span class="token constant">DFS</span>
-
-<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321111653023.png"</span> alt<span class="token operator">=</span><span class="token string">"image-20230321111653023"</span> style<span class="token operator">=</span><span class="token string">"zoom:50%;"</span> <span class="token operator">/</span><span class="token operator">></span> 
-
-假设树上一共有$n$个节点
-
-<span class="token operator">*</span><span class="token operator">*</span>时间复杂度<span class="token operator">*</span><span class="token operator">*</span>：遍历了整棵树，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-<span class="token operator">*</span><span class="token operator">*</span>空间复杂度<span class="token operator">*</span><span class="token operator">*</span>：和递归使用的栈大小相关，递归层数不超过n，$<span class="token class-name">O</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>$
-
-### <span class="token punctuation">[</span><span class="token number">559.</span> <span class="token class-name">N</span> 叉树的最大深度<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>leetcode<span class="token punctuation">.</span>cn<span class="token operator">/</span>problems<span class="token operator">/</span>maximum<span class="token operator">-</span>depth<span class="token operator">-</span>of<span class="token operator">-</span>n<span class="token operator">-</span>ary<span class="token operator">-</span>tree<span class="token operator">/</span><span class="token punctuation">)</span>
-
-同上题<span class="token operator">*</span><span class="token operator">*</span>二叉树的最大深度<span class="token operator">*</span><span class="token operator">*</span>，只是在遍历子节点的时候不同。
-
-```java
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> cur<span class="token punctuation">.</span>children<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<h2 id="binary-tree">Binary Tree</h2>
+<h3 id="二叉树的前序遍历"><a href="https://leetcode.cn/problems/binary-tree-preorder-traversal/">144. 二叉树的前序遍历</a></h3>
+<p>递归与非递归</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320111737785.png" alt="image-20230320111737785" style="zoom:50%;" /></p>
+<h3 id="二叉树的中序遍历"><a href="https://leetcode.cn/problems/binary-tree-inorder-traversal/">94. 二叉树的中序遍历</a></h3>
+<p>递归与非递归</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320113039413.png" alt="image-20230320113039413" style="zoom:50%;" /></p>
+<h3 id="二叉树的后序遍历"><a href="https://leetcode.cn/problems/binary-tree-postorder-traversal/">145. 二叉树的后序遍历</a></h3>
+<p>递归与非递归</p>
+<p><strong>非递归中，需要利用一个pre指针来判断当前节点的右子树有没有被访问过。</strong></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320115618376.png" alt="image-20230320115618376" style="zoom:50%;" /></p>
+<h3 id="二叉树的层序遍历"><a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/">102. 二叉树的层序遍历</a></h3>
+<p>借助队列实现，<strong>关键在于通过queue.size来判断下一层的节点数！</strong></p>
+<p><em>Queue.offer(null)的话，size为1！</em></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320152504462.png" alt="image-20230320152504462" style="zoom:50%;" /></p>
+<h3 id="翻转二叉树"><a href="https://leetcode.cn/problems/invert-binary-tree/">226. 翻转二叉树</a></h3>
+<p>这道题目背后有一个让程序员心酸的故事，听说 Homebrew的作者Max Howell，就是因为没在白板上写出翻转二叉树，最后被Google拒绝了。（真假不做判断，权当一个乐子哈）</p>
+<p>要求：左右子树交换位置</p>
+<p>解法：<strong>bfs层级遍历</strong></p>
+<p><strong>时间复杂度</strong>：所有节点都需要入队，出队一次，所以是<span class="math inline">\(O(n)\)</span></p>
+<p><strong>空间复杂度</strong>：在最坏的情况下，给定的树是满二叉树，所有叶节点(<span class="math inline">\(n/2 + 1\)</span>)都要入队，所以是<span class="math inline">\(O(n)\)</span></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230320161332491.png" alt="image-20230320161332491" style="zoom:50%;" /></p>
+<h3 id="对称二叉树"><a href="https://leetcode.cn/problems/symmetric-tree/">101. 对称二叉树</a></h3>
+<h4 id="方法一拷贝翻转判断高情商刷一道解三道低情商只会笨方法还是看看远方的复杂度吧">方法一：拷贝+翻转+判断(高情商：刷一道，解三道！低情商：只会笨方法？还是看看远方的复杂度吧)</h4>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321093745686.png" alt="image-20230321093745686" style="zoom:50%;" /> 写了80行，一题三解！不分析复杂度了。。</p>
+<h4 id="方法二bfs">方法二：BFS</h4>
+<p>假设树上一共有<em>n</em> 个节点。</p>
+<p><strong>时间复杂度</strong>：遍历了整棵树，<span class="math inline">\(O(n)\)</span></p>
+<p><strong>空间复杂度</strong>：和使用的队列大小相关，在最坏的情况下，给定的树是满二叉树，所有叶节点(<span class="math inline">\(n/2 + 1\)</span>)都要入队，所以是<span class="math inline">\(O(n)\)</span></p>
+<h4 id="方法三dfs">方法三：DFS</h4>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321100900158.png" alt="image-20230321100900158" style="zoom:50%;" /> YYDS</p>
+<p>假设树上一共有<em>n</em> 个节点。</p>
+<p><strong>时间复杂度</strong>：遍历了整棵树，<span class="math inline">\(O(n)\)</span></p>
+<p><strong>空间复杂度</strong>：和递归使用的栈大小相关，递归层数不超过n(一叉树)，<span class="math inline">\(O(n)\)</span></p>
+<h3 id="相同的树"><a href="https://leetcode.cn/problems/same-tree/">100. 相同的树</a></h3>
+<p><strong>对称二叉树</strong>方法一中用到了这个笨方法，顺手做了吧。</p>
+<h4 id="方法一dfs">方法一：DFS</h4>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321102148975.png" alt="image-20230321102148975" style="zoom:50%;" /></p>
+<p>假设树上一共有<span class="math inline">\(n\)</span>个节点</p>
+<p><strong>时间复杂度</strong>：遍历了整棵树，<span class="math inline">\(O(n)\)</span></p>
+<p><strong>空间复杂度</strong>：和递归使用的栈大小相关，递归层数不超过n，<span class="math inline">\(O(n)\)</span></p>
+<h4 id="方法二bfs-1">方法二：BFS</h4>
+<p>只是和<strong>对称二叉树</strong>BFS解法中的入队顺序改变一点。</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321103126806.png" alt="image-20230321103126806" style="zoom:50%;" /></p>
+<p>假设树上一共有<em>n</em> 个节点。</p>
+<p><strong>时间复杂度</strong>：遍历了整棵树，<span class="math inline">\(O(n)\)</span></p>
+<p><strong>空间复杂度</strong>：和使用的队列大小相关，在最坏的情况下，给定的树是满二叉树，所有叶节点(<span class="math inline">\(n/2 + 1\)</span>)都要入队，所以是<span class="math inline">\(O(n)\)</span></p>
+<h3 id="二叉树的最大深度"><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/">104. 二叉树的最大深度</a></h3>
+<h4 id="方法一bfs">方法一：BFS</h4>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321110400024.png" alt="image-20230321110400024" style="zoom:50%;" /></p>
+<p>假设树上有<span class="math inline">\(n\)</span>个节点</p>
+<p><strong>时间复杂度</strong>：遍历整棵树，<span class="math inline">\(O(n)\)</span></p>
+<p><strong>空间复杂度</strong>：和使用的队列大小相关，在最坏情况下，给定的二叉树是满二叉树，<span class="math inline">\(n/2 + 1\)</span>个叶节点要入队，所以是<span class="math inline">\(O(n)\)</span></p>
+<h4 id="方法二dfs">方法二：DFS</h4>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321111653023.png" alt="image-20230321111653023" style="zoom:50%;" /></p>
+<p>假设树上一共有<span class="math inline">\(n\)</span>个节点</p>
+<p><strong>时间复杂度</strong>：遍历了整棵树，<span class="math inline">\(O(n)\)</span></p>
+<p><strong>空间复杂度</strong>：和递归使用的栈大小相关，递归层数不超过n，<span class="math inline">\(O(n)\)</span></p>
+<h3 id="n-叉树的最大深度"><a href="https://leetcode.cn/problems/maximum-depth-of-n-ary-tree/">559. N 叉树的最大深度</a></h3>
+<p>同上题<strong>二叉树的最大深度</strong>，只是在遍历子节点的时候不同。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> cur<span class="token punctuation">.</span>children<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>children<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
         queue<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>children<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321142849628.png" alt="image-20230321142849628" style="zoom:50%;" /></p>
 <h3 id="二叉树的最小深度">!<a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/">111. 二叉树的最小深度</a></h3>
 <p><strong>最小深度是从根节点到最近叶子节点的最短路径上的节点数量</strong></p>
-<h4 id="方法一dfs">方法一：DFS</h4>
+<h4 id="方法一dfs-1">方法一：DFS</h4>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321144735136.png" alt="image-20230321144735136" style="zoom:50%;" /></p>
-<h4 id="方法二bfs">方法二：BFS</h4>
+<h4 id="方法二bfs-2">方法二：BFS</h4>
 <p>想太复杂了！！</p>
 <p>只需在遍历节点的时候考虑当前节点是不是叶节点，是叶节点直接return depth!</p>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230321150754544.png" alt="image-20230321150754544" style="zoom:50%;" /></p>
@@ -503,7 +437,7 @@ node<span class="token punctuation">.</span>right <span class="token operator">=
 <li>遍历树，如果是叶子节点，利用HashMap向上寻找父节点</li>
 </ol>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230331113629971.png" alt="image-20230331113629971" style="zoom:50%;" /></p>
-<h4 id="方法二bfs-1">方法二：BFS</h4>
+<h4 id="方法二bfs-3">方法二：BFS</h4>
 <p>双队列，一个队列存节点，一个队列存累加和，每遍历到叶节点，把累加和记录到result中。</p>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230331144402361.png" alt="image-20230331144402361" style="zoom:50%;" /></p>
 <h4 id="用一个队列也可以实现offer两次poll两次不过要注意queue的类型是object以及使用变量接受treenode和integer时要强转">用一个队列也可以实现，offer两次，poll两次，不过要注意Queue的类型是Object，以及使用变量接受TreeNode和Integer时要强转。</h4>
