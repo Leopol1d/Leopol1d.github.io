@@ -605,7 +605,7 @@ a <span class="token operator">^=</span> b<span class="token punctuation">;</spa
 <ol type="1">
 <li><p><strong>解题思路：</strong>从后往前遍历，right指针指向单词的最后一个字符，left往前遍历到空格为止，至此在左闭右闭的区间[left + 1, right]依次将字符加入附加在StringBuilder对象上，并在完成对整个单词的append后，再追加(append)一个空格。</p></li>
 <li><p><strong>定位单词</strong>：使用一个boolean变量flag用于标记当前单词的最后一个字符，并用right指向这个字符，将flag置false，再遇到下一个空格时再将flag置true。</p></li>
-<li><p>边界条件：</p>
+<li><p><strong>边界条件</strong>：</p>
 <ol type="1">
 <li><p>首先将输入字符串转换为字符数组char[] ch，只有ch[left] == ‘ ’(空格)且ch[left + 1] != ‘ ’(空格)时，区间[left + 1, right]是一个完整的单词。如果输入的字符串为“hello world”，遍历到<code>hello</code> 的<code>h</code>时，就结束了，那么没有添加<code>hello</code>，所以在ch初始化的时候，在最前面添加一个空格。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ch <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">char</span><span class="token punctuation">[</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -617,8 +617,8 @@ ch<span class="token punctuation">[</span><span class="token number">0</span><sp
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span>sb<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
 	sb<span class="token punctuation">.</span><span class="token function">setLength</span><span class="token punctuation">(</span>sb<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol></li>
-<li><p>时间复杂度：<span class="math inline">\(O(n)\)</span></p></li>
-<li><p>空间复杂度：<span class="math inline">\(O(n)\)</span></p></li>
+<li><p>时间复杂度：<span class="math inline">\(O(n)\)</span>，其中<span class="math inline">\(n\)</span>为输入字符串的长度</p></li>
+<li><p>空间复杂度：<span class="math inline">\(O(n)\)</span>，需要用<span class="math inline">\(O(n)\)</span>的空间存储字符串</p></li>
 </ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">reverseWords</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
