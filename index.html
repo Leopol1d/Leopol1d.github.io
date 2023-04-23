@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-23 10:56:48" itemprop="dateModified" datetime="2023-04-23T10:56:48+08:00">2023-04-23</time>
+                <time title="修改时间：2023-04-23 13:36:00" itemprop="dateModified" datetime="2023-04-23T13:36:00+08:00">2023-04-23</time>
               </span>
 
           
@@ -1208,7 +1208,7 @@ max(f(i-1,j),f(i,j-1)), &amp; else \\
         <span class="token keyword">return</span> result<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20230422150351347.png" alt="image-20230422150351347" style="zoom:50%;" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230422150351347.png" alt="image-20230422150351347" style="zoom:50%;" /></p>
 <h4 id="方法二dfs-3">方法二：DFS</h4>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1476,11 +1476,13 @@ max(f(i-1,j),f(i,j-1)), &amp; else \\
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230423105616607.png" alt="image-20230423105616607" style="zoom:50%;" /></p>
+<h3 id="最大二叉树"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-binary-tree/">654. 最大二叉树</a></h3>
 <h3 id="合并二叉树"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-binary-trees/">617. 合并二叉树</a></h3>
 <p><strong>解题思路</strong>：当树1当前节点的左子树或右子树为空，而树2当前节点左子树或右子树不为空时：使用parentQueue存储树1树2的当前节点parent1，parent2，在遍历到下一层时，使用parent1来指向parent2的左子树或者右子树。</p>
 <p><strong>Debug</strong>：如果cur1左子树为空，cur2左子树不为空，将cur1,cur2加入trashQueue；同理右子树。<strong>如果cur1左右子树都为空，cur2左右子树都不为空，将cur1,cur2加入parentQueue两次！！不然之后poll的时候空指针！！</strong></p>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230322110219397.png" alt="image-20230322110219397" style="zoom:50%;" /></p>
-<h3 id="x98.-验证二叉搜索树">x<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/validate-binary-search-tree/">98. 验证二叉搜索树</a></h3>
+<h3 id="二叉搜索树中的搜索"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-in-a-binary-search-tree/">700. 二叉搜索树中的搜索</a></h3>
+<h3 id="star98.-验证二叉搜索树">:star:<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/validate-binary-search-tree/">98. 验证二叉搜索树</a></h3>
 <h4 id="方法一中序遍历">方法一：中序遍历</h4>
 <p>中序遍历二叉搜索树应该是升序的，只需要一个记录上一个节点的值的遍历preVal，并与当前节点比较，如果当前节点的值<strong>小于等于</strong>preVal(cur.val应该严格&gt;preVal不能等于)，则返回false;否则，遍历完所有节点返回true。</p>
 <p>假设树有n个节点</p>
@@ -3519,6 +3521,41 @@ System.out.println(queue); &#x2F;&#x2F; 输出[]<span aria-hidden="true" class="
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230421115750194.png" alt=" " style="zoom:50%;" /></p>
+<h3 id="监控二叉树"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-cameras/">968. 监控二叉树</a></h3>
+<h4 id="方法一贪心-2">方法一：贪心</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minCameraCover</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// dfs后检查根节点是否被覆盖</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">404</span><span class="token punctuation">)</span>
+            <span class="token operator">++</span>result<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// state 404:未覆盖</span>
+        <span class="token comment">// state 200:覆盖</span>
+        <span class="token comment">// state 201:有监控</span>
+        <span class="token comment">//叶节点的左右空孩子需要返回被覆盖，这样才不会在叶子节点上装监控</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">200</span><span class="token punctuation">;</span>
+        <span class="token comment">// post traversal</span>
+        <span class="token keyword">int</span> leftState <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> rightState <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 1.如果左右子树都被覆盖</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>leftState <span class="token operator">==</span> <span class="token number">200</span> <span class="token operator">&amp;&amp;</span> rightState <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">404</span><span class="token punctuation">;</span>
+        <span class="token comment">// 2.如果左右子树至少有一个没被覆盖</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>leftState <span class="token operator">==</span> <span class="token number">404</span> <span class="token operator">||</span> rightState <span class="token operator">==</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token operator">++</span>result<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token number">201</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 3.如果左右子树至少有一个监控</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>leftState <span class="token operator">==</span> <span class="token number">201</span> <span class="token operator">||</span> rightState <span class="token operator">==</span> <span class="token number">201</span><span class="token punctuation">)</span> 
+            <span class="token keyword">return</span> <span class="token number">200</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">666</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230423131621590.png" alt="image-20230423131621590" style="zoom:50%;" /></p>
 <h2 id="tips">tips</h2>
 <h3 id="新建数组时赋值">新建数组时赋值</h3>
 <p>int[] array = new int[]{3, 4}；</p>
