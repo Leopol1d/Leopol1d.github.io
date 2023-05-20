@@ -4,36 +4,7 @@
     <title></title>
     <url>/2023/05/20/backtracking/</url>
     <content><![CDATA[<h1><span id="backtracking">Backtracking</span><a href="#backtracking" class="header-anchor">#</a></h1>
-<p><a href="https://leetcode.cn/problems/restore-ip-addresses/">93. 复原 IP 地址</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2023/05/20/%E8%A7%84%E5%88%921/</url>
-    <content><![CDATA[<h1><span id="1-shi-xi">1.实习</span><a href="#1-shi-xi" class="header-anchor">#</a></h1>
-<p>​ 有价值的点 ​ 1.抢单的线程安全【分布式锁】 ​ 2.计算分数的策略：考虑 ES、数据结构；异步 ​ 3.流程、数据库表 ​ 4.设计模式 ​ 5.线上问题、bug修复【内存泄漏、GC过多】</p>
-<h1><span id="2-suan-fa">2.算法</span><a href="#2-suan-fa" class="header-anchor">#</a></h1>
-<ul>
-<li>​ 回溯、记忆化搜索、动态规划 ​ 图： ​ 拓扑序 ​ 并查集 ​ 最小生成树 ​ 最短路 ​ 迷宫 ​ 滑动窗口、二分、单调栈、单调队列、贪心
-<ul>
-<li><strong>回溯【4天】、记忆化搜索【4天】、 、拓扑排序【2天】、并查集和最小生成树【3天】、最短路【5天】、迷宫【4天】、二分【3天】、滑动窗口【2天】、单调栈【2天】、贪心【1天】</strong></li>
-</ul></li>
-<li>https://www.yuque.com/u28128023/lfnzwq/ghg3bgmrg1xwfp7q?singleDoc# 《算法训练营》 密码：ifbs</li>
-<li>每个模块的题目这样来做： 第一次先看着题解/视频，跟着做一次<br>
-第二次闭卷刷 这个过程可能会出现一些疑惑，要把这些疑惑记下来，及时找我沟通问题。 第三次闭卷刷，尽可能在12分钟内完成</li>
-<li>然后这个文档的话，是笔试真题，会一直更新一些有价值的题目： https://www.yuque.com/u28128023/lfnzwq/ewwiugfqisptzku8?singleDoc# 《算法训练营——笔试真题》 密码：lgnk</li>
-</ul>
-<h1><span id="3-ba-gu">3.八股</span><a href="#3-ba-gu" class="header-anchor">#</a></h1>
-<ul>
-<li>​ Java：基础、集合、多线程、JVM ​ MySQL：SQL；索引、事务、日志、锁 ​ 计算机网络：分层模型、应用层(http)、传输层(TCP)；其他协议 ​ Redis：数据结构、持久化、线程模型、内存管理；场景：雪崩、击穿、穿透；分布式锁、分布式ID ​ Spring： ​ IOC ​ Bean（注解、生命周期、循环依赖、单例Bean的安全） ​ 事务传播规则 ​ MVC：工作流程 ​ Mybatis：缓存、分页 ​ SpringBoot： ​ <span class="citation" data-cites="springbootApplication">@springbootApplication</span>  starter ​ Kafka：架构；消息堆积、消息丢失、消息重复消费、消息顺序</li>
-<li>八股文建议用时 Java： 7天 MySQL：5天 计算机网络：5天 Redis：5天 Spring：4天 Kafka：4天</li>
-</ul>
-<h1><span id="tool">TOOL</span><a href="#tool" class="header-anchor">#</a></h1>
-<p>下载地址：https://www.ieway.cn/evplayer2.html</p>
-<p>在你常用的设备上下载这个播放器，用你的账号密码登录</p>
-<figure>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/4264e51ad54ca841d0bd929fc241341.png" alt="4264e51ad54ca841d0bd929fc241341"><figcaption aria-hidden="true">4264e51ad54ca841d0bd929fc241341</figcaption>
-</figure>
+<h3><span id="93-fu-yuan-ip-di-zhi"></span><a href="#93-fu-yuan-ip-di-zhi" class="header-anchor">#</a></h3>
 ]]></content>
   </entry>
   <entry>
