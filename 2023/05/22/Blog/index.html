@@ -1,0 +1,893 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cat-64.png">
+  <link rel="icon" href="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cat-96.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Leopold">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Blog 参考文档 启动服务器 在’E:‘下cmd进入(或者右击鼠标选择’Git Bash Here‘) 输入hexo s打开服务器  复制http:.&#x2F;&#x2F;localhost:4000访问博客，Ctrl+C关闭服务器。  将本地文件上传至服务器 首先输入hexo d 如果有以下提示  image-20211129162855596  则根据提示输入邮箱和密码  im">
+<meta property="og:type" content="article">
+<meta property="og:title" content="quiz1">
+<meta property="og:url" content="https://leopol1d.github.io/2023/05/22/Blog/index.html">
+<meta property="og:site_name" content="Leopold&#39;s Blog">
+<meta property="og:description" content="Blog 参考文档 启动服务器 在’E:‘下cmd进入(或者右击鼠标选择’Git Bash Here‘) 输入hexo s打开服务器  复制http:.&#x2F;&#x2F;localhost:4000访问博客，Ctrl+C关闭服务器。  将本地文件上传至服务器 首先输入hexo d 如果有以下提示  image-20211129162855596  则根据提示输入邮箱和密码  im">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20211129160704572.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407113550385.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129162855596.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129162947909.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163101472.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163431217.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163532915.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163812118.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163947679.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129164125890.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129164156931.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129164237980.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129164655445.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407133100189.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407151008518.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407151030629.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407162043482.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407162746896.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20230408162953217.png">
+<meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20230410145524447.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230412122349363.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520182631802.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520182603366.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520182621162.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520183139071.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520184447621.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520184512546.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/pexels-dominika-roseclay-977878.jpg">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521113051594.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521130229546.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521131605531.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521131629991.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521131928195.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521155537024.png">
+<meta property="article:published_time" content="2023-05-22T12:41:40.566Z">
+<meta property="article:modified_time" content="2023-05-22T12:42:16.118Z">
+<meta property="article:author" content="Leopold">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20211129160704572.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>quiz1 - Leopold&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"leopol1d.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leopold&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="quiz1"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-22 20:41" pubdate>
+          2023年5月22日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          55 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">quiz1</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="blog">Blog</h1>
+<h2 id="参考文档"><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">参考文档</a></h2>
+<h2 id="启动服务器">启动服务器</h2>
+<p>在’E:‘下cmd进入(或者右击鼠标选择’Git Bash Here‘)</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20211129160704572.png" srcset="/img/loading.gif" lazyload alt="image-20211129160704572" />输入hexo s打开服务器</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407113550385.png" srcset="/img/loading.gif" lazyload /></p>
+<p>复制http:.//localhost:4000访问博客，Ctrl+C关闭服务器。</p>
+<ol type="1">
+<li><p>将本地文件上传至服务器</p>
+<p>首先输入hexo d</p>
+<p>如果有以下提示</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129162855596.png" srcset="/img/loading.gif" lazyload alt="image-20211129162855596" /><figcaption aria-hidden="true">image-20211129162855596</figcaption>
+</figure>
+<p>则根据提示输入邮箱和密码</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129162947909.png" srcset="/img/loading.gif" lazyload alt="image-20211129162947909" /><figcaption aria-hidden="true">image-20211129162947909</figcaption>
+</figure>
+<p>再输入hexo d</p>
+<p>如果不成功，是因为网络原因，重复输入hexo，直至弹出以下图片</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163101472.png" srcset="/img/loading.gif" lazyload alt="image-20211129163101472" /><figcaption aria-hidden="true">image-20211129163101472</figcaption>
+</figure>
+<p>点击Token，然后去github点击头像，Settings-&gt;Developer settings-&gt;Personal access tokens,点击Generate token，把权限全点上</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163431217.png" srcset="/img/loading.gif" lazyload alt="image-20211129163431217" /><figcaption aria-hidden="true">image-20211129163431217</figcaption>
+</figure>
+<p>令牌就生成了</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163532915.png" srcset="/img/loading.gif" lazyload alt="image-20211129163532915" /><figcaption aria-hidden="true">image-20211129163532915</figcaption>
+</figure>
+<p>然后复制令牌，复制到之前弹出的输入框中即可</p>
+<p>这样仓库的内容就上传成功了</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163812118.png" srcset="/img/loading.gif" lazyload alt="image-20211129163812118" /><figcaption aria-hidden="true">image-20211129163812118</figcaption>
+</figure>
+<p>现在可以用仓库名访问博客啦https://leopol1d.github.io/</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129163947679.png" srcset="/img/loading.gif" lazyload alt="image-20211129163947679" /><figcaption aria-hidden="true">image-20211129163947679</figcaption>
+</figure>
+<p>也可以通过以下方法找网址</p>
+<p>进入settings</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129164125890.png" srcset="/img/loading.gif" lazyload alt="image-20211129164125890" /><figcaption aria-hidden="true">image-20211129164125890</figcaption>
+</figure>
+<p>往下翻，找到GitHub Pages,点击Check it out here</p>
+<figure>
+<img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129164156931.png" srcset="/img/loading.gif" lazyload alt="image-20211129164156931" /><figcaption aria-hidden="true">image-20211129164156931</figcaption>
+</figure>
+<p>网址如下</p>
+<p><img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129164237980.png" srcset="/img/loading.gif" lazyload alt="image-20211129164237980" /> <strong>令牌一定要记住：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，因为之后打开不会显示了</strong>，呐</p>
+<p>​ <img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20211129164655445.png" srcset="/img/loading.gif" lazyload alt="image-20211129164655445" /></p>
+<h2 id="hexo-常见指令">Hexo 常见指令</h2>
+<p>npm install hexo -g #安装Hexo npm update hexo -g #升级 hexo init #初始化博客</p>
+<p>命令简写 hexo n "我的博客" == hexo new "我的博客" #新建文章 hexo g == hexo generate #生成 hexo s == hexo server #启动服务预览 hexo d == hexo deploy #部署</p>
+<p>hexo server #Hexo会监视文件变动并自动更新，无须重启服务器 hexo server -s #静态模式 hexo server -p 5000 #更改端口 hexo server -i 192.168.1.1 #自定义 IP hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Shell">hexo new test_my_site<br>hexo g<br>hexo s<br>依次是新建一篇博客文章、生成网页、在本地预览的操作<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="换主题">换主题</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/as480133937/article/details/100138838">参考文档</a></p>
+<p>把主题文件下载到E:</p>
+<p>将Blog文件夹下的_config.yml文件中原本的theme注释掉，然后添加</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">theme:</span> <span class="hljs-string">next</span><br></code></pre></td></tr></table></figure>
+<p><strong>next</strong>是themes文件夹下新增主题的文件名</p>
+<p>如果发生以下错误</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407133100189.png" srcset="/img/loading.gif" lazyload alt="image-20230407133100189" style="zoom:50%;" /></p>
+<p>删除这个default.yml文件即可</p>
+<h2 id="部署">部署</h2>
+<p><strong>部署后可能会有几分钟延迟！！！！</strong></p>
+<p>hexo n “blog-name” 可能是加单引号，都试试</p>
+<p>hexo clean</p>
+<p>hexo g //generate</p>
+<p>hexo d //deploy</p>
+<p>发现bug</p>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407151008518.png" srcset="/img/loading.gif" lazyload alt="image-20230407151008518" /><figcaption aria-hidden="true">image-20230407151008518</figcaption>
+</figure>
+<p>注意branch是main，不是master</p>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407151030629.png" srcset="/img/loading.gif" lazyload alt="image-20230407151030629" /><figcaption aria-hidden="true">image-20230407151030629</figcaption>
+</figure>
+<h2 id="写作">写作</h2>
+<p>hexo n “blog-name” 可能是加单引号，都试试</p>
+<p>然后去E:_posts编辑文件</p>
+<p>hexo clean</p>
+<p>hexo g //generate</p>
+<p>hexo d //deploy</p>
+<h2 id="删除">删除</h2>
+<p>去E:_posts删除文件文件</p>
+<p>hexo clean</p>
+<p>hexo g //generate</p>
+<p>hexo d //deploy</p>
+<h2 id="上传文件错误">上传文件错误</h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407162043482.png" srcset="/img/loading.gif" lazyload alt="image-20230407162043482" style="zoom:50%;" /></p>
+<p>注意顶部是yml风格</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230407162746896.png" srcset="/img/loading.gif" lazyload alt="image-20230407162746896" style="zoom:50%;" /></p>
+<h2 id="无法显示latex">无法显示latex</h2>
+<p><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html">官方链接</a></p>
+<p><img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20230408162953217.png" srcset="/img/loading.gif" lazyload alt="image-20230408162953217" style="zoom:50%;" /></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">Algorithms</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2023-04-07 16:06:11</span><br><span class="hljs-attr">tags:</span> <br><span class="hljs-attr">mathjax:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<h1 id="error-eperm-operation-not-permitted-unlink">Error: EPERM: operation not permitted, unlink</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41642136/article/details/112507688">删除node_modules下的所有文件再重装</a></p>
+<p><img src="C:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20230410145524447.png" srcset="/img/loading.gif" lazyload alt="image-20230410145524447" st yle="zoom:50%;" /></p>
+<p>删除的时候可以右键node_modules文件夹手动删除</p>
+<h1 id="error-spawn-failed">Error: Spawn failed</h1>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230412122349363.png" srcset="/img/loading.gif" lazyload alt="image-20230412122349363" /><figcaption aria-hidden="true">image-20230412122349363</figcaption>
+</figure>
+<p>连接手机热点就解决了</p>
+<h1 id="目录树-toc-sidebar">目录树 toc sidebar</h1>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520182631802.png" srcset="/img/loading.gif" lazyload alt="image-20230520182631802" /><figcaption aria-hidden="true">image-20230520182631802</figcaption>
+</figure>
+<p>Font Matter一定要把toc设置为true！</p>
+<h1 id="snipaste选中框粗细">Snipaste选中框粗细</h1>
+<p>1变细，2变粗</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520182603366.png" srcset="/img/loading.gif" lazyload alt="image-20230520182603366" style="zoom:50%;" /> <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520182621162.png" srcset="/img/loading.gif" lazyload alt="image-20230520182621162" style="zoom:50%;" /></p>
+<h1 id="主题fluid的图片在e">主题fluid的图片在E:</h1>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520183139071.png" srcset="/img/loading.gif" lazyload alt="image-20230520183139071" /><figcaption aria-hidden="true">image-20230520183139071</figcaption>
+</figure>
+<h1 id="indeximage配置">IndexImage配置</h1>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520184447621.png" srcset="/img/loading.gif" lazyload alt="image-20230520184447621" /><figcaption aria-hidden="true">image-20230520184447621</figcaption>
+</figure>
+<p>效果如下</p>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230520184512546.png" srcset="/img/loading.gif" lazyload alt="image-20230520184512546" /><figcaption aria-hidden="true">image-20230520184512546</figcaption>
+</figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/pexels-dominika-roseclay-977878.jpg" srcset="/img/loading.gif" lazyload alt="pexels-dominika-roseclay-977878" style="zoom:25%;" /></p>
+<h1 id="图片存放位置">图片存放位置</h1>
+<p>把头像等图片放在/source/img下，hexo clean &amp;&amp; hexo g后，会在public/img下自动生成soure下的图片，/img默认在public下</p>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521113051594.png" srcset="/img/loading.gif" lazyload alt="image-20230521113051594" /><figcaption aria-hidden="true">image-20230521113051594</figcaption>
+</figure>
+<h1 id="自动生成font-matter">自动生成font matter</h1>
+<p>以下为新增的font matter</p>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521130229546.png" srcset="/img/loading.gif" lazyload alt="image-20230521130229546" /><figcaption aria-hidden="true">image-20230521130229546</figcaption>
+</figure>
+<p>使用hexo new [layout] &lt;title&gt;的时候，如果填写layout，默认就是post，生成的文件会在source/_post里</p>
+<h1 id="图片有bug不显示star数学公式也不显示">图片有bug，不显示:star:，数学公式也不显示</h1>
+<ol type="1">
+<li><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521131605531.png" srcset="/img/loading.gif" lazyload title="fig:" alt="image-20230521131605531" /></li>
+<li><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521131629991.png" srcset="/img/loading.gif" lazyload title="fig:" alt="image-20230521131629991" /></li>
+<li><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521131928195.png" srcset="/img/loading.gif" lazyload title="fig:" alt="image-20230521131928195" /></li>
+</ol>
+<p>主题配置文件有问题，把评论关了就恢复了</p>
+<p><strong>把typora关了再部署hexo!!!!!!!!</strong></p>
+<h1 id="评论系统一直出问题">评论系统一直出问题</h1>
+<p>大小写问题！！！</p>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230521155537024.png" srcset="/img/loading.gif" lazyload alt="image-20230521155537024" /><figcaption aria-hidden="true">image-20230521155537024</figcaption>
+</figure>
+<p>warning: in the working copy of '404.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'about/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'archives/2023/04/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'archives/2023/05/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'archives/2023/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'archives/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'categories/Algorithms/backtracking/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'categories/Algorithms/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'categories/Algorithms/quiz/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'categories/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'css/fluid-extension.css', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'css/gitalk.css', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'css/highlight.css', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'css/main.css', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'js/boot.js', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'js/color-schema.js', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'js/events.js', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'js/img-lazyload.js', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'js/leancloud.js', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'js/local-search.js', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'js/plugins.js', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'js/utils.js', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'links/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'local-search.xml', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'search.xml', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'tags/Algorithms/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'tags/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'tags/回溯/index.html', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'xml/local-search.xml', LF will be replaced by CRLF the next time Git touches it [master f1d9cd6] Site updated: 2023-05-21 17:19:13 22 files changed, 10936 insertions(+), 10307 deletions(-) create mode 100644 2023/05/21/test/index.html warning: ----------------- SECURITY WARNING ---------------- warning: | TLS certificate verification has been disabled! | warning: --------------------------------------------------- warning: HTTPS connections may not be secure. See https://aka.ms/gcm/tlsverify for more information. warning: ----------------- SECURITY WARNING ---------------- warning: | TLS certificate verification has been disabled! | warning: --------------------------------------------------- warning: HTTPS connections may not be secure. See https://aka.ms/gcm/tlsverify for more information. warning: git-credential-manager-core was renamed to git-credential-manager warning: see https://aka.ms/gcm/rename for more information warning: ----------------- SECURITY WARNING ---------------- warning: | TLS certificate verification has been disabled! | warning: --------------------------------------------------- warning: HTTPS connections may not be secure. See https://aka.ms/gcm/tlsverify for more information. Enumerating objects: 89, done. Counting objects: 100% (89/89), done. Delta compression using up to 16 threads Compressing objects: 100% (31/31), done. Writing objects: 100% (48/48), 145.76 KiB | 1.89 MiB/s, done. Total 48 (delta 21), reused 0 (delta 0), pack-reused 0 remote: Resolving deltas: 100% (21/21), completed with 14 local objects. To https://github.com/Leopol1d/Leopol1d.github.io.git e3ae1ac..f1d9cd6 HEAD -&gt; main branch 'master' set up to track 'https://github.com/Leopol1d/Leopol1d.github.io.git/main'.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>quiz1</div>
+      <div>https://leopol1d.github.io/2023/05/22/Blog/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Leopold</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"comment-plugin.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
