@@ -155,6 +155,6 @@ table {
     padding: 0;
     word-break: initial;
     overflow-x: auto;
-    max-height: 22em;
+    max-height: 44em;
     overflow-y: auto !important;
 }
