@@ -5,6 +5,7 @@
     <url>/2023/05/20/backtracking/</url>
     <content><![CDATA[<h1 id="backtracking">Backtracking</h1>
 <h2 id="复原-ip-地址star"><a href="https://leetcode.cn/problems/restore-ip-addresses/">93. 复原 IP 地址</a>:star:</h2>
+<h2 id="image-20230523092346721"><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230523092346721.png" alt="image-20230523092346721" /></h2>
 <p><strong>解题思路</strong>：加“.”分割字符串</p>
 <p><strong>注意</strong>：isValid()中，如果得到的子串str为空，说明字符串s已经有三个“.”分割，并且最后一个点在最后一个位置，比如<code>101.0.23.</code>，</p>
 <ol type="1">
