@@ -59,8 +59,9 @@
 <meta property="og:image" content="c:\Users\ning\AppData\Roaming\Typora\typora-user-images\image-20230522102522682.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230522120125288.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230522141659164.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230526105536421.png">
 <meta property="article:published_time" content="2023-05-22T02:22:11.417Z">
-<meta property="article:modified_time" content="2023-05-23T08:19:39.880Z">
+<meta property="article:modified_time" content="2023-05-26T05:28:30.935Z">
 <meta property="article:author" content="Leopold">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230403111059857.png">
@@ -258,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          37k 字
+          41k 字
         
       </span>
     
@@ -269,7 +270,7 @@
         
         
         
-          308 分钟
+          344 分钟
         
       </span>
     
@@ -990,6 +991,137 @@
       &#125;]
     &#125;]
   &#125;],</code></pre>
+<h1 id="价格估算">5.26 价格估算</h1>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230526105536421.png" srcset="/img/loading.gif" lazyload alt="image-20230526105536421" /><figcaption aria-hidden="true">image-20230526105536421</figcaption>
+</figure>
+<h2 id="复杂度计算">复杂度计算</h2>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs lisp">=IF(<span class="hljs-name">I53=</span><span class="hljs-string">&quot;EI&quot;</span>,<br>    IF(<span class="hljs-name">J53&lt;2</span>,<br>        IF(<span class="hljs-name">N53&lt;16</span>,<span class="hljs-string">&quot;低&quot;</span>,<span class="hljs-string">&quot;中&quot;</span>),<br>        IF(<span class="hljs-name">J53&lt;3</span>,<br>            IF(<span class="hljs-name">N53&lt;5</span>,<span class="hljs-string">&quot;低&quot;</span>,<br>            IF(<span class="hljs-name">N53&lt;16</span>,<span class="hljs-string">&quot;中&quot;</span>,<span class="hljs-string">&quot;高&quot;</span>)),<br>        IF(<span class="hljs-name">N53&lt;5</span>,<span class="hljs-string">&quot;中&quot;</span>,<span class="hljs-string">&quot;高&quot;</span>))),<br>    IF(<span class="hljs-name">OR</span>(<span class="hljs-name">I53=</span><span class="hljs-string">&quot;EO&quot;</span>,I53=<span class="hljs-string">&quot;EQ&quot;</span>),<br>        IF(<span class="hljs-name">J53&lt;2</span>,<br>            IF(<span class="hljs-name">N53&lt;20</span>,<span class="hljs-string">&quot;低&quot;</span>,<span class="hljs-string">&quot;中&quot;</span>),<br>            IF(<span class="hljs-name">J53&lt;4</span>,<br>                IF(<span class="hljs-name">N53&lt;6</span>,<span class="hljs-string">&quot;低&quot;</span>,<br>                IF(<span class="hljs-name">N53&lt;20</span>,<span class="hljs-string">&quot;中&quot;</span>,<span class="hljs-string">&quot;高&quot;</span>)),<br>            IF(<span class="hljs-name">N53&lt;6</span>,<span class="hljs-string">&quot;中&quot;</span>,<span class="hljs-string">&quot;高&quot;</span>))),<br>        IF(<span class="hljs-name">OR</span>(<span class="hljs-name">I53=</span><span class="hljs-string">&quot;ILF&quot;</span>,I53=<span class="hljs-string">&quot;EIF&quot;</span>),<br>            IF(<span class="hljs-name">L53&lt;2</span>,<br>                IF(<span class="hljs-name">N53&lt;51</span>,<span class="hljs-string">&quot;低&quot;</span>,<span class="hljs-string">&quot;中&quot;</span>),<br>                IF(<span class="hljs-name">L53&lt;6</span>,<br>                    IF(<span class="hljs-name">N53&lt;20</span>,<span class="hljs-string">&quot;低&quot;</span>,<br>                    IF(<span class="hljs-name">N53&lt;51</span>,<span class="hljs-string">&quot;中&quot;</span>,<span class="hljs-string">&quot;高&quot;</span>)),<br>                IF(<span class="hljs-name">N53&lt;20</span>,<span class="hljs-string">&quot;中&quot;</span>,<span class="hljs-string">&quot;高&quot;</span>))),<br>        <span class="hljs-string">&quot;低&quot;</span>)))<br></code></pre></td></tr></table></figure>
+<p>java代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> String <span class="hljs-title function_">calcComplexity</span><span class="hljs-params">(String functionType, <span class="hljs-type">int</span> ftrRetNum, <span class="hljs-type">int</span> detNum)</span> &#123;<br>    String complexity;<br>    <span class="hljs-keyword">if</span> (functionType.equals(<span class="hljs-string">&quot;EI&quot;</span>)) &#123;<br>        <span class="hljs-keyword">if</span> (ftrRetNum &lt; <span class="hljs-number">2</span>) &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">16</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;低&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ftrRetNum &lt; <span class="hljs-number">3</span>) &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">5</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;低&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">16</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;高&quot;</span>;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">5</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;高&quot;</span>;<br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (functionType.equals(<span class="hljs-string">&quot;EO&quot;</span>) || functionType.equals(<span class="hljs-string">&quot;EQ&quot;</span>)) &#123;<br>        <span class="hljs-keyword">if</span> (ftrRetNum &lt; <span class="hljs-number">2</span>) &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">20</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;低&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ftrRetNum &lt; <span class="hljs-number">4</span>) &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">6</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;低&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">20</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;高&quot;</span>;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">6</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;高&quot;</span>;<br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (functionType.equals(<span class="hljs-string">&quot;ILF&quot;</span>) || functionType.equals(<span class="hljs-string">&quot;EIF&quot;</span>)) &#123;<br>        <span class="hljs-keyword">if</span> (ftrRetNum &lt; <span class="hljs-number">2</span>) &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">51</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;低&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ftrRetNum &lt; <span class="hljs-number">6</span>) &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">20</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;低&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">51</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;高&quot;</span>;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (detNum &lt; <span class="hljs-number">20</span>) &#123;<br>                complexity = <span class="hljs-string">&quot;中&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                complexity = <span class="hljs-string">&quot;高&quot;</span>;<br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        complexity = <span class="hljs-string">&quot;低&quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> complexity;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这个复杂的公式是一个嵌套的 IF 函数，根据一系列条件来返回不同的结果。以下是对公式的完整解释：</p>
+<ul>
+<li>外层的 IF 语句判断 I53 的值：
+<ul>
+<li>如果 I53 等于 "EI"，则执行第一个 IF 语句块；</li>
+<li>如果 I53 不满足以上条件，则进入下一个嵌套的 OR 函数。</li>
+</ul></li>
+<li>OR 函数判断 I53 的值：
+<ul>
+<li>如果 I53 等于 "EO" 或 "EQ"，则执行第二个 IF 语句块；</li>
+<li>如果 I53 不满足以上条件，则进入下一个嵌套的 OR 函数。</li>
+</ul></li>
+<li>OR 函数判断 I53 的值：
+<ul>
+<li>如果 I53 等于 "ILF" 或 "EIF"，则执行第三个 IF 语句块；</li>
+<li>如果 I53 不满足以上条件，则返回 "低"。</li>
+</ul></li>
+</ul>
+<p>根据不同的条件，公式将返回不同的结果，这些结果是根据 J53、L53 和 N53 的值进行计算的。具体的条件和结果如下：</p>
+<ul>
+<li>如果 I53 等于 "EI"：
+<ul>
+<li>如果 J53 小于 2：
+<ul>
+<li>如果 N53 小于 16，返回 "低"；</li>
+<li>如果 N53 大于等于 16，返回 "中"。</li>
+</ul></li>
+<li>如果 J53 大于等于 2：
+<ul>
+<li>如果 J53 小于 3：
+<ul>
+<li>如果 N53 小于 5，返回 "低"；</li>
+<li>如果 N53 大于等于 5 且小于 16，返回 "中"；</li>
+<li>如果 N53 大于等于 16，返回 "高"。</li>
+</ul></li>
+<li>如果 J53 大于等于 3：
+<ul>
+<li>如果 N53 小于 5，返回 "中"；</li>
+<li>如果 N53 大于等于 5，返回 "高"。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>如果 I53 等于 "EO" 或 "EQ"：
+<ul>
+<li>如果 J53 小于 2：
+<ul>
+<li>如果 N53 小</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>于 20，返回 "低"； - 如果 N53 大于等于 20，返回 "中"。 - 如果 J53 大于等于 2： - 如果 J53 小于 4： - 如果 N53 小于 6，返回 "低"； - 如果 N53 大于等于 6 且小于 20，返回 "中"； - 如果 N53 大于等于 20，返回 "高"。 - 如果 J53 大于等于 4： - 如果 N53 小于 6，返回 "中"； - 如果 N53 大于等于 6，返回 "高"。</p>
+<ul>
+<li>如果 I53 等于 "ILF" 或 "EIF"：
+<ul>
+<li>如果 L53 小于 2：
+<ul>
+<li>如果 N53 小于 51，返回 "低"；</li>
+<li>如果 N53 大于等于 51，返回 "中"。</li>
+</ul></li>
+<li>如果 L53 大于等于 2：
+<ul>
+<li>如果 L53 小于 6：
+<ul>
+<li>如果 N53 小于 20，返回 "低"；</li>
+<li>如果 N53 大于等于 20 且小于 51，返回 "中"；</li>
+<li>如果 N53 大于等于 51，返回 "高"。</li>
+</ul></li>
+<li>如果 L53 大于等于 6：
+<ul>
+<li>如果 N53 小于 20，返回 "中"；</li>
+<li>如果 N53 大于等于 20，返回 "高"。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>最后，如果所有的条件都不满足，则返回 "低"。</p>
+<h2 id="ufp计算和价格直接挂钩">UFP计算(和价格直接挂钩)</h2>
+<p>这是一个嵌套的 IF 函数，根据一系列条件返回不同的结果。以下是对公式的解释：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs routeros">=<span class="hljs-keyword">IF</span>(<span class="hljs-attribute">I53</span>=<span class="hljs-string">&quot;EI&quot;</span>,<br>    <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;低&quot;</span>,3,<br>        <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;中&quot;</span>,4,6)),<br>    <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">I53</span>=<span class="hljs-string">&quot;EO&quot;</span>,<br>        <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;低&quot;</span>,4,<br>            <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;中&quot;</span>,5,7)),<br>        <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">I53</span>=<span class="hljs-string">&quot;EQ&quot;</span>,<br>            <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;低&quot;</span>,3,<br>                <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;中&quot;</span>,4,6)),<br>            <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">I53</span>=<span class="hljs-string">&quot;ILF&quot;</span>,<br>                <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;低&quot;</span>,7,<br>                    <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;中&quot;</span>,10,15)),<br>                <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">I53</span>=<span class="hljs-string">&quot;EIF&quot;</span>,<br>                    <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;低&quot;</span>,5,<br>                        <span class="hljs-keyword">IF</span>(<span class="hljs-attribute">P53</span>=<span class="hljs-string">&quot;中&quot;</span>,7,10)))))))<br></code></pre></td></tr></table></figure>
+<p>这个复杂的公式是一个嵌套的 IF 函数，根据一系列条件来返回不同的结果。以下是对公式的解释：</p>
+<ul>
+<li><p>外层的 IF 语句判断 I53 的值：</p>
+<ul>
+<li>如果 I53 等于 "EI"，则执行第一个 IF 语句块；</li>
+<li>如果 I53 不满足以上条件，则进入下一个嵌套的 IF 语句。</li>
+</ul></li>
+<li><p>第一个 IF 语句判断 P53 的值：</p>
+<ul>
+<li>如果 P53 等于 "低"，返回 3；</li>
+<li>如果 P53 等于 "中"，返回 4；</li>
+<li>如果 P53 不满足以上条件，返回 6。</li>
+</ul></li>
+<li><p>如果 I53 不等于 "EI"，进入下一个嵌套的 IF 语句。</p></li>
+<li><p>第二个 IF 语句判断 I53 的值：</p>
+<ul>
+<li>如果 I53 等于 "EO"，执行第二个 IF 语句块；</li>
+<li>如果 I53 不满足以上条件，进入下一个嵌套的 IF 语句。</li>
+</ul></li>
+<li><p>第二个 IF 语句判断 P53 的值：</p>
+<ul>
+<li>如果 P53 等于 "低"，返回 4；</li>
+<li>如果 P53 等于 "中"，执行第三个 IF 语句块；</li>
+<li>如果 P53 不满足以上条件，返回 7。</li>
+</ul></li>
+<li><p>如果 I53 不等于 "EO"，进入下一个嵌套的 IF 语句。</p></li>
+<li><p>第三个 IF 语句判断 I53 的值：</p>
+<ul>
+<li>如果 I53 等于 "EQ"，执行第四个 IF 语句块；</li>
+<li>如果 I53 不满足以上条件，进入下一个嵌套的 IF 语句。</li>
+</ul></li>
+<li><p>第四个 IF 语句判断 P53 的值：</p>
+<ul>
+<li>如果 P53 等于 "低"，返回 3；</li>
+<li>如果 P53 等于 "中"，返回 4；</li>
+<li>如果 P53 不满足以上条件，返回 6。</li>
+</ul></li>
+<li><p>如果 I53 不等于 "EQ"，进入下一个嵌套的 IF 语句。</p></li>
+<li><p>第五个 IF 语句判断 I53 的值：</p>
+<ul>
+<li>如果 I53 等于 "ILF"，执行第五个 IF 语句</li>
+</ul></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><br></code></pre></td></tr></table></figure>
 
                 
               </div>
