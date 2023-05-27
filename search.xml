@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Dynamic Programming</title>
+    <title>Memorization Searcch</title>
     <url>/2023/05/24/dynamic-programming/</url>
     <content><![CDATA[<h1 id="自顶向下的动态规划记忆化搜索">自顶向下的动态规划——记忆化搜索</h1>
 <div class="note note-success">
@@ -131,7 +131,7 @@
 ]]></content>
       <categories>
         <category>Algorithms</category>
-        <category>dynamic programming</category>
+        <category>Memorization Searcch</category>
       </categories>
       <tags>
         <tag>动态规划</tag>
