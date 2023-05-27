@@ -163,19 +163,6 @@
       </tags>
   </entry>
   <entry>
-    <title>dynamic-programming</title>
-    <url>/2023/05/27/dynamic-programming/</url>
-    <content><![CDATA[
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-        <category>Dynamic Programming</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Backtracking</title>
     <url>/2023/05/20/backtracking/</url>
     <content><![CDATA[<h1 id="backtracking">Backtracking</h1>
@@ -291,6 +278,19 @@
       </categories>
       <tags>
         <tag>回溯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dynamic-programming</title>
+    <url>/2023/05/27/dynamic-programming/</url>
+    <content><![CDATA[
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+        <category>Dynamic Programming</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
