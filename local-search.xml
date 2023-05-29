@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Disjoint-Set</title>
+    <link href="/2023/05/29/Disjoint-Set/"/>
+    <url>/2023/05/29/Disjoint-Set/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithms</category>
+      
+      <category>Graph</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>图</tag>
+      
+      <tag>并查集</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Topological Sort</title>
     <link href="/2023/05/29/topological-sort/"/>
     <url>/2023/05/29/topological-sort/</url>
