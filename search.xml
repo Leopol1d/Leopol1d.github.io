@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Topological Sort</title>
+    <url>/2023/05/29/topological-sort/</url>
+    <content><![CDATA[
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+        <category>Graph</category>
+        <category>Graph</category>
+        <category>Topological Sort</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Dynamic Programming</title>
     <url>/2023/05/27/dynamic-programming/</url>
     <content><![CDATA[<h1 id="自底向上的动态规划">自底向上的动态规划</h1>
