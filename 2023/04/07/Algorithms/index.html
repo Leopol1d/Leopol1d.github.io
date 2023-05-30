@@ -246,7 +246,7 @@
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/%E7%AC%AC%E4%BA%8C%E9%A2%98AC.jpg">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/%E7%AC%AC%E4%B8%89%E9%A2%98.jpg">
 <meta property="article:published_time" content="2023-04-07T08:06:11.000Z">
-<meta property="article:modified_time" content="2023-05-29T08:32:32.703Z">
+<meta property="article:modified_time" content="2023-05-29T10:23:55.658Z">
 <meta property="article:author" content="Leopold">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230512102141368.png">
@@ -456,7 +456,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          165k 字
+          166k 字
         
       </span>
     
@@ -467,7 +467,7 @@
         
         
         
-          1377 分钟
+          1384 分钟
         
       </span>
     
@@ -2272,6 +2272,22 @@ max(f(i-1,j),f(i,j-1)), &amp; else \\
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">1</span><br><span class="hljs-number">8</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">4</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">4</span><br><span class="hljs-number">0</span><br><span class="hljs-number">0</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">1</span> <span class="hljs-number">1</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">1</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 <h3 id="数组拷贝ch.clone与arrays.copyof的区别">数组拷贝：ch.clone与Arrays.copyOf的区别</h3>
 <p>对基础类型的拷贝都是值传递的拷贝(深拷贝)，对对象的拷贝都是拷贝的引用(浅拷贝)</p>
+<h3 id="idea创建live-template">IDEA创建live template</h3>
+<p>在 IntelliJ IDEA 中使用 Live Template 来创建并查集的固定代码，可以按照以下步骤进行操作：</p>
+<ol type="1">
+<li><p>打开 IntelliJ IDEA，进入设置面板。你可以通过点击菜单栏的 "File" -&gt; "Settings" (Windows/Linux) 或 "IntelliJ IDEA" -&gt; "Preferences" (Mac) 打开设置面板。</p></li>
+<li><p>在设置面板中，选择 "Editor" -&gt; "Live Templates"。</p></li>
+<li><p>在左侧的面板中，选择你想要创建代码模板的语言，比如 "Java"。</p></li>
+<li><p>点击右侧面板的 "+" 按钮，添加一个新的模板。</p></li>
+<li><p>在 "Abbreviation" 输入框中输入一个简短的缩写，用于触发代码模板。</p></li>
+<li><p>在 "Template text" 输入框中输入代码模板的内容，例如：</p></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 并查集初始化</span><br><span class="hljs-type">int</span>[] parent = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    parent[i] = i;<br>&#125;<br><br><span class="hljs-comment">// 并查集查找根节点</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>    <span class="hljs-keyword">if</span> (parent[x] != x) &#123;<br>        parent[x] = find(parent[x]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> parent[x];<br>&#125;<br><br><span class="hljs-comment">// 并查集合并两个集合</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">rootX</span> <span class="hljs-operator">=</span> find(x);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">rootY</span> <span class="hljs-operator">=</span> find(y);<br>    <span class="hljs-keyword">if</span> (rootX != rootY) &#123;<br>        parent[rootX] = rootY;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="7" type="1">
+<li><p>点击 "Define" 按钮，选择模板的定义范围，比如选择 "Java"。</p></li>
+<li><p>点击 "Apply" 或 "OK" 完成模板的创建。</p></li>
+</ol>
+<p>现在，你可以在代码编辑器中输入你设定的缩写，比如 "uf"，然后按下 Tab 键，就会自动插入你定义的并查集代码模板。你可以根据需要修改模板中的变量名和其他细节，以适应你的项目要求。</p>
 <h1 id="笔试面试">笔试面试</h1>
 <h2 id="小红书">5.8小红书</h2>
 <h3 id="第一题.">第一题.</h3>
