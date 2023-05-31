@@ -8,7 +8,7 @@
     <link href="/2023/05/31/shortest-path-problem/"/>
     <url>/2023/05/31/shortest-path-problem/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h2 id="迪杰斯特拉">迪杰斯特拉</h2><ol type="1"><li><strong>开一个dis数组，记录从给定点x到其他点的最短距离，初始化为max，；开一个visited数组，记录顶点是否被访问过</strong></li><li><strong>将x的dis初始为0</strong></li><li><strong>开始遍历，首先找到未被访问且距离x最短的顶点y，将y的visited赋值true</strong></li><li><strong>更新的dis中的距离：未被访问且 <code>与x的距离</code>小于 <code>x到y+y到x的距离</code></strong></li></ol><h4 id="网络延迟时间"><a href="https://leetcode.cn/problems/network-delay-time/">743. 网络延迟时间</a></h4>]]></content>
     
     
     <categories>
