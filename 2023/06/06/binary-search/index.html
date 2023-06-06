@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="35. 搜索插入位置   求大于等于target的最小值 如果target在数组中，则会在while循环内被return 如果target不在数组中，while会遍历到left&gt;right结束循环  在left&gt;right的上一步一定是left &#x3D;&#x3D; right，此时nums[mid]&lt;target，由于右边界是right，可以确定target一定小于nums[right +">
+    <meta name="description" content="35. 搜索插入位置    求大于等于target的最小值   如果target在数组中，则会在while循环内被return   如果target不在数组中，while会遍历到left&gt;right结束循环  在left&gt;right的上一步一定是left &#x3D;&#x3D; right，此时nums[mid]&lt;target，由于右边界是right，可以确定target一定小于nums[righ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Binary Search">
 <meta property="og:url" content="https://leopol1d.github.io/2023/06/06/binary-search/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="35. 搜索插入位置   求大于等于target的最小值 如果target在数组中，则会在while循环内被return 如果target不在数组中，while会遍历到left&gt;right结束循环  在left&gt;right的上一步一定是left &#x3D;&#x3D; right，此时nums[mid]&lt;target，由于右边界是right，可以确定target一定小于nums[right +">
+<meta property="og:description" content="35. 搜索插入位置    求大于等于target的最小值   如果target在数组中，则会在while循环内被return   如果target不在数组中，while会遍历到left&gt;right结束循环  在left&gt;right的上一步一定是left &#x3D;&#x3D; right，此时nums[mid]&lt;target，由于右边界是right，可以确定target一定小于nums[righ">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606090557047.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606091511618.png">
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.8k 字
+          4.7k 字
         
       </span>
     
@@ -314,28 +314,33 @@
             
               <div class="markdown-body">
                 
-                <h2 id="35-搜索插入位置"><a class="markdownIt-Anchor" href="#35-搜索插入位置"></a> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-insert-position/">35. 搜索插入位置</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606090557047.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+                <h2 id="35-搜索插入位置"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-insert-position/">35. 搜索插入位置</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606090557047.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li><strong>求大于等于target的最小值</strong></li>
-<li><strong>如果target在数组中，则会在while循环内被return</strong></li>
-<li><strong>如果target不在数组中，while会遍历到left&gt;right结束循环</strong>
+<li class="lvl-3">
+<p><strong>求大于等于target的最小值</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>如果target在数组中，则会在while循环内被return</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>如果target不在数组中，while会遍历到left&gt;right结束循环</strong></p>
 <ol>
-<li><strong>在left&gt;right的上一步一定是left == right，此时nums[mid]&lt;target，由于右边界是right，可以确定target一定小于nums[right + 1] (或者nums[right]已经是右边界了)</strong></li>
-<li><strong>所以while退出循环时，left指向的位置是大于target的，插入在这个位置就好</strong></li>
+<li class="lvl-6"><strong>在left&gt;right的上一步一定是left == right，此时nums[mid]&lt;target，由于右边界是right，可以确定target一定小于nums[right + 1] (或者nums[right]已经是右边界了)</strong></li>
+<li class="lvl-6"><strong>所以while退出循环时，left指向的位置是大于target的，插入在这个位置就好</strong></li>
 </ol>
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">searchInsert</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = nums.length - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (nums[mid] == target)<br>                <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[mid] &gt; target)<br>                right = mid - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span> <br>                left = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> left;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606091511618.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
-<h2 id="剑指-offer-ii-069-山峰数组的顶部"><a class="markdownIt-Anchor" href="#剑指-offer-ii-069-山峰数组的顶部"></a> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/B1IidL/">剑指 Offer II 069. 山峰数组的顶部</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606093747147.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="剑指-Offer-II-069-山峰数组的顶部"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/B1IidL/">剑指 Offer II 069. 山峰数组的顶部</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606093747147.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">peakIndexInMountainArray</span><span class="hljs-params">(<span class="hljs-type">int</span>[] arr)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = arr.length - <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (arr[mid] &gt; arr[mid - <span class="hljs-number">1</span>] &amp;&amp; arr[mid] &gt; arr[mid + <span class="hljs-number">1</span>])<br>                <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &gt; arr[mid - <span class="hljs-number">1</span>])<br>                left = mid + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span><br>                right = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606095336759.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
 <div class="note note-danger">
-            <h2 id="剑指-offer-ii-070-排序数组中只出现一次的数字"><a class="markdownIt-Anchor" href="#剑指-offer-ii-070-排序数组中只出现一次的数字"></a> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/skFtm2/">剑指 Offer II 070. 排序数组中只出现一次的数字</a></h2>
+            <h2 id="剑指-Offer-II-070-排序数组中只出现一次的数字"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/skFtm2/">剑指 Offer II 070. 排序数组中只出现一次的数字</a></h2>
           </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606095525023.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606095525023.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/single-element-in-a-sorted-array/solution/gong-shui-san-xie-er-duan-xing-fen-xi-yu-17nv/">优质题解</a>,这道题需要在纸上模拟</p>
 <p><strong>在单一元素<code>x</code>之前,成对出现的第一个元素下标一定是偶数</strong></p>
 <p><strong>在单一元素<code>x</code>之后,成对出现的第一个元素下标一定是奇数</strong></p>
@@ -345,24 +350,24 @@
 <p>在x之前,成对出现的元素有1 1, 2 2,第一个1的下标为0,第一个2的下标为2,均为偶数</p>
 <p>在x之后,成对出现的元素有4 4,5 5,第一个4的下标为5,第一个5的下标为7,均为奇数</p>
 <p>因此可以根据mid下标的奇偶性来进行二分</p>
-<ul>
-<li>
+<ul class="lvl-0">
+<li class="lvl-2">
 <p>如果mid的下标是偶数</p>
-<ul>
-<li>如果mid + 1 &lt; n &amp;&amp; nums[mid] == nums[mid + 1],那么单一元素<code>x</code>一定在mid + 1后,令 left = mid + 2;</li>
-<li>否则,当nums[mid] != nums[mid + 1]时,mid可能就是单一元素<code>x</code>,如果不是,那么<code>x</code>也肯定在mid前面,令right = mid</li>
+<ul class="lvl-2">
+<li class="lvl-4">如果mid + 1 &lt; n &amp;&amp; nums[mid] == nums[mid + 1],那么单一元素<code>x</code>一定在mid + 1后,令 left = mid + 2;</li>
+<li class="lvl-4">否则,当nums[mid] != nums[mid + 1]时,mid可能就是单一元素<code>x</code>,如果不是,那么<code>x</code>也肯定在mid前面,令right = mid</li>
 </ul>
 </li>
-<li>
+<li class="lvl-2">
 <p>如果mid的下标是奇数</p>
-<ul>
-<li>
+<ul class="lvl-2">
+<li class="lvl-4">
 <p>如果mid - 1 &gt;= 0 &amp;&amp; nums[mid] == nums[mid - 1],那么单一元素<code>x</code>一定在mid后面,令left = mid + 1</p>
 </li>
-<li>
+<li class="lvl-4">
 <p>否则,当nums[mid] != nums[mid - 1]时,肯定是mid - 1或者mid - 1之前出现了<code>x</code>,令right = mid - 1</p>
-<ul>
-<li>
+<ul class="lvl-4">
+<li class="lvl-6">
 <p>举例</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">数组:1 2 2 4 4 <br>下标:0 1 2 3 4 <br></code></pre></td></tr></table></figure>
 </li>
@@ -370,53 +375,67 @@
 </li>
 </ul>
 </li>
-<li>
+<li class="lvl-2">
 <p>当left == right时,退出循环,此时left(right)下标对应的数就是<code>x</code></p>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">singleNonDuplicate</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = n - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (mid % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">if</span> (mid + <span class="hljs-number">1</span> &lt; n &amp;&amp; nums[mid] == nums[mid + <span class="hljs-number">1</span>])<br>                    left = mid + <span class="hljs-number">2</span>;<br>                <span class="hljs-keyword">else</span> <br>                    right = mid;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">if</span> (mid - <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span> &amp;&amp; nums[mid] == nums[mid - <span class="hljs-number">1</span>])<br>                    left = mid + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">else</span> <br>                    right = mid - <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> nums[right];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606110947602.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
-<h3 id="如果nums时未排序的那么这就是另一类经典面试题"><a class="markdownIt-Anchor" href="#如果nums时未排序的那么这就是另一类经典面试题"></a> 如果nums时未排序的，那么这就是另一类经典面试题</h3>
+<h3 id="如果nums时未排序的，那么这就是另一类经典面试题">如果nums时未排序的，那么这就是另一类经典面试题</h3>
 <p><strong>将数组中所有数字异或，最终的结果就是那个唯一只出现一次的数字</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">singleNonDuplicate</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums.length; ++i) <br>            res = res ^ nums[i];<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <div class="note note-warning">
-            <h2 id="剑指-offer-ii-071-按权重生成随机数"><a class="markdownIt-Anchor" href="#剑指-offer-ii-071-按权重生成随机数"></a> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/cuyjEf/">剑指 Offer II 071. 按权重生成随机数</a></h2>
+            <h2 id="剑指-Offer-II-071-按权重生成随机数"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/cuyjEf/">剑指 Offer II 071. 按权重生成随机数</a></h2>
           </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606142800739.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="方法一-前缀和-二分查找"><a class="markdownIt-Anchor" href="#方法一-前缀和-二分查找"></a> 方法一: 前缀和 + 二分查找</h3>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606142800739.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一-前缀和-二分查找">方法一: 前缀和 + 二分查找</h3>
 <p><strong>剑指offer题解</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> total;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[] preSum;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> n;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Solution</span><span class="hljs-params">(<span class="hljs-type">int</span>[] w)</span> &#123;<br>        n = w.length;<br>        preSum = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            total += w[i];<br>            preSum[i] += total;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">pickIndex</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Random</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br>        <span class="hljs-comment">// 找到大于p的最小值的下标</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> random.nextInt(total);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = n - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (preSum[mid] == p)<br>                <span class="hljs-keyword">return</span> mid + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (preSum[mid] &gt; p)<br>                right = mid - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span> <br>                left = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> left;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your Solution object will be instantiated and called as such:</span><br><span class="hljs-comment"> * Solution obj = new Solution(w);</span><br><span class="hljs-comment"> * int param_1 = obj.pickIndex();</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606144221598.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
-<h2 id="剑指-offer-ii-072-求平方根"><a class="markdownIt-Anchor" href="#剑指-offer-ii-072-求平方根"></a> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/jJ0w9p/">剑指 Offer II 072. 求平方根</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606150707313.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="方法一二分查找"><a class="markdownIt-Anchor" href="#方法一二分查找"></a> 方法一：二分查找</h3>
+<h2 id="剑指-Offer-II-072-求平方根"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/jJ0w9p/">剑指 Offer II 072. 求平方根</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606150707313.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：二分查找">方法一：二分查找</h3>
 <p><strong>求平方小于等于x的最大值</strong></p>
 <ol>
-<li><strong>如果<code>x</code>取根号为整数，会在while循环被返回</strong></li>
-<li><strong>如果x取根号不为整数，while循环不会return，结束时right = left - 1，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><msup><mi>t</mi><mn>2</mn></msup><mo>&lt;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">right^2 &lt; x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span>并且<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><mi>f</mi><msup><mi>t</mi><mn>2</mn></msup><mo>&gt;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">left^2 &gt; x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span>， right就是所求答案</strong></li>
+<li class="lvl-3">
+<p><strong>如果<code>x</code>取根号为整数，会在while循环被返回</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>如果x取根号不为整数，while循环不会return，结束时right = left - 1，$right^2 &lt; x$并且$left^2 &gt; x$， right就是所求答案</strong></p>
+</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">mySqrt</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = x;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> right - (right - left &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (mid == x / mid)<br>                <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mid &lt; x / mid)<br>                left = mid + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span><br>                right = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> right;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606150639618.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
-<h3 id="方法二二分查找另一种写法"><a class="markdownIt-Anchor" href="#方法二二分查找另一种写法"></a> 方法二：二分查找另一种写法</h3>
+<h3 id="方法二：二分查找另一种写法">方法二：二分查找另一种写法</h3>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">mySqrt</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = x;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> right - (right - left &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (mid &lt;= x / mid) &#123;<br>                <span class="hljs-keyword">if</span> ((mid + <span class="hljs-number">1</span>) &gt; x / (mid + <span class="hljs-number">1</span>))<br>                    <span class="hljs-keyword">return</span> mid;<br>                left = mid + <span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>                right = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <div class="note note-warning">
-            <h2 id="剑指-offer-ii-073-狒狒吃香蕉"><a class="markdownIt-Anchor" href="#剑指-offer-ii-073-狒狒吃香蕉"></a> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/nZZqjQ/">剑指 Offer II 073. 狒狒吃香蕉</a></h2>
+            <h2 id="剑指-Offer-II-073-狒狒吃香蕉"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/nZZqjQ/">剑指 Offer II 073. 狒狒吃香蕉</a></h2>
           </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606151538441.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="方法一二分查找-2"><a class="markdownIt-Anchor" href="#方法一二分查找-2"></a> 方法一：二分查找</h3>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606151538441.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：二分查找-2">方法一：二分查找</h3>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (hours &lt;= h) &#123; <span class="hljs-comment">// 吃香蕉速度太快了</span><br>    res = mid;<br>    right = mid - <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
-<li>只要hours &lt;= h，说明速度太快，降低速度，并且记录这次能满足hours = h的速度</li>
-<li>之后总会进入else语句，最终left &gt; right退出循环</li>
-<li>最后一次记录的res就是答案</li>
+<li class="lvl-3">
+<p>只要hours &lt;= h，说明速度太快，降低速度，并且记录这次能满足hours = h的速度</p>
+</li>
+<li class="lvl-3">
+<p>之后总会进入else语句，最终left &gt; right退出循环</p>
+</li>
+<li class="lvl-3">
+<p>最后一次记录的res就是答案</p>
+</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minEatingSpeed</span><span class="hljs-params">(<span class="hljs-type">int</span>[] piles, <span class="hljs-type">int</span> h)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> pile : piles)<br>            n = Math.max(n, pile);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = n,res = -<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">hours</span> <span class="hljs-operator">=</span> getHours(mid, piles);<br>            <span class="hljs-keyword">if</span> (hours &lt;= h) &#123; <span class="hljs-comment">// 吃香蕉速度太快了</span><br>                res = mid;<br>                right = mid - <span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                left = mid + <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getHours</span><span class="hljs-params">(<span class="hljs-type">int</span> speed, <span class="hljs-type">int</span>[] piles)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">hours</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> pile : piles)<br>            hours += (pile + speed - <span class="hljs-number">1</span>) / speed;<br>        <span class="hljs-keyword">return</span> hours;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606155522003.png" srcset="/img/loading.gif" lazyload alt=" " style="zoom:50%;" /> 
-<h3 id="方法二二分查找另一种写法-2"><a class="markdownIt-Anchor" href="#方法二二分查找另一种写法-2"></a> 方法二：二分查找另一种写法</h3>
+<h3 id="方法二：二分查找另一种写法-2">方法二：二分查找另一种写法</h3>
 <p>与方法一类似，不过不需要用一个变量记录答案</p>
 <ol>
-<li>最后一次满足在h小时内吃完香蕉后，right = mid - 1,这个mid就是答案</li>
-<li>之后一直循环else，最后left = right + 1退出循环，这个left就是最后一次满足在h小时内吃完香蕉的su’du</li>
+<li class="lvl-3">
+<p>最后一次满足在h小时内吃完香蕉后，right = mid - 1,这个mid就是答案</p>
+</li>
+<li class="lvl-3">
+<p>之后一直循环else，最后left = right + 1退出循环，这个left就是最后一次满足在h小时内吃完香蕉的su’du</p>
+</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minEatingSpeed</span><span class="hljs-params">(<span class="hljs-type">int</span>[] piles, <span class="hljs-type">int</span> h)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> pile : piles)<br>            n = Math.max(n, pile);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = n;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">hours</span> <span class="hljs-operator">=</span> getHours(mid, piles);<br>            <span class="hljs-keyword">if</span> (hours &lt;= h) &#123; <span class="hljs-comment">// 吃香蕉速度太快了</span><br>                right = mid - <span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <br>                left = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> left;<br>    &#125;<br>    <br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getHours</span><span class="hljs-params">(<span class="hljs-type">int</span> speed, <span class="hljs-type">int</span>[] piles)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">hours</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> pile : piles)<br>            hours += (pile + speed - <span class="hljs-number">1</span>) / speed;<br>        <span class="hljs-keyword">return</span> hours;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
