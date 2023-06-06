@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1584. 连接所有点的最小费用  方法一：Kruskal算法   依次选择权值最小的边   如果要加入的边会使得图形成环，则跳过   使用并查集来判断是否会形成环  如果两个顶点不在同一个子图中，连接边不会形成环 如果两个顶点在同一个子图中，连接边会形成环 恰好可以用union解决    比如有三个顶点，1，2，3那么所有的边为(1,2),(1,3),(2,3) 1int[][] edges &#x3D;">
+    <meta name="description" content="1584. 连接所有点的最小费用   方法一：Kruskal算法  依次选择权值最小的边 如果要加入的边会使得图形成环，则跳过 使用并查集来判断是否会形成环  如果两个顶点不在同一个子图中，连接边不会形成环 如果两个顶点在同一个子图中，连接边会形成环 恰好可以用union解决    比如有三个顶点，1，2，3那么所有的边为(1,2),(1,3),(2,3) 1int[][] edges &#x3D; ne">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Minimum Spanning Tree">
 <meta property="og:url" content="https://leopol1d.github.io/2023/05/30/minimum-spanning-tree/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="1584. 连接所有点的最小费用  方法一：Kruskal算法   依次选择权值最小的边   如果要加入的边会使得图形成环，则跳过   使用并查集来判断是否会形成环  如果两个顶点不在同一个子图中，连接边不会形成环 如果两个顶点在同一个子图中，连接边会形成环 恰好可以用union解决    比如有三个顶点，1，2，3那么所有的边为(1,2),(1,3),(2,3) 1int[][] edges &#x3D;">
+<meta property="og:description" content="1584. 连接所有点的最小费用   方法一：Kruskal算法  依次选择权值最小的边 如果要加入的边会使得图形成环，则跳过 使用并查集来判断是否会形成环  如果两个顶点不在同一个子图中，连接边不会形成环 如果两个顶点在同一个子图中，连接边会形成环 恰好可以用union解决    比如有三个顶点，1，2，3那么所有的边为(1,2),(1,3),(2,3) 1int[][] edges &#x3D; ne">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230530154215879.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230603155941399.png">
@@ -305,22 +305,17 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1584-连接所有点的最小费用"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-to-connect-all-points/">1584. 连接所有点的最小费用</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230530154215879.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="方法一：Kruskal算法">方法一：Kruskal算法</h3>
+                <h2 id="1584-连接所有点的最小费用"><a class="markdownIt-Anchor" href="#1584-连接所有点的最小费用"></a> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-to-connect-all-points/">1584. 连接所有点的最小费用</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230530154215879.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="方法一kruskal算法"><a class="markdownIt-Anchor" href="#方法一kruskal算法"></a> 方法一：Kruskal算法</h3>
 <ol>
-<li class="lvl-3">
-<p><strong>依次选择权值最小的边</strong></p>
-</li>
-<li class="lvl-3">
-<p><strong>如果要加入的边会使得图形成环，则跳过</strong></p>
-</li>
-<li class="lvl-3">
-<p><strong>使用并查集来判断是否会形成环</strong></p>
+<li><strong>依次选择权值最小的边</strong></li>
+<li><strong>如果要加入的边会使得图形成环，则跳过</strong></li>
+<li><strong>使用并查集来判断是否会形成环</strong>
 <ol>
-<li class="lvl-6"><strong>如果两个顶点不在同一个子图中，连接边不会形成环</strong></li>
-<li class="lvl-6"><strong>如果两个顶点在同一个子图中，连接边会形成环</strong></li>
-<li class="lvl-6"><strong>恰好可以用union解决</strong></li>
+<li><strong>如果两个顶点不在同一个子图中，连接边不会形成环</strong></li>
+<li><strong>如果两个顶点在同一个子图中，连接边会形成环</strong></li>
+<li><strong>恰好可以用union解决</strong></li>
 </ol>
 </li>
 </ol>
@@ -330,7 +325,7 @@
 <div class="note note-danger">
             <p>面试用：节点多，边少的时候用 <strong>稠密图</strong></p>
           </div>
-<h3 id="方法二：Prim算法">方法二：Prim算法</h3>
+<h3 id="方法二prim算法"><a class="markdownIt-Anchor" href="#方法二prim算法"></a> 方法二：Prim算法</h3>
 <p><strong>误区：以下是prim，prim需要更新的是已选顶点集距离未选顶点的最短距离</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; n; ++j)<br>    <span class="hljs-keyword">if</span> (!visited[j] &amp;&amp; dist[j] &gt; graph[minIndex][j])<br>        dist[j] = graph[minIndex][j];<br></code></pre></td></tr></table></figure>
 <p><strong>以下是dijkstra</strong></p>
