@@ -26,6 +26,103 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Binary Search</title>
+    <url>/2023/06/06/binary-search/</url>
+    <content><![CDATA[<h2 id="搜索插入位置"><a href="https://leetcode.cn/problems/search-insert-position/">35. 搜索插入位置</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606090557047.png" /></p>
+<ol type="1">
+<li><strong>求大于等于target的最小值</strong></li>
+<li><strong>如果target在数组中，则会在while循环内被return</strong></li>
+<li><strong>如果target不在数组中，while会遍历到left&gt;right结束循环</strong>
+<ol type="1">
+<li><strong>在left&gt;right的上一步一定是left == right，此时nums[mid]&lt;target，由于右边界是right，可以确定target一定小于nums[right + 1] (或者nums[right]已经是右边界了)</strong></li>
+<li><strong>所以while退出循环时，left指向的位置是大于target的，插入在这个位置就好</strong></li>
+</ol></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">searchInsert</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = nums.length - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (nums[mid] == target)<br>                <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[mid] &gt; target)<br>                right = mid - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span> <br>                left = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> left;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606091511618.png" style="zoom:50%;" /></p>
+<h2 id="剑指-offer-ii-069.-山峰数组的顶部"><a href="https://leetcode.cn/problems/B1IidL/">剑指 Offer II 069. 山峰数组的顶部</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606093747147.png" /></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">peakIndexInMountainArray</span><span class="hljs-params">(<span class="hljs-type">int</span>[] arr)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = arr.length - <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (arr[mid] &gt; arr[mid - <span class="hljs-number">1</span>] &amp;&amp; arr[mid] &gt; arr[mid + <span class="hljs-number">1</span>])<br>                <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &gt; arr[mid - <span class="hljs-number">1</span>])<br>                left = mid + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span><br>                right = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606095336759.png" style="zoom:50%;" /></p>
+<div class="note note-danger">
+            <h2 id="剑指-offer-ii-070.-排序数组中只出现一次的数字"><a href="https://leetcode.cn/problems/skFtm2/">剑指 Offer II 070. 排序数组中只出现一次的数字</a></h2>
+          </div>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606095525023.png" /></p>
+<p><a href="https://leetcode.cn/problems/single-element-in-a-sorted-array/solution/gong-shui-san-xie-er-duan-xing-fen-xi-yu-17nv/">优质题解</a>,这道题需要在纸上模拟</p>
+<p><strong>在单一元素<code>x</code>之前,成对出现的第一个元素下标一定是偶数</strong></p>
+<p><strong>在单一元素<code>x</code>之后,成对出现的第一个元素下标一定是奇数</strong></p>
+<p>举例</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">数组:1 1 2 2 3 4 4 5 5<br>下标:0 1 2 3 4 5 6 7 8<br></code></pre></td></tr></table></figure>
+<p>单一元素<code>x</code>的值为3,下标为4</p>
+<p>在x之前,成对出现的元素有1 1, 2 2,第一个1的下标为0,第一个2的下标为2,均为偶数</p>
+<p>在x之后,成对出现的元素有4 4,5 5,第一个4的下标为5,第一个5的下标为7,均为奇数</p>
+<p>因此可以根据mid下标的奇偶性来进行二分</p>
+<ul>
+<li><p>如果mid的下标是偶数</p>
+<ul>
+<li>如果mid + 1 &lt; n &amp;&amp; nums[mid] == nums[mid + 1],那么单一元素<code>x</code>一定在mid + 1后,令 left = mid + 2;</li>
+<li>否则,当nums[mid] != nums[mid + 1]时,mid可能就是单一元素<code>x</code>,如果不是,那么<code>x</code>也肯定在mid前面,令right = mid</li>
+</ul></li>
+<li><p>如果mid的下标是奇数</p>
+<ul>
+<li><p>如果mid - 1 &gt;= 0 &amp;&amp; nums[mid] == nums[mid - 1],那么单一元素<code>x</code>一定在mid后面,令left = mid + 1</p></li>
+<li><p>否则,当nums[mid] != nums[mid - 1]时,肯定是mid - 1或者mid - 1之前出现了<code>x</code>,令right = mid - 1</p>
+<ul>
+<li><p>举例</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">数组:1 2 2 4 4 <br>下标:0 1 2 3 4 <br></code></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li><p>当left == right时,退出循环,此时left(right)下标对应的数就是<code>x</code></p></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">singleNonDuplicate</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = n - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (mid % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">if</span> (mid + <span class="hljs-number">1</span> &lt; n &amp;&amp; nums[mid] == nums[mid + <span class="hljs-number">1</span>])<br>                    left = mid + <span class="hljs-number">2</span>;<br>                <span class="hljs-keyword">else</span> <br>                    right = mid;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">if</span> (mid - <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span> &amp;&amp; nums[mid] == nums[mid - <span class="hljs-number">1</span>])<br>                    left = mid + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">else</span> <br>                    right = mid - <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> nums[right];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606110947602.png" style="zoom:50%;" /></p>
+<h3 id="如果nums时未排序的那么这就是另一类经典面试题">如果nums时未排序的，那么这就是另一类经典面试题</h3>
+<p><strong>将数组中所有数字异或，最终的结果就是那个唯一只出现一次的数字</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">singleNonDuplicate</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums.length; ++i) <br>            res = res ^ nums[i];<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="note note-warning">
+            <h2 id="剑指-offer-ii-071.-按权重生成随机数"><a href="https://leetcode.cn/problems/cuyjEf/">剑指 Offer II 071. 按权重生成随机数</a></h2>
+          </div>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606142800739.png" /></p>
+<h3 id="方法一-前缀和-二分查找">方法一: 前缀和 + 二分查找</h3>
+<p><strong>剑指offer题解</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> total;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[] preSum;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> n;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Solution</span><span class="hljs-params">(<span class="hljs-type">int</span>[] w)</span> &#123;<br>        n = w.length;<br>        preSum = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            total += w[i];<br>            preSum[i] += total;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">pickIndex</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Random</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br>        <span class="hljs-comment">// 找到大于p的最小值的下标</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> random.nextInt(total);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = n - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (preSum[mid] == p)<br>                <span class="hljs-keyword">return</span> mid + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (preSum[mid] &gt; p)<br>                right = mid - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span> <br>                left = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> left;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your Solution object will be instantiated and called as such:</span><br><span class="hljs-comment"> * Solution obj = new Solution(w);</span><br><span class="hljs-comment"> * int param_1 = obj.pickIndex();</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606144221598.png" style="zoom:50%;" /></p>
+<h2 id="剑指-offer-ii-072.-求平方根"><a href="https://leetcode.cn/problems/jJ0w9p/">剑指 Offer II 072. 求平方根</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606150707313.png" /></p>
+<h3 id="方法一二分查找">方法一：二分查找</h3>
+<p><strong>求平方小于等于x的最大值</strong></p>
+<ol type="1">
+<li><strong>如果<code>x</code>取根号为整数，会在while循环被返回</strong></li>
+<li><strong>如果x取根号不为整数，while循环不会return，结束时right = left - 1，<span class="math inline">\(right^2 &lt; x\)</span>并且<span class="math inline">\(left^2 &gt; x\)</span>， right就是所求答案</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">mySqrt</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = x;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> right - (right - left &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (mid == x / mid)<br>                <span class="hljs-keyword">return</span> mid;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mid &lt; x / mid)<br>                left = mid + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span><br>                right = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> right;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606150639618.png" style="zoom:50%;" /></p>
+<h3 id="方法二二分查找另一种写法">方法二：二分查找另一种写法</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">mySqrt</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = x;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> right - (right - left &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (mid &lt;= x / mid) &#123;<br>                <span class="hljs-keyword">if</span> ((mid + <span class="hljs-number">1</span>) &gt; x / (mid + <span class="hljs-number">1</span>))<br>                    <span class="hljs-keyword">return</span> mid;<br>                left = mid + <span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>                right = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="note note-warning">
+            <h2 id="剑指-offer-ii-073.-狒狒吃香蕉"><a href="https://leetcode.cn/problems/nZZqjQ/">剑指 Offer II 073. 狒狒吃香蕉</a></h2>
+          </div>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606151538441.png" /></p>
+<h3 id="方法一二分查找-1">方法一：二分查找</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (hours &lt;= h) &#123; <span class="hljs-comment">// 吃香蕉速度太快了</span><br>    res = mid;<br>    right = mid - <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol type="1">
+<li>只要hours &lt;= h，说明速度太快，降低速度，并且记录这次能满足hours = h的速度</li>
+<li>之后总会进入else语句，最终left &gt; right退出循环</li>
+<li>最后一次记录的res就是答案</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minEatingSpeed</span><span class="hljs-params">(<span class="hljs-type">int</span>[] piles, <span class="hljs-type">int</span> h)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> pile : piles)<br>            n = Math.max(n, pile);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, right = n,res = -<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">hours</span> <span class="hljs-operator">=</span> getHours(mid, piles);<br>            <span class="hljs-keyword">if</span> (hours &lt;= h) &#123; <span class="hljs-comment">// 吃香蕉速度太快了</span><br>                res = mid;<br>                right = mid - <span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                left = mid + <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getHours</span><span class="hljs-params">(<span class="hljs-type">int</span> speed, <span class="hljs-type">int</span>[] piles)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">hours</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> pile : piles)<br>            hours += (pile + speed - <span class="hljs-number">1</span>) / speed;<br>        <span class="hljs-keyword">return</span> hours;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230606155522003.png" alt=" " style="zoom:50%;" /></p>
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+        <category>二分查找</category>
+      </categories>
+      <tags>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Backtracking</title>
     <url>/2023/05/20/backtracking/</url>
     <content><![CDATA[<h1 id="backtracking">Backtracking</h1>
@@ -141,6 +238,20 @@
       </categories>
       <tags>
         <tag>回溯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>maze-problem</title>
+    <url>/2023/06/05/maze-problem/</url>
+    <content><![CDATA[
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+        <category>Graph</category>
+      </categories>
+      <tags>
+        <tag>图</tag>
+        <tag>迷宫问题</tag>
       </tags>
   </entry>
   <entry>
@@ -351,20 +462,6 @@
       </tags>
   </entry>
   <entry>
-    <title>maze-problem</title>
-    <url>/2023/06/05/maze-problem/</url>
-    <content><![CDATA[
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-        <category>Graph</category>
-      </categories>
-      <tags>
-        <tag>图</tag>
-        <tag>迷宫问题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Minimum Spanning Tree</title>
     <url>/2023/05/30/minimum-spanning-tree/</url>
     <content><![CDATA[<h2 id="连接所有点的最小费用"><a href="https://leetcode.cn/problems/min-cost-to-connect-all-points/">1584. 连接所有点的最小费用</a></h2>
@@ -401,101 +498,6 @@
       <tags>
         <tag>图</tag>
         <tag>最小生成树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Monotonic Stack</title>
-    <url>/2023/06/02/monotonic-stack/</url>
-    <content><![CDATA[<div class="note note-success">
-            <p>求某个区间的最大(小)值，可以使用单调队列</p>
-          </div>
-<h2 id="滑动窗口最大值"><a href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104324124.png" /></p>
-<ol type="1">
-<li><p>维护一个单调递减的双端队列，队列大小为[0, k]，<strong>队列存储数组下标，从而更好判断滑动窗口区间</strong></p></li>
-<li><p>存储答案的队列res大小为n - k + 1</p></li>
-<li><p>遍历数组nums</p></li>
-<li><p><strong>当队列不为空且当前元素大于队尾元素在nums中对应的值时，将队尾元素弹出，从而保持队列的单调递减性</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (!queue.isEmpty() &amp;&amp; nums[i] &gt; nums[queue.peekLast()])<br>    queue.pollLast();<br></code></pre></td></tr></table></figure></li>
-<li><p>完成步骤4后，将当前元素<code>nums[i]</code>加入队列</p></li>
-<li><p><strong>当队首元素等于i - k，说明已经遍历过k轮，滑动窗口的左边界已经超过队首元素了，弹出队首元素</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (queue.peekFirst() == i - k)<br>    queue.pollFirst();<br></code></pre></td></tr></table></figure></li>
-<li><p><strong>只有当i &gt;= k - 1时，才记录结果res</strong></p></li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] maxSlidingWindow(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n - k + <span class="hljs-number">1</span>];<br>        Deque&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!queue.isEmpty() &amp;&amp; nums[i] &gt; nums[queue.peekLast()])<br>                queue.pollLast();<br>            queue.offerLast(i);<br>            <span class="hljs-keyword">if</span> (queue.peekFirst() == i - k)<br>                queue.pollFirst();<br>            <span class="hljs-keyword">if</span> (i &gt;= k - <span class="hljs-number">1</span>)<br>                res[i - k + <span class="hljs-number">1</span>] = nums[queue.peekFirst()];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<div class="note note-success">
-            <p>单调栈是一种基于栈的数据结构，所谓的单调就是满足单调递增（单调递减）的栈。主要用于解决 <strong>下一个更大的元素</strong>问题，也就是找到下一个更大的元素。</p><p>单调栈的意义：用 O(n) 复杂度的一重遍历找到每个元素前后最近的更小/大元素位置</p>
-          </div>
-<h2 id="每日温度"><a href="https://leetcode.cn/problems/daily-temperatures/">739. 每日温度</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104459823.png" /></p>
-<h3 id="方法一单调栈">方法一：单调栈</h3>
-<ol type="1">
-<li>创建一个栈，存储元素下标</li>
-<li>遍历数组元素</li>
-<li>当栈不为空且数组元素值 &gt; 栈顶元素对应数组的值
-<ol type="1">
-<li>弹出栈顶元素并用变量i - topIndex;接收</li>
-<li>topIndex的下一个更大值的距离为i - topIndex;</li>
-</ol></li>
-<li>将i压栈</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] dailyTemperatures(<span class="hljs-type">int</span>[] temperatures) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> temperatures.length;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; temperatures[i] &gt; temperatures[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                res[topIndex] = i - topIndex;<br>            &#125;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="下一个更大元素-i"><a href="https://leetcode.cn/problems/next-greater-element-i/">496. 下一个更大元素 I</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602111209413.png" /></p>
-<h3 id="方法一单调栈-hashmap">方法一：单调栈 + HashMap</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] nextGreaterElement(<span class="hljs-type">int</span>[] nums1, <span class="hljs-type">int</span>[] nums2) &#123;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums2.length; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nums2[i] &gt; nums2[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                map.put(nums2[topIndex], nums2[i]);<br>            &#125;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[nums1.length];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums1.length; ++i) &#123;<br>            res[i] = map.getOrDefault(nums1[i], -<span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602113744688.png" style="zoom:50%;" /></p>
-<h2 id="下一个更大元素-ii"><a href="https://leetcode.cn/problems/next-greater-element-ii/">503. 下一个更大元素 II</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131521839.png" /></p>
-<h3 id="方法一单调栈-1">方法一：单调栈</h3>
-<ol type="1">
-<li>初始res数组为-1很重要！默认所有元素都没有更大的下一个元素</li>
-</ol>
-<p><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Arrays.fill(res, -<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure></p>
-<ol start="2" type="1">
-<li>循环数组遍历两次，即使第一轮遍历已经被赋值，第二轮也只会赋相同的值，不影响</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] nextGreaterElements(<span class="hljs-type">int</span>[] nums) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(res, -<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span> * n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nums[i % n] &gt; nums[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                res[topIndex] = nums[i % n];<br>            &#125;<br>            stack.push(i % n);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131507655.png" style="zoom:50%;" /></p>
-<div class="note note-danger">
-            <h2 id="去除重复字母"><a href="https://leetcode.cn/problems/remove-duplicate-letters/">316. 去除重复字母</a></h2>
-          </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131831847.png" /></p>
-<h3 id="方法一单调栈-2">方法一：单调栈</h3>
-<p><strong>遇到一个新字符 如果比栈顶小 并且在新字符后面还有和栈顶一样的 就把栈顶的字符抛弃了</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">removeDuplicateLetters</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-type">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">26</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); ++i)<br>            ++count[s.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>];<br>        <span class="hljs-type">boolean</span>[] visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[<span class="hljs-number">26</span>];<br>        Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); ++i) &#123;<br>            <span class="hljs-type">char</span> <span class="hljs-variable">ch</span> <span class="hljs-operator">=</span> s.charAt(i);<br>            --count[ch - <span class="hljs-string">&#x27;a&#x27;</span>];<br>            <span class="hljs-keyword">if</span> (visited[ch - <span class="hljs-string">&#x27;a&#x27;</span>])<br>                <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; s.charAt(stack.peek()) &gt; ch &amp;&amp; count[s.charAt(stack.peek()) - <span class="hljs-string">&#x27;a&#x27;</span>] &gt; <span class="hljs-number">0</span>) &#123;<br>                visited[s.charAt(stack.peek()) - <span class="hljs-string">&#x27;a&#x27;</span>] = <span class="hljs-literal">false</span>;<br>                stack.pop();<br>            &#125;<br>            visited[ch - <span class="hljs-string">&#x27;a&#x27;</span>] = <span class="hljs-literal">true</span>;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">while</span> (!stack.isEmpty())<br>            sb.append(s.charAt(stack.pollLast()));<br>        <span class="hljs-keyword">return</span> sb.toString();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602152901928.png" style="zoom:50%;" /></p>
-<div class="note note-warning">
-            <h2 id="柱状图中最大的矩形"><a href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a></h2>
-          </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602154000994.png" /></p>
-<h3 id="方法一单调栈-3">方法一：单调栈</h3>
-<h3 id="思路">思路</h3>
-<ol type="1">
-<li>对于一个高度，如果能得到向左和向右的边界</li>
-<li>那么就能对每个高度求一次面积</li>
-<li>遍历所有高度，即可得出最大面积</li>
-<li>使用单调栈，在出栈操作时得到前后边界并计算面积</li>
-</ol>
-<p><strong>注意边界问题</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Arrays.fill(rights, n);<br>Arrays.fill(left, -<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">largestRectangleArea</span><span class="hljs-params">(<span class="hljs-type">int</span>[] heights)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> heights.length;<br>        <span class="hljs-type">int</span>[] rights = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(rights, n);<br>        Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ; i &lt; n ; i++)&#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; heights[stack.getLast()] &gt; heights[i]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">top</span> <span class="hljs-operator">=</span> stack.pollLast();<br>                rights[top] = i;<br>            &#125;<br>            stack.addLast(i);<br>        &#125;<br>        <span class="hljs-type">int</span>[] left = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(left, -<span class="hljs-number">1</span>);<br>        stack.clear();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> n - <span class="hljs-number">1</span> ; i &gt;= <span class="hljs-number">0</span> ; i--) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; heights[stack.getLast()] &gt; heights[i]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">top</span> <span class="hljs-operator">=</span> stack.pollLast();<br>                left[top] = i;<br>            &#125;<br>            stack.addLast(i);<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ; i &lt; n ; i++) &#123;<br>            res = Math.max(res,  (rights[i] - left[i] - <span class="hljs-number">1</span>) * heights[i]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602163956020.png" style="zoom:50%;" /></p>
-<div class="note note-danger">
-            <h2 id="接雨水"><a href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a></h2>
-          </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602164417183.png" /></p>
-<h3 id="方法一单调栈-4">方法一：单调栈</h3>
-<p><a href="https://leetcode.cn/problems/trapping-rain-water/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-8/">优质题解</a></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">trap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] height)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> height.length, index = <span class="hljs-number">0</span>, res = <span class="hljs-number">0</span>;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-keyword">while</span> (index &lt; n) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; height[index] &gt; height[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                <span class="hljs-type">int</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> height[topIndex];<br>                <span class="hljs-keyword">if</span> (stack.isEmpty())<br>                    <span class="hljs-keyword">break</span>;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Math.min(height[index], height[stack.peek()]);<br>                <span class="hljs-type">int</span> <span class="hljs-variable">width</span> <span class="hljs-operator">=</span> index - stack.peek() - <span class="hljs-number">1</span>;<br>                res += (min - h) * width;<br>            &#125;<br>            stack.push(index++);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-        <category>Queue &amp;&amp; Stack</category>
-      </categories>
-      <tags>
-        <tag>单调栈</tag>
-        <tag>单调队列</tag>
       </tags>
   </entry>
   <entry>
@@ -636,6 +638,101 @@
       </tags>
   </entry>
   <entry>
+    <title>Monotonic Stack</title>
+    <url>/2023/06/02/monotonic-stack/</url>
+    <content><![CDATA[<div class="note note-success">
+            <p>求某个区间的最大(小)值，可以使用单调队列</p>
+          </div>
+<h2 id="滑动窗口最大值"><a href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104324124.png" /></p>
+<ol type="1">
+<li><p>维护一个单调递减的双端队列，队列大小为[0, k]，<strong>队列存储数组下标，从而更好判断滑动窗口区间</strong></p></li>
+<li><p>存储答案的队列res大小为n - k + 1</p></li>
+<li><p>遍历数组nums</p></li>
+<li><p><strong>当队列不为空且当前元素大于队尾元素在nums中对应的值时，将队尾元素弹出，从而保持队列的单调递减性</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (!queue.isEmpty() &amp;&amp; nums[i] &gt; nums[queue.peekLast()])<br>    queue.pollLast();<br></code></pre></td></tr></table></figure></li>
+<li><p>完成步骤4后，将当前元素<code>nums[i]</code>加入队列</p></li>
+<li><p><strong>当队首元素等于i - k，说明已经遍历过k轮，滑动窗口的左边界已经超过队首元素了，弹出队首元素</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (queue.peekFirst() == i - k)<br>    queue.pollFirst();<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>只有当i &gt;= k - 1时，才记录结果res</strong></p></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] maxSlidingWindow(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n - k + <span class="hljs-number">1</span>];<br>        Deque&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!queue.isEmpty() &amp;&amp; nums[i] &gt; nums[queue.peekLast()])<br>                queue.pollLast();<br>            queue.offerLast(i);<br>            <span class="hljs-keyword">if</span> (queue.peekFirst() == i - k)<br>                queue.pollFirst();<br>            <span class="hljs-keyword">if</span> (i &gt;= k - <span class="hljs-number">1</span>)<br>                res[i - k + <span class="hljs-number">1</span>] = nums[queue.peekFirst()];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="note note-success">
+            <p>单调栈是一种基于栈的数据结构，所谓的单调就是满足单调递增（单调递减）的栈。主要用于解决 <strong>下一个更大的元素</strong>问题，也就是找到下一个更大的元素。</p><p>单调栈的意义：用 O(n) 复杂度的一重遍历找到每个元素前后最近的更小/大元素位置</p>
+          </div>
+<h2 id="每日温度"><a href="https://leetcode.cn/problems/daily-temperatures/">739. 每日温度</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104459823.png" /></p>
+<h3 id="方法一单调栈">方法一：单调栈</h3>
+<ol type="1">
+<li>创建一个栈，存储元素下标</li>
+<li>遍历数组元素</li>
+<li>当栈不为空且数组元素值 &gt; 栈顶元素对应数组的值
+<ol type="1">
+<li>弹出栈顶元素并用变量i - topIndex;接收</li>
+<li>topIndex的下一个更大值的距离为i - topIndex;</li>
+</ol></li>
+<li>将i压栈</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] dailyTemperatures(<span class="hljs-type">int</span>[] temperatures) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> temperatures.length;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; temperatures[i] &gt; temperatures[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                res[topIndex] = i - topIndex;<br>            &#125;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="下一个更大元素-i"><a href="https://leetcode.cn/problems/next-greater-element-i/">496. 下一个更大元素 I</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602111209413.png" /></p>
+<h3 id="方法一单调栈-hashmap">方法一：单调栈 + HashMap</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] nextGreaterElement(<span class="hljs-type">int</span>[] nums1, <span class="hljs-type">int</span>[] nums2) &#123;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums2.length; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nums2[i] &gt; nums2[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                map.put(nums2[topIndex], nums2[i]);<br>            &#125;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[nums1.length];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums1.length; ++i) &#123;<br>            res[i] = map.getOrDefault(nums1[i], -<span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602113744688.png" style="zoom:50%;" /></p>
+<h2 id="下一个更大元素-ii"><a href="https://leetcode.cn/problems/next-greater-element-ii/">503. 下一个更大元素 II</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131521839.png" /></p>
+<h3 id="方法一单调栈-1">方法一：单调栈</h3>
+<ol type="1">
+<li>初始res数组为-1很重要！默认所有元素都没有更大的下一个元素</li>
+</ol>
+<p><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Arrays.fill(res, -<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure></p>
+<ol start="2" type="1">
+<li>循环数组遍历两次，即使第一轮遍历已经被赋值，第二轮也只会赋相同的值，不影响</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] nextGreaterElements(<span class="hljs-type">int</span>[] nums) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(res, -<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span> * n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nums[i % n] &gt; nums[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                res[topIndex] = nums[i % n];<br>            &#125;<br>            stack.push(i % n);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131507655.png" style="zoom:50%;" /></p>
+<div class="note note-danger">
+            <h2 id="去除重复字母"><a href="https://leetcode.cn/problems/remove-duplicate-letters/">316. 去除重复字母</a></h2>
+          </div>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131831847.png" /></p>
+<h3 id="方法一单调栈-2">方法一：单调栈</h3>
+<p><strong>遇到一个新字符 如果比栈顶小 并且在新字符后面还有和栈顶一样的 就把栈顶的字符抛弃了</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">removeDuplicateLetters</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-type">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">26</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); ++i)<br>            ++count[s.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>];<br>        <span class="hljs-type">boolean</span>[] visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[<span class="hljs-number">26</span>];<br>        Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); ++i) &#123;<br>            <span class="hljs-type">char</span> <span class="hljs-variable">ch</span> <span class="hljs-operator">=</span> s.charAt(i);<br>            --count[ch - <span class="hljs-string">&#x27;a&#x27;</span>];<br>            <span class="hljs-keyword">if</span> (visited[ch - <span class="hljs-string">&#x27;a&#x27;</span>])<br>                <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; s.charAt(stack.peek()) &gt; ch &amp;&amp; count[s.charAt(stack.peek()) - <span class="hljs-string">&#x27;a&#x27;</span>] &gt; <span class="hljs-number">0</span>) &#123;<br>                visited[s.charAt(stack.peek()) - <span class="hljs-string">&#x27;a&#x27;</span>] = <span class="hljs-literal">false</span>;<br>                stack.pop();<br>            &#125;<br>            visited[ch - <span class="hljs-string">&#x27;a&#x27;</span>] = <span class="hljs-literal">true</span>;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">while</span> (!stack.isEmpty())<br>            sb.append(s.charAt(stack.pollLast()));<br>        <span class="hljs-keyword">return</span> sb.toString();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602152901928.png" style="zoom:50%;" /></p>
+<div class="note note-warning">
+            <h2 id="柱状图中最大的矩形"><a href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a></h2>
+          </div>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602154000994.png" /></p>
+<h3 id="方法一单调栈-3">方法一：单调栈</h3>
+<h3 id="思路">思路</h3>
+<ol type="1">
+<li>对于一个高度，如果能得到向左和向右的边界</li>
+<li>那么就能对每个高度求一次面积</li>
+<li>遍历所有高度，即可得出最大面积</li>
+<li>使用单调栈，在出栈操作时得到前后边界并计算面积</li>
+</ol>
+<p><strong>注意边界问题</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Arrays.fill(rights, n);<br>Arrays.fill(left, -<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">largestRectangleArea</span><span class="hljs-params">(<span class="hljs-type">int</span>[] heights)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> heights.length;<br>        <span class="hljs-type">int</span>[] rights = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(rights, n);<br>        Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ; i &lt; n ; i++)&#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; heights[stack.getLast()] &gt; heights[i]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">top</span> <span class="hljs-operator">=</span> stack.pollLast();<br>                rights[top] = i;<br>            &#125;<br>            stack.addLast(i);<br>        &#125;<br>        <span class="hljs-type">int</span>[] left = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(left, -<span class="hljs-number">1</span>);<br>        stack.clear();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> n - <span class="hljs-number">1</span> ; i &gt;= <span class="hljs-number">0</span> ; i--) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; heights[stack.getLast()] &gt; heights[i]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">top</span> <span class="hljs-operator">=</span> stack.pollLast();<br>                left[top] = i;<br>            &#125;<br>            stack.addLast(i);<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ; i &lt; n ; i++) &#123;<br>            res = Math.max(res,  (rights[i] - left[i] - <span class="hljs-number">1</span>) * heights[i]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602163956020.png" style="zoom:50%;" /></p>
+<div class="note note-danger">
+            <h2 id="接雨水"><a href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a></h2>
+          </div>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602164417183.png" /></p>
+<h3 id="方法一单调栈-4">方法一：单调栈</h3>
+<p><a href="https://leetcode.cn/problems/trapping-rain-water/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-8/">优质题解</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">trap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] height)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> height.length, index = <span class="hljs-number">0</span>, res = <span class="hljs-number">0</span>;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-keyword">while</span> (index &lt; n) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; height[index] &gt; height[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                <span class="hljs-type">int</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> height[topIndex];<br>                <span class="hljs-keyword">if</span> (stack.isEmpty())<br>                    <span class="hljs-keyword">break</span>;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Math.min(height[index], height[stack.peek()]);<br>                <span class="hljs-type">int</span> <span class="hljs-variable">width</span> <span class="hljs-operator">=</span> index - stack.peek() - <span class="hljs-number">1</span>;<br>                res += (min - h) * width;<br>            &#125;<br>            stack.push(index++);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+        <category>Queue &amp;&amp; Stack</category>
+      </categories>
+      <tags>
+        <tag>单调栈</tag>
+        <tag>单调队列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shortest Path Problem</title>
     <url>/2023/05/31/shortest-path-problem/</url>
     <content><![CDATA[<h2 id="迪杰斯特拉">迪杰斯特拉</h2>
@@ -684,7 +781,7 @@
 <h3 id="方法一弗洛伊德">方法一：弗洛伊德</h3>
 <ol type="1">
 <li><strong>dp[i][j]表示i到j的最短距离</strong></li>
-<li><strong>枚举所有中间节点k，如果i经过中间节点k再到达j比i直接到达j更短，那么将dp[i][j]赋值为dp[i][k] + dp[x`k][j]</strong></li>
+<li><strong>枚举所有中间节点k，如果i经过中间节点k再到达j比i直接到达j更短，那么将dp[i][j]赋值为dp[i][k] + dp[k][j]</strong></li>
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findTheCity</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span>[][] edges, <span class="hljs-type">int</span> distanceThreshold)</span> &#123;<br>        <span class="hljs-type">int</span>[][] dp = buildGraph(n, edges);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; n; ++k)<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i)<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; n; ++j)<br>                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j]);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">minNum</span> <span class="hljs-operator">=</span> <span class="hljs-number">100000</span>, minIndex = -<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">neighborsNum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; n; ++j)<br>                <span class="hljs-keyword">if</span> (i!= j &amp;&amp; dp[i][j] &lt;= distanceThreshold)<br>                    ++neighborsNum;<br>            <span class="hljs-keyword">if</span> (neighborsNum &lt;= minNum) &#123;<br>                minNum = neighborsNum;<br>                minIndex = i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> minIndex;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[][] buildGraph(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span>[][] edges) &#123;<br>        <span class="hljs-type">int</span>[][] graph = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n][n];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] row : graph)<br>            Arrays.fill(row, <span class="hljs-number">100000</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] edge : edges) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">from</span> <span class="hljs-operator">=</span> edge[<span class="hljs-number">0</span>], to = edge[<span class="hljs-number">1</span>], weight = edge[<span class="hljs-number">2</span>];<br>            graph[from][to] = graph[to][from] = weight;<br>        &#125;<br>        <span class="hljs-keyword">return</span> graph;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230605153759886.png" style="zoom:50%;" /></p>
