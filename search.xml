@@ -1171,7 +1171,7 @@
 <li><p>isValid</p>
 <ol type="1">
 <li><p>首先需要判断字符串是否为空;</p></li>
-<li><p>Integer.valueOf(s) &lt;= 255的前提是以下else需要break，不然会超出整形最大值</p>
+<li><p>Integer.valueOf(s) &lt;= 255的前提是以下else需要break，不然会超出整型最大值</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> start; i &lt; s.length(); ++i) &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> s.substring(start, i + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">if</span> (isValid(str)) &#123;<br>        path.append(str);<br>        path.append(<span class="hljs-string">&quot;.&quot;</span>);<br>        backtracking(s, i + <span class="hljs-number">1</span>, split + <span class="hljs-number">1</span>);<br>        deleteSub();<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">break</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>要么为0要么第一个字符不为0，s.equals("0") || s.charAt(0) != '0'</p></li>
 </ol></li>
