@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="总结数组问题 数组不变，区间查询：前缀和、树状数组、线段树；  数组单点修改，区间查询：树状数组、线段树；  数组区间修改，单点查询：差分、线段树；  数组区间修改，区间查询：线段树。 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;corporate-flight-bookings&#x2F;solutions&#x2F;968467&#x2F;gong-shui-san-xie-yi-ti-shuang-jie-">
+    <meta name="description" content="总结数组问题  数组不变，区间查询：前缀和、树状数组、线段树； 数组单点修改，区间查询：树状数组、线段树； 数组区间修改，单点查询：差分、线段树； 数组区间修改，区间查询：线段树。 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;corporate-flight-bookings&#x2F;solutions&#x2F;968467&#x2F;gong-shui-san-xie-yi-ti-shuang-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Prefix Sum">
 <meta property="og:url" content="https://leopol1d.github.io/2023/07/10/prefix-sum/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="总结数组问题 数组不变，区间查询：前缀和、树状数组、线段树；  数组单点修改，区间查询：树状数组、线段树；  数组区间修改，单点查询：差分、线段树；  数组区间修改，区间查询：线段树。 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;corporate-flight-bookings&#x2F;solutions&#x2F;968467&#x2F;gong-shui-san-xie-yi-ti-shuang-jie-">
+<meta property="og:description" content="总结数组问题  数组不变，区间查询：前缀和、树状数组、线段树； 数组单点修改，区间查询：树状数组、线段树； 数组区间修改，单点查询：差分、线段树； 数组区间修改，区间查询：线段树。 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;corporate-flight-bookings&#x2F;solutions&#x2F;968467&#x2F;gong-shui-san-xie-yi-ti-shuang-">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710121647717.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710131010303.png">
@@ -307,42 +307,45 @@
             
               <div class="markdown-body">
                 
-                <h2 id="总结数组问题"><a href="#总结数组问题" class="headerlink" title="总结数组问题"></a>总结数组问题</h2><ul>
-<li><p>数组不变，区间查询：<strong>前缀和</strong>、树状数组、线段树；</p>
-</li>
-<li><p>数组单点修改，区间查询：<strong>树状数组</strong>、线段树；</p>
-</li>
-<li><p>数组区间修改，单点查询：<strong>差分</strong>、线段树；</p>
-</li>
+                <h2 id="总结数组问题">总结数组问题</h2>
+<ul>
+<li><p>数组不变，区间查询：<strong>前缀和</strong>、树状数组、线段树；</p></li>
+<li><p>数组单点修改，区间查询：<strong>树状数组</strong>、线段树；</p></li>
+<li><p>数组区间修改，单点查询：<strong>差分</strong>、线段树；</p></li>
 <li><p>数组区间修改，区间查询：<strong>线段树</strong>。</p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/corporate-flight-bookings/solutions/968467/gong-shui-san-xie-yi-ti-shuang-jie-chai-fm1ef/">https://leetcode.cn/problems/corporate-flight-bookings/solutions/968467/gong-shui-san-xie-yi-ti-shuang-jie-chai-fm1ef/</a></p>
-</li>
+<p>https://leetcode.cn/problems/corporate-flight-bookings/solutions/968467/gong-shui-san-xie-yi-ti-shuang-jie-chai-fm1ef/</p></li>
 </ul>
-<h2 id="1109-航班预订统计"><a href="#1109-航班预订统计" class="headerlink" title="1109. 航班预订统计"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/corporate-flight-bookings/">1109. 航班预订统计</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710121647717.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：差分数组"><a href="#方法一：差分数组" class="headerlink" title="方法一：差分数组"></a>方法一：差分数组</h3><p>航班编号从1开始，初始化diff数组大小为n + 1，diff[0]没有意义 </p>
+<h2 id="航班预订统计"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/corporate-flight-bookings/">1109. 航班预订统计</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710121647717.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="方法一差分数组">方法一：差分数组</h3>
+<p>航班编号从1开始，初始化diff数组大小为n + 1，diff[0]没有意义</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] corpFlightBookings(<span class="hljs-type">int</span>[][] bookings, <span class="hljs-type">int</span> n) &#123;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n], diff = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] booking : bookings) &#123;<br>            diff[booking[<span class="hljs-number">0</span>]] += booking[<span class="hljs-number">2</span>];<br>            <span class="hljs-keyword">if</span> (booking[<span class="hljs-number">1</span>] != n)<br>                diff[booking[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>] -= booking[<span class="hljs-number">2</span>];<br>        &#125;<br>        res[<span class="hljs-number">0</span>] = diff[<span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; n; ++i) <br>            res[i] = diff[i + <span class="hljs-number">1</span>] + res[i - <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="1094-拼车"><a href="#1094-拼车" class="headerlink" title="1094. 拼车"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/car-pooling/">1094. 拼车</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710131010303.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：差分数组-1"><a href="#方法一：差分数组-1" class="headerlink" title="方法一：差分数组"></a>方法一：差分数组</h3><p>上车位置加，下车位置减</p>
+<h2 id="拼车"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/car-pooling/">1094. 拼车</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710131010303.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="方法一差分数组-1">方法一：差分数组</h3>
+<p>上车位置加，下车位置减</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">diff[trip[<span class="hljs-number">1</span>]] += trip[<span class="hljs-number">0</span>];<br>diff[trip[<span class="hljs-number">2</span>]] -= trip[<span class="hljs-number">0</span>];<br></code></pre></td></tr></table></figure>
 <p>是<strong>diff[trip[2]] -= trip[0]</strong>; 而不是diff[trip[2] + 1] -= trip[0];</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">carPooling</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] trips, <span class="hljs-type">int</span> capacity)</span> &#123;<br>        <span class="hljs-type">int</span>[] diff = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">1002</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] trip : trips) &#123;<br>            diff[trip[<span class="hljs-number">1</span>]] += trip[<span class="hljs-number">0</span>];<br>            diff[trip[<span class="hljs-number">2</span>]] -= trip[<span class="hljs-number">0</span>];<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x : diff) &#123;<br>            sum += x;<br>            <span class="hljs-keyword">if</span> (sum &gt; capacity)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <div class="note note-danger">
-            <h2 id="995-K-连续位的最小翻转次数"><a href="#995-K-连续位的最小翻转次数" class="headerlink" title="995. K 连续位的最小翻转次数"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-k-consecutive-bit-flips/">995. K 连续位的最小翻转次数</a></h2>
+            <h2 id="k-连续位的最小翻转次数"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-k-consecutive-bit-flips/">995. K 连续位的最小翻转次数</a></h2>
           </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710141435996.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：差分数组-2"><a href="#方法一：差分数组-2" class="headerlink" title="方法一：差分数组"></a>方法一：差分数组</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-k-consecutive-bit-flips/solutions/607416/k-lian-xu-wei-de-zui-xiao-fan-zhuan-ci-s-bikk/">题解</a></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710141435996.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="方法一差分数组-2">方法一：差分数组</h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-k-consecutive-bit-flips/solutions/607416/k-lian-xu-wei-de-zui-xiao-fan-zhuan-ci-s-bikk/">题解</a></p>
 <p>遍历到nums[i]时，如果nums[i] + count是偶数，则当前元素(可能被翻转过)实际值是0，需要翻转区间[i, i + k - 1]，</p>
-<p>将diff[i + k]减一。遍历到i + k的时候，之前在i时的翻转不再生效，—count(—翻转次数)</p>
+<p>将diff[i + k]减一。遍历到i + k的时候，之前在i时的翻转不再生效，--count(--翻转次数)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minKBitFlips</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-type">int</span>[] diff = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">1</span>]; <span class="hljs-comment">// 减少一步越界处理</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, count = <span class="hljs-number">0</span>; <span class="hljs-comment">// 当前被翻转次数</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (diff[i] == -<span class="hljs-number">1</span>)<br>                --count;<br>            <span class="hljs-keyword">if</span> ((nums[i] + count) % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">if</span> (i + k &gt; n)<br>                    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>                ++res;<br>                ++count;<br>                --diff[i + k];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="6919-使数组中的所有元素都等于零"><a href="#6919-使数组中的所有元素都等于零" class="headerlink" title="6919. 使数组中的所有元素都等于零"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/apply-operations-to-make-all-array-elements-equal-to-zero/">6919. 使数组中的所有元素都等于零</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710155500866.png" srcset="/img/loading.gif" lazyload alt=" "> </p>
-<h3 id="方法一：差分数组-3"><a href="#方法一：差分数组-3" class="headerlink" title="方法一：差分数组"></a>方法一：差分数组</h3><p>与<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-k-consecutive-bit-flips/">995. K 连续位的最小翻转次数</a>相似，草稿纸上模拟，多Debug</p>
-<p>注意diff[i + k - 1] += nums[i] + curDiff; 复原的位置是i + k  - 1</p>
-<p><strong>举例</strong> </p>
+<h2 id="使数组中的所有元素都等于零"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/apply-operations-to-make-all-array-elements-equal-to-zero/">6919. 使数组中的所有元素都等于零</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710155500866.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="方法一差分数组-3">方法一：差分数组</h3>
+<p>与<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-k-consecutive-bit-flips/">995. K 连续位的最小翻转次数</a>相似，草稿纸上模拟，多Debug</p>
+<p>注意diff[i + k - 1] += nums[i] + curDiff; 复原的位置是i + k - 1</p>
+<p><strong>举例</strong></p>
 <figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：nums = <span class="hljs-comment">[2,2,3,1,1,0]</span>, k = 3<br>输出：true<br>解释：可以执行下述操作：<br>- 选出子数组 <span class="hljs-comment">[2,2,3]</span> ，执行操作后，数组变为 nums = <span class="hljs-comment">[1,1,2,1,1,0]</span> 。<br>- 选出子数组 <span class="hljs-comment">[2,1,1]</span> ，执行操作后，数组变为 nums = <span class="hljs-comment">[1,1,1,0,0,0]</span> 。<br>- 选出子数组 <span class="hljs-comment">[1,1,1]</span> ，执行操作后，数组变为 nums = <span class="hljs-comment">[0,0,0,0,0,0]</span> 。<br></code></pre></td></tr></table></figure>
-<div class="table-container">
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>nums</th>
 <th>2</th>
 <th>2</th>
@@ -354,7 +357,7 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>diff i = 0</td>
 <td>-2</td>
 <td>0</td>
@@ -364,7 +367,7 @@
 <td>0</td>
 <td>-2</td>
 </tr>
-<tr>
+<tr class="even">
 <td>diff i = 1</td>
 <td>-2</td>
 <td>0</td>
@@ -374,7 +377,7 @@
 <td>0</td>
 <td>-2</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>diff i = 2</td>
 <td>-2</td>
 <td>0</td>
@@ -384,7 +387,7 @@
 <td>0</td>
 <td>-1</td>
 </tr>
-<tr>
+<tr class="even">
 <td>diff i = 3</td>
 <td>-2</td>
 <td>0</td>
@@ -394,7 +397,7 @@
 <td>0</td>
 <td>-1</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>diff i = 4</td>
 <td>-2</td>
 <td>0</td>
@@ -404,7 +407,7 @@
 <td>0</td>
 <td>0</td>
 </tr>
-<tr>
+<tr class="even">
 <td>diff i = 5</td>
 <td>-2</td>
 <td>0</td>
@@ -414,7 +417,8 @@
 <td>0</td>
 <td>0</td>
 </tr>
-<tr>
+<tr class="odd">
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -425,12 +429,14 @@
 </tr>
 </tbody>
 </table>
-</div>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">checkArray</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-type">int</span>[] diff = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">curDiff</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (nums[i] + curDiff &gt; <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">if</span> (i + k &gt; n)<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                diff[i] += -nums[i] - curDiff;<br>                diff[i + k - <span class="hljs-number">1</span>] += nums[i] + curDiff;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[i] + curDiff &lt; <span class="hljs-number">0</span>)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">if</span> (diff[i] != <span class="hljs-number">0</span>)<br>                curDiff += diff[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="1893-检查是否区域内所有整数都被覆盖"><a href="#1893-检查是否区域内所有整数都被覆盖" class="headerlink" title="1893. 检查是否区域内所有整数都被覆盖"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/check-if-all-the-integers-in-a-range-are-covered/">1893. 检查是否区域内所有整数都被覆盖</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710163810686.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：差分数组-4"><a href="#方法一：差分数组-4" class="headerlink" title="方法一：差分数组"></a>方法一：差分数组</h3><p><code>1 &lt;= ranges.length &lt;= 50</code>，所以diff大小为52，第0个位置不用，第51个位置用于防止越界</p>
+<h2 id="检查是否区域内所有整数都被覆盖"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/check-if-all-the-integers-in-a-range-are-covered/">1893. 检查是否区域内所有整数都被覆盖</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230710163810686.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="方法一差分数组-4">方法一：差分数组</h3>
+<p><code>1 &lt;= ranges.length &lt;= 50</code>，所以diff大小为52，第0个位置不用，第51个位置用于防止越界</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isCovered</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] ranges, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-type">int</span>[] diff = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">52</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, min = <span class="hljs-number">50</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] range : ranges) &#123;<br>            ++diff[range[<span class="hljs-number">0</span>]];<br>            --diff[range[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>];<br>            max = Math.max(max, range[<span class="hljs-number">1</span>]);<br>            min = Math.min(min, range[<span class="hljs-number">0</span>]);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> min; i &lt;= max; ++i) <br>            diff[i] = diff[i - <span class="hljs-number">1</span>] + diff[i];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> left; i &lt;= right; ++i)<br>            <span class="hljs-keyword">if</span> (diff[i] &lt;= <span class="hljs-number">0</span>)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="方法二：差分数组-前缀和"><a href="#方法二：差分数组-前缀和" class="headerlink" title="方法二：差分数组 + 前缀和"></a>方法二：差分数组 + 前缀和</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isCovered</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] ranges, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-type">int</span>[] diff = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">52</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] range : ranges) &#123;<br>            ++diff[range[<span class="hljs-number">0</span>]];<br>            --diff[range[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>];<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">preSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">50</span>; ++i) &#123;<br>            preSum += diff[i];<br>            <span class="hljs-keyword">if</span> (i &gt;= left &amp;&amp; i &lt;= right &amp;&amp; preSum &lt;= <span class="hljs-number">0</span>)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法二差分数组-前缀和">方法二：差分数组 + 前缀和</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isCovered</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] ranges, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-type">int</span>[] diff = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">52</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] range : ranges) &#123;<br>            ++diff[range[<span class="hljs-number">0</span>]];<br>            --diff[range[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>];<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">preSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">50</span>; ++i) &#123;<br>            preSum += diff[i];<br>            <span class="hljs-keyword">if</span> (i &gt;= left &amp;&amp; i &lt;= right &amp;&amp; preSum &lt;= <span class="hljs-number">0</span>)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
