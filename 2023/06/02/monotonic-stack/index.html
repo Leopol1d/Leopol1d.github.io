@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="求某个区间的最大(小)值，可以使用单调队列单调栈的作用：存放之前遍历过的元素i，当比nums[i]更大(小)的元素出现时，计算结果，并将i弹出            239. 滑动窗口最大值   维护一个单调递减的双端队列，队列大小为[0, k]，队列存储数组下标，从而更好判断滑动窗口区间  存储答案的队列res大小为n - k + 1  遍历数组nums  当队列不为空">
+    <meta name="description" content="求某个区间的最大(小)值，可以使用单调队列单调栈的作用：存放之前遍历过的元素i，当比nums[i]更大(小)的元素出现时，计算结果，并将i弹出            239. 滑动窗口最大值    维护一个单调递减的双端队列，队列大小为[0, k]，队列存储数组下标，从而更好判断滑动窗口区间   存储答案的队列res大小为n - k + 1   遍历数组nums   当队">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Monotonic Stack">
 <meta property="og:url" content="https://leopol1d.github.io/2023/06/02/monotonic-stack/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="求某个区间的最大(小)值，可以使用单调队列单调栈的作用：存放之前遍历过的元素i，当比nums[i]更大(小)的元素出现时，计算结果，并将i弹出            239. 滑动窗口最大值   维护一个单调递减的双端队列，队列大小为[0, k]，队列存储数组下标，从而更好判断滑动窗口区间  存储答案的队列res大小为n - k + 1  遍历数组nums  当队列不为空">
+<meta property="og:description" content="求某个区间的最大(小)值，可以使用单调队列单调栈的作用：存放之前遍历过的元素i，当比nums[i]更大(小)的元素出现时，计算结果，并将i弹出            239. 滑动窗口最大值    维护一个单调递减的双端队列，队列大小为[0, k]，队列存储数组下标，从而更好判断滑动窗口区间   存储答案的队列res大小为n - k + 1   遍历数组nums   当队">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104324124.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104459823.png">
@@ -317,82 +317,120 @@
                 <div class="note note-success">
             <p>求某个区间的最大(小)值，可以使用单调队列</p><p>单调栈的作用：存放之前遍历过的元素i，当比nums[i]更大(小)的元素出现时，计算结果，并将i弹出</p>
           </div>
-<h2 id="239-滑动窗口最大值"><a href="#239-滑动窗口最大值" class="headerlink" title="239. 滑动窗口最大值"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104324124.png" srcset="/img/loading.gif" lazyload alt=" "> </p>
+<h2 id="239-滑动窗口最大值"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104324124.png" srcset="/img/loading.gif" lazyload alt=" "></p>
 <ol>
-<li><p>维护一个单调递减的双端队列，队列大小为[0, k]，<strong>队列存储数组下标，从而更好判断滑动窗口区间</strong></p>
+<li class="lvl-3">
+<p>维护一个单调递减的双端队列，队列大小为[0, k]，<strong>队列存储数组下标，从而更好判断滑动窗口区间</strong></p>
 </li>
-<li><p>存储答案的队列res大小为n - k + 1</p>
+<li class="lvl-3">
+<p>存储答案的队列res大小为n - k + 1</p>
 </li>
-<li><p>遍历数组nums</p>
+<li class="lvl-3">
+<p>遍历数组nums</p>
 </li>
-<li><p><strong>当队列不为空且当前元素大于队尾元素在nums中对应的值时，将队尾元素弹出，从而保持队列的单调递减性</strong></p>
+<li class="lvl-3">
+<p><strong>当队列不为空且当前元素大于队尾元素在nums中对应的值时，将队尾元素弹出，从而保持队列的单调递减性</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (!queue.isEmpty() &amp;&amp; nums[i] &gt; nums[queue.peekLast()])<br>    queue.pollLast();<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>完成步骤4后，将当前元素<code>nums[i]</code>加入队列</p>
+<li class="lvl-3">
+<p>完成步骤4后，将当前元素<code>nums[i]</code>加入队列</p>
 </li>
-<li><p><strong>当队首元素等于i - k，说明已经遍历过k轮，滑动窗口的左边界已经超过队首元素了，弹出队首元素</strong></p>
+<li class="lvl-3">
+<p><strong>当队首元素等于i - k，说明已经遍历过k轮，滑动窗口的左边界已经超过队首元素了，弹出队首元素</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (queue.peekFirst() == i - k)<br>    queue.pollFirst();<br></code></pre></td></tr></table></figure>
 </li>
-<li><p><strong>只有当i &gt;= k - 1时，才记录结果res</strong></p>
+<li class="lvl-3">
+<p><strong>只有当i &gt;= k - 1时，才记录结果res</strong></p>
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] maxSlidingWindow(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n - k + <span class="hljs-number">1</span>];<br>        Deque&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!queue.isEmpty() &amp;&amp; nums[i] &gt; nums[queue.peekLast()])<br>                queue.pollLast();<br>            queue.offerLast(i);<br>            <span class="hljs-keyword">if</span> (queue.peekFirst() == i - k)<br>                queue.pollFirst();<br>            <span class="hljs-keyword">if</span> (i &gt;= k - <span class="hljs-number">1</span>)<br>                res[i - k + <span class="hljs-number">1</span>] = nums[queue.peekFirst()];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <div class="note note-success">
             <p>单调栈是一种基于栈的数据结构，所谓的单调就是满足单调递增（单调递减）的栈。主要用于解决 <strong>下一个更大的元素</strong>问题，也就是找到下一个更大的元素。</p><p>单调栈的意义：用 O(n) 复杂度的一重遍历找到每个元素前后最近的更小/大元素位置</p>
           </div>
-<h2 id="739-每日温度"><a href="#739-每日温度" class="headerlink" title="739. 每日温度"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/">739. 每日温度</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104459823.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：单调栈"><a href="#方法一：单调栈" class="headerlink" title="方法一：单调栈"></a>方法一：单调栈</h3><ol>
-<li>创建一个栈，存储元素下标</li>
-<li>遍历数组元素</li>
-<li>当栈不为空且数组元素值 &gt; 栈顶元素对应数组的值<ol>
-<li>弹出栈顶元素并用变量i - topIndex;接收</li>
-<li>topIndex的下一个更大值的距离为i - topIndex;</li>
+<h2 id="739-每日温度"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/">739. 每日温度</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602104459823.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：单调栈">方法一：单调栈</h3>
+<ol>
+<li class="lvl-3">
+<p>创建一个栈，存储元素下标</p>
+</li>
+<li class="lvl-3">
+<p>遍历数组元素</p>
+</li>
+<li class="lvl-3">
+<p>当栈不为空且数组元素值 &gt; 栈顶元素对应数组的值</p>
+<ol>
+<li class="lvl-6">弹出栈顶元素并用变量i - topIndex;接收</li>
+<li class="lvl-6">topIndex的下一个更大值的距离为i - topIndex;</li>
 </ol>
 </li>
-<li>将i压栈</li>
+<li class="lvl-3">
+<p>将i压栈</p>
+</li>
 </ol>
 <p>遍历完for循环，如果栈不为空，说明栈里的元素不存在比它更大的元素</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] dailyTemperatures(<span class="hljs-type">int</span>[] temperatures) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> temperatures.length;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; temperatures[i] &gt; temperatures[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                res[topIndex] = i - topIndex;<br>            &#125;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="496-下一个更大元素-I"><a href="#496-下一个更大元素-I" class="headerlink" title="496. 下一个更大元素 I"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-element-i/">496. 下一个更大元素 I</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602111209413.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：单调栈-HashMap"><a href="#方法一：单调栈-HashMap" class="headerlink" title="方法一：单调栈 + HashMap"></a>方法一：单调栈 + HashMap</h3><p>res[i] = map.getOrDefault(nums1[i], -1);假设nums1[i]在nums2中的下标为j，如果map查不到nums1[i]，说明nums2[j]在j之后没有比nums2[j]更大的元素</p>
+<h2 id="496-下一个更大元素-I"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-element-i/">496. 下一个更大元素 I</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602111209413.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：单调栈-HashMap">方法一：单调栈 + HashMap</h3>
+<p>res[i] = map.getOrDefault(nums1[i], -1);假设nums1[i]在nums2中的下标为j，如果map查不到nums1[i]，说明nums2[j]在j之后没有比nums2[j]更大的元素</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] nextGreaterElement(<span class="hljs-type">int</span>[] nums1, <span class="hljs-type">int</span>[] nums2) &#123;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums2.length; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nums2[i] &gt; nums2[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                map.put(nums2[topIndex], nums2[i]);<br>            &#125;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[nums1.length];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums1.length; ++i) &#123;<br>            res[i] = map.getOrDefault(nums1[i], -<span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602113744688.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  </p>
-<h2 id="503-下一个更大元素-II"><a href="#503-下一个更大元素-II" class="headerlink" title="503. 下一个更大元素 II"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-element-ii/">503. 下一个更大元素 II</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131521839.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="方法一：单调栈-1"><a href="#方法一：单调栈-1" class="headerlink" title="方法一：单调栈"></a>方法一：单调栈</h3><ol>
-<li><p>初始res数组为-1很重要！默认所有元素都没有更大的下一个元素</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Arrays.fill(res, -<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602113744688.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
+<h2 id="503-下一个更大元素-II"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-element-ii/">503. 下一个更大元素 II</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131521839.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：单调栈-2">方法一：单调栈</h3>
+<ol>
+<li class="lvl-4">
+<p>初始res数组为-1很重要！默认所有元素都没有更大的下一个元素</p>
 </li>
-<li><p>循环数组遍历两次，即使第一轮遍历已经被赋值，第二轮也只会赋相同的值，不影响</p>
+</ol>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Arrays.fill(res, -<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p>循环数组遍历两次，即使第一轮遍历已经被赋值，第二轮也只会赋相同的值，不影响</p>
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] nextGreaterElements(<span class="hljs-type">int</span>[] nums) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(res, -<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span> * n; ++i) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nums[i % n] &gt; nums[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                res[topIndex] = nums[i % n];<br>            &#125;<br>            stack.push(i % n);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131507655.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  </p>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131507655.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
 <div class="note note-danger">
-            <h2 id="316-去除重复字母"><a href="#316-去除重复字母" class="headerlink" title="316. 去除重复字母"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicate-letters/">316. 去除重复字母</a></h2>
+            <h2 id="316-去除重复字母"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicate-letters/">316. 去除重复字母</a></h2>
           </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131831847.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：单调栈-2"><a href="#方法一：单调栈-2" class="headerlink" title="方法一：单调栈"></a>方法一：单调栈</h3><p><strong>遇到一个新字符 如果比栈顶小 并且在新字符后面还有和栈顶一样的 就把栈顶的字符抛弃了</strong></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602131831847.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：单调栈-3">方法一：单调栈</h3>
+<p><strong>遇到一个新字符 如果比栈顶小 并且在新字符后面还有和栈顶一样的 就把栈顶的字符抛弃了</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">removeDuplicateLetters</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-type">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">26</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); ++i)<br>            ++count[s.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>];<br>        <span class="hljs-type">boolean</span>[] visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[<span class="hljs-number">26</span>];<br>        Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); ++i) &#123;<br>            <span class="hljs-type">char</span> <span class="hljs-variable">ch</span> <span class="hljs-operator">=</span> s.charAt(i);<br>            --count[ch - <span class="hljs-string">&#x27;a&#x27;</span>];<br>            <span class="hljs-keyword">if</span> (visited[ch - <span class="hljs-string">&#x27;a&#x27;</span>])<br>                <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; s.charAt(stack.peek()) &gt; ch &amp;&amp; count[s.charAt(stack.peek()) - <span class="hljs-string">&#x27;a&#x27;</span>] &gt; <span class="hljs-number">0</span>) &#123;<br>                visited[s.charAt(stack.peek()) - <span class="hljs-string">&#x27;a&#x27;</span>] = <span class="hljs-literal">false</span>;<br>                stack.pop();<br>            &#125;<br>            visited[ch - <span class="hljs-string">&#x27;a&#x27;</span>] = <span class="hljs-literal">true</span>;<br>            stack.push(i);<br>        &#125;<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">while</span> (!stack.isEmpty())<br>            sb.append(s.charAt(stack.pollLast()));<br>        <span class="hljs-keyword">return</span> sb.toString();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602152901928.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  </p>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602152901928.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
 <div class="note note-warning">
-            <h2 id="84-柱状图中最大的矩形"><a href="#84-柱状图中最大的矩形" class="headerlink" title="84. 柱状图中最大的矩形"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a></h2>
+            <h2 id="84-柱状图中最大的矩形"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a></h2>
           </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602154000994.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：单调栈-3"><a href="#方法一：单调栈-3" class="headerlink" title="方法一：单调栈"></a>方法一：单调栈</h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
-<li>对于一个高度，如果能得到向左和向右的边界</li>
-<li>那么就能对每个高度求一次面积</li>
-<li>遍历所有高度，即可得出最大面积</li>
-<li>使用单调栈，在出栈操作时得到前后边界并计算面积</li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602154000994.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：单调栈-4">方法一：单调栈</h3>
+<h3 id="思路">思路</h3>
+<ol>
+<li class="lvl-3">
+<p>对于一个高度，如果能得到向左和向右的边界</p>
+</li>
+<li class="lvl-3">
+<p>那么就能对每个高度求一次面积</p>
+</li>
+<li class="lvl-3">
+<p>遍历所有高度，即可得出最大面积</p>
+</li>
+<li class="lvl-3">
+<p>使用单调栈，在出栈操作时得到前后边界并计算面积</p>
+</li>
 </ol>
 <p><strong>注意边界问题</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Arrays.fill(rights, n);<br>Arrays.fill(left, -<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">largestRectangleArea</span><span class="hljs-params">(<span class="hljs-type">int</span>[] heights)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> heights.length;<br>        <span class="hljs-type">int</span>[] rights = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(rights, n);<br>        Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ; i &lt; n ; i++)&#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; heights[stack.getLast()] &gt; heights[i]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">top</span> <span class="hljs-operator">=</span> stack.pollLast();<br>                rights[top] = i;<br>            &#125;<br>            stack.addLast(i);<br>        &#125;<br>        <span class="hljs-type">int</span>[] left = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        Arrays.fill(left, -<span class="hljs-number">1</span>);<br>        stack.clear();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> n - <span class="hljs-number">1</span> ; i &gt;= <span class="hljs-number">0</span> ; i--) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; heights[stack.getLast()] &gt; heights[i]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">top</span> <span class="hljs-operator">=</span> stack.pollLast();<br>                left[top] = i;<br>            &#125;<br>            stack.addLast(i);<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ; i &lt; n ; i++) &#123;<br>            res = Math.max(res,  (rights[i] - left[i] - <span class="hljs-number">1</span>) * heights[i]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602163956020.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  </p>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602163956020.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
 <div class="note note-danger">
-            <h2 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42. 接雨水"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a></h2>
+            <h2 id="42-接雨水"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a></h2>
           </div>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602164417183.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h3 id="方法一：单调栈-4"><a href="#方法一：单调栈-4" class="headerlink" title="方法一：单调栈"></a>方法一：单调栈</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-8/">优质题解</a></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230602164417183.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：单调栈-5">方法一：单调栈</h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-8/">优质题解</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">trap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] height)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> height.length, index = <span class="hljs-number">0</span>, res = <span class="hljs-number">0</span>;<br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-keyword">while</span> (index &lt; n) &#123;<br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; height[index] &gt; height[stack.peek()]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">topIndex</span> <span class="hljs-operator">=</span> stack.pop();<br>                <span class="hljs-type">int</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> height[topIndex];<br>                <span class="hljs-keyword">if</span> (stack.isEmpty())<br>                    <span class="hljs-keyword">break</span>;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Math.min(height[index], height[stack.peek()]);<br>                <span class="hljs-type">int</span> <span class="hljs-variable">width</span> <span class="hljs-operator">=</span> index - stack.peek() - <span class="hljs-number">1</span>;<br>                res += (min - h) * width;<br>            &#125;<br>            stack.push(index++);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
