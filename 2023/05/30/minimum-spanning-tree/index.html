@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1584. 连接所有点的最小费用  方法一：Kruskal算法   依次选择权值最小的边   如果要加入的边会使得图形成环，则跳过   使用并查集来判断是否会形成环  如果两个顶点不在同一个子图中，连接边不会形成环 如果两个顶点在同一个子图中，连接边会形成环 恰好可以用union解决    比如有三个顶点，1，2，3那么所有的边为(1,2),(1,3),(2,3) 1int[][] edges &#x3D;">
+    <meta name="description" content="1584. 连接所有点的最小费用  方法一：Kruskal算法 依次选择权值最小的边 如果要加入的边会使得图形成环，则跳过 使用并查集来判断是否会形成环 如果两个顶点不在同一个子图中，连接边不会形成环 如果两个顶点在同一个子图中，连接边会形成环 恰好可以用union解决    比如有三个顶点，1，2，3那么所有的边为(1,2),(1,3),(2,3) 1int[][] edges &#x3D; new in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Minimum Spanning Tree">
 <meta property="og:url" content="https://leopol1d.github.io/2023/05/30/minimum-spanning-tree/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="1584. 连接所有点的最小费用  方法一：Kruskal算法   依次选择权值最小的边   如果要加入的边会使得图形成环，则跳过   使用并查集来判断是否会形成环  如果两个顶点不在同一个子图中，连接边不会形成环 如果两个顶点在同一个子图中，连接边会形成环 恰好可以用union解决    比如有三个顶点，1，2，3那么所有的边为(1,2),(1,3),(2,3) 1int[][] edges &#x3D;">
+<meta property="og:description" content="1584. 连接所有点的最小费用  方法一：Kruskal算法 依次选择权值最小的边 如果要加入的边会使得图形成环，则跳过 使用并查集来判断是否会形成环 如果两个顶点不在同一个子图中，连接边不会形成环 如果两个顶点在同一个子图中，连接边会形成环 恰好可以用union解决    比如有三个顶点，1，2，3那么所有的边为(1,2),(1,3),(2,3) 1int[][] edges &#x3D; new in">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230530154215879.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230603155941399.png">
@@ -305,22 +305,14 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1584-连接所有点的最小费用"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-to-connect-all-points/">1584. 连接所有点的最小费用</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230530154215879.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="方法一：Kruskal算法">方法一：Kruskal算法</h3>
-<ol>
-<li class="lvl-3">
-<p><strong>依次选择权值最小的边</strong></p>
-</li>
-<li class="lvl-3">
-<p><strong>如果要加入的边会使得图形成环，则跳过</strong></p>
-</li>
-<li class="lvl-3">
-<p><strong>使用并查集来判断是否会形成环</strong></p>
-<ol>
-<li class="lvl-6"><strong>如果两个顶点不在同一个子图中，连接边不会形成环</strong></li>
-<li class="lvl-6"><strong>如果两个顶点在同一个子图中，连接边会形成环</strong></li>
-<li class="lvl-6"><strong>恰好可以用union解决</strong></li>
+                <h2 id="1584-连接所有点的最小费用"><a href="#1584-连接所有点的最小费用" class="headerlink" title="1584. 连接所有点的最小费用"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-to-connect-all-points/">1584. 连接所有点的最小费用</a></h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230530154215879.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<h3 id="方法一：Kruskal算法"><a href="#方法一：Kruskal算法" class="headerlink" title="方法一：Kruskal算法"></a>方法一：Kruskal算法</h3><ol>
+<li><strong>依次选择权值最小的边</strong></li>
+<li><strong>如果要加入的边会使得图形成环，则跳过</strong></li>
+<li><strong>使用并查集来判断是否会形成环</strong><ol>
+<li><strong>如果两个顶点不在同一个子图中，连接边不会形成环</strong></li>
+<li><strong>如果两个顶点在同一个子图中，连接边会形成环</strong></li>
+<li><strong>恰好可以用union解决</strong></li>
 </ol>
 </li>
 </ol>
@@ -330,13 +322,12 @@
 <div class="note note-danger">
             <p>面试用：节点多，边少的时候用 <strong>稠密图</strong></p>
           </div>
-<h3 id="方法二：Prim算法">方法二：Prim算法</h3>
-<p><strong>误区：以下是prim，prim需要更新的是已选顶点集距离未选顶点的最短距离</strong></p>
+<h3 id="方法二：Prim算法"><a href="#方法二：Prim算法" class="headerlink" title="方法二：Prim算法"></a>方法二：Prim算法</h3><p><strong>误区：以下是prim，prim需要更新的是已选顶点集距离未选顶点的最短距离</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; n; ++j)<br>    <span class="hljs-keyword">if</span> (!visited[j] &amp;&amp; dist[j] &gt; graph[minIndex][j])<br>        dist[j] = graph[minIndex][j];<br></code></pre></td></tr></table></figure>
 <p><strong>以下是dijkstra</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= n; ++j)<br>    <span class="hljs-keyword">if</span> (!visited[j] &amp;&amp; dist[j] &gt; graph[minIndex][j] + minDist)<br>        dist[j] = graph[minIndex][j] + minDist;<br></code></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minCostConnectPoints</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] points)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> points.length, index = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span>[][] graph = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n][n];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i)<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i + <span class="hljs-number">1</span>; j &lt; n; ++j)<br>                graph[i][j] = graph[j][i] = getMDistance(points[i], points[j]);<br>        <span class="hljs-keyword">return</span> prim(graph, n);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">prim</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] graph, <span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, inf = Integer.MAX_VALUE &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 已选顶点集距离未选顶点的距离</span><br>        <span class="hljs-type">int</span>[] dist = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>        <span class="hljs-type">boolean</span>[] visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[n];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; n; ++i)<br>            dist[i] = inf;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">minIndex</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>, minDist = inf;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; n; ++j) &#123;<br>                <span class="hljs-keyword">if</span> (!visited[j] &amp;&amp; dist[j] &lt; minDist) &#123;<br>                    minDist = dist[j];<br>                    minIndex = j;<br>                &#125;<br>            &#125;<br>            visited[minIndex] = <span class="hljs-literal">true</span>;<br>            res += minDist;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; n; ++j)<br>                <span class="hljs-keyword">if</span> (!visited[j] &amp;&amp; dist[j] &gt; graph[minIndex][j])<br>                    dist[j] = graph[minIndex][j];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMDistance</span><span class="hljs-params">(<span class="hljs-type">int</span>[] d1, <span class="hljs-type">int</span>[] d2)</span> &#123;<br>        <span class="hljs-keyword">return</span> Math.abs(d1[<span class="hljs-number">0</span>] - d2[<span class="hljs-number">0</span>]) + Math.abs(d1[<span class="hljs-number">1</span>] - d2[<span class="hljs-number">1</span>]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230603155941399.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230603155941399.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  </p>
 
                 
               </div>
