@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230813103917833.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230813110023185.png">
 <meta property="article:published_time" content="2023-08-13T02:28:48.000Z">
-<meta property="article:modified_time" content="2023-08-13T06:01:15.125Z">
+<meta property="article:modified_time" content="2023-08-18T07:39:58.507Z">
 <meta property="article:author" content="Leopold">
 <meta property="article:tag" content="力扣杯">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2k 字
         
       </span>
     
@@ -316,8 +316,6 @@
 <h3 id="方法一双指针-treeset">方法一：双指针 + TreeSet</h3>
 <p>指针i(左)初始化为0，指针r(右)初始化为x，遍历整个数组。 每轮开始，将nums[i]加入TreeSet中，在treeset查询是否存在小于等于nums[r]的最大值哥大于等于nums[r]的最小值，与全局遍历min进行比较。 由于右指针r指向的元素与TreeSet中的元素的间隔至少为x，满足题意</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minAbsoluteDifference</span><span class="hljs-params">(List&lt;Integer&gt; g, <span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-type">int</span>[] nums = g.stream().mapToInt(i-&gt;i).toArray();<br>        TreeSet&lt;Integer&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeSet</span>&lt;&gt;();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length, min = Integer.MAX_VALUE;<br>        <span class="hljs-type">int</span>  <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> x;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            set.add(nums[i]);<br>            <span class="hljs-type">Integer</span> <span class="hljs-variable">lower</span> <span class="hljs-operator">=</span> set.floor(nums[r]), higher = set.ceiling(nums[r]);<br>            <span class="hljs-keyword">if</span> (lower != <span class="hljs-literal">null</span>) <br>                min = Math.min(min, Math.abs(lower - nums[r]));<br>            <span class="hljs-keyword">if</span> (higher != <span class="hljs-literal">null</span>)<br>                min = Math.min(min, Math.abs(higher - nums[r]));<br>            ++r;<br>            <span class="hljs-keyword">if</span> (r == n)<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> min;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="第一题">第一题</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><br></code></pre></td></tr></table></figure>
 
                 
               </div>
