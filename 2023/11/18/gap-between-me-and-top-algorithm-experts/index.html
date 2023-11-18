@@ -16,29 +16,28 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="100031. 计算 K 置位下标对应元素的和  方法一：模拟 1234567891011class Solution &amp;#123;    public int sumIndicesWithKSetBits(List&lt;Integer&gt; nums, int k) &amp;#123;        int n &#x3D; nums.size(), res &#x3D; 0;        for (int">
+    <meta name="description" content="距离上一次打比赛要追溯到上个月leetcode cup 367，虽然第二题意外WA了四次，还是成功AK。因为拿了4个offer，休息了一个多月。  今天无聊做了做每日一题，看完数据范围，设计好方法后，感觉我真是个天才，ac后看了灵神的题解，自愧不如。。。 2342. 数位和相等数对的最大和  my proposed method 要求数位和(digit sum)相等的数组元素中最大的数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lcp363">
-<meta property="og:url" content="https://leopol1d.github.io/2023/09/17/lcp363/index.html">
+<meta property="og:title" content="gap_between_me_and_top_algorithm_experts">
+<meta property="og:url" content="https://leopol1d.github.io/2023/11/18/gap-between-me-and-top-algorithm-experts/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="100031. 计算 K 置位下标对应元素的和  方法一：模拟 1234567891011class Solution &amp;#123;    public int sumIndicesWithKSetBits(List&lt;Integer&gt; nums, int k) &amp;#123;        int n &#x3D; nums.size(), res &#x3D; 0;        for (int">
+<meta property="og:description" content="距离上一次打比赛要追溯到上个月leetcode cup 367，虽然第二题意外WA了四次，还是成功AK。因为拿了4个offer，休息了一个多月。  今天无聊做了做每日一题，看完数据范围，设计好方法后，感觉我真是个天才，ac后看了灵神的题解，自愧不如。。。 2342. 数位和相等数对的最大和  my proposed method 要求数位和(digit sum)相等的数组元素中最大的数">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140405727.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140444055.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140542495.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140814731.png">
-<meta property="article:published_time" content="2023-09-17T06:02:33.000Z">
-<meta property="article:modified_time" content="2023-09-17T06:13:42.564Z">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20231118104812521.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20231118105114138.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20231118105554033.png">
+<meta property="article:published_time" content="2023-11-18T02:42:12.000Z">
+<meta property="article:modified_time" content="2023-11-18T02:59:07.988Z">
 <meta property="article:author" content="Leopold">
-<meta property="article:tag" content="力扣杯">
+<meta property="article:tag" content="hash">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140405727.png">
+<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20231118104812521.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>lcp363 - Leopold&#39;s Blog</title>
+  <title>gap_between_me_and_top_algorithm_experts - Leopold&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="lcp363"></span>
+            <span id="subtitle" data-typed-text="gap_between_me_and_top_algorithm_experts"></span>
           
         </div>
 
@@ -227,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-17 14:02" pubdate>
-          2023年9月17日 下午
+        <time datetime="2023-11-18 10:42" pubdate>
+          2023年11月18日 上午
         </time>
       </span>
     
@@ -250,7 +249,7 @@
         
         
         
-          13 分钟
+          12 分钟
         
       </span>
     
@@ -301,28 +300,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">lcp363</h1>
+            <h1 style="display: none">gap_between_me_and_top_algorithm_experts</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="计算-k-置位下标对应元素的和"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sum-of-values-at-indices-with-k-set-bits/">100031. 计算 K 置位下标对应元素的和</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140405727.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="方法一模拟">方法一：模拟</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sumIndicesWithKSetBits</span><span class="hljs-params">(List&lt;Integer&gt; nums, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.size(), res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> Integer.bitCount(i);<br>            <span class="hljs-keyword">if</span> (x == k)<br>                res += nums.get(i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="让所有学生保持开心的分组方法数"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-students/">100040. 让所有学生保持开心的分组方法数</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140444055.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="方法一排序-贪心">方法一：排序 + 贪心</h3>
-<p><strong>判断起初和结束位置：即全不选和全选</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">countWays</span><span class="hljs-params">(List&lt;Integer&gt; nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.size(), res = <span class="hljs-number">0</span>;<br>        Collections.sort(nums);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">cnt</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> (nums.get(<span class="hljs-number">0</span>) != <span class="hljs-number">0</span>)<br>            res++;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; ++i) &#123;<br>            ++cnt;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> nums.get(i), y = nums.get(i + <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (cnt &gt; x &amp;&amp; cnt &lt; y)<br>                ++res;<br>        &#125;<br>        ++cnt;<br>        <span class="hljs-keyword">if</span> (cnt &gt; nums.get(n - <span class="hljs-number">1</span>))<br>            ++res;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="最大合金数"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-number-of-alloys/">100033. 最大合金数</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140542495.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="方法一二分查找">方法一：二分查找</h3>
-<p><strong>以后二分r都用1e18！！！</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxNumberOfAlloys</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> k, <span class="hljs-type">int</span> budget, List&lt;List&lt;Integer&gt;&gt; composition, List&lt;Integer&gt; stock, List&lt;Integer&gt; cost)</span> &#123;<br>            <span class="hljs-type">long</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (List&lt;Integer&gt; comp : composition) &#123;<br>                <span class="hljs-type">long</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, r = Integer.MAX_VALUE;<br>                <span class="hljs-keyword">while</span> (l &lt;= r) &#123;<br>                    <span class="hljs-type">long</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (l + r) &gt;&gt; <span class="hljs-number">1</span>;<br>                    <span class="hljs-keyword">if</span> (check(mid, n, budget, comp, stock, cost))<br>                        l = mid + <span class="hljs-number">1</span>;<br>                    <span class="hljs-keyword">else</span><br>                        r = mid - <span class="hljs-number">1</span>;<br>                &#125;<br>                res = Math.max(res, r);<br>            &#125;<br>            <span class="hljs-keyword">return</span> (<span class="hljs-type">int</span>) res;<br>        &#125;<br><br>        <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">check</span><span class="hljs-params">(<span class="hljs-type">long</span> cnt, <span class="hljs-type">int</span> n, <span class="hljs-type">long</span> budget, List&lt;Integer&gt; comp, List&lt;Integer&gt; stock,List&lt;Integer&gt; cost)</span> &#123;<br>            <span class="hljs-type">long</span>[] <span class="hljs-keyword">requires</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">long</span>[n];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>                <span class="hljs-keyword">requires</span>[i] = Math.max(comp.get(i) * cnt - stock.get(i), <span class="hljs-number">0</span>);<br>                budget -= <span class="hljs-keyword">requires</span>[i] * cost.get(i);<br>            &#125;<br>            <span class="hljs-keyword">return</span> budget &gt;= <span class="hljs-number">0</span>;<br>        &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="完全子集的最大元素和"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-element-sum-of-a-complete-subset-of-indices/">8041. 完全子集的最大元素和</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230917140814731.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="方法一">方法一：</h3>
+                <p>距离上一次打比赛要追溯到上个月<code>leetcode cup 367</code>，虽然第二题意外WA了四次，还是成功AK。因为拿了4个offer，休息了一个多月。</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20231118104812521.png" srcset="/img/loading.gif" lazyload /></p>
+<p>今天无聊做了做每日一题，看完数据范围，设计好方法后，感觉我真是个天才，ac后看了灵神的题解，自愧不如。。。</p>
+<h2 id="数位和相等数对的最大和"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/max-sum-of-a-pair-with-equal-sum-of-digits/">2342. 数位和相等数对的最大和</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20231118105114138.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="my-proposed-method">my proposed method</h3>
+<p><strong>要求数位和(digit sum)相等的数组元素中最大的数组元素和</strong>，看数据范围，<span class="math inline">\(nums[i] \in [1, 10^9]\)</span>，那么极限范围是999999999，数位和最大<strong>81</strong>，那我创建82个treemap，遍历完数组后，降序从treemap中找答案不就行了，easy</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maximumSum</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length, res = -<span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// nums最大1e9,9个9相加是81</span><br>        <span class="hljs-comment">// treemap中存放数位和相同的数组元素</span><br>        TreeMap&lt;Integer, Integer&gt;[] maps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeMap</span>[<span class="hljs-number">82</span>];<br>        Arrays.setAll(maps, e -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeMap</span>&lt;&gt;());<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x : nums) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">bitSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, num = x;<br>             <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">0</span>) &#123;<br>                 bitSum += num % <span class="hljs-number">10</span>;<br>                 num /= <span class="hljs-number">10</span>;<br>             &#125;<br>             TreeMap&lt;Integer, Integer&gt; map = maps[bitSum];<br>             map.put(x, map.getOrDefault(x, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">81</span>; i &gt;= <span class="hljs-number">0</span>; --i) &#123;<br>            TreeMap&lt;Integer, Integer&gt; map = maps[i];<br>            <span class="hljs-type">int</span> <span class="hljs-variable">key1</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> key : map.descendingKeySet()) &#123;<br>                <span class="hljs-keyword">if</span> (key1 == -<span class="hljs-number">1</span> &amp;&amp; map.get(key) &gt;= <span class="hljs-number">2</span>) &#123;<br>                    res = Math.max(res, key * <span class="hljs-number">2</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key1 == -<span class="hljs-number">1</span> &amp;&amp; map.get(key) == <span class="hljs-number">1</span>)<br>                    key1 = key;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key1 != -<span class="hljs-number">1</span>) &#123;<br>                    res = Math.max(res, key1 + key);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span>  res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="expert-solution">expert solution</h3>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20231118105554033.png" srcset="/img/loading.gif" lazyload /></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maximumSum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        ans = -<span class="hljs-number">1</span><br>        mx = [<span class="hljs-number">0</span>] * <span class="hljs-number">82</span>  <span class="hljs-comment"># 至多 9 个 9 相加</span><br>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:<br>            <span class="hljs-comment"># s = sum(map(int, str(num)))</span><br>            <span class="hljs-comment"># 不转成 str，效率更高</span><br>            s = <span class="hljs-number">0</span><br>            x = num<br>            <span class="hljs-keyword">while</span> x:  <span class="hljs-comment"># 枚举 num 的每个数位</span><br>                s += x % <span class="hljs-number">10</span><br>                x //= <span class="hljs-number">10</span><br>            <span class="hljs-keyword">if</span> mx[s]:  <span class="hljs-comment"># 说明左边也有数位和等于 s 的元素</span><br>                ans = <span class="hljs-built_in">max</span>(ans, mx[s] + num)  <span class="hljs-comment"># 更新答案的最大值</span><br>            mx[s] = <span class="hljs-built_in">max</span>(mx[s], num)  <span class="hljs-comment"># 维护数位和等于 s 的最大元素</span><br>        <span class="hljs-keyword">return</span> ans<br>	<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -341,15 +334,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Contest/" class="category-chain-item">Contest</a>
+  <a href="/categories/" class="category-chain-item">.*</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Contest/LCP/" class="category-chain-item">LCP</a>
-  
-  
-
   
 
       </span>
@@ -363,7 +349,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8A%9B%E6%89%A3%E6%9D%AF/">#力扣杯</a>
+        <a href="/tags/hash/">#hash</a>
       
     </div>
   
@@ -375,8 +361,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>lcp363</div>
-      <div>https://leopol1d.github.io/2023/09/17/lcp363/</div>
+      <div>gap_between_me_and_top_algorithm_experts</div>
+      <div>https://leopol1d.github.io/2023/11/18/gap-between-me-and-top-algorithm-experts/</div>
     </div>
     <div class="license-meta">
       
@@ -388,7 +374,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月17日</div>
+          <div>2023年11月18日</div>
         </div>
       
       
@@ -420,18 +406,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/17/lcpBi113/" title="lcpBi113">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">lcpBi113</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/13/project/" title="project">
-                        <span class="hidden-mobile">project</span>
+                      <a href="/2023/10/10/interview/" title="interview">
+                        <span class="hidden-mobile">interview</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
