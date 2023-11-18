@@ -1132,6 +1132,8 @@
       
       <category>Algorithms</category>
       
+      <category>.*</category>
+      
       <category>Memorization Search</category>
       
     </categories>
