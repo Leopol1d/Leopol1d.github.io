@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>Amazon_Elastic_Block_Store</title>
+    <link href="/2024/01/09/Amazon-Elastic-Block-Store/"/>
+    <url>/2024/01/09/Amazon-Elastic-Block-Store/</url>
+    
+    <content type="html"><![CDATA[<h1 id="实例存储"><strong>实例存储</strong></h1><p>使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。</p><p><img src="https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1704805200/n2pMhjwzo2SeDZyTKriMhw/tincan/93f42038d9072368fd0cf2afde3dd2800eea8a89/assets/RLLyaLc0GgXKROiK_h-O5ogg1UmjRhboj.png" alt="img" style="zoom: 50%;" /> <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/sbH5eEnSeKUBKSaw_yhRAUKAAiRxz-hnO.png" alt="img" style="zoom:50%;" /> <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cowUZ3pWtSrAW5OQ_Ti5LIHmLnzvBS-2N.png" alt=" " style="zoom:50%;" /></p><h1 id="ebs">EBS</h1><p><strong>与EC2实例分离的数据卷</strong></p><p><a href="https://aws.amazon.com/ebs"><strong>Amazon Elastic Block Store (Amazon EBS)</strong>(opens in a new tab)</a> 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2 实例，附加的 EBS 卷上的所有数据仍然可用。</p><p>创建 EBS 卷后，您可以将它附加到 Amazon EC2 实例。</p><p>EBS 卷用于存储需要持久保存的数据，因此备份数据非常重要。您可以通过创建 Amazon EBS 快照为 EBS 卷创建递增备份。</p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png" alt="当 Amazon EC2 实例终止时，附加的 EBS 卷上的所有数据仍然可用。" style="zoom:50%;" /></p><h1 id="amazon-ebs-快照"><strong>Amazon EBS 快照</strong></h1><p><strong>增量备份</strong></p><figure><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/53Hh7hSTmJeGkw18_jH6D5ObLkeNaShEi.png" alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><p>通过 Amazon EBS 快照为 EBS 卷创建递增备份。第一天，备份两个卷。第 2 天，增加一个新卷，并备份新卷。第 3 天，再增加两个卷，共有五个卷。仅备份两个新卷。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AWS</category>
+      
+      <category>AWS Cloud Practitioner Essentials</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Cloud Computing</tag>
+      
+      <tag>AWS</tag>
+      
+      <tag>AWS Cloud Practitioner Essentials</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Amazon ACL</title>
     <link href="/2024/01/09/Amazon-ACL/"/>
     <url>/2024/01/09/Amazon-ACL/</url>

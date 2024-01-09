@@ -16,32 +16,32 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="AWS网络架构  img  子网 子网是 VPC 的一部分，可以在其中根据安全性或操作需求对资源进行分组。子网可以是公有子网，也可以是私有子网。  VPC 内的公有子网中包含三个 Amazon EC2 实例，私有子网中包含三个数据库。  公有子网包含需要能够公开访问的资源，例如在线商店的网站。 私有子网包含只能通过私有网络访问的资源，例如包含客户个人信息和订单历史记录的数据库。">
+    <meta name="description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。    EBS 与EC2实例分离的数据卷 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2 实例，附">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Amazon ACL">
-<meta property="og:url" content="https://leopol1d.github.io/2024/01/09/Amazon-ACL/index.html">
+<meta property="og:title" content="Amazon_Elastic_Block_Store">
+<meta property="og:url" content="https://leopol1d.github.io/2024/01/09/Amazon-Elastic-Block-Store/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="AWS网络架构  img  子网 子网是 VPC 的一部分，可以在其中根据安全性或操作需求对资源进行分组。子网可以是公有子网，也可以是私有子网。  VPC 内的公有子网中包含三个 Amazon EC2 实例，私有子网中包含三个数据库。  公有子网包含需要能够公开访问的资源，例如在线商店的网站。 私有子网包含只能通过私有网络访问的资源，例如包含客户个人信息和订单历史记录的数据库。">
+<meta property="og:description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。    EBS 与EC2实例分离的数据卷 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2 实例，附">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/othqbB2t5qn16Bf2_6uHapBdlIqJB9HHw.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/CI08psM6PPXbaizT_UyZogMAi8wUBW4qK.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/tEVlBqjsA1DbcxXn_rbsxOI7MyhaGUf44.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/VIlb3wnPfxYTfCk5_exiXOZTZhUVTFxL_.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/5LnGhHly44ryOBL7_Af9jhjrWuxa0PHfm.png">
-<meta property="article:published_time" content="2024-01-09T10:30:48.000Z">
-<meta property="article:modified_time" content="2024-01-09T10:47:20.973Z">
+<meta property="og:image" content="https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1704805200/n2pMhjwzo2SeDZyTKriMhw/tincan/93f42038d9072368fd0cf2afde3dd2800eea8a89/assets/RLLyaLc0GgXKROiK_h-O5ogg1UmjRhboj.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/sbH5eEnSeKUBKSaw_yhRAUKAAiRxz-hnO.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cowUZ3pWtSrAW5OQ_Ti5LIHmLnzvBS-2N.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/53Hh7hSTmJeGkw18_jH6D5ObLkeNaShEi.png">
+<meta property="article:published_time" content="2024-01-09T11:08:29.000Z">
+<meta property="article:modified_time" content="2024-01-09T11:24:03.907Z">
 <meta property="article:author" content="Leopold">
 <meta property="article:tag" content="Cloud Computing">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="AWS Cloud Practitioner Essentials">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/othqbB2t5qn16Bf2_6uHapBdlIqJB9HHw.png">
+<meta name="twitter:image" content="https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1704805200/n2pMhjwzo2SeDZyTKriMhw/tincan/93f42038d9072368fd0cf2afde3dd2800eea8a89/assets/RLLyaLc0GgXKROiK_h-O5ogg1UmjRhboj.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Amazon ACL - Leopold&#39;s Blog</title>
+  <title>Amazon_Elastic_Block_Store - Leopold&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +219,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Amazon ACL"></span>
+            <span id="subtitle" data-typed-text="Amazon_Elastic_Block_Store"></span>
           
         </div>
 
@@ -230,7 +230,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-09 18:30" pubdate>
+        <time datetime="2024-01-09 19:08" pubdate>
           2024年1月9日 晚上
         </time>
       </span>
@@ -242,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          807 字
+          371 字
         
       </span>
     
@@ -253,7 +253,7 @@
         
         
         
-          7 分钟
+          4 分钟
         
       </span>
     
@@ -304,43 +304,26 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Amazon ACL</h1>
+            <h1 style="display: none">Amazon_Elastic_Block_Store</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="aws网络架构">AWS网络架构</h2>
+                <h1 id="实例存储"><strong>实例存储</strong></h1>
+<p>使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。</p>
+<p><img src="https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1704805200/n2pMhjwzo2SeDZyTKriMhw/tincan/93f42038d9072368fd0cf2afde3dd2800eea8a89/assets/RLLyaLc0GgXKROiK_h-O5ogg1UmjRhboj.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 50%;" /> <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/sbH5eEnSeKUBKSaw_yhRAUKAAiRxz-hnO.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:50%;" /> <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cowUZ3pWtSrAW5OQ_Ti5LIHmLnzvBS-2N.png" srcset="/img/loading.gif" lazyload alt=" " style="zoom:50%;" /></p>
+<h1 id="ebs">EBS</h1>
+<p><strong>与EC2实例分离的数据卷</strong></p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/ebs"><strong>Amazon Elastic Block Store (Amazon EBS)</strong>(opens in a new tab)</a> 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2 实例，附加的 EBS 卷上的所有数据仍然可用。</p>
+<p>创建 EBS 卷后，您可以将它附加到 Amazon EC2 实例。</p>
+<p>EBS 卷用于存储需要持久保存的数据，因此备份数据非常重要。您可以通过创建 Amazon EBS 快照为 EBS 卷创建递增备份。</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png" srcset="/img/loading.gif" lazyload alt="当 Amazon EC2 实例终止时，附加的 EBS 卷上的所有数据仍然可用。" style="zoom:50%;" /></p>
+<h1 id="amazon-ebs-快照"><strong>Amazon EBS 快照</strong></h1>
+<p><strong>增量备份</strong></p>
 <figure>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/othqbB2t5qn16Bf2_6uHapBdlIqJB9HHw.png" srcset="/img/loading.gif" lazyload alt="img" /><figcaption aria-hidden="true">img</figcaption>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/53Hh7hSTmJeGkw18_jH6D5ObLkeNaShEi.png" srcset="/img/loading.gif" lazyload alt="img" /><figcaption aria-hidden="true">img</figcaption>
 </figure>
-<h2 id="子网"><strong>子网</strong></h2>
-<p>子网是 VPC 的一部分，可以在其中根据安全性或操作需求对资源进行分组。子网可以是<strong>公有子网</strong>，也可以是<strong>私有子网</strong>。</p>
-<figure>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/CI08psM6PPXbaizT_UyZogMAi8wUBW4qK.png" srcset="/img/loading.gif" lazyload alt="VPC 内的公有子网中包含三个 Amazon EC2 实例，私有子网中包含三个数据库。" /><figcaption aria-hidden="true">VPC 内的公有子网中包含三个 Amazon EC2 实例，私有子网中包含三个数据库。</figcaption>
-</figure>
-<p><strong>公有子网</strong>包含需要能够公开访问的资源，例如在线商店的网站。</p>
-<p><strong>私有子网</strong>包含只能通过私有网络访问的资源，例如包含客户个人信息和订单历史记录的数据库。</p>
-<p>在 VPC 中，子网可以相互通信。例如，可能有一个应用程序，该应用程序包含位于公有子网中的 Amazon EC2 实例，该实例与位于私有子网中的数据库通信。</p>
-<h2 id="access-control-list">Access Control List</h2>
-<p>网络 ACL 是一种虚拟防火墙，用于在子网级别控制入站和出站流量。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/tEVlBqjsA1DbcxXn_rbsxOI7MyhaGUf44.png" srcset="/img/loading.gif" lazyload alt="网络访问控制列表位于公有子网前端。" style="zoom:50%;" /></p>
-<p>每个 AWS 账户都包含一个默认网络 ACL。配置 VPC 时，您可以使用账户的默认网络 ACL，也可以创建自定义网络 ACL。</p>
-<p><strong>默认情况下，默认网络 ACL 允许所有入站和出站流量</strong>，但可以通过添加自己的规则对其进行修改。自定义网络 ACL 会拒绝所有入站和出站流量，除非添加规则，指定允许哪些流量。此外，所有网络 ACL 都具有显式拒绝规则。该规则可以确保拒绝不符合列表中的任何其他规则的数据包。</p>
-<h3 id="无状态数据包筛选"><strong>无状态数据包筛选</strong></h3>
-<p>ACL是无状态的，无论数据包是入站还是出站，都会通过进行检查</p>
-<figure>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/VIlb3wnPfxYTfCk5_exiXOZTZhUVTFxL_.png" srcset="/img/loading.gif" lazyload alt="护照检查人员检查名单，确认旅客可以出入境。" /><figcaption aria-hidden="true">护照检查人员检查名单，确认旅客可以出入境。</figcaption>
-</figure>
-<h2 id="安全组">安全组</h2>
-<p><strong>安全组是一个虚拟防火墙，可控制 Amazon EC2 实例的入站和出站流量。</strong></p>
-<p><strong>默认情况下，安全组拒绝所有入站流量并允许所有出站流量</strong></p>
-<p>数据包通过ACL的检查，进入子网后，系统必须评估其对子网内的资源（例如 Amazon EC2 实例）拥有的权限。</p>
-<p>检查数据包对 Amazon EC2 实例拥有的权限的 VPC 组件是<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html"><strong>安全组</strong>(opens in a new tab)</a>。</p>
-<h3 id="有状态数据包筛选"><strong>有状态数据包筛选</strong></h3>
-<p><strong>安全组是有状态的，当该请求的数据包响应返回实例时，安全组会记得之前的请求。安全组会允许响应进入，而不考虑入站安全组规则。</strong></p>
-<figure>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/5LnGhHly44ryOBL7_Af9jhjrWuxa0PHfm.png" srcset="/img/loading.gif" lazyload alt="门卫记得客人之前已获准进入。所以，他们不需要额外的批准就让客人离开。" /><figcaption aria-hidden="true">门卫记得客人之前已获准进入。所以，他们不需要额外的批准就让客人离开。</figcaption>
-</figure>
+<p>通过 Amazon EBS 快照为 EBS 卷创建递增备份。第一天，备份两个卷。第 2 天，增加一个新卷，并备份新卷。第 3 天，再增加两个卷，共有五个卷。仅备份两个新卷。</p>
 
                 
               </div>
@@ -397,8 +380,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Amazon ACL</div>
-      <div>https://leopol1d.github.io/2024/01/09/Amazon-ACL/</div>
+      <div>Amazon_Elastic_Block_Store</div>
+      <div>https://leopol1d.github.io/2024/01/09/Amazon-Elastic-Block-Store/</div>
     </div>
     <div class="license-meta">
       
@@ -442,18 +425,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/09/Amazon-Elastic-Block-Store/" title="Amazon_Elastic_Block_Store">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Amazon_Elastic_Block_Store</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/09/Amazon-Network/" title="Amazon Network">
-                        <span class="hidden-mobile">Amazon Network</span>
+                      <a href="/2024/01/09/Amazon-ACL/" title="Amazon ACL">
+                        <span class="hidden-mobile">Amazon ACL</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
