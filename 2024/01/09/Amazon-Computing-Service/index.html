@@ -16,29 +16,29 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Amazon EC2 Auto Scaling 介绍 利用 Amazon EC2 Auto Scaling自动添加或删除 Amazon EC2 实例，以响应不断变化的应用程序需求。根据需要自动缩减和扩展实例，能够保持更好的应用程序可用性。 EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似   拓展方案：动态拓展和预测性拓展">
+    <meta name="description" content="无服务器计算 无法访问底层基础设备，运维工作交给服务提供者(AWS)解决 “无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。 无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。 AWS 的无服务器计算服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Amazon EC2 Auto Scaling">
-<meta property="og:url" content="https://leopol1d.github.io/2024/01/09/AWS-Cloud-Practitioner-Essentials/index.html">
+<meta property="og:title" content="Amazon Computing Service">
+<meta property="og:url" content="https://leopol1d.github.io/2024/01/09/Amazon-Computing-Service/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="Amazon EC2 Auto Scaling 介绍 利用 Amazon EC2 Auto Scaling自动添加或删除 Amazon EC2 实例，以响应不断变化的应用程序需求。根据需要自动缩减和扩展实例，能够保持更好的应用程序可用性。 EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似   拓展方案：动态拓展和预测性拓展">
+<meta property="og:description" content="无服务器计算 无法访问底层基础设备，运维工作交给服务提供者(AWS)解决 “无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。 无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。 AWS 的无服务器计算服务">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143130508.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143759290.png">
-<meta property="article:published_time" content="2024-01-09T06:27:50.000Z">
-<meta property="article:modified_time" content="2024-01-09T06:40:57.726Z">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109145955273.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109150049431.png">
+<meta property="article:published_time" content="2024-01-09T06:57:02.000Z">
+<meta property="article:modified_time" content="2024-01-09T07:04:07.071Z">
 <meta property="article:author" content="Leopold">
 <meta property="article:tag" content="Cloud Computing">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="AWS Cloud Practitioner Essentials">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143130508.png">
+<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109145955273.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Amazon EC2 Auto Scaling - Leopold&#39;s Blog</title>
+  <title>Amazon Computing Service - Leopold&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Amazon EC2 Auto Scaling"></span>
+            <span id="subtitle" data-typed-text="Amazon Computing Service"></span>
           
         </div>
 
@@ -227,7 +227,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-09 14:27" pubdate>
+        <time datetime="2024-01-09 14:57" pubdate>
           2024年1月9日 下午
         </time>
       </span>
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          477 字
+          1.1k 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          4 分钟
+          9 分钟
         
       </span>
     
@@ -301,27 +301,35 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Amazon EC2 Auto Scaling</h1>
+            <h1 style="display: none">Amazon Computing Service</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="amazon-ec2-auto-scaling">Amazon EC2 Auto Scaling</h1>
-<h2 id="介绍">介绍</h2>
-<p>利用 <strong>Amazon EC2 Auto Scaling</strong>自动添加或删除 Amazon EC2 实例，以响应不断变化的应用程序需求。根据需要<strong>自动缩减</strong>和<strong>扩展</strong>实例，能够保持更好的应用程序可用性。</p>
-<p><strong>EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似 </strong></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143130508.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="拓展方案动态拓展和预测性拓展">拓展方案：动态拓展和预测性拓展</h2>
-<ol type="1">
-<li><em>动态扩展</em>可以响应不断变化的需求</li>
-<li><em>预测性扩展</em>根据预测的需求自动安排合适数量的 Amazon EC2 实例</li>
-</ol>
-<p>预测性拓展使用场景：业务量根据时间(比如限时活动)或者季节有比较大的浮动</p>
-<p><strong>建议可以结合使用动态扩展和预测性扩展</strong></p>
-<h2 id="示例">示例</h2>
-<p>在云中，计算能力是一种编程资源，因此可以采取更灵活的方法来解决扩展问题。通过向应用程序添加 Amazon EC2 Auto Scaling 功能，可以在需要时向应用程序添加新实例，并在不再需要这些实例时终止它们。</p>
-<p>假设在 Amazon EC2 实例上启动一个应用程序。在配置 Auto Scaling 组的大小时，您可以将 Amazon EC2 实例的最小数量设置为 1。这意味着在任何时候都必须至少运行一个 Amazon EC2 实例。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143759290.png" srcset="/img/loading.gif" lazyload /></p>
+                <h1 id="无服务器计算">无服务器计算</h1>
+<p><strong>无法访问底层基础设备，运维工作交给服务提供者(AWS)解决</strong></p>
+<p>“无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。</p>
+<p>无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。</p>
+<p>AWS 的无服务器计算服务是 <strong>AWS Lambda</strong>。</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109145955273.png" srcset="/img/loading.gif" lazyload alt=" " style="zoom:50%;" /></p>
+<p><strong>AWS Lambda的工作原理</strong></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109150049431.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
+<ul>
+<li>将代码上传到 Lambda。</li>
+<li>将代码设置为从事件源（例如 AWS 服务、移动应用程序或 HTTP 终端节点）触发。</li>
+<li>Lambda 仅在触发时才运行代码。</li>
+<li>只需为使用的计算时间付费。</li>
+</ul>
+<p>事件触发类似于Webhook(GitLab -&gt; Jenkins)</p>
+<h1 id="amazon-elastic-container-service-amazon-ecs"><strong>Amazon Elastic Container Service (Amazon ECS)</strong></h1>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/ecs/"><strong>Amazon Elastic Container Service (Amazon ECS)</strong>(opens in a new tab)</a> 是一种高度可扩展的高性能容器管理系统，可以在 AWS 上运行和扩展容器化应用程序。</p>
+<p>Amazon ECS 支持 Docker 容器。<a target="_blank" rel="noopener" href="https://www.docker.com/">Docker(opens in a new tab)</a> 是一种软件平台，让您能够快速构建、测试和部署应用程序。AWS 支持使用开源 Docker 社区版和基于订阅的 Docker 企业版。借助 Amazon ECS，您可以使用 API 调用来启动和停止支持 Docker 的应用程序。</p>
+<h1 id="amazon-elastic-kubernetes-service-amazon-eks"><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong></h1>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/eks/"><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong>(opens in a new tab)</a> 是一项完全托管式服务，可用于在 AWS 上运行 Kubernetes。</p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.io/">Kubernetes(opens in a new tab)</a> 是一款开源软件，让您能够大规模部署和管理容器化应用程序。Kubernetes 由一个大型志愿者社区维护，而 AWS 积极地与 Kubernetes 社区展开合作。随着 Kubernetes 应用程序的新功能特性发布，您可以轻松地将这些更新应用到由 Amazon EKS 管理的应用程序中。</p>
+<h1 id="aws-fargate"><strong>AWS Fargate</strong></h1>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/fargate/"><strong>AWS Fargate</strong>(opens in a new tab)</a> 是一种适用于容器的无服务器计算引擎。它可与 Amazon ECS 和 Amazon EKS 一起使用。</p>
+<p>使用 AWS Fargate 时，无需预置或管理服务器。AWS Fargate 为您管理服务器基础设施。您可以更加专注于应用程序的创新和开发，并且只需为运行容器所需的资源付费。</p>
 
                 
               </div>
@@ -378,8 +386,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Amazon EC2 Auto Scaling</div>
-      <div>https://leopol1d.github.io/2024/01/09/AWS-Cloud-Practitioner-Essentials/</div>
+      <div>Amazon Computing Service</div>
+      <div>https://leopol1d.github.io/2024/01/09/Amazon-Computing-Service/</div>
     </div>
     <div class="license-meta">
       
@@ -423,18 +431,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/09/Amazon-Computing-Service/" title="Amazon Computing Service">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Amazon Computing Service</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/18/gap-between-me-and-top-algorithm-experts/" title="gap between me and top algorithm experts">
-                        <span class="hidden-mobile">gap between me and top algorithm experts</span>
+                      <a href="/2024/01/09/AWS-Cloud-Practitioner-Essentials/" title="Amazon EC2 Auto Scaling">
+                        <span class="hidden-mobile">Amazon EC2 Auto Scaling</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
