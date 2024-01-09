@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。    EBS 与EC2实例分离的数据卷 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2 实例，附">
+    <meta name="description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。     EBS 将数据卷驱动器与 EC2 实例的主机分离开来 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Amazon_Elastic_Block_Store">
+<meta property="og:title" content="Amazon Elastic Block Store">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/09/Amazon-Elastic-Block-Store/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。    EBS 与EC2实例分离的数据卷 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2 实例，附">
+<meta property="og:description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。     EBS 将数据卷驱动器与 EC2 实例的主机分离开来 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon E">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1704805200/n2pMhjwzo2SeDZyTKriMhw/tincan/93f42038d9072368fd0cf2afde3dd2800eea8a89/assets/RLLyaLc0GgXKROiK_h-O5ogg1UmjRhboj.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/sbH5eEnSeKUBKSaw_yhRAUKAAiRxz-hnO.png">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/53Hh7hSTmJeGkw18_jH6D5ObLkeNaShEi.png">
 <meta property="article:published_time" content="2024-01-09T11:08:29.000Z">
-<meta property="article:modified_time" content="2024-01-09T11:24:03.907Z">
+<meta property="article:modified_time" content="2024-01-09T11:26:18.247Z">
 <meta property="article:author" content="Leopold">
 <meta property="article:tag" content="Cloud Computing">
 <meta property="article:tag" content="AWS">
@@ -41,7 +41,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Amazon_Elastic_Block_Store - Leopold&#39;s Blog</title>
+  <title>Amazon Elastic Block Store - Leopold&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +219,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Amazon_Elastic_Block_Store"></span>
+            <span id="subtitle" data-typed-text="Amazon Elastic Block Store"></span>
           
         </div>
 
@@ -242,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          371 字
+          376 字
         
       </span>
     
@@ -304,25 +304,23 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Amazon_Elastic_Block_Store</h1>
+            <h1 style="display: none">Amazon Elastic Block Store</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="实例存储"><strong>实例存储</strong></h1>
+                <h1 id="实例存储"><a class="markdownIt-Anchor" href="#实例存储"></a> <strong>实例存储</strong></h1>
 <p>使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。</p>
 <p><img src="https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1704805200/n2pMhjwzo2SeDZyTKriMhw/tincan/93f42038d9072368fd0cf2afde3dd2800eea8a89/assets/RLLyaLc0GgXKROiK_h-O5ogg1UmjRhboj.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 50%;" /> <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/sbH5eEnSeKUBKSaw_yhRAUKAAiRxz-hnO.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:50%;" /> <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cowUZ3pWtSrAW5OQ_Ti5LIHmLnzvBS-2N.png" srcset="/img/loading.gif" lazyload alt=" " style="zoom:50%;" /></p>
-<h1 id="ebs">EBS</h1>
-<p><strong>与EC2实例分离的数据卷</strong></p>
+<h1 id="ebs"><a class="markdownIt-Anchor" href="#ebs"></a> EBS</h1>
+<p><strong>将数据卷驱动器与 EC2 实例的主机分离开来</strong></p>
 <p><a target="_blank" rel="noopener" href="https://aws.amazon.com/ebs"><strong>Amazon Elastic Block Store (Amazon EBS)</strong>(opens in a new tab)</a> 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2 实例，附加的 EBS 卷上的所有数据仍然可用。</p>
 <p>创建 EBS 卷后，您可以将它附加到 Amazon EC2 实例。</p>
 <p>EBS 卷用于存储需要持久保存的数据，因此备份数据非常重要。您可以通过创建 Amazon EBS 快照为 EBS 卷创建递增备份。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png" srcset="/img/loading.gif" lazyload alt="当 Amazon EC2 实例终止时，附加的 EBS 卷上的所有数据仍然可用。" style="zoom:50%;" /></p>
-<h1 id="amazon-ebs-快照"><strong>Amazon EBS 快照</strong></h1>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png" srcset="/img/loading.gif" lazyload alt="当 Amazon EC2 实例终止时，附加的 EBS 卷上的所有数据仍然可用。" style="zoom:50%;" />  
+<h1 id="amazon-ebs-快照"><a class="markdownIt-Anchor" href="#amazon-ebs-快照"></a> <strong>Amazon EBS 快照</strong></h1>
 <p><strong>增量备份</strong></p>
-<figure>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/53Hh7hSTmJeGkw18_jH6D5ObLkeNaShEi.png" srcset="/img/loading.gif" lazyload alt="img" /><figcaption aria-hidden="true">img</figcaption>
-</figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/53Hh7hSTmJeGkw18_jH6D5ObLkeNaShEi.png" srcset="/img/loading.gif" lazyload alt="img" /></p>
 <p>通过 Amazon EBS 快照为 EBS 卷创建递增备份。第一天，备份两个卷。第 2 天，增加一个新卷，并备份新卷。第 3 天，再增加两个卷，共有五个卷。仅备份两个新卷。</p>
 
                 
@@ -380,7 +378,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Amazon_Elastic_Block_Store</div>
+      <div>Amazon Elastic Block Store</div>
       <div>https://leopol1d.github.io/2024/01/09/Amazon-Elastic-Block-Store/</div>
     </div>
     <div class="license-meta">
