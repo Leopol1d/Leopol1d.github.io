@@ -4,11 +4,46 @@
   
   
   <entry>
+    <title>Amazon infrastructure High Availability</title>
+    <link href="/2024/01/09/Amazon-infrastructure-High-Availability/"/>
+    <url>/2024/01/09/Amazon-infrastructure-High-Availability/</url>
+    
+    <content type="html"><![CDATA[<h1 id="可用区">可用区</h1><p><strong>最好在一个区域中的两个可用区以冗余方式部署基础设施</strong></p><p><strong>可用区是一个区域内的单个数据中心或一组数据中心</strong>。可用区彼此相距数十英里(<strong>光信号毫秒级传输</strong>)。这个距离足够近，可以在可用区之间实现低延迟（请求内容与接收内容之间的时间）。但是，如果区域内的某个部分发生灾难，这个距离又足够远，可以降低多个可用区受到影响的几率。</p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109152954520.png" /></p><h1 id="可用区发生故障">可用区发生故障</h1><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109153030540.png" /></p><h1 id="边缘站点">边缘站点</h1><p><strong>边缘站点是一个站点，Amazon CloudFront 使用它将缓存的内容副本存储在更靠近客户的位置，以便加快分发速度。</strong></p><p>CDN(Content Distribution Network内容分发网络)</p><p><a href="https://aws.amazon.com/cloudfront/">Amazon CloudFront</a> 是一种内容分发网络（CDN）服务，旨在获得优异性能、安全性和开发人员便利性。可以使用 Amazon CloudFront 执行以下任务：</p><ul><li>借助自动网络映射和智能路由，通过 450 多个分散在全球各地的入网点（PoP）交付数据。</li><li>通过流量加密和访问控制提高安全性，并使用 AWS Shield Standard 防御分布式拒绝服务（DDoS）攻击，无需额外费用。</li><li>使用无服务器计算功能自定义您在 AWS 网络边缘运行的代码，以平衡成本、性能和安全性。</li><li>自动扩展，以高传输速率大规模分发软件、游戏补丁和 IoT 更新内容。</li></ul><h2 id="示例">示例</h2><ol type="1"><li>假设公司的数据存储在巴西，而有客户居住在中国。要向这些客户提供内容，不必将所有内容移动到其中一个中国区域。</li><li>可以在靠近中国客户的边缘站点本地缓存一份副本，而不是要求客户从巴西获取数据。</li><li>当中国客户请求某个文件时，Amazon CloudFront 会从边缘站点的缓存中检索该文件，然后分发给客户。该文件来自中国附近的边缘站点而不是巴西的原始源，因此可以更快地将其分发给客户。</li></ol><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109154149496.png" /></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AWS</category>
+      
+      <category>AWS Cloud Practitioner Essentials</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Cloud Computing</tag>
+      
+      <tag>AWS</tag>
+      
+      <tag>AWS Cloud Practitioner Essentials</tag>
+      
+      <tag>High Availability</tag>
+      
+      <tag>Disaster Tolerance</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Amazon Computing Service</title>
     <link href="/2024/01/09/Amazon-Computing-Service/"/>
     <url>/2024/01/09/Amazon-Computing-Service/</url>
     
-    <content type="html"><![CDATA[<h1 id="无服务器计算">无服务器计算</h1><p><strong>无法访问底层基础设备，运维工作交给服务提供者(AWS)解决</strong></p><p>“无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。</p><p>无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。</p><p>AWS 的无服务器计算服务是 <strong>AWS Lambda</strong>。</p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109145955273.png" alt=" " style="zoom:50%;" /></p><p><strong>AWS Lambda的工作原理</strong></p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109150049431.png" style="zoom:50%;" /></p><ul><li>将代码上传到 Lambda。</li><li>将代码设置为从事件源（例如 AWS 服务、移动应用程序或 HTTP 终端节点）触发。</li><li>Lambda 仅在触发时才运行代码。</li><li>只需为使用的计算时间付费。</li></ul><p>事件触发类似于Webhook(GitLab -&gt; Jenkins)</p><h1 id="amazon-elastic-container-service-amazon-ecs"><strong>Amazon Elastic Container Service (Amazon ECS)</strong></h1><p><a href="https://aws.amazon.com/ecs/"><strong>Amazon Elastic Container Service (Amazon ECS)</strong>(opens in a new tab)</a> 是一种高度可扩展的高性能容器管理系统，可以在 AWS 上运行和扩展容器化应用程序。</p><p>Amazon ECS 支持 Docker 容器。<a href="https://www.docker.com/">Docker(opens in a new tab)</a> 是一种软件平台，让您能够快速构建、测试和部署应用程序。AWS 支持使用开源 Docker 社区版和基于订阅的 Docker 企业版。借助 Amazon ECS，您可以使用 API 调用来启动和停止支持 Docker 的应用程序。</p><h1 id="amazon-elastic-kubernetes-service-amazon-eks"><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong></h1><p><a href="https://aws.amazon.com/eks/"><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong>(opens in a new tab)</a> 是一项完全托管式服务，可用于在 AWS 上运行 Kubernetes。</p><p><a href="https://kubernetes.io/">Kubernetes(opens in a new tab)</a> 是一款开源软件，让您能够大规模部署和管理容器化应用程序。Kubernetes 由一个大型志愿者社区维护，而 AWS 积极地与 Kubernetes 社区展开合作。随着 Kubernetes 应用程序的新功能特性发布，您可以轻松地将这些更新应用到由 Amazon EKS 管理的应用程序中。</p><h1 id="aws-fargate"><strong>AWS Fargate</strong></h1><p><a href="https://aws.amazon.com/fargate/"><strong>AWS Fargate</strong>(opens in a new tab)</a> 是一种适用于容器的无服务器计算引擎。它可与 Amazon ECS 和 Amazon EKS 一起使用。</p><p>使用 AWS Fargate 时，无需预置或管理服务器。AWS Fargate 为您管理服务器基础设施。您可以更加专注于应用程序的创新和开发，并且只需为运行容器所需的资源付费。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="无服务器计算">无服务器计算</h1><p><strong>无法访问底层基础设备，运维工作交给服务提供者(AWS)解决</strong></p><p>“无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。</p><p>无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。</p><p>AWS 的无服务器计算服务是 <strong>AWS Lambda</strong>。</p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109145955273.png" alt=" " style="zoom:50%;" /></p><p><strong>AWS Lambda的工作原理</strong></p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109150049431.png" style="zoom:50%;" /></p><ul><li>将代码上传到 Lambda。</li><li>将代码设置为从事件源（例如 AWS 服务、移动应用程序或 HTTP 终端节点）触发。</li><li>Lambda 仅在触发时才运行代码。</li><li>只需为使用的计算时间付费。</li></ul><p>事件触发类似于Webhook(GitLab -&gt; Jenkins)</p><h1 id="amazon-elastic-container-service-amazon-ecs"><strong>Amazon Elastic Container Service (Amazon ECS)</strong></h1><p><a href="https://aws.amazon.com/ecs/"><strong>Amazon Elastic Container Service (Amazon ECS)</strong>(opens in a new tab)</a> 是一种高度可扩展的高性能容器管理系统，可以在 AWS 上运行和扩展容器化应用程序。</p><p>Amazon ECS 支持 Docker 容器。<a href="https://www.docker.com/">Docker(opens in a new tab)</a> 是一种软件平台，让您能够快速构建、测试和部署应用程序。AWS 支持使用开源 Docker 社区版和基于订阅的 Docker 企业版。借助 Amazon ECS，您可以使用 API 调用来启动和停止支持 Docker 的应用程序。</p><p><strong>docker：把应用程序、依赖、环境配置打包成一个镜像，通过容器与操作系统交互，通过这种方式，我们可以将软件环境标准化</strong></p><h1 id="amazon-elastic-kubernetes-service-amazon-eks"><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong></h1><p><a href="https://aws.amazon.com/eks/"><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong>(opens in a new tab)</a> 是一项完全托管式服务，可用于在 AWS 上运行 Kubernetes。</p><p><a href="https://kubernetes.io/">Kubernetes(opens in a new tab)</a> 是一款开源软件，让您能够大规模部署和管理容器化应用程序。Kubernetes 由一个大型志愿者社区维护，而 AWS 积极地与 Kubernetes 社区展开合作。随着 Kubernetes 应用程序的新功能特性发布，您可以轻松地将这些更新应用到由 Amazon EKS 管理的应用程序中。</p><h1 id="aws-fargate"><strong>AWS Fargate</strong></h1><p><a href="https://aws.amazon.com/fargate/"><strong>AWS Fargate</strong>(opens in a new tab)</a> 是一种适用于容器的无服务器计算引擎。它可与 Amazon ECS 和 Amazon EKS 一起使用。</p><p>使用 AWS Fargate 时，无需预置或管理服务器。AWS Fargate 为您管理服务器基础设施。您可以更加专注于应用程序的创新和开发，并且只需为运行容器所需的资源付费。</p>]]></content>
     
     
     <categories>
