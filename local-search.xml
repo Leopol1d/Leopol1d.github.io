@@ -4,7 +4,38 @@
   
   
   <entry>
-    <title>Amazon_Network</title>
+    <title>Amazon ACL</title>
+    <link href="/2024/01/09/Amazon-ACL/"/>
+    <url>/2024/01/09/Amazon-ACL/</url>
+    
+    <content type="html"><![CDATA[<h2 id="aws网络架构">AWS网络架构</h2><figure><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/othqbB2t5qn16Bf2_6uHapBdlIqJB9HHw.png" alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><h2 id="子网"><strong>子网</strong></h2><p>子网是 VPC 的一部分，可以在其中根据安全性或操作需求对资源进行分组。子网可以是<strong>公有子网</strong>，也可以是<strong>私有子网</strong>。</p><figure><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/CI08psM6PPXbaizT_UyZogMAi8wUBW4qK.png" alt="VPC 内的公有子网中包含三个 Amazon EC2 实例，私有子网中包含三个数据库。" /><figcaption aria-hidden="true">VPC 内的公有子网中包含三个 Amazon EC2 实例，私有子网中包含三个数据库。</figcaption></figure><p><strong>公有子网</strong>包含需要能够公开访问的资源，例如在线商店的网站。</p><p><strong>私有子网</strong>包含只能通过私有网络访问的资源，例如包含客户个人信息和订单历史记录的数据库。</p><p>在 VPC 中，子网可以相互通信。例如，可能有一个应用程序，该应用程序包含位于公有子网中的 Amazon EC2 实例，该实例与位于私有子网中的数据库通信。</p><h2 id="access-control-list">Access Control List</h2><p>网络 ACL 是一种虚拟防火墙，用于在子网级别控制入站和出站流量。</p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/tEVlBqjsA1DbcxXn_rbsxOI7MyhaGUf44.png" alt="网络访问控制列表位于公有子网前端。" style="zoom:50%;" /></p><p>每个 AWS 账户都包含一个默认网络 ACL。配置 VPC 时，您可以使用账户的默认网络 ACL，也可以创建自定义网络 ACL。</p><p>默认情况下，默认网络 ACL 允许所有入站和出站流量，但可以通过添加自己的规则对其进行修改。自定义网络 ACL 会拒绝所有入站和出站流量，除非添加规则，指定允许哪些流量。此外，所有网络 ACL 都具有显式拒绝规则。该规则可以确保拒绝不符合列表中的任何其他规则的数据包。</p><h3 id="无状态数据包筛选"><strong>无状态数据包筛选</strong></h3><p>ACL是无状态的，无论数据包是入站还是出站，都会通过进行检查</p><figure><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/VIlb3wnPfxYTfCk5_exiXOZTZhUVTFxL_.png" alt="护照检查人员检查名单，确认旅客可以出入境。" /><figcaption aria-hidden="true">护照检查人员检查名单，确认旅客可以出入境。</figcaption></figure><h2 id="安全组">安全组</h2><p><strong>安全组是一个虚拟防火墙，可控制 Amazon EC2 实例的入站和出站流量。</strong></p><p>数据包通过ACL的检查，进入子网后，系统必须评估其对子网内的资源（例如 Amazon EC2 实例）拥有的权限。</p><p>检查数据包对 Amazon EC2 实例拥有的权限的 VPC 组件是<a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html"><strong>安全组</strong>(opens in a new tab)</a>。</p><h3 id="有状态数据包筛选"><strong>有状态数据包筛选</strong></h3><p><strong>安全组是有状态的，当该请求的数据包响应返回实例时，安全组会记得之前的请求。安全组会允许响应进入，而不考虑入站安全组规则。</strong></p><figure><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/5LnGhHly44ryOBL7_Af9jhjrWuxa0PHfm.png" alt="门卫记得客人之前已获准进入。所以，他们不需要额外的批准就让客人离开。" /><figcaption aria-hidden="true">门卫记得客人之前已获准进入。所以，他们不需要额外的批准就让客人离开。</figcaption></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>AWS</category>
+      
+      <category>AWS Cloud Practitioner Essentials</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Cloud Computing</tag>
+      
+      <tag>AWS</tag>
+      
+      <tag>AWS Cloud Practitioner Essentials</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Amazon Network</title>
     <link href="/2024/01/09/Amazon-Network/"/>
     <url>/2024/01/09/Amazon-Network/</url>
     
