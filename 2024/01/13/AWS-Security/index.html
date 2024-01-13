@@ -28,8 +28,14 @@
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113111147653.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113113218966.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113115920969.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113162631763.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113164259011.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113164908713.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170223868.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170456737.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170854827.png">
 <meta property="article:published_time" content="2024-01-13T02:54:06.000Z">
-<meta property="article:modified_time" content="2024-01-13T06:30:46.245Z">
+<meta property="article:modified_time" content="2024-01-13T09:16:37.146Z">
 <meta property="article:author" content="Leopold">
 <meta property="article:tag" content="Cloud Computing">
 <meta property="article:tag" content="AWS">
@@ -253,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.8k 字
         
       </span>
     
@@ -264,7 +270,7 @@
         
         
         
-          11 分钟
+          15 分钟
         
       </span>
     
@@ -378,14 +384,50 @@
 <li>FIPS 140-2 Level 3 compliance</li>
 </ul>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113115920969.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="aws-certificate-manager">AWS Certificate Manager</h1>
+<h1 id="acm---aws-certificate-manager">ACM - AWS Certificate Manager</h1>
+<ul>
+<li>管理、部署SSL/TLS证书</li>
+<li><strong>in-flight encryption</strong> - 传输过程中加密</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113162631763.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
 <h1 id="secrets-manager">Secrets Manager</h1>
+<ul>
+<li>Secrets Manager管理、修改(定时)secret</li>
+<li>secrets被KMS加密</li>
+<li>与RDS集成</li>
+</ul>
 <h1 id="artifact">Artifact</h1>
+<p>下载、查看compliance, agreement</p>
 <h1 id="guardduty">GuardDuty</h1>
+<ul>
+<li>使用基于机器学习的算法来保护AWS账号</li>
+<li>输入数据是一系列logs</li>
+<li>最佳实践是配合<code>EventBridge</code>使用，当检测出异常，通过<code>EventBridge</code>发送消息给<code>Lambda</code>或者<code>SNS</code></li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113164259011.png" srcset="/img/loading.gif" lazyload /></p>
 <h1 id="inspector">Inspector</h1>
+<ul>
+<li>主要用于检测正在运行实例的<strong>脆弱性</strong>、<strong>网络可达性</strong></li>
+<li>在将镜像推送至ECR之前，先通过Inspector检查(绿：没问题，黄：脆弱，红：严重错误)</li>
+<li>检查<code>Lambda Function</code>中<strong>代码与依赖的脆弱性</strong></li>
+<li>将结果发送给<code>Security Hub</code>或者<code>EventBridge</code></li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113164908713.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
 <h1 id="config">Config</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170223868.png" srcset="/img/loading.gif" lazyload /></p>
 <h1 id="macie">Macie</h1>
+<ul>
+<li>基于机器学习与模式识别来发现并保护AWS中的<strong>敏感数据</strong></li>
+<li><code>Macie</code>会检测敏感数据，比如PII(Personally identifiable Information)，通过<code>EventBridge</code>告警</li>
+<li>pronuciation:Macy</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170456737.png" srcset="/img/loading.gif" lazyload /></p>
 <h1 id="security-hub">Security Hub</h1>
+<ul>
+<li>Security Dashboard</li>
+<li>在<strong>多个 AWS 账户</strong>中集中自动进行安全检查</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170854827.png" srcset="/img/loading.gif" lazyload /></p>
 
                 
               </div>
