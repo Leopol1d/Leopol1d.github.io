@@ -1,0 +1,879 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cat-64.png">
+  <link rel="icon" href="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cat-96.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Leopold">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DDoS Protection: WAF &amp; Shield What is DDOS? akamai DDOS 分布式拒绝服务攻击 (DDoS) 是一种网络攻击。在此类攻击中，攻击者通过发送大量恶意流量造成网站、服务器或网络资源不堪重负，从而导致目标无法工作或崩溃，拒绝向合法用户提供服务，使得合法流量无法到达其目的地。 概括来说，DDoS 或 DoS 攻击就如同成百上千个虚假拼车请">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS Security">
+<meta property="og:url" content="https://leopol1d.github.io/2024/01/13/AWS-Security/index.html">
+<meta property="og:site_name" content="Leopold&#39;s Blog">
+<meta property="og:description" content="DDoS Protection: WAF &amp; Shield What is DDOS? akamai DDOS 分布式拒绝服务攻击 (DDoS) 是一种网络攻击。在此类攻击中，攻击者通过发送大量恶意流量造成网站、服务器或网络资源不堪重负，从而导致目标无法工作或崩溃，拒绝向合法用户提供服务，使得合法流量无法到达其目的地。 概括来说，DDoS 或 DoS 攻击就如同成百上千个虚假拼车请">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.akamai.com/site/zh/images/callout/2022/traffic-metaphor-ddos.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113110007358.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113111147653.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113113218966.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113115920969.png">
+<meta property="article:published_time" content="2024-01-13T02:54:06.000Z">
+<meta property="article:modified_time" content="2024-01-13T06:30:46.245Z">
+<meta property="article:author" content="Leopold">
+<meta property="article:tag" content="Cloud Computing">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="Ultimate AWS Certified Cloud Practitioner CLF-C02">
+<meta property="article:tag" content="DDoS">
+<meta property="article:tag" content="WAF">
+<meta property="article:tag" content="Shield">
+<meta property="article:tag" content="Network Firewall">
+<meta property="article:tag" content="Penetration Testing">
+<meta property="article:tag" content="CloudHSM">
+<meta property="article:tag" content="Artifact">
+<meta property="article:tag" content="GuardDuty">
+<meta property="article:tag" content="Inspector">
+<meta property="article:tag" content="Macie">
+<meta property="article:tag" content="Security Hub">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.akamai.com/site/zh/images/callout/2022/traffic-metaphor-ddos.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>AWS Security - Leopold&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"leopol1d.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leopold&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AWS Security"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 10:54" pubdate>
+          2024年1月13日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AWS Security</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="ddos-protection-waf-shield">DDoS Protection: WAF &amp; Shield</h1>
+<h2 id="what-is-ddos">What is DDOS?</h2>
+<p><a target="_blank" rel="noopener" href="https://www.akamai.com/glossary/what-is-ddos">akamai DDOS</a></p>
+<p>分布式拒绝服务攻击 (DDoS) 是一种网络攻击。在此类攻击中，攻击者通过发送大量恶意流量造成网站、服务器或网络资源不堪重负，从而导致目标无法工作或崩溃，拒绝向合法用户提供服务，使得合法流量无法到达其目的地。</p>
+<p>概括来说，DDoS 或 DoS 攻击就如同成百上千个虚假拼车请求所导致的意外交通堵塞。这些请求在拼车服务看来似乎合法，因此服务会调度驾驶员接人，从而不可避免地使城市街道拥堵。这会导致正常的合法流量无法到达目的地。</p>
+<figure>
+<img src="https://www.akamai.com/site/zh/images/callout/2022/traffic-metaphor-ddos.png" srcset="/img/loading.gif" lazyload alt="DDoS 和 DoS 攻击都会造成类似流量堵塞的效果。" /><figcaption aria-hidden="true">DDoS 和 DoS 攻击都会造成类似流量堵塞的效果。</figcaption>
+</figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113110007358.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="solution-architect">Solution Architect</h2>
+<p><a target="_blank" rel="noopener" href="https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf">AWS Best Practices for DDOS Resiliency</a></p>
+<ul>
+<li>AWS Shield：保护网络层和应用层</li>
+<li>AWS WAF(Web Application Firewall)：<strong>过滤基于规则的特殊请求</strong></li>
+<li>CloudFront(AWS CDN) and Route 53(AWS DNS)：基于边缘网络，结合AWS Shield，在边缘提供攻击缓解</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113111147653.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="waf---web-application-firewall">WAF - Web Application Firewall</h1>
+<ul>
+<li>保护网络应用程序免受常见网络攻击(layer 7)</li>
+<li>7层指HTTP / HTTPS (vs 4层 TCP)</li>
+<li>可以部署在<code>Application Load Balancer</code>, <code>API Gateway</code>,<code>CloudFront</code></li>
+<li>定义<code>Web ACL</code>(Web Access Control List)
+<ul>
+<li>规则可以包含<strong>IP地址</strong>，HTTP headers, HTTP body, URI strings</li>
+<li>Rate-based rules(每个用户的请求有5秒间距) for DDos protection</li>
+<li>防止<code>SQL injection</code>，<code>Cross-Site Scripting</code></li>
+</ul></li>
+</ul>
+<h1 id="network-firewall-vpc-level">Network Firewall-VPC level</h1>
+<ul>
+<li>保护整个<code>VPC</code>(Virtual Private Cloud)： layer 3 ~ layer 7</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113113218966.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="firewall-manager">Firewall Manager</h1>
+<ul>
+<li>管理<code>VPC Security Group</code></li>
+<li>管理 <code>WAF rules</code></li>
+<li>管理<code>Shield Advanced</code>(Shield的高级版本，每月3000$)</li>
+<li>管理<code>Network Firewall</code></li>
+</ul>
+<h1 id="penetration-testing">Penetration Testing</h1>
+<p><strong>渗透测试</strong>：攻击自己的基础设施来确保安全性(不能使用<code>DDos</code>, <code>Port flooding</code>, <code>Protocol flooding</code>, <code>Request flooding</code>)</p>
+<h1 id="encryption-with-kms-cloudhsm">Encryption with KMS &amp; CloudHSM</h1>
+<h2 id="data-at-rest-vs.-data-in-transit">Data at rest vs. Data in transit</h2>
+<p>在设备中的静态数据与传输中的数据都需要被加密！</p>
+<h2 id="kms---key-management-service">KMS - Key Management Service</h2>
+<ul>
+<li>与encryption相关的AWS服务，大概率与KMS相关</li>
+<li>AWS为用户管理加密的key</li>
+</ul>
+<h2 id="cloudhsm---cloud-hardware-security-management">CloudHSM - Cloud Hardware Security Management</h2>
+<ul>
+<li>AWS提供专用加密硬件</li>
+<li><strong>完全由自己管理加密的key</strong>(硬件由AWS管理)</li>
+<li>FIPS 140-2 Level 3 compliance</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113115920969.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="aws-certificate-manager">AWS Certificate Manager</h1>
+<h1 id="secrets-manager">Secrets Manager</h1>
+<h1 id="artifact">Artifact</h1>
+<h1 id="guardduty">GuardDuty</h1>
+<h1 id="inspector">Inspector</h1>
+<h1 id="config">Config</h1>
+<h1 id="macie">Macie</h1>
+<h1 id="security-hub">Security Hub</h1>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AWS/" class="category-chain-item">AWS</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/AWS/Ultimate-AWS-Certified-Cloud-Practitioner-CLF-C/" class="category-chain-item">Ultimate AWS Certified Cloud Practitioner CLF-C</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Cloud-Computing/">#Cloud Computing</a>
+      
+        <a href="/tags/AWS/">#AWS</a>
+      
+        <a href="/tags/Ultimate-AWS-Certified-Cloud-Practitioner-CLF-C02/">#Ultimate AWS Certified Cloud Practitioner CLF-C02</a>
+      
+        <a href="/tags/DDoS/">#DDoS</a>
+      
+        <a href="/tags/WAF/">#WAF</a>
+      
+        <a href="/tags/Shield/">#Shield</a>
+      
+        <a href="/tags/Network-Firewall/">#Network Firewall</a>
+      
+        <a href="/tags/Penetration-Testing/">#Penetration Testing</a>
+      
+        <a href="/tags/CloudHSM/">#CloudHSM</a>
+      
+        <a href="/tags/Artifact/">#Artifact</a>
+      
+        <a href="/tags/GuardDuty/">#GuardDuty</a>
+      
+        <a href="/tags/Inspector/">#Inspector</a>
+      
+        <a href="/tags/Macie/">#Macie</a>
+      
+        <a href="/tags/Security-Hub/">#Security Hub</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AWS Security</div>
+      <div>https://leopol1d.github.io/2024/01/13/AWS-Security/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Leopold</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/12/AWS-Solutions-Architecture-of-DBS/" title="AWS Solutions Architecture of DBS">
+                        <span class="hidden-mobile">AWS Solutions Architecture of DBS</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"comment-plugin.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
