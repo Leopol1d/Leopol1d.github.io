@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="贪心是一种思想，使用贪心思想解决的问题，如果能被总结成具体某一类问题，那么就有具体的名字，比如单源最短路问题，最小生成树问题，拓扑排序问题，如果不能被总结出来，那它就叫贪心问题哈哈。贪心问题经常需要借助排序来实现。                         快速排序             取一个随机值作为下标，与最后一个位置交换 small始终指向最">
+    <meta name="description" content="贪心是一种思想，使用贪心思想解决的问题，如果能被总结成具体某一类问题，那么就有具体的名字，比如单源最短路问题，最小生成树问题，拓扑排序问题，如果不能被总结出来，那它就叫贪心问题哈哈。贪心问题经常需要借助排序来实现。                         快速排序              取一个随机值作为下标，与最后一个位置交换   small始终指向最后一个小">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sort">
 <meta property="og:url" content="https://leopol1d.github.io/2023/06/12/sort/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="贪心是一种思想，使用贪心思想解决的问题，如果能被总结成具体某一类问题，那么就有具体的名字，比如单源最短路问题，最小生成树问题，拓扑排序问题，如果不能被总结出来，那它就叫贪心问题哈哈。贪心问题经常需要借助排序来实现。                         快速排序             取一个随机值作为下标，与最后一个位置交换 small始终指向最">
+<meta property="og:description" content="贪心是一种思想，使用贪心思想解决的问题，如果能被总结成具体某一类问题，那么就有具体的名字，比如单源最短路问题，最小生成树问题，拓扑排序问题，如果不能被总结出来，那它就叫贪心问题哈哈。贪心问题经常需要借助排序来实现。                         快速排序              取一个随机值作为下标，与最后一个位置交换   small始终指向最后一个小">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613093629951.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613093658576.png">
@@ -310,62 +310,94 @@
               <div class="markdown-body">
                 
                 <div class="note note-success">
-            <p>贪心是一种思想，使用贪心思想解决的问题，如果能被总结成具体某一类问题，那么就有具体的名字，比如<code>单源最短路问题</code>，<code>最小生成树问题</code>，<code>拓扑排序问题</code>，如果不能被总结出来，那它就叫贪心问题哈哈。</p><p>贪心问题经常需要借助排序来实现。</p>
+            <p>贪心是一种思想，使用贪心思想解决的问题，如果能被总结成具体某一类问题，那么就有具体的名字，比如<code>单源最短路问题</code>，<code>最小生成树问题</code>，<code>拓扑排序问题</code>，如果不能被总结出来，那它就叫贪心问题哈哈。</p><p>贪心问题经常需要借助排序来实现。</p>
           </div>
 <div class="note note-primary">
             <h2 id="快速排序">快速排序</h2>
           </div>
-<ol type="1">
-<li>取一个随机值作为下标，与最后一个位置交换</li>
-<li><strong>small始终指向最后一个小于pivot的下标</strong>，初始为start - 1</li>
-<li>从start开始遍历，不需要遍历最后一个数(特殊处理)</li>
-<li>当nums[i] &lt; nums[end]，将small前移，并且交换i与small</li>
-<li>退出循环后，将small前移，与最后一个位置的数(pivot)交换</li>
+<ol>
+<li class="lvl-3">
+<p>取一个随机值作为下标，与最后一个位置交换</p>
+</li>
+<li class="lvl-3">
+<p><strong>small始终指向最后一个小于pivot的下标</strong>，初始为start - 1</p>
+</li>
+<li class="lvl-3">
+<p>从start开始遍历，不需要遍历最后一个数(特殊处理)</p>
+</li>
+<li class="lvl-3">
+<p>当nums[i] &lt; nums[end]，将small前移，并且交换i与small</p>
+</li>
+<li class="lvl-3">
+<p>退出循环后，将small前移，与最后一个位置的数(pivot)交换</p>
+</li>
 </ol>
 <h4 id="代码">代码</h4>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> sort;<br><br><span class="hljs-keyword">import</span> java.util.Random;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] sortArray(<span class="hljs-type">int</span>[] nums) &#123;<br>        quickSort(nums, <span class="hljs-number">0</span>, nums.length - <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> nums;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>        <span class="hljs-keyword">if</span> (start &lt; end) &#123; <span class="hljs-comment">// 递归到子数组只有一个数字为止</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">pivot</span> <span class="hljs-operator">=</span> partition(nums, start, end);<br>            quickSort(nums, start, pivot - <span class="hljs-number">1</span>);<br>            quickSort(nums, pivot + <span class="hljs-number">1</span>, end);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">partition</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>().nextInt(end - start + <span class="hljs-number">1</span>) + start; <span class="hljs-comment">// nextInt左闭右开</span><br>        swap(nums, random, end);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">small</span> <span class="hljs-operator">=</span> start - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> start; i &lt; end; ++i)  <span class="hljs-comment">// end存放的是pivot，退出循环特殊处理</span><br>            <span class="hljs-keyword">if</span> (nums[i] &lt; nums[end])<br>                swap(nums, ++small, i);<br>        swap(nums, end, ++small);<br>        <span class="hljs-keyword">return</span> small;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> index1, <span class="hljs-type">int</span> index2)</span> &#123;<br>        <span class="hljs-keyword">if</span> (index1 == index2)<br>            <span class="hljs-keyword">return</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> nums[index1];<br>        nums[index1] = nums[index2];<br>        nums[index2] = temp;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">test</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">test</span>();<br>        <span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">8</span>,<span class="hljs-number">10</span>,<span class="hljs-number">34</span>,<span class="hljs-number">1</span>,<span class="hljs-number">544</span>,-<span class="hljs-number">13</span>&#125;;<br>        t.sortArray(arr);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x : arr)<br>            System.out.print(x + <span class="hljs-string">&quot; &quot;</span>);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 <div class="note note-success">
-            <h2 id="计数排序">计数排序</h2><p><strong>计数排序是一种线性时间的整数排序算法。如果数组的长度为<code>n</code>，整数范围(数组中最大整数与最小整数的差值)为<code>k</code>对于<code>k</code>远小于<code>n</code>的场景(如对某公司所有员工的年龄排序)，那么计数排序的时间复杂度优于其他基于比较的排序算法(如归并排序、快速排序)</strong>，</p>
+            <h2 id="计数排序">计数排序</h2><p><strong>计数排序是一种线性时间的整数排序算法。如果数组的长度为<code>n</code>，整数范围(数组中最大整数与最小整数的差值)为<code>k</code>对于<code>k</code>远小于<code>n</code>的场景(如对某公司所有员工的年龄排序)，那么计数排序的时间复杂度优于其他基于比较的排序算法(如归并排序、快速排序)</strong>，</p>
           </div>
 <p><strong>三次遍历！</strong></p>
-<ol type="1">
-<li>遍历原始数组<code>nums</code>，得出最大值<code>max</code>与最小值<code>min</code>，并创建大小为<code>max - min + 1</code>的<code>count</code>数组</li>
-<li>遍历<code>nums</code>数组，把对应整数<code>num</code>出现的次数记录在<code>count</code>数组的<code>count[num - min]</code>中</li>
-<li>令<code>num</code>从<code>min</code>遍历到<code>max</code>，将<code>num</code>顺序填入<code>nums</code>中(每个<code>num</code>有<code>count[num - min]</code>个)</li>
+<ol>
+<li class="lvl-3">
+<p>遍历原始数组<code>nums</code>，得出最大值<code>max</code>与最小值<code>min</code>，并创建大小为<code>max - min + 1</code>的<code>count</code>数组</p>
+</li>
+<li class="lvl-3">
+<p>遍历<code>nums</code>数组，把对应整数<code>num</code>出现的次数记录在<code>count</code>数组的<code>count[num - min]</code>中</p>
+</li>
+<li class="lvl-3">
+<p>令<code>num</code>从<code>min</code>遍历到<code>max</code>，将<code>num</code>顺序填入<code>nums</code>中(每个<code>num</code>有<code>count[num - min]</code>个)</p>
+</li>
 </ol>
-<h4 id="代码-1">代码</h4>
+<h4 id="代码-2">代码</h4>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] sortArray(<span class="hljs-type">int</span>[] nums) &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Integer.MAX_VALUE, max = Integer.MIN_VALUE;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums) &#123;<br>        min = Math.min(min, num);<br>        max = Math.max(max, num);<br>    &#125;<br>    <span class="hljs-type">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[max - min + <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums)<br>        ++count[num - min];<br>    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> min; num &lt;= max; ++num)<br>        <span class="hljs-keyword">while</span> (count[num - min]-- &gt; <span class="hljs-number">0</span>)<br>            nums[i++] = num;<br>    <span class="hljs-keyword">return</span> nums;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="剑指-offer-ii-074.-合并区间"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/SsGoHC/">剑指 Offer II 074. 合并区间</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613093629951.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="方法一射气球的思路">方法一：射气球的思路</h4>
-<ol type="1">
-<li><p>首先将数组按照左边界升序排序</p></li>
-<li><p>当intervals[i][1] &gt;= intervals[j][0]，那么这两个元素一定是要合并的，因为是intervals数组是按照左边界升序排序的，那么合并区间[a, b]的a一定是intervals[i][0]，将intervals[i][1]赋值为intervals[i][1]与intervals[j][1]的最大值</p></li>
-<li><p>当intervals[i][1] &lt; intervals[j][0]，那么这个两个区间是不重合的，先把上一个重合区间加入结果集，再把j赋值给i，进行下一轮循环</p></li>
-<li><p>当j == intervals.length - 1时候，</p>
-<ol type="1">
-<li>如果intervals[i][1] &gt;= intervals[j][0]，那么会将intervals[i][1]取intervals[i][1]与intervals[j][1]的最大值</li>
-<li>如果intervals[i][1] &lt; intervals[j][0]，那么会将之前的重合区间存入结果集，并将j赋值给i</li>
+<h2 id="剑指-Offer-II-074-合并区间"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/SsGoHC/">剑指 Offer II 074. 合并区间</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613093629951.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="方法一：射气球的思路">方法一：射气球的思路</h4>
+<ol>
+<li class="lvl-3">
+<p>首先将数组按照左边界升序排序</p>
+</li>
+<li class="lvl-3">
+<p>当intervals[i][1] &gt;= intervals[j][0]，那么这两个元素一定是要合并的，因为是intervals数组是按照左边界升序排序的，那么合并区间[a, b]的a一定是intervals[i][0]，将intervals[i][1]赋值为intervals[i][1]与intervals[j][1]的最大值</p>
+</li>
+<li class="lvl-3">
+<p>当intervals[i][1] &lt; intervals[j][0]，那么这个两个区间是不重合的，先把上一个重合区间加入结果集，再把j赋值给i，进行下一轮循环</p>
+</li>
+<li class="lvl-3">
+<p>当j == intervals.length - 1时候，</p>
+<ol>
+<li class="lvl-6">如果intervals[i][1] &gt;= intervals[j][0]，那么会将intervals[i][1]取intervals[i][1]与intervals[j][1]的最大值</li>
+<li class="lvl-6">如果intervals[i][1] &lt; intervals[j][0]，那么会将之前的重合区间存入结果集，并将j赋值给i</li>
 </ol>
-<p>所以出循环，只需要把intervals[i]加入结果集就好！</p></li>
+<p>所以出循环，只需要把intervals[i]加入结果集就好！</p>
+</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[][] merge(<span class="hljs-type">int</span>[][] intervals) &#123;<br>        Arrays.sort(intervals, (o1, o2) -&gt; Integer.compare(o1[<span class="hljs-number">0</span>], o2[<span class="hljs-number">0</span>]));<br>        List&lt;<span class="hljs-type">int</span>[]&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt; intervals.length; ++j) &#123;<br>            <span class="hljs-keyword">if</span> (intervals[i][<span class="hljs-number">1</span>] &gt;= intervals[j][<span class="hljs-number">0</span>])<br>                intervals[i][<span class="hljs-number">1</span>] = Math.max(intervals[i][<span class="hljs-number">1</span>], intervals[j][<span class="hljs-number">1</span>]);<br>            <span class="hljs-keyword">else</span> &#123;<br>                list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;intervals[i][<span class="hljs-number">0</span>], intervals[i][<span class="hljs-number">1</span>]&#125;);<br>                i = j;<br>            &#125;<br>        &#125;<br>        list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;intervals[i][<span class="hljs-number">0</span>], intervals[i][<span class="hljs-number">1</span>]&#125;);<br>        <span class="hljs-keyword">return</span> list.toArray(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[list.size()][]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613093658576.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
-<h2 id="剑指-offer-ii-075.-数组相对排序"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/0H97ZC/">剑指 Offer II 075. 数组相对排序</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613100232591.png" srcset="/img/loading.gif" lazyload /></p>
-<ol type="1">
-<li>数据范围是[0, 1000]，创建大小为1001的<code>count</code>数组</li>
-<li>统计<code>arr1</code>中出现整数的个数</li>
-<li>按照<code>arr2</code>整数出现的顺序填<code>arr1</code>数组</li>
-<li>从0到1000(升序)，把剩下的数组填入<code>arr1</code>数组</li>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613093658576.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> 
+<h2 id="剑指-Offer-II-075-数组相对排序"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/0H97ZC/">剑指 Offer II 075. 数组相对排序</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613100232591.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li class="lvl-3">
+<p>数据范围是[0, 1000]，创建大小为1001的<code>count</code>数组</p>
+</li>
+<li class="lvl-3">
+<p>统计<code>arr1</code>中出现整数的个数</p>
+</li>
+<li class="lvl-3">
+<p>按照<code>arr2</code>整数出现的顺序填<code>arr1</code>数组</p>
+</li>
+<li class="lvl-3">
+<p>从0到1000(升序)，把剩下的数组填入<code>arr1</code>数组</p>
+</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] relativeSortArray(<span class="hljs-type">int</span>[] arr1, <span class="hljs-type">int</span>[] arr2) &#123;<br>        <span class="hljs-type">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">1001</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : arr1)<br>            ++count[num];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : arr2) <br>            <span class="hljs-keyword">while</span> (count[num]-- &gt; <span class="hljs-number">0</span>)<br>                arr1[i++] = num;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; num &lt;= <span class="hljs-number">1000</span>; ++num) <br>            <span class="hljs-keyword">while</span> (count[num]-- &gt; <span class="hljs-number">0</span>)<br>                arr1[i++] = num;<br>        <span class="hljs-keyword">return</span> arr1;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613102141241.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
-<h2 id="剑指-offer-ii-076.-数组中的第-k-大的数字"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/xx4gT2/">剑指 Offer II 076. 数组中的第 k 大的数字</a></h2>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613103525009.png" srcset="/img/loading.gif" lazyload /></p>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613102141241.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> 
+<h2 id="剑指-Offer-II-076-数组中的第-k-大的数字"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/xx4gT2/">剑指 Offer II 076. 数组中的第 k 大的数字</a></h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613103525009.png" srcset="/img/loading.gif" lazyload alt=" "></p>
 <p><strong>快排找到下标为n-k的数x，左边的数都小于x，右边的数都大于x</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findKthLargest</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length, target = n - k, start = <span class="hljs-number">0</span>, end = n - <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">pivot</span> <span class="hljs-operator">=</span> partition(nums, start, end);<br>        <span class="hljs-keyword">while</span> (pivot != target) &#123;<br>            <span class="hljs-keyword">if</span> (pivot &gt; target)<br>                end = pivot - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span><br>                start = pivot + <span class="hljs-number">1</span>;<br>            pivot = partition(nums, start, end);<br>        &#125;<br>        <span class="hljs-keyword">return</span> nums[pivot];<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">partition</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>().nextInt(end - start + <span class="hljs-number">1</span>) + start;<br>        swap(nums, random, end);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">small</span> <span class="hljs-operator">=</span> start - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> start; i &lt; end; ++i) <br>            <span class="hljs-keyword">if</span> (nums[i] &lt; nums[end])<br>                swap(nums, ++small, i);<br>        swap(nums, ++small, end);<br>        <span class="hljs-keyword">return</span> small;        <br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> index1, <span class="hljs-type">int</span> index2)</span> &#123;<br>        <span class="hljs-keyword">if</span> (index1 == index2)<br>            <span class="hljs-keyword">return</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> nums[index1];<br>        nums[index1] = nums[index2];<br>        nums[index2] = temp;<br>    &#125;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613105515198.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20230613105515198.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> 
 
                 
               </div>
