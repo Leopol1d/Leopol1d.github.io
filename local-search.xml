@@ -8,7 +8,7 @@
     <link href="/2024/01/14/AWS-Security-Group/"/>
     <url>/2024/01/14/AWS-Security-Group/</url>
     
-    <content type="html"><![CDATA[<h1 id="introduciton-of-security-group">Introduciton of Security Group</h1><ul><li>安全组是AWS网络安全的重要组件</li><li>安全组控制流量是否被允许入站或者出站到EC2实例</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="introduciton-of-security-group">Introduciton of Security Group</h1><ul><li>安全组是AWS网络安全的重要组件</li><li>安全组控制流量是否被允许入站或者出站到EC2实例</li><li>安全组只包含<strong>allow</strong>规则</li><li>安全组规则可以按照<strong>IP</strong>或者<strong>安全组连接</strong>(reference)</li></ul><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114152654636.png" /></p><h1 id="security-groups-deeper-dive">Security Groups Deeper Dive</h1><ul><li>安全组是<strong>EC2实例层面</strong>的firewall</li><li>规则<ul><li>访问端口</li><li>授权IP范围</li><li>控制入站流量</li><li>控制出站流量</li></ul></li></ul><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114152726560.png" /></p><h1 id="security-group-diagram">Security Group Diagram</h1><ul><li>被授权的IP使用22端口的入站流量是允许进入Security Group1</li><li>未被授权的IP使用22端口的入站流量无法进入Security Group1，具体表现为time out</li></ul><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114152954632.png" /></p><h1 id="security-groups-good-to-know">Security Groups Good to know</h1><ul><li>一个安全组能附加到多个实例</li><li>绑定在一个区域或者VPC</li><li>被安全组拒绝访问表现为time out，如果应用(访问的一方)给出“connection refused” error，那么是应用内部的错误</li><li><strong>所有的入站流量默认是阻塞的</strong></li><li><strong>所有的出站流量默认是允许的</strong></li></ul><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114153548651.png" /></p>]]></content>
     
     
     <categories>
@@ -57,11 +57,11 @@
     
     <tags>
       
-      <tag>EC2</tag>
-      
       <tag>Cloud Computing</tag>
       
       <tag>AWS</tag>
+      
+      <tag>EC2</tag>
       
     </tags>
     
