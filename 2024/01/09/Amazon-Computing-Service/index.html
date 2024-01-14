@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="无服务器计算 无法访问底层基础设备，运维工作(无需考虑扩容，调整资源)交给服务提供者(AWS)解决 “无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。 无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。 AWS">
+    <meta name="description" content="无服务器计算 无法访问底层基础设备，运维工作(无需考虑扩容，调整资源)交给服务提供者(AWS)解决 “无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。 无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Amazon Computing Service">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/09/Amazon-Computing-Service/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="无服务器计算 无法访问底层基础设备，运维工作(无需考虑扩容，调整资源)交给服务提供者(AWS)解决 “无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。 无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。 AWS">
+<meta property="og:description" content="无服务器计算 无法访问底层基础设备，运维工作(无需考虑扩容，调整资源)交给服务提供者(AWS)解决 “无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。 无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109145955273.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109150049431.png">
@@ -306,37 +306,29 @@
             
               <div class="markdown-body">
                 
-                <h1>无服务器计算</h1>
+                <h1 id="无服务器计算">无服务器计算</h1>
 <p><strong>无法访问底层基础设备，运维工作(无需考虑扩容，调整资源)交给服务提供者(AWS)解决</strong></p>
 <p>“无服务器”一词是指代码在服务器上运行，但无需预置或管理这些服务器。借助无服务器计算，您可以将更多精力放在新产品和功能创新上，而不是放在维护服务器上。</p>
 <p>无服务器计算的另一项优势在于可以灵活地自动扩展无服务器应用程序。无服务器计算可以通过修改使用单位（例如吞吐量和内存）来调整应用程序的容量。</p>
 <p>AWS 的无服务器计算服务是 <strong>AWS Lambda</strong>。</p>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109145955273.png" srcset="/img/loading.gif" lazyload alt=" " style="zoom:50%;" />
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109145955273.png" srcset="/img/loading.gif" lazyload alt=" " style="zoom:50%;" /></p>
 <p><strong>AWS Lambda的工作原理</strong></p>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109150049431.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>将代码上传到 Lambda。</p>
-</li>
-<li class="lvl-2">
-<p>将代码设置为从事件源（例如 AWS 服务、移动应用程序或 HTTP 终端节点）触发。</p>
-</li>
-<li class="lvl-2">
-<p>Lambda 仅在触发时才运行代码。</p>
-</li>
-<li class="lvl-2">
-<p>只需为使用的计算时间付费。</p>
-</li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109150049431.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
+<ul>
+<li>将代码上传到 Lambda。</li>
+<li>将代码设置为从事件源（例如 AWS 服务、移动应用程序或 HTTP 终端节点）触发。</li>
+<li>Lambda 仅在触发时才运行代码。</li>
+<li>只需为使用的计算时间付费。</li>
 </ul>
 <p>事件触发类似于Webhook(GitLab -&gt; Jenkins)</p>
-<h1><strong>Amazon Elastic Container Service (Amazon ECS)</strong></h1>
+<h1 id="amazon-elastic-container-service-amazon-ecs"><strong>Amazon Elastic Container Service (Amazon ECS)</strong></h1>
 <p><a target="_blank" rel="noopener" href="https://aws.amazon.com/ecs/"><strong>Amazon Elastic Container Service (Amazon ECS)</strong>(opens in a new tab)</a> 是一种高度可扩展的高性能容器管理系统，可以在 AWS 上运行和扩展容器化应用程序。</p>
 <p>Amazon ECS 支持 Docker 容器。<a target="_blank" rel="noopener" href="https://www.docker.com/">Docker(opens in a new tab)</a> 是一种软件平台，让您能够快速构建、测试和部署应用程序。AWS 支持使用开源 Docker 社区版和基于订阅的 Docker 企业版。借助 Amazon ECS，您可以使用 API 调用来启动和停止支持 Docker 的应用程序。</p>
 <p><strong>docker：把应用程序、依赖、环境配置打包成一个镜像，通过容器与操作系统交互，通过这种方式，我们可以将软件环境标准化</strong></p>
-<h1><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong></h1>
+<h1 id="amazon-elastic-kubernetes-service-amazon-eks"><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong></h1>
 <p><a target="_blank" rel="noopener" href="https://aws.amazon.com/eks/"><strong>Amazon Elastic Kubernetes Service (Amazon EKS)</strong>(opens in a new tab)</a> 是一项完全托管式服务，可用于在 AWS 上运行 Kubernetes。</p>
 <p><a target="_blank" rel="noopener" href="https://kubernetes.io/">Kubernetes(opens in a new tab)</a> 是一款开源软件，让您能够大规模部署和管理容器化应用程序。Kubernetes 由一个大型志愿者社区维护，而 AWS 积极地与 Kubernetes 社区展开合作。随着 Kubernetes 应用程序的新功能特性发布，您可以轻松地将这些更新应用到由 Amazon EKS 管理的应用程序中。</p>
-<h1><strong>AWS Fargate</strong></h1>
+<h1 id="aws-fargate"><strong>AWS Fargate</strong></h1>
 <p><a target="_blank" rel="noopener" href="https://aws.amazon.com/fargate/"><strong>AWS Fargate</strong>(opens in a new tab)</a> 是一种适用于容器的无服务器计算引擎。它可与 Amazon ECS 和 Amazon EKS 一起使用。</p>
 <p>使用 AWS Fargate 时，无需预置或管理服务器。AWS Fargate 为您管理服务器基础设施。您可以更加专注于应用程序的创新和开发，并且只需为运行容器所需的资源付费。</p>
 
