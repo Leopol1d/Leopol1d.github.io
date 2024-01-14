@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>AWS Security Group</title>
+    <link href="/2024/01/14/AWS-Security-Group/"/>
+    <url>/2024/01/14/AWS-Security-Group/</url>
+    
+    <content type="html"><![CDATA[<h1 id="introduciton-of-security-group">Introduciton of Security Group</h1><ul><li>安全组是AWS网络安全的重要组件</li><li>安全组控制流量是否被允许入站或者出站到EC2实例</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>AWS</category>
+      
+      <category>Ultimate AWS Certified Cloud Practitioner CLF-C02</category>
+      
+      <category>EC2 - Elastic Compute Cloud</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Cloud Computing</tag>
+      
+      <tag>AWS</tag>
+      
+      <tag>Security Group</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AWS EC2 Elastic Compute Cloud</title>
     <link href="/2024/01/14/AWS-EC2-Elastic-Compute-Cloud/"/>
     <url>/2024/01/14/AWS-EC2-Elastic-Compute-Cloud/</url>
@@ -17,16 +50,18 @@
       
       <category>Ultimate AWS Certified Cloud Practitioner CLF-C02</category>
       
+      <category>EC2 - Elastic Compute Cloud</category>
+      
     </categories>
     
     
     <tags>
       
+      <tag>EC2</tag>
+      
       <tag>Cloud Computing</tag>
       
       <tag>AWS</tag>
-      
-      <tag>AWS Cloud Practitioner Essentials</tag>
       
     </tags>
     
