@@ -355,9 +355,9 @@
         <category>EC2 - Elastic Compute Cloud</category>
       </categories>
       <tags>
+        <tag>EC2</tag>
         <tag>Cloud Computing</tag>
         <tag>AWS</tag>
-        <tag>EC2</tag>
       </tags>
   </entry>
   <entry>
