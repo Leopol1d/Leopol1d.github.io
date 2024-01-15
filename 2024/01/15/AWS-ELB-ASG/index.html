@@ -45,13 +45,28 @@
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154608379.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154843308.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154952391.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161118380.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161618565.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161657746.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161750919.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161929048.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162157980.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162323859.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162654083.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162715745.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115170816506.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171233562.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115170937327.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171559094.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171912756.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115172002261.png">
 <meta property="article:published_time" content="2024-01-15T03:37:16.000Z">
-<meta property="article:modified_time" content="2024-01-15T07:50:01.651Z">
+<meta property="article:modified_time" content="2024-01-15T09:20:09.955Z">
 <meta property="article:author" content="Leopold">
-<meta property="article:tag" content="Scalability">
-<meta property="article:tag" content="High Availability">
 <meta property="article:tag" content="Cloud Computing">
 <meta property="article:tag" content="AWS">
+<meta property="article:tag" content="Scalability">
+<meta property="article:tag" content="High Availability">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120349964.png">
   
@@ -260,7 +275,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          653 字
+          903 字
         
       </span>
     
@@ -271,7 +286,7 @@
         
         
         
-          6 分钟
+          8 分钟
         
       </span>
     
@@ -354,7 +369,7 @@
 <li><strong>跨可用区</strong></li>
 </ul>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115125443439.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="hands-on">Hands On</h1>
+<h1 id="elb-hands-on">ELB Hands On</h1>
 <ol type="1">
 <li><p>创建两台EC2实例</p>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150358728.png" srcset="/img/loading.gif" lazyload /></p></li>
@@ -391,6 +406,40 @@
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154843308.png" srcset="/img/loading.gif" lazyload /></p></li>
 <li><p>之后通过ALB访问，流量只会被转发给第一台EC2实例</p>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154952391.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+<h1 id="auto-scaling-group">Auto Scaling Group</h1>
+<ul>
+<li>根据流量迅速自动创建(scale out)与删除(scale in)EC2实例</li>
+<li><strong>自动注册新的EC2实例到Load Balancer</strong></li>
+<li><strong>自动替换不健康的EC2实例</strong></li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161118380.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="asg-alb-hands-on">ASG + ALB Hands On</h1>
+<ol type="1">
+<li><p>创建ASG</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161618565.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>创建<strong>启动模板</strong></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161657746.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161750919.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>选择所有的可用区和子网</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161929048.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>新建一个ALB，选择之前创建的目标组</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162157980.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>配置组大小</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162323859.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>创建成功</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162654083.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162715745.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>创建好ASG后，EC2实例会被自动创建，目标组自动关联这些实例</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115170816506.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171233562.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>根据ALB的DNS NAME来访问</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115170937327.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>终止一个实例，看看会发生什么</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171559094.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>activity页面，检测到<strong>不健康实例</strong>，所以自动扩展了一个新的实例</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171912756.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115172002261.png" srcset="/img/loading.gif" lazyload /></p></li>
 </ol>
 
                 
@@ -439,13 +488,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Scalability/">#Scalability</a>
-      
-        <a href="/tags/High-Availability/">#High Availability</a>
-      
         <a href="/tags/Cloud-Computing/">#Cloud Computing</a>
       
         <a href="/tags/AWS/">#AWS</a>
+      
+        <a href="/tags/Scalability/">#Scalability</a>
+      
+        <a href="/tags/High-Availability/">#High Availability</a>
       
     </div>
   
