@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="小红定义一个字符串是“好串”，当且仅当该字符串的长度不小于2，且首尾相同。例如&quot;arcaea&quot;是好串。小红拿到了一个字符串(该字符串不一定是好串)，她准备把这个字符串切割成若干个好串，你可以帮小红求出好串的最多数量吗? 输入描述：一个仅包含小写字母的字符串，长度不超过200000。 输出描述：如果无法切割且该字符串本身不是好串，请输出-1。否则输出最终的好串数量。 示例：输入：">
+    <meta name="description" content="小红定义一个字符串是“好串”，当且仅当该字符串的长度不小于2，且首尾相同。例如&quot;arcaea&quot;是好串。 小红拿到了一个字符串(该字符串不一定是好串)，她准备把这个字符串切割成若干个好串，你可以帮小红求出好串的最多数量吗? 输入描述：一个仅包含小写字母的字符串，长度不超过200000。 输出描述：如果无法切割且该字符串本身不是好串，请输出-1。否则输出最终的好串数量。 示例： 输入： arca">
 <meta property="og:type" content="article">
 <meta property="og:title" content="others">
 <meta property="og:url" content="https://leopol1d.github.io/2023/07/09/%E5%85%B6%E4%BB%96/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="小红定义一个字符串是“好串”，当且仅当该字符串的长度不小于2，且首尾相同。例如&quot;arcaea&quot;是好串。小红拿到了一个字符串(该字符串不一定是好串)，她准备把这个字符串切割成若干个好串，你可以帮小红求出好串的最多数量吗? 输入描述：一个仅包含小写字母的字符串，长度不超过200000。 输出描述：如果无法切割且该字符串本身不是好串，请输出-1。否则输出最终的好串数量。 示例：输入：">
+<meta property="og:description" content="小红定义一个字符串是“好串”，当且仅当该字符串的长度不小于2，且首尾相同。例如&quot;arcaea&quot;是好串。 小红拿到了一个字符串(该字符串不一定是好串)，她准备把这个字符串切割成若干个好串，你可以帮小红求出好串的最多数量吗? 输入描述：一个仅包含小写字母的字符串，长度不超过200000。 输出描述：如果无法切割且该字符串本身不是好串，请输出-1。否则输出最终的好串数量。 示例： 输入： arca">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-09T07:44:55.534Z">
 <meta property="article:modified_time" content="2023-07-15T08:39:14.170Z">
@@ -233,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.5k 字
         
       </span>
     
@@ -300,31 +300,19 @@
             
               <div class="markdown-body">
                 
-                <p>小红定义一个字符串是“好串”，<strong>当且仅当该字符串的长度不小于2</strong>，<strong>且首尾相同</strong>。例如&quot;arcaea&quot;是好串。小红拿到了一个字符串(该字符串不一定是好串)，她准备把这个字符串切割成若干个好串，你可以帮小红求出好串的最多数量吗?</p>
+                <p>小红定义一个字符串是“好串”，<strong>当且仅当该字符串的长度不小于2</strong>，<strong>且首尾相同</strong>。例如"arcaea"是好串。 小红拿到了一个字符串(该字符串不一定是好串)，她准备把这个字符串切割成若干个好串，你可以帮小红求出好串的最多数量吗?</p>
 <p>输入描述：一个仅包含小写字母的字符串，长度不超过200000。</p>
 <p>输出描述：如果无法切割且该字符串本身不是好串，请输出-1。否则输出最终的好串数量。</p>
-<p>示例：输入：<br>
-arcaea<br>
-输出：<br>
-1</p>
-<p>输入：<br>
-abcb<br>
-输出：<br>
--1</p>
-<p>输入：<br>
-aababaa<br>
-输出：<br>
-3</p>
-<h3 id="方法一：记忆化搜索">方法一：记忆化搜索</h3>
+<p>示例： 输入： arcaea 输出： 1</p>
+<p>输入： abcb 输出： -1</p>
+<p>输入： aababaa 输出： 3</p>
+<h3 id="方法一记忆化搜索">方法一：记忆化搜索</h3>
 <p>先固定分割左边的子串，枚举右边分割的所有情况，取最大值</p>
 <p>左子串第一个字符和右子串最后一个字符相等，被分割后产生的新str的首尾字符相同</p>
-<ol>
-<li class="lvl-3">
-<p>如果i == j - 1,即新str只剩下一个字符了，那么str.charAt(i + 1) == str.charAt(j - 1)比较的是同一个字符</p>
-<p>比如str = a	 b  	 a    							 b 	a,</p>
-<pre><code class="hljs"> 					i     	(i + 1) == j - 1        	j
-</code></pre>
-</li>
+<ol type="1">
+<li><p>如果i == j - 1,即新str只剩下一个字符了，那么str.charAt(i + 1) == str.charAt(j - 1)比较的是同一个字符</p>
+<p>比如str = a b a b a,</p>
+<pre><code class="hljs">                     i       (i + 1) == j - 1            j</code></pre></li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">splitL.charAt(<span class="hljs-number">0</span>) == splitR.charAt(splitR.length() - <span class="hljs-number">1</span>) &amp;&amp; str.charAt(i + <span class="hljs-number">1</span>) == str.charAt(j - <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
 <h4 id="代码">代码</h4>
