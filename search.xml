@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AWS ELB &amp; ASG</title>
+    <url>/2024/01/15/AWS-ELB-ASG/</url>
+    <content><![CDATA[<h1 id="scalability">Scalability</h1>
+<ul>
+<li>可扩展性是指应用/<strong>系统能通过调整，承担更大的负荷</strong></li>
+<li>可拓展性分为：<strong>纵向可拓展性(为单个实例分配更多的CPU，内存)</strong>和<strong>横向可拓展性(elasticity)</strong></li>
+</ul>
+<h2 id="horizontal-scalability">Horizontal Scalability</h2>
+<p>Scale out / in</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120349964.png" /></p>
+<h2 id="vertical-scalability">Vertical Scalability</h2>
+<p>Scale up / down</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120415607.png" /></p>
+<h1 id="high-availability">High Availability</h1>
+<ul>
+<li>可拓展性、高可用是紧密相关的</li>
+<li>高可用在AWS中指系统或应用至少运行在两个可用区</li>
+<li>高可用性的目标是在某个数据中心发生故障（灾难）时，另一个数据中心能够<strong>失效备援</strong></li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120433882.png" /></p>
+<h1 id="elastic-load-balancer">Elastic Load Balancer</h1>
+<ul>
+<li>将流量转发给下游的EC2实例</li>
+<li>为你的应用暴露DNS(单点入口)</li>
+<li>处理下游EC2实例的failures</li>
+<li>定期检查EC2实例的健康状况</li>
+<li><strong>跨可用区</strong></li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115125443439.png" /></p>
+<h1 id="hands-on">Hands On</h1>
+<ol type="1">
+<li><p>创建两台EC2实例</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150358728.png" /></p></li>
+<li><p>使用公共IP访问他们</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150450604.png" /></p></li>
+<li><p>创建一个ALB(layer 7)，用一个单点入口(DNS)来访问EC2实例 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150739340.png" /></p></li>
+<li><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150812997.png" /></p></li>
+<li><p><strong>将ALB部署在以下两个可用区</strong></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115152158255.png" /></p></li>
+<li><p>创建一个新的<code>安全组</code>，只允许HTTP请求(80)与HTTPS请求(443)</p></li>
+</ol>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151301553.png" /></p>
+<ol start="7" type="1">
+<li><p>创建一个目标组(EC2实例组)</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151710271.png" /></p>
+<p>将两个实例加入目标组</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151751647.png" /></p>
+<p>绑定在ALB上</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151834008.png" /></p></li>
+<li><p>成功创建ALB</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115152638399.png" /></p></li>
+<li><p>访问DNS名称ALB-1723269650.us-east-1.elb.amazonaws.com，报错</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154022090.png" /></p></li>
+<li><p>发现目标组未注册目标(第7步)</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154214179.png" /></p></li>
+<li><p>重新注册</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154331673.png" /></p></li>
+<li><p>再次根据DNS名称访问，成功！并且多次访问，流量会被分发到不同的EC2实例</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154356552.png" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154431653.png" /></p></li>
+<li><p>终止第二个EC2实例，注意私有IP</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154608379.png" /></p></li>
+<li><p>在目标组中查看到，第二个是李的运行状态是<strong>Unused</strong></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154843308.png" /></p></li>
+<li><p>之后通过ALB访问，流量只会被转发给第一台EC2实例</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154952391.png" /></p></li>
+</ol>
+]]></content>
+      <categories>
+        <category>AWS</category>
+        <category>Ultimate AWS Certified Cloud Practitioner CLF-C02</category>
+        <category>ELB &amp; ASG</category>
+      </categories>
+      <tags>
+        <tag>Cloud Computing</tag>
+        <tag>AWS</tag>
+        <tag>Scalability</tag>
+        <tag>High Availability</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023 2023 Leetcode Cup Graph Theory List</title>
+    <url>/2024/01/14/2023-2023-Leetcode-Cup-Graph-Theory-List/</url>
+    <content><![CDATA[<h1 id="年下">2022年(下)</h1>
+<h2 id="受限条件下可到达节点的数目-rank1477"><a href="https://leetcode.cn/problems/reachable-nodes-with-restrictions/">2368. 受限条件下可到达节点的数目</a> Rank:1477</h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114193720330.png" /></p>
+<h3 id="方法一dfs">方法一：DFS</h3>
+<p>Map建图+dfs</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">reachableNodes</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span>[][] edges, <span class="hljs-type">int</span>[] restricted)</span> &#123;<br>        <span class="hljs-built_in">this</span>.n = n;<br>        <span class="hljs-built_in">this</span>.edges = edges;<br>        <span class="hljs-built_in">this</span>.restricted = restricted;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] edge : edges) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">from</span> <span class="hljs-operator">=</span> edge[<span class="hljs-number">0</span>], to = edge[<span class="hljs-number">1</span>];<br>            graph.putIfAbsent(from, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>            graph.putIfAbsent(to, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>            graph.get(from).add(to);<br>            graph.get(to).add(from);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x : restricted)<br>            banList.add(x);<br>        dfs(<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> node, <span class="hljs-type">int</span> parent)</span> &#123;<br>        ++res;<br>        List&lt;Integer&gt; nexts = graph.get(node);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> next : nexts) &#123;<br>            <span class="hljs-keyword">if</span> (next != parent &amp;&amp; !banList.contains(next)) &#123;<br>                dfs(next, node);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-type">int</span> n, res = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span>[][] edges;<br>    <span class="hljs-type">int</span>[] restricted;<br>    Map&lt;Integer, List&lt;Integer&gt;&gt; graph = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    Set&lt;Integer&gt; banList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="感染二叉树需要的总时间-rank1711"><a href="https://leetcode.cn/problems/amount-of-time-for-binary-tree-to-be-infected/">2385. 感染二叉树需要的总时间</a> Rank:1711</h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114201625099.png" /></p>
+<h3 id="方法一dfs-bfs">方法一：DFS + BFS</h3>
+<ul>
+<li>每遍历一层，秒数加一</li>
+<li>res初始化为-1，因为如果只有一个节点，答案是0秒，即不需要扩散</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * public class TreeNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     TreeNode left;</span><br><span class="hljs-comment"> *     TreeNode right;</span><br><span class="hljs-comment"> *     TreeNode() &#123;&#125;</span><br><span class="hljs-comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span><br><span class="hljs-comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span><br><span class="hljs-comment"> *         this.val = val;</span><br><span class="hljs-comment"> *         this.left = left;</span><br><span class="hljs-comment"> *         this.right = right;</span><br><span class="hljs-comment"> *     &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">amountOfTime</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> start)</span> &#123;<br>        visited.add(start);<br>        buildGraph(root);<br>        <span class="hljs-comment">// for (Map.Entry&lt;Integer, List&lt;Integer&gt;&gt; entry : graph.entrySet()) &#123;</span><br>        <span class="hljs-comment">//     System.out.print(entry.getKey() + &quot;: &quot;);</span><br>        <span class="hljs-comment">//     for (int x : entry.getValue()) &#123;</span><br>        <span class="hljs-comment">//         System.out.print(x + &quot; &quot;);</span><br>        <span class="hljs-comment">//     &#125;</span><br>        <span class="hljs-comment">//     System.out.println();</span><br>        <span class="hljs-comment">// &#125;</span><br>        Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        queue.offer(start);<br>        <span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> queue.size();<br>            ++res;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; size; ++i) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> queue.poll();<br>                visited.add(node);<br>                List&lt;Integer&gt; list = graph.get(node);<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> next : list) &#123;<br>                    <span class="hljs-keyword">if</span> (node != next &amp;&amp; !visited.contains(next)) &#123;<br>                        queue.offer(next);<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildGraph</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">return</span>;<br>        graph.putIfAbsent(root.val, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>        <span class="hljs-keyword">if</span> (root.left != <span class="hljs-literal">null</span>) &#123;<br>            graph.putIfAbsent(root.left.val, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>            graph.get(root.val).add(root.left.val);<br>            graph.get(root.left.val).add(root.val);<br>            buildGraph(root.left);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (root.right != <span class="hljs-literal">null</span>) &#123;<br>            graph.putIfAbsent(root.right.val, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>            graph.get(root.val).add(root.right.val);<br>            graph.get(root.right.val).add(root.val);<br>            buildGraph(root.right);<br>        &#125;<br>    &#125;<br><br>    Map&lt;Integer, List&lt;Integer&gt;&gt; graph = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>;<br>    Set&lt;Integer&gt; visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+        <category>Graph</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
+        <tag>DFS</tag>
+        <tag>BFS</tag>
+        <tag>Shortest Path Problem</tag>
+        <tag>Topological Sort</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AWS Security Group</title>
     <url>/2024/01/14/AWS-Security-Group/</url>
     <content><![CDATA[<h1 id="introduciton-of-security-group">Introduciton of Security Group</h1>
@@ -16,7 +127,7 @@
 <li>安全组是<strong>EC2实例层面</strong>的firewall</li>
 <li>规则
 <ul>
-<li>访问端口</li>
+<li>允许访问EC2实例的端口</li>
 <li>授权IP范围</li>
 <li>控制入站流量</li>
 <li>控制出站流量</li>
@@ -25,8 +136,8 @@
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114152726560.png" /></p>
 <h1 id="security-group-diagram">Security Group Diagram</h1>
 <ul>
-<li>被授权的IP使用22端口的入站流量是允许进入Security Group1</li>
-<li>未被授权的IP使用22端口的入站流量无法进入Security Group1，具体表现为time out</li>
+<li>被授权的IP的入站流量是允许进入Security Group1，访问端口号为22</li>
+<li>未被授权的IP入站流量无法进入Security Group1，具体表现为time out</li>
 </ul>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114152954632.png" /></p>
 <h1 id="security-groups-good-to-know">Security Groups Good to know</h1>
