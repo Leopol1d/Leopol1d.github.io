@@ -24,13 +24,13 @@
     
     <tags>
       
-      <tag>Cloud Computing</tag>
-      
-      <tag>AWS</tag>
-      
       <tag>Scalability</tag>
       
       <tag>High Availability</tag>
+      
+      <tag>Cloud Computing</tag>
+      
+      <tag>AWS</tag>
       
     </tags>
     
@@ -365,13 +365,13 @@
     
     <tags>
       
+      <tag>High Availability</tag>
+      
       <tag>Cloud Computing</tag>
       
       <tag>AWS</tag>
       
       <tag>AWS Cloud Practitioner Essentials</tag>
-      
-      <tag>High Availability</tag>
       
       <tag>Disaster Tolerance</tag>
       
