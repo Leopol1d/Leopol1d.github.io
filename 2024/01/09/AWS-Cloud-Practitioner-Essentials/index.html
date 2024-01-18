@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Amazon EC2 Auto Scaling 介绍 利用 Amazon EC2 Auto Scaling自动添加或删除 Amazon EC2 实例，以响应不断变化的应用程序需求。根据需要自动缩减和扩展实例，能够保持更好的应用程序可用性。 **EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似 **  拓展方案：动态拓展和预测性拓展   动">
+    <meta name="description" content="Amazon EC2 Auto Scaling 介绍 利用 Amazon EC2 Auto Scaling自动添加或删除 Amazon EC2 实例，以响应不断变化的应用程序需求。根据需要自动缩减和扩展实例，能够保持更好的应用程序可用性。 EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似   拓展方案：动态拓展和预测性拓展">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Amazon EC2 Auto Scaling">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/09/AWS-Cloud-Practitioner-Essentials/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="Amazon EC2 Auto Scaling 介绍 利用 Amazon EC2 Auto Scaling自动添加或删除 Amazon EC2 实例，以响应不断变化的应用程序需求。根据需要自动缩减和扩展实例，能够保持更好的应用程序可用性。 **EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似 **  拓展方案：动态拓展和预测性拓展   动">
+<meta property="og:description" content="Amazon EC2 Auto Scaling 介绍 利用 Amazon EC2 Auto Scaling自动添加或删除 Amazon EC2 实例，以响应不断变化的应用程序需求。根据需要自动缩减和扩展实例，能够保持更好的应用程序可用性。 EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似   拓展方案：动态拓展和预测性拓展">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143130508.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143759290.png">
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          481 字
+          477 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -306,26 +306,22 @@
             
               <div class="markdown-body">
                 
-                <h1>Amazon EC2 Auto Scaling</h1>
+                <h1 id="amazon-ec2-auto-scaling">Amazon EC2 Auto Scaling</h1>
 <h2 id="介绍">介绍</h2>
 <p>利用 <strong>Amazon EC2 Auto Scaling</strong>自动添加或删除 Amazon EC2 实例，以响应不断变化的应用程序需求。根据需要<strong>自动缩减</strong>和<strong>扩展</strong>实例，能够保持更好的应用程序可用性。</p>
-<p>**EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似 **</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143130508.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="拓展方案：动态拓展和预测性拓展">拓展方案：动态拓展和预测性拓展</h2>
-<ol>
-<li class="lvl-3">
-<p><em>动态扩展</em>可以响应不断变化的需求</p>
-</li>
-<li class="lvl-3">
-<p><em>预测性扩展</em>根据预测的需求自动安排合适数量的 Amazon EC2 实例</p>
-</li>
+<p><strong>EC2 Auto Scaling与Kubernetes中的HPA，deployments(滚动更新)十分相似 </strong></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143130508.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="拓展方案动态拓展和预测性拓展">拓展方案：动态拓展和预测性拓展</h2>
+<ol type="1">
+<li><em>动态扩展</em>可以响应不断变化的需求</li>
+<li><em>预测性扩展</em>根据预测的需求自动安排合适数量的 Amazon EC2 实例</li>
 </ol>
 <p>预测性拓展使用场景：业务量根据时间(比如限时活动)或者季节有比较大的浮动</p>
 <p><strong>建议可以结合使用动态扩展和预测性扩展</strong></p>
 <h2 id="示例">示例</h2>
 <p>在云中，计算能力是一种编程资源，因此可以采取更灵活的方法来解决扩展问题。通过向应用程序添加 Amazon EC2 Auto Scaling 功能，可以在需要时向应用程序添加新实例，并在不再需要这些实例时终止它们。</p>
 <p>假设在 Amazon EC2 实例上启动一个应用程序。在配置 Auto Scaling 组的大小时，您可以将 Amazon EC2 实例的最小数量设置为 1。这意味着在任何时候都必须至少运行一个 Amazon EC2 实例。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143759290.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109143759290.png" srcset="/img/loading.gif" lazyload /></p>
 
                 
               </div>
