@@ -5,7 +5,7 @@
     <url>/2024/01/18/self-intro-Eng/</url>
     <content><![CDATA[<video width="100%" height="100%" src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/video/self-intro-en.mp4" autoplay controls loop>
 </video>
-<p>上传大文件出了很多网络问题，解决方案：<a href="https://leopol1d.github.io/2024/01/18/upload-large-file/"></a></p>
+<p>上传大文件出了很多网络问题，解决方案：<a href="https://leopol1d.github.io/2024/01/18/upload-large-file/">传送门</a></p>
 <p>等明天面试完三星，将博客架构升级成AWS方案，提升<strong>可扩展性、可用性、容灾能力</strong></p>
 ]]></content>
       <categories>
@@ -173,10 +173,10 @@
         <category>ELB &amp; ASG</category>
       </categories>
       <tags>
-        <tag>Scalability</tag>
-        <tag>High Availability</tag>
         <tag>Cloud Computing</tag>
         <tag>AWS</tag>
+        <tag>Scalability</tag>
+        <tag>High Availability</tag>
       </tags>
   </entry>
   <entry>
@@ -797,10 +797,10 @@
         <category>AWS Cloud Practitioner Essentials</category>
       </categories>
       <tags>
-        <tag>High Availability</tag>
         <tag>Cloud Computing</tag>
         <tag>AWS</tag>
         <tag>AWS Cloud Practitioner Essentials</tag>
+        <tag>High Availability</tag>
         <tag>Disaster Tolerance</tag>
       </tags>
   </entry>
