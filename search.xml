@@ -126,10 +126,10 @@
         <category>ELB &amp; ASG</category>
       </categories>
       <tags>
-        <tag>Scalability</tag>
-        <tag>High Availability</tag>
         <tag>Cloud Computing</tag>
         <tag>AWS</tag>
+        <tag>Scalability</tag>
+        <tag>High Availability</tag>
       </tags>
   </entry>
   <entry>
@@ -750,10 +750,10 @@
         <category>AWS Cloud Practitioner Essentials</category>
       </categories>
       <tags>
-        <tag>High Availability</tag>
         <tag>Cloud Computing</tag>
         <tag>AWS</tag>
         <tag>AWS Cloud Practitioner Essentials</tag>
+        <tag>High Availability</tag>
         <tag>Disaster Tolerance</tag>
       </tags>
   </entry>
