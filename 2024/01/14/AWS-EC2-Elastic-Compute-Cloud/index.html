@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="EC2 Instance types t2.micro在free tier中(750小时)   EC2 User Data 实例启动时会运行EC2 User Data脚本 比如 12345678#!&#x2F;bin&#x2F;bash# Use this for your user data (script from top to bottom)# install httpd (Linux 2 version)y">
+    <meta name="description" content="EC2 Instance types t2.micro在free tier中(750小时)  EC2 User Data 实例启动时会运行EC2 User Data脚本 比如 12345678#!&#x2F;bin&#x2F;bash# Use this for your user data (script from top to bottom)# install httpd (Linux 2 version)yum">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS EC2 Elastic Compute Cloud">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/14/AWS-EC2-Elastic-Compute-Cloud/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="EC2 Instance types t2.micro在free tier中(750小时)   EC2 User Data 实例启动时会运行EC2 User Data脚本 比如 12345678#!&#x2F;bin&#x2F;bash# Use this for your user data (script from top to bottom)# install httpd (Linux 2 version)y">
+<meta property="og:description" content="EC2 Instance types t2.micro在free tier中(750小时)  EC2 User Data 实例启动时会运行EC2 User Data脚本 比如 12345678#!&#x2F;bin&#x2F;bash# Use this for your user data (script from top to bottom)# install httpd (Linux 2 version)yum">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114140732354.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142046168.png">
@@ -37,9 +37,9 @@
 <meta property="article:published_time" content="2024-01-14T02:14:21.000Z">
 <meta property="article:modified_time" content="2024-01-14T07:22:00.874Z">
 <meta property="article:author" content="Leopold">
-<meta property="article:tag" content="EC2">
 <meta property="article:tag" content="Cloud Computing">
 <meta property="article:tag" content="AWS">
+<meta property="article:tag" content="EC2">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114140732354.png">
   
@@ -315,58 +315,58 @@
             
               <div class="markdown-body">
                 
-                <h1 id="ec2-instance-types"><a class="markdownIt-Anchor" href="#ec2-instance-types"></a> EC2 Instance types</h1>
+                <h1>EC2 Instance types</h1>
 <p>t2.micro在free tier中(750小时)</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114140732354.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="ec2-user-data"><a class="markdownIt-Anchor" href="#ec2-user-data"></a> EC2 User Data</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114140732354.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1>EC2 User Data</h1>
 <p>实例启动时会运行<code>EC2 User Data脚本</code></p>
 <p>比如</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-comment"># Use this for your user data (script from top to bottom)</span><br><span class="hljs-comment"># install httpd (Linux 2 version)</span><br>yum update -y<br>yum install -y httpd<br>systemctl start httpd<br>systemctl <span class="hljs-built_in">enable</span> httpd<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Hello World from <span class="hljs-subst">$(hostname -f)</span>&lt;/h1&gt;&quot;</span> &gt; /var/www/html/index.html<br></code></pre></td></tr></table></figure>
-<h1 id="hands-on-create-an-ec2-instance-with-ec2-user-data-to-have-a-website"><a class="markdownIt-Anchor" href="#hands-on-create-an-ec2-instance-with-ec2-user-data-to-have-a-website"></a> Hands on: Create an EC2 Instance with EC2 User Data to have a Website</h1>
+<h1>Hands on: Create an EC2 Instance with EC2 User Data to have a Website</h1>
 <ol>
-<li>
+<li class="lvl-3">
 <p>在dashboard搜索EC2，进入EC2实例，点击创建新实例</p>
 </li>
-<li>
+<li class="lvl-3">
 <p>输入tag，选择镜像，选择AMI</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142046168.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142046168.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
+<li class="lvl-3">
 <p>实例类型选择<code>t2.micro</code></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142330276.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142330276.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
+<li class="lvl-3">
 <p>创建密钥对</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142354347.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142529827.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142354347.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142529827.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>将密钥保存在本机</p>
 </li>
-<li>
+<li class="lvl-3">
 <p>配置<strong>安全组</strong>，由于要创建一个网页，所以需要接收来自互联网的HTTP流量</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142826305.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114142826305.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
+<li class="lvl-3">
 <p>配置数据卷</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114143048359.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114143048359.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
+<li class="lvl-3">
 <p>在高级详细信息-&gt;用户数据中编写<code>user data script</code></p>
 <p>更新下载开启一些配置，将hello world写入EC2实例/var/www/html/index.html下</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114143641209.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114143641209.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
+<li class="lvl-3">
 <p>启动实例</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114143903752.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114143903752.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
+<li class="lvl-3">
 <p>实例详情</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114145021232.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114145021232.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
+<li class="lvl-4">
 <p>访问实例，注意使用http而不是https</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114145046957.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240114145046957.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
+<li class="lvl-4">
 <p>值得注意的是，重启实例，实例的public ip会发生改变</p>
 </li>
 </ol>
@@ -417,11 +417,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/EC2/">#EC2</a>
-      
         <a href="/tags/Cloud-Computing/">#Cloud Computing</a>
       
         <a href="/tags/AWS/">#AWS</a>
+      
+        <a href="/tags/EC2/">#EC2</a>
       
     </div>
   

@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Amazon Virtual Private Cloud (Amazon VPC) 可以使用一项联网服务在 AWS 资源周围建立边界，这项服务就是 Amazon Virtual Private Cloud (Amazon VPC)(opens in a new tab)。 借助 Amazon VPC，您可以在 AWS 云中预置隔离的部分。在这个隔离的部分中，您可以在自己定义的虚拟网络中启动资源。">
+    <meta name="description" content="Amazon Virtual Private Cloud (Amazon VPC) 可以使用一项联网服务在 AWS 资源周围建立边界，这项服务就是 Amazon Virtual Private Cloud (Amazon VPC)(opens in a new tab)。 借助 Amazon VPC，您可以在 AWS 云中预置隔离的部分。在这个隔离的部分中，您可以在自己定义的虚拟网络中启动资源。在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Amazon Network">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/09/Amazon-Network/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="Amazon Virtual Private Cloud (Amazon VPC) 可以使用一项联网服务在 AWS 资源周围建立边界，这项服务就是 Amazon Virtual Private Cloud (Amazon VPC)(opens in a new tab)。 借助 Amazon VPC，您可以在 AWS 云中预置隔离的部分。在这个隔离的部分中，您可以在自己定义的虚拟网络中启动资源。">
+<meta property="og:description" content="Amazon Virtual Private Cloud (Amazon VPC) 可以使用一项联网服务在 AWS 资源周围建立边界，这项服务就是 Amazon Virtual Private Cloud (Amazon VPC)(opens in a new tab)。 借助 Amazon VPC，您可以在 AWS 云中预置隔离的部分。在这个隔离的部分中，您可以在自己定义的虚拟网络中启动资源。在">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/05JBy5tAWXTOxh1-_RJBAWto1tcMxSIAK.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/R3ClwcTeYXzpgwr0_VmVx2ujrJBdYk7cj.png">
@@ -307,24 +307,24 @@
             
               <div class="markdown-body">
                 
-                <h1 id="amazon-virtual-private-cloud-amazon-vpc"><a class="markdownIt-Anchor" href="#amazon-virtual-private-cloud-amazon-vpc"></a> <strong>Amazon Virtual Private Cloud (Amazon VPC)</strong></h1>
+                <h1><strong>Amazon Virtual Private Cloud (Amazon VPC)</strong></h1>
 <p>可以使用一项联网服务在 AWS 资源周围建立边界，这项服务就是 <a target="_blank" rel="noopener" href="https://aws.amazon.com/vpc/"><strong>Amazon Virtual Private Cloud (Amazon VPC)</strong>(opens in a new tab)</a>。</p>
 <p>借助 Amazon VPC，您可以在 AWS 云中预置隔离的部分。在这个隔离的部分中，您可以在自己定义的虚拟网络中启动资源。在 Virtual Private Cloud (VPC) 中，您可以将资源组织到子网中。<strong>子网</strong>是 VPC 的一部分，可以包含 Amazon EC2 实例等资源。</p>
-<h2 id="互联网网关"><a class="markdownIt-Anchor" href="#互联网网关"></a> <strong>互联网网关</strong></h2>
+<h2 id="互联网网关"><strong>互联网网关</strong></h2>
 <p>要允许来自互联网的公共流量访问您的 VPC，您可以在 VPC 中附加<strong>互联网网关</strong>。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/05JBy5tAWXTOxh1-_RJBAWto1tcMxSIAK.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/05JBy5tAWXTOxh1-_RJBAWto1tcMxSIAK.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>互联网网关图标附加到 VPC，VPC 中包含三个 EC2 实例。箭头通过互联网将客户端连接到网关，表示客户端的请求已获得对 VPC 的访问权限。</p>
 <p>互联网网关是 VPC 和互联网之间的连接。可以将互联网网关看作顾客进入咖啡店的大门。如果没有互联网网关，任何人都无法访问 VPC 中的资源。</p>
-<h2 id="虚拟私有网关"><a class="markdownIt-Anchor" href="#虚拟私有网关"></a> <strong>虚拟私有网关</strong></h2>
+<h2 id="虚拟私有网关"><strong>虚拟私有网关</strong></h2>
 <p>要访问 VPC 中的私有资源，您可以使用<strong>虚拟私有网关</strong>。</p>
 <p>使用虚拟私有网络 (VPN) 连接，对互联网流量进行加密（或保护），使其免受周围所有其他请求的影响。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/R3ClwcTeYXzpgwr0_VmVx2ujrJBdYk7cj.png" srcset="/img/loading.gif" lazyload alt="企业数据中心通过 VPN 连接将网络流量路由到虚拟私有网关，虚拟私有网关附加到 VPC" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/R3ClwcTeYXzpgwr0_VmVx2ujrJBdYk7cj.png" srcset="/img/loading.gif" lazyload alt="企业数据中心通过 VPN 连接将网络流量路由到虚拟私有网关，虚拟私有网关附加到 VPC"></p>
 <p>借助虚拟私有网关，可以在 VPC 和私有网络（例如本地数据中心或企业内部网络）之间建立虚拟专用网络 (VPN) 连接。虚拟私有网关仅允许来自经批准的网络的流量流入 VPC。</p>
-<h2 id="aws-direct-connect"><a class="markdownIt-Anchor" href="#aws-direct-connect"></a> <strong>AWS Direct Connect</strong></h2>
+<h2 id="AWS-Direct-Connect"><strong>AWS Direct Connect</strong></h2>
 <p><a target="_blank" rel="noopener" href="https://aws.amazon.com/directconnect/"><strong>AWS Direct Connect</strong>(opens in a new tab)</a> 是一项服务，能够在数据中心和 VPC 之间建立<strong>专用私有连接</strong>。</p>
 <p>假设有一栋公寓大楼，它的走廊直接将大楼与咖啡店相连。只有公寓大楼里面的住户才能穿过这个走廊。</p>
 <p>这个私人走廊提供的专用连接与 AWS Direct Connect 提供的专用连接性质相同。住户无需走过与其他顾客共享的公共道路就能进入咖啡店。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/F93pIchDPeP7_HCl_7iVrzMCYBsnYUQOe.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/F93pIchDPeP7_HCl_7iVrzMCYBsnYUQOe.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>AWS Direct Connect 提供的私有连接可以帮助您降低网络成本，同时增加通过网络传输的带宽。</p>
 
                 
