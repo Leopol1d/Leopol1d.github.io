@@ -156,11 +156,11 @@
     
     <tags>
       
-      <tag>EC2</tag>
-      
       <tag>Cloud Computing</tag>
       
       <tag>AWS</tag>
+      
+      <tag>EC2</tag>
       
     </tags>
     
@@ -398,9 +398,9 @@
       
       <tag>AWS</tag>
       
-      <tag>High Availability</tag>
-      
       <tag>AWS Cloud Practitioner Essentials</tag>
+      
+      <tag>High Availability</tag>
       
       <tag>Disaster Tolerance</tag>
       
