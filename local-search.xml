@@ -33,7 +33,7 @@
     <link href="/2024/01/18/self-intro-Eng/"/>
     <url>/2024/01/18/self-intro-Eng/</url>
     
-    <content type="html"><![CDATA[<video width="100%" height="100%" src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/video/self-intro-en.mp4" autoplay controls loop></video><p>上传大文件出了很多网络问题，解决方案：https://leopol1d.github.io/2024/01/18/upload-large-file/</p><p>等明天面试完三星，将博客架构升级成AWS方案，提升<strong>可扩展性、可用性、容灾能力</strong></p>]]></content>
+    <content type="html"><![CDATA[<video width="100%" height="100%" src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/video/self-intro-en.mp4" autoplay controls loop></video><p>上传大文件出了很多网络问题，解决方案：<a href="https://leopol1d.github.io/2024/01/18/upload-large-file/"></a></p><p>等明天面试完三星，将博客架构升级成AWS方案，提升<strong>可扩展性、可用性、容灾能力</strong></p>]]></content>
     
     
     <categories>
@@ -78,13 +78,13 @@
     
     <tags>
       
-      <tag>Cloud Computing</tag>
-      
-      <tag>AWS</tag>
-      
       <tag>Scalability</tag>
       
       <tag>High Availability</tag>
+      
+      <tag>Cloud Computing</tag>
+      
+      <tag>AWS</tag>
       
     </tags>
     
@@ -419,13 +419,13 @@
     
     <tags>
       
+      <tag>High Availability</tag>
+      
       <tag>Cloud Computing</tag>
       
       <tag>AWS</tag>
       
       <tag>AWS Cloud Practitioner Essentials</tag>
-      
-      <tag>High Availability</tag>
       
       <tag>Disaster Tolerance</tag>
       
