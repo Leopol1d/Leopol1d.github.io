@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DDoS Protection: WAF &amp; Shield What is DDOS? akamai DDOS 分布式拒绝服务攻击 (DDoS) 是一种网络攻击。在此类攻击中，攻击者通过发送大量恶意流量造成网站、服务器或网络资源不堪重负，从而导致目标无法工作或崩溃，拒绝向合法用户提供服务，使得合法流量无法到达其目的地。 概括来说，DDoS 或 DoS 攻击就如同成百上千个虚假拼车请">
+    <meta name="description" content="DDoS Protection: WAF &amp; Shield  What is DDOS? akamai DDOS 分布式拒绝服务攻击 (DDoS) 是一种网络攻击。在此类攻击中，攻击者通过发送大量恶意流量造成网站、服务器或网络资源不堪重负，从而导致目标无法工作或崩溃，拒绝向合法用户提供服务，使得合法流量无法到达其目的地。 概括来说，DDoS 或 DoS 攻击就如同成百上千个虚假拼车请求所">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS Security">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/13/AWS-Security/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="DDoS Protection: WAF &amp; Shield What is DDOS? akamai DDOS 分布式拒绝服务攻击 (DDoS) 是一种网络攻击。在此类攻击中，攻击者通过发送大量恶意流量造成网站、服务器或网络资源不堪重负，从而导致目标无法工作或崩溃，拒绝向合法用户提供服务，使得合法流量无法到达其目的地。 概括来说，DDoS 或 DoS 攻击就如同成百上千个虚假拼车请">
+<meta property="og:description" content="DDoS Protection: WAF &amp; Shield  What is DDOS? akamai DDOS 分布式拒绝服务攻击 (DDoS) 是一种网络攻击。在此类攻击中，攻击者通过发送大量恶意流量造成网站、服务器或网络资源不堪重负，从而导致目标无法工作或崩溃，拒绝向合法用户提供服务，使得合法流量无法到达其目的地。 概括来说，DDoS 或 DoS 攻击就如同成百上千个虚假拼车请求所">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.akamai.com/site/zh/images/callout/2022/traffic-metaphor-ddos.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113110007358.png">
@@ -259,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          4.5k 字
         
       </span>
     
@@ -326,108 +326,107 @@
             
               <div class="markdown-body">
                 
-                <h1 id="ddos-protection-waf-shield">DDoS Protection: WAF &amp; Shield</h1>
-<h2 id="what-is-ddos">What is DDOS?</h2>
+                <h1 id="ddos-protection-waf-shield"><a class="markdownIt-Anchor" href="#ddos-protection-waf-shield"></a> DDoS Protection: WAF &amp; Shield</h1>
+<h2 id="what-is-ddos"><a class="markdownIt-Anchor" href="#what-is-ddos"></a> What is DDOS?</h2>
 <p><a target="_blank" rel="noopener" href="https://www.akamai.com/glossary/what-is-ddos">akamai DDOS</a></p>
 <p>分布式拒绝服务攻击 (DDoS) 是一种网络攻击。在此类攻击中，攻击者通过发送大量恶意流量造成网站、服务器或网络资源不堪重负，从而导致目标无法工作或崩溃，拒绝向合法用户提供服务，使得合法流量无法到达其目的地。</p>
 <p>概括来说，DDoS 或 DoS 攻击就如同成百上千个虚假拼车请求所导致的意外交通堵塞。这些请求在拼车服务看来似乎合法，因此服务会调度驾驶员接人，从而不可避免地使城市街道拥堵。这会导致正常的合法流量无法到达目的地。</p>
-<figure>
-<img src="https://www.akamai.com/site/zh/images/callout/2022/traffic-metaphor-ddos.png" srcset="/img/loading.gif" lazyload alt="DDoS 和 DoS 攻击都会造成类似流量堵塞的效果。" /><figcaption aria-hidden="true">DDoS 和 DoS 攻击都会造成类似流量堵塞的效果。</figcaption>
-</figure>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113110007358.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="solution-architect">Solution Architect</h2>
+<p><img src="https://www.akamai.com/site/zh/images/callout/2022/traffic-metaphor-ddos.png" srcset="/img/loading.gif" lazyload alt="DDoS 和 DoS 攻击都会造成类似流量堵塞的效果。" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113110007358.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="solution-architect"><a class="markdownIt-Anchor" href="#solution-architect"></a> Solution Architect</h2>
 <p><a target="_blank" rel="noopener" href="https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf">AWS Best Practices for DDOS Resiliency</a></p>
 <ul>
 <li>AWS Shield：保护网络层和应用层</li>
 <li>AWS WAF(Web Application Firewall)：<strong>过滤基于规则的特殊请求</strong></li>
 <li>CloudFront(AWS CDN) and Route 53(AWS DNS)：基于边缘网络，结合AWS Shield，在边缘提供攻击缓解</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113111147653.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="waf---web-application-firewall">WAF - Web Application Firewall</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113111147653.png" srcset="/img/loading.gif" lazyload alt=" " /></p>
+<h1 id="waf-web-application-firewall"><a class="markdownIt-Anchor" href="#waf-web-application-firewall"></a> WAF - Web Application Firewall</h1>
 <ul>
 <li>保护网络应用程序免受常见网络攻击(layer 7)</li>
 <li>7层指HTTP / HTTPS (vs 4层 TCP)</li>
-<li>可以部署在<code>Application Load Balancer</code>, <code>API Gateway</code>,<code>CloudFront</code></li>
+<li>可以部署在<code>Application Load Balancer</code>, <code>API Gateway</code>,<code> CloudFront</code></li>
 <li>定义<code>Web ACL</code>(Web Access Control List)
 <ul>
 <li>规则可以包含<strong>IP地址</strong>，HTTP headers, HTTP body, URI strings</li>
 <li>Rate-based rules(每个用户的请求有5秒间距) for DDos protection</li>
-<li>防止<code>SQL injection</code>，<code>Cross-Site Scripting</code></li>
-</ul></li>
+<li>防止<code>SQL injection</code>，<code> Cross-Site Scripting</code></li>
 </ul>
-<h1 id="network-firewall-vpc-level">Network Firewall-VPC level</h1>
+</li>
+</ul>
+<h1 id="network-firewall-vpc-level"><a class="markdownIt-Anchor" href="#network-firewall-vpc-level"></a> Network Firewall-VPC level</h1>
 <ul>
 <li>保护整个<code>VPC</code>(Virtual Private Cloud)： layer 3 ~ layer 7</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113113218966.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="firewall-manager">Firewall Manager</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113113218966.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="firewall-manager"><a class="markdownIt-Anchor" href="#firewall-manager"></a> Firewall Manager</h1>
 <ul>
 <li>管理<code>VPC Security Group</code></li>
 <li>管理 <code>WAF rules</code></li>
 <li>管理<code>Shield Advanced</code>(Shield的高级版本，每月3000$)</li>
 <li>管理<code>Network Firewall</code></li>
 </ul>
-<h1 id="penetration-testing">Penetration Testing</h1>
+<h1 id="penetration-testing"><a class="markdownIt-Anchor" href="#penetration-testing"></a> Penetration Testing</h1>
 <p><strong>渗透测试</strong>：攻击自己的基础设施来确保安全性(不能使用<code>DDos</code>, <code>Port flooding</code>, <code>Protocol flooding</code>, <code>Request flooding</code>)</p>
-<h1 id="encryption-with-kms-cloudhsm">Encryption with KMS &amp; CloudHSM</h1>
-<h2 id="data-at-rest-vs.-data-in-transit">Data at rest vs. Data in transit</h2>
+<h1 id="encryption-with-kms-cloudhsm"><a class="markdownIt-Anchor" href="#encryption-with-kms-cloudhsm"></a> Encryption with KMS &amp; CloudHSM</h1>
+<h2 id="data-at-rest-vs-data-in-transit"><a class="markdownIt-Anchor" href="#data-at-rest-vs-data-in-transit"></a> Data at rest vs. Data in transit</h2>
 <p>在设备中的静态数据与传输中的数据都需要被加密！</p>
-<h2 id="kms---key-management-service">KMS - Key Management Service</h2>
+<h2 id="kms-key-management-service"><a class="markdownIt-Anchor" href="#kms-key-management-service"></a> KMS - Key Management Service</h2>
 <ul>
 <li>与encryption相关的AWS服务，大概率与KMS相关</li>
 <li>AWS为用户管理加密的key</li>
 </ul>
-<h2 id="cloudhsm---cloud-hardware-security-management">CloudHSM - Cloud Hardware Security Management</h2>
+<h2 id="cloudhsm-cloud-hardware-security-management"><a class="markdownIt-Anchor" href="#cloudhsm-cloud-hardware-security-management"></a> CloudHSM - Cloud Hardware Security Management</h2>
 <ul>
 <li>AWS提供专用加密硬件</li>
 <li><strong>完全由自己管理加密的key</strong>(硬件由AWS管理)</li>
 <li>FIPS 140-2 Level 3 compliance</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113115920969.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="acm---aws-certificate-manager">ACM - AWS Certificate Manager</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113115920969.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="acm-aws-certificate-manager"><a class="markdownIt-Anchor" href="#acm-aws-certificate-manager"></a> ACM - AWS Certificate Manager</h1>
 <ul>
 <li>管理、部署SSL/TLS证书</li>
 <li><strong>in-flight encryption</strong> - 传输过程中加密</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113162631763.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
-<h1 id="secrets-manager">Secrets Manager</h1>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113162631763.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
+<h1 id="secrets-manager"><a class="markdownIt-Anchor" href="#secrets-manager"></a> Secrets Manager</h1>
 <ul>
 <li>Secrets Manager管理、修改(定时)secret</li>
 <li>secrets被KMS加密</li>
 <li>与RDS集成</li>
 </ul>
-<h1 id="artifact">Artifact</h1>
+<h1 id="artifact"><a class="markdownIt-Anchor" href="#artifact"></a> Artifact</h1>
 <p>下载、查看compliance, agreement</p>
-<h1 id="guardduty">GuardDuty</h1>
+<h1 id="guardduty"><a class="markdownIt-Anchor" href="#guardduty"></a> GuardDuty</h1>
 <ul>
 <li>使用基于机器学习的算法来保护AWS账号</li>
 <li>输入数据是一系列logs</li>
 <li>最佳实践是配合<code>EventBridge</code>使用，当检测出异常，通过<code>EventBridge</code>发送消息给<code>Lambda</code>或者<code>SNS</code></li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113164259011.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="inspector">Inspector</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113164259011.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="inspector"><a class="markdownIt-Anchor" href="#inspector"></a> Inspector</h1>
 <ul>
 <li>主要用于检测正在运行实例的<strong>脆弱性</strong>、<strong>网络可达性</strong></li>
 <li>在将镜像推送至ECR之前，先通过Inspector检查(绿：没问题，黄：脆弱，红：严重错误)</li>
 <li>检查<code>Lambda Function</code>中<strong>代码与依赖的脆弱性</strong></li>
 <li>将结果发送给<code>Security Hub</code>或者<code>EventBridge</code></li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113164908713.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
-<h1 id="config">Config</h1>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170223868.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="macie">Macie</h1>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113164908713.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  
+<h1 id="config"><a class="markdownIt-Anchor" href="#config"></a> Config</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170223868.png" srcset="/img/loading.gif" lazyload alt=" " /></p>
+<h1 id="macie"><a class="markdownIt-Anchor" href="#macie"></a> Macie</h1>
 <ul>
 <li>基于机器学习与模式识别来发现并保护AWS中的<strong>敏感数据</strong></li>
 <li><code>Macie</code>会检测敏感数据，比如PII(Personally identifiable Information)，通过<code>EventBridge</code>告警</li>
 <li>pronuciation:Macy</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170456737.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="security-hub">Security Hub</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170456737.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="security-hub"><a class="markdownIt-Anchor" href="#security-hub"></a> Security Hub</h1>
 <ul>
 <li>Security Dashboard</li>
 <li>在<strong>多个 AWS 账户</strong>中集中自动进行安全检查</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170854827.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240113170854827.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p><strong>Amazon GuardDuty</strong> - Amazon GuardDuty is a threat detection service that monitors malicious activity and unauthorized behavior to protect your AWS account. Amazon GuardDuty analyzes billions of events across your AWS accounts from AWS CloudTrail (AWS user and API activity in your accounts), Amazon VPC Flow Logs (network traffic data), and DNS Logs (name query patterns).</p>
 <p><strong>AWS Trusted Advisor</strong> - AWS Trusted Advisor is an online tool that provides real-time guidance to help you <strong>provision your resources</strong> following AWS best practices. Whether establishing new workflows, developing applications, or as part of ongoing improvement, recommendations provided by AWS Trusted Advisor on a regular basis help keep your solutions provisioned optimally.</p>
 <p>The AWS Cloud Adoption Framework (AWS <strong>CAF</strong>) leverages AWS experience and best practices to help you <strong>digitally transform</strong> and accelerate your business outcomes through innovative use of AWS. AWS CAF identifies specific organizational capabilities that underpin successful cloud transformations.</p>
