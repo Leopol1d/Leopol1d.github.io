@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>AWS Lambda</title>
+    <link href="/2024/01/22/AWS-Lambda/"/>
+    <url>/2024/01/22/AWS-Lambda/</url>
+    
+    <content type="html"><![CDATA[<h1 id="ec2-vs-lambda">EC2 vs Lambda</h1><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142223658.png" /></p><h1 id="benifit-of-lambda">Benifit of Lambda</h1><ul><li>价格优惠，只按照<strong>调用次数</strong>和<strong>耐用性(400000 seconds if function is 1GB RAM)</strong>计费</li><li>与其他AWS服务集成</li><li><strong>事件触发</strong>：function只有在需要的时候才被调用</li><li>通过CloudWatch监控</li></ul><h1 id="example">Example</h1><p>事件触发条件：在S3中上传图片</p><p>触发事件：将图片的缩略图(thumbnail)上传至S3，并将图片的元数据存储在DynamoDB中</p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142656330.png" /></p><p>除此之外，还可以使用Lambda执行定时任务(CRON Job)</p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142858556.png" /></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AWS</category>
+      
+      <category>Ultimate AWS Certified Cloud Practitioner CLF-C02</category>
+      
+      <category>Other Compute Services</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AWS</tag>
+      
+      <tag>Lambda</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AWS Serverless Introduction in One Sentence</title>
     <link href="/2024/01/22/AWS-Serverless-Introduction/"/>
     <url>/2024/01/22/AWS-Serverless-Introduction/</url>
