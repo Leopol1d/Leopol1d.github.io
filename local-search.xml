@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>AWS Other Compute Services</title>
+    <link href="/2024/01/22/AWS-Other-Compute-Services/"/>
+    <url>/2024/01/22/AWS-Other-Compute-Services/</url>
+    
+    <content type="html"><![CDATA[<h1 id="ecs---elastic-container-service">ECS - Elastic Container Service</h1><ul><li>在AWS上运行Docker容器</li><li>必须自己提供、运维基础设施，比如EC2实例</li><li>AWS负责开启，停止容器</li><li>如果是web服务，建议配合Application Load Balancer一起使用</li></ul><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134034545.png" /></p><h1 id="fargate">Fargate</h1><ul><li>同ECR，在AWS上运行Docker容器</li><li>不需要自己提供基础设施，如EC2实例</li><li><strong>serverless offering</strong>，因为我们并不需要管理任何服务器</li></ul><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134452930.png" /></p><h1 id="ecr---elastic-container-registry">ECR - Elastic Container Registry</h1><ul><li>AWS中的Harbor，私有docker镜像仓库</li><li>Fargate或者ECS可以从ECR拉取镜像，并运行docker容器</li></ul><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134718122.png" /></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AWS</category>
+      
+      <category>Ultimate AWS Certified Cloud Practitioner CLF-C02</category>
+      
+      <category>Other Compute Services</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AWS</tag>
+      
+      <tag>ECS</tag>
+      
+      <tag>Fargate</tag>
+      
+      <tag>ECR</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Network Problem with Uploading Large File</title>
     <link href="/2024/01/18/upload-large-file/"/>
     <url>/2024/01/18/upload-large-file/</url>

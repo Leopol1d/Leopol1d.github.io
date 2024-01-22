@@ -16,27 +16,31 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="上传自我介绍的视频有82.4MB，导致频繁报错 1fatal: unable to access &amp;#x27;https:&#x2F;&#x2F;github.com&#x2F;Leopol1d&#x2F;Leopol1d.github.io.git&#x2F;&amp;#x27;: Failed to connect to github.com port 443 after 21142 ms: Couldn&amp;#x27;t connect to ser">
+    <meta name="description" content="ECS - Elastic Container Service  在AWS上运行Docker容器 必须自己提供、运维基础设施，比如EC2实例 AWS负责开启，停止容器 如果是web服务，建议配合Application Load Balancer一起使用   Fargate  同ECR，在AWS上运行Docker容器 不需要自己提供基础设施，如EC2实例 serverless">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Network Problem with Uploading Large File">
-<meta property="og:url" content="https://leopol1d.github.io/2024/01/18/upload-large-file/index.html">
+<meta property="og:title" content="AWS Other Compute Services">
+<meta property="og:url" content="https://leopol1d.github.io/2024/01/22/AWS-Other-Compute-Services/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="上传自我介绍的视频有82.4MB，导致频繁报错 1fatal: unable to access &amp;#x27;https:&#x2F;&#x2F;github.com&#x2F;Leopol1d&#x2F;Leopol1d.github.io.git&#x2F;&amp;#x27;: Failed to connect to github.com port 443 after 21142 ms: Couldn&amp;#x27;t connect to ser">
+<meta property="og:description" content="ECS - Elastic Container Service  在AWS上运行Docker容器 必须自己提供、运维基础设施，比如EC2实例 AWS负责开启，停止容器 如果是web服务，建议配合Application Load Balancer一起使用   Fargate  同ECR，在AWS上运行Docker容器 不需要自己提供基础设施，如EC2实例 serverless">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202903161.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202941688.png">
-<meta property="article:published_time" content="2024-01-18T12:23:23.000Z">
-<meta property="article:modified_time" content="2024-01-18T12:38:59.122Z">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134034545.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134452930.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134718122.png">
+<meta property="article:published_time" content="2024-01-22T05:38:37.000Z">
+<meta property="article:modified_time" content="2024-01-22T05:52:26.814Z">
 <meta property="article:author" content="Leopold">
-<meta property="article:tag" content="bug solution">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="ECS">
+<meta property="article:tag" content="Fargate">
+<meta property="article:tag" content="ECR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202903161.png">
+<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134034545.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Network Problem with Uploading Large File - Leopold&#39;s Blog</title>
+  <title>AWS Other Compute Services - Leopold&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Network Problem with Uploading Large File"></span>
+            <span id="subtitle" data-typed-text="AWS Other Compute Services"></span>
           
         </div>
 
@@ -225,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-18 20:23" pubdate>
-          2024年1月18日 晚上
+        <time datetime="2024-01-22 13:38" pubdate>
+          2024年1月22日 下午
         </time>
       </span>
     
@@ -237,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          840 字
+          280 字
         
       </span>
     
@@ -248,7 +252,7 @@
         
         
         
-          8 分钟
+          3 分钟
         
       </span>
     
@@ -299,30 +303,32 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Network Problem with Uploading Large File</h1>
+            <h1 style="display: none">AWS Other Compute Services</h1>
             
             
               <div class="markdown-body">
                 
-                <p>上传自我介绍的视频有82.4MB，导致频繁报错</p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">fatal: unable to access &#x27;https://github.com/Leopol1d/Leopol1d.github.io.git/&#x27;: Failed to connect to github.com port 443 after 21142 ms: Couldn&#x27;t connect to server<br></code></pre></td></tr></table></figure>
-<p>之前的配置中，命令行在拉取/推送代码时并没有使用<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=vpn&amp;spm=1001.2101.3001.7020">vpn</a>进行代理</p>
-<h4 id="解决方案配置http代理windowslinuxmac-os-中-git-命令相同">解决方案：配置http代理Windows、Linux、Mac OS 中 git 命令相同：</h4>
-<p><strong>配置socks5代理</strong>(可选)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy socks5 127.0.0.1:7890<br><br>git config --global https.proxy socks5 127.0.0.1:7890<br></code></pre></td></tr></table></figure>
-<p><strong>配置http代理</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy 127.0.0.1:7890<br>git config --global https.proxy 127.0.0.1:7890<br></code></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<p><strong>命令中的主机号</strong>（127.0.0.1）是使用的代理的主机号(自己电脑有vpn那么本机可看做访问github的代理主机)，即填入127.0.0.1即可，否则填入代理主机 ip(就是网上找的那个ip) <strong>命令中的端口号</strong>（7890）为代理软件(代理软件不显示端口的话，就去Windows中的代理服务器设置中查看)或代理主机的监听IP，可以从代理服务器配置中获得，否则填入网上找的那个端口port</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202903161.png" srcset="/img/loading.gif" lazyload /></p>
-<p>折腾一小时部署成功</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202941688.png" srcset="/img/loading.gif" lazyload /></p>
-<p>顺带记录一下git命令</p>
-<h5 id="执行git-config--l查看代理">执行<code>git config -l</code>查看代理</h5>
-<p><strong>查看代理命令</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --get http.proxy<br>git config --global --get https.proxy<br></code></pre></td></tr></table></figure>
-<p><strong>取消代理命令</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy<br>git config --global --<span class="hljs-built_in">unset</span> https.proxy<br></code></pre></td></tr></table></figure>
+                <h1 id="ecs---elastic-container-service">ECS - Elastic Container Service</h1>
+<ul>
+<li>在AWS上运行Docker容器</li>
+<li>必须自己提供、运维基础设施，比如EC2实例</li>
+<li>AWS负责开启，停止容器</li>
+<li>如果是web服务，建议配合Application Load Balancer一起使用</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134034545.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="fargate">Fargate</h1>
+<ul>
+<li>同ECR，在AWS上运行Docker容器</li>
+<li>不需要自己提供基础设施，如EC2实例</li>
+<li><strong>serverless offering</strong>，因为我们并不需要管理任何服务器</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134452930.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="ecr---elastic-container-registry">ECR - Elastic Container Registry</h1>
+<ul>
+<li>AWS中的Harbor，私有docker镜像仓库</li>
+<li>Fargate或者ECS可以从ECR拉取镜像，并运行docker容器</li>
+</ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122134718122.png" srcset="/img/loading.gif" lazyload /></p>
 
                 
               </div>
@@ -341,8 +347,22 @@
     
       <span class="category-chain">
         
-  <a href="/categories/" class="category-chain-item">.*</a>
+  <a href="/categories/AWS/" class="category-chain-item">AWS</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/AWS/Ultimate-AWS-Certified-Cloud-Practitioner-CLF-C02/" class="category-chain-item">Ultimate AWS Certified Cloud Practitioner CLF-C02</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/AWS/Ultimate-AWS-Certified-Cloud-Practitioner-CLF-C02/Other-Compute-Services/" class="category-chain-item">Other Compute Services</a>
+  
+  
+
+  
+
   
 
       </span>
@@ -356,7 +376,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/bug-solution/">#bug solution</a>
+        <a href="/tags/AWS/">#AWS</a>
+      
+        <a href="/tags/ECS/">#ECS</a>
+      
+        <a href="/tags/Fargate/">#Fargate</a>
+      
+        <a href="/tags/ECR/">#ECR</a>
       
     </div>
   
@@ -368,8 +394,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Network Problem with Uploading Large File</div>
-      <div>https://leopol1d.github.io/2024/01/18/upload-large-file/</div>
+      <div>AWS Other Compute Services</div>
+      <div>https://leopol1d.github.io/2024/01/22/AWS-Other-Compute-Services/</div>
     </div>
     <div class="license-meta">
       
@@ -381,7 +407,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月18日</div>
+          <div>2024年1月22日</div>
         </div>
       
       
@@ -413,18 +439,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/22/AWS-Other-Compute-Services/" title="AWS Other Compute Services">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AWS Other Compute Services</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/18/self-intro-Eng/" title="Self-Intro-En">
-                        <span class="hidden-mobile">Self-Intro-En</span>
+                      <a href="/2024/01/18/upload-large-file/" title="Network Problem with Uploading Large File">
+                        <span class="hidden-mobile">Network Problem with Uploading Large File</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
