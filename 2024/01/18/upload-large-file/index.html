@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="上传自我介绍的视频有82.4MB，导致频繁报错 1fatal: unable to access &amp;#x27;https:&#x2F;&#x2F;github.com&#x2F;Leopol1d&#x2F;Leopol1d.github.io.git&#x2F;&amp;#x27;: Failed to connect to github.com port 443 after 21142 ms: Couldn&amp;#x27;t connect to ser">
+    <meta name="description" content="上传自我介绍的视频有82.4MB，导致频繁报错 1fatal: unable to access &amp;#x27;https:&#x2F;&#x2F;github.com&#x2F;Leopol1d&#x2F;Leopol1d.github.io.git&#x2F;&amp;#x27;: Failed to connect to github.com port 443 after 21142 ms: Couldn&amp;#x27;t connect to serv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Network Problem with Uploading Large File">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/18/upload-large-file/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="上传自我介绍的视频有82.4MB，导致频繁报错 1fatal: unable to access &amp;#x27;https:&#x2F;&#x2F;github.com&#x2F;Leopol1d&#x2F;Leopol1d.github.io.git&#x2F;&amp;#x27;: Failed to connect to github.com port 443 after 21142 ms: Couldn&amp;#x27;t connect to ser">
+<meta property="og:description" content="上传自我介绍的视频有82.4MB，导致频繁报错 1fatal: unable to access &amp;#x27;https:&#x2F;&#x2F;github.com&#x2F;Leopol1d&#x2F;Leopol1d.github.io.git&#x2F;&amp;#x27;: Failed to connect to github.com port 443 after 21142 ms: Couldn&amp;#x27;t connect to serv">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202903161.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202941688.png">
@@ -307,19 +307,17 @@
                 <p>上传自我介绍的视频有82.4MB，导致频繁报错</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">fatal: unable to access &#x27;https://github.com/Leopol1d/Leopol1d.github.io.git/&#x27;: Failed to connect to github.com port 443 after 21142 ms: Couldn&#x27;t connect to server<br></code></pre></td></tr></table></figure>
 <p>之前的配置中，命令行在拉取/推送代码时并没有使用<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=vpn&amp;spm=1001.2101.3001.7020">vpn</a>进行代理</p>
-<h4 id="解决方案配置http代理windowslinuxmac-os-中-git-命令相同">解决方案：配置http代理Windows、Linux、Mac OS 中 git 命令相同：</h4>
-<p><strong>配置socks5代理</strong>(可选)</p>
+<h4 id="解决方案：配置http代理Windows、Linux、Mac-OS-中-git-命令相同："><a href="#解决方案：配置http代理Windows、Linux、Mac-OS-中-git-命令相同：" class="headerlink" title="解决方案：配置http代理Windows、Linux、Mac OS 中 git 命令相同："></a>解决方案：配置http代理Windows、Linux、Mac OS 中 git 命令相同：</h4><p><strong>配置socks5代理</strong>(可选)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy socks5 127.0.0.1:7890<br><br>git config --global https.proxy socks5 127.0.0.1:7890<br></code></pre></td></tr></table></figure>
 <p><strong>配置http代理</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy 127.0.0.1:7890<br>git config --global https.proxy 127.0.0.1:7890<br></code></pre></td></tr></table></figure>
 <p><strong>注意：</strong></p>
-<p><strong>命令中的主机号</strong>（127.0.0.1）是使用的代理的主机号(自己电脑有vpn那么本机可看做访问github的代理主机)，即填入127.0.0.1即可，否则填入代理主机 ip(就是网上找的那个ip) <strong>命令中的端口号</strong>（7890）为代理软件(代理软件不显示端口的话，就去Windows中的代理服务器设置中查看)或代理主机的监听IP，可以从代理服务器配置中获得，否则填入网上找的那个端口port</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202903161.png" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>命令中的主机号</strong>（127.0.0.1）是使用的代理的主机号(自己电脑有vpn那么本机可看做访问github的代理主机)，即填入127.0.0.1即可，否则填入代理主机 ip(就是网上找的那个ip)<br><strong>命令中的端口号</strong>（7890）为代理软件(代理软件不显示端口的话，就去Windows中的代理服务器设置中查看)或代理主机的监听IP，可以从代理服务器配置中获得，否则填入网上找的那个端口port </p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202903161.png" srcset="/img/loading.gif" lazyload alt="">  </p>
 <p>折腾一小时部署成功</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202941688.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240118202941688.png" srcset="/img/loading.gif" lazyload alt=""> </p>
 <p>顺带记录一下git命令</p>
-<h5 id="执行git-config--l查看代理">执行<code>git config -l</code>查看代理</h5>
-<p><strong>查看代理命令</strong></p>
+<h5 id="执行git-config-l查看代理"><a href="#执行git-config-l查看代理" class="headerlink" title="执行git config -l查看代理"></a>执行<code>git config -l</code>查看代理</h5><p><strong>查看代理命令</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --get http.proxy<br>git config --global --get https.proxy<br></code></pre></td></tr></table></figure>
 <p><strong>取消代理命令</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy<br>git config --global --<span class="hljs-built_in">unset</span> https.proxy<br></code></pre></td></tr></table></figure>
@@ -413,9 +411,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/22/AWS-Other-Compute-Services/" title="AWS Other Compute Services">
+                      <a href="/2024/01/22/AWS-Other-Compute-Services/" title="AWS Container Services">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AWS Other Compute Services</span>
+                        <span class="hidden-mobile">AWS Container Services</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
