@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cat-64.png">
+  <link rel="icon" href="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/cat-96.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Leopold">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="标题：基于深度进化强化学习在混合交通场景的高速公路入口匝道合并问题研究 标题：基于深度进化强化学习的智能网联车辆高速公路入口匝道合并决策研究   第一章 绪论 第二章 基础理论和预备知识 第三章 第四章 总结与展望 参考文献  修改标题 引言 摘要 参考文献 焦点  深度进化强化学习 混合交通 入口匝道合并  参考文献 交叉引用https:&#x2F;&#x2F;blog.csd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="others">
+<meta property="og:url" content="https://leopol1d.github.io/2023/07/09/%E5%A4%A7%E8%AE%BA%E6%96%87/index.html">
+<meta property="og:site_name" content="Leopold&#39;s Blog">
+<meta property="og:description" content="标题：基于深度进化强化学习在混合交通场景的高速公路入口匝道合并问题研究 标题：基于深度进化强化学习的智能网联车辆高速公路入口匝道合并决策研究   第一章 绪论 第二章 基础理论和预备知识 第三章 第四章 总结与展望 参考文献  修改标题 引言 摘要 参考文献 焦点  深度进化强化学习 混合交通 入口匝道合并  参考文献 交叉引用https:&#x2F;&#x2F;blog.csd">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-09T07:44:55.534Z">
+<meta property="article:modified_time" content="2024-02-15T12:07:01.858Z">
+<meta property="article:author" content="Leopold">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>others - Leopold&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"leopol1d.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leopold&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="others"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-09 15:44" pubdate>
+          2023年7月9日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          70 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">others</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="标题基于深度进化强化学习在混合交通场景的高速公路入口匝道合并问题研究">标题：基于深度进化强化学习在混合交通场景的高速公路入口匝道合并问题研究</h3>
+<h3 id="标题基于深度进化强化学习的智能网联车辆高速公路入口匝道合并决策研究">标题：基于深度进化强化学习的智能网联车辆高速公路入口匝道合并决策研究</h3>
+<hr />
+<ul>
+<li>第一章 绪论</li>
+<li>第二章 基础理论和预备知识</li>
+<li>第三章</li>
+<li>第四章</li>
+<li>总结与展望</li>
+<li>参考文献</li>
+</ul>
+<h1 id="修改标题-引言-摘要-参考文献">修改标题 引言 摘要 参考文献</h1>
+<p><strong>焦点</strong></p>
+<ol type="1">
+<li>深度进化强化学习</li>
+<li>混合交通</li>
+<li>入口匝道合并</li>
+</ol>
+<h2 id="参考文献">参考文献</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40078121/article/details/88681605">交叉引用https://blog.csdn.net/qq_40078121/article/details/88681605</a></p>
+<ol type="1">
+<li>Cooperative Incident Management in Mixed Traffic of CAVs and Human-Driven Vehicles</li>
+</ol>
+<p>对不起，我误解了你的问题。进化强化学习（Evolutionary Reinforcement Learning）是一种结合了进化算法和强化学习的方法，其主要思想是通过进化算法来搜索强化学习算法的参数空间或策略空间，以找到最优的策略。与传统的强化学习方法相比，进化强化学习具有一些优势，特别是在处理复杂环境和任务时可能表现更为出色：</p>
+<p>探索和利用平衡：进化强化学习通过进化算法的探索机制，能够更好地平衡探索和利用之间的权衡。进化算法能够在搜索过程中保持多样性，有助于发现更广泛的策略空间，从而更有效地探索潜在的高性能策略。</p>
+<p>解决局部最优问题：由于进化算法的全局搜索特性，进化强化学习可以帮助避免陷入局部最优解。这意味着在复杂的任务和环境中，进化强化学习可能能够找到更优秀的策略。</p>
+<p>参数优化：进化强化学习通过进化算法来优化强化学习算法的参数，可以更有效地适应不同任务和环境。这种参数优化的能力使得进化强化学习对于复杂的任务和环境具有更好的泛化性能。</p>
+<p>对大规模问题的扩展性：进化强化学习的进化算法通常具有良好的可并行性，能够有效地扩展到处理大规模问题。这使得进化强化学习在处理复杂任务和大规模环境时更为可行。</p>
+<p>总的来说，进化强化学习在处理混合交通中的任务合并等复杂问题时可能具有更好的探索能力、避免局部最优和更好的参数优化能力。然而，实际效果取决于任务的特性、问题的复杂度以及算法的实现等多方面因素。</p>
+<p>在自动驾驶车辆（CAV）与人类驾驶车辆（HDV）共存的混合交通环境中，进化强化学习相比传统强化学习可能能够更好地解决以下一些问题：</p>
+<ol type="1">
+<li><p><strong>复杂环境下的策略搜索</strong>：混合交通环境非常复杂，包含了各种动态性和不确定性。在这样的环境中，传统的强化学习算法可能<strong>难以有效地搜索到优秀的策略</strong>，而进化强化学习通过进化算法的全局搜索能力，可以更好地应对复杂环境下的策略搜索问题。</p></li>
+<li><p><strong>避免局部最优解</strong>：强化学习<strong>容易陷入局部最优解</strong>，特别是在复杂环境中。进化强化学习通过遗传进化的机制，能够在搜索空间中保持多样性，有助于避免陷入局部最优解，找到更优秀的策略。</p></li>
+<li><p><strong>参数优化</strong>：强化学习算法的性能很大程度上<strong>依赖于参数的选择和调整</strong>。在复杂的混合交通环境中，选择合适的参数往往是一项挑战。进化强化学习能够利用进化算法对参数空间进行搜索和优化，从而更好地调整算法的参数。</p></li>
+<li><p><strong>鲁棒性和泛化能力</strong>：混合交通环境具有很高的不确定性和变化性，因此算法需要具有良好的鲁棒性和泛化能力。进化强化学习在搜索过程中能够保持多样性，有助于生成更具鲁棒性的策略，并且能够更好地泛化到新的环境和场景中。</p></li>
+</ol>
+<p>总的来说，进化强化学习在处理混合交通中的任务合并问题时可能相对于传统强化学习具有更好的全局搜索能力、避免局部最优解、参数优化能力以及更强的鲁棒性和泛化能力。这些优势使得进化强化学习在复杂的混合交通环境中可能更具竞争力。</p>
+<h1 id="画图">画图</h1>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><code class="hljs matlab">clc<br>clear<br>close all<br><br><br>load normal;<br><br><br>x = <span class="hljs-number">1</span>:<span class="hljs-number">100</span>:<span class="hljs-number">10000</span>;<br><br><br><span class="hljs-built_in">figure</span>(<span class="hljs-number">1</span>);<br><br>set(gcf,<span class="hljs-string">&#x27;unit&#x27;</span>,<span class="hljs-string">&#x27;centimeters&#x27;</span>,<span class="hljs-string">&#x27;position&#x27;</span>,[<span class="hljs-number">10</span> <span class="hljs-number">5</span> <span class="hljs-number">12</span> <span class="hljs-number">8</span>])<br><br><span class="hljs-built_in">plot</span>(x, reward, <span class="hljs-string">&#x27;:&#x27;</span>, <span class="hljs-string">&#x27;LineWidth&#x27;</span>, <span class="hljs-number">9</span>, <span class="hljs-string">&#x27;Color&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>(x, reward1, <span class="hljs-string">&#x27;-o&#x27;</span>, x, reward2, <span class="hljs-string">&#x27;-|&#x27;</span>, x, reward3, <span class="hljs-string">&#x27;-^&#x27;</span>, x, reward4, <span class="hljs-string">&#x27;-d&#x27;</span>, <span class="hljs-string">&#x27;markersize&#x27;</span>, <span class="hljs-number">15</span>, <span class="hljs-string">&#x27;MarkerIndices&#x27;</span>, <span class="hljs-number">1</span>:<span class="hljs-number">4</span>:<span class="hljs-number">100</span>, <span class="hljs-string">&#x27;Color&#x27;</span>, <span class="hljs-string">&#x27;k&#x27;</span>, <span class="hljs-string">&#x27;LineWidth&#x27;</span>, <span class="hljs-number">5</span>, <span class="hljs-string">&#x27;MarkerFaceColor&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>);<br><span class="hljs-built_in">hold</span> off;<br><br>grid on;<br><br><span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;ESACD&#x27;</span>,<span class="hljs-string">&#x27;CEM-RL&#x27;</span>,<span class="hljs-string">&#x27;PPO&#x27;</span>,<span class="hljs-string">&#x27;SACD&#x27;</span>,<span class="hljs-string">&#x27;ACKTR&#x27;</span>,<span class="hljs-string">&#x27;Location&#x27;</span>,<span class="hljs-string">&#x27;southeast&#x27;</span>,<span class="hljs-string">&#x27;Orientation&#x27;</span>,<span class="hljs-string">&#x27;vertical&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>, <span class="hljs-number">25</span>);<br><br>figure_FontSize=<span class="hljs-number">48</span>;<br>xlabel(<span class="hljs-string">&#x27;训练回合数&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize,<span class="hljs-string">&#x27;FontWeight&#x27;</span>,<span class="hljs-string">&#x27;bold&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;k&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;训练返回的累计奖励和&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize,<span class="hljs-string">&#x27;FontWeight&#x27;</span>,<span class="hljs-string">&#x27;bold&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;k&#x27;</span>);<br><br>set(findobj(<span class="hljs-string">&#x27;FontSize&#x27;</span>,<span class="hljs-number">10</span>),<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize);<br><br>title(<span class="hljs-string">&#x27;Normal Mode&#x27;</span>);<br><br><span class="hljs-built_in">figure</span>(<span class="hljs-number">2</span>);<br><br>set(gcf,<span class="hljs-string">&#x27;unit&#x27;</span>,<span class="hljs-string">&#x27;centimeters&#x27;</span>,<span class="hljs-string">&#x27;position&#x27;</span>,[<span class="hljs-number">10</span> <span class="hljs-number">5</span> <span class="hljs-number">12</span> <span class="hljs-number">8</span>])<br><br><br><span class="hljs-built_in">plot</span>(x, speed, <span class="hljs-string">&#x27;:&#x27;</span>, <span class="hljs-string">&#x27;LineWidth&#x27;</span>, <span class="hljs-number">9</span>, <span class="hljs-string">&#x27;Color&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>(x, speed1, <span class="hljs-string">&#x27;-o&#x27;</span>, x, speed2, <span class="hljs-string">&#x27;-|&#x27;</span>, x, speed3, <span class="hljs-string">&#x27;-^&#x27;</span>, x, speed4, <span class="hljs-string">&#x27;-d&#x27;</span>, <span class="hljs-string">&#x27;markersize&#x27;</span>, <span class="hljs-number">15</span>, <span class="hljs-string">&#x27;MarkerIndices&#x27;</span>, <span class="hljs-number">1</span>:<span class="hljs-number">4</span>:<span class="hljs-number">100</span>, <span class="hljs-string">&#x27;Color&#x27;</span>, <span class="hljs-string">&#x27;k&#x27;</span>, <span class="hljs-string">&#x27;LineWidth&#x27;</span>, <span class="hljs-number">5</span>, <span class="hljs-string">&#x27;MarkerFaceColor&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>);<br><span class="hljs-built_in">hold</span> off;<br><br>grid on;<br><span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;ESACD&#x27;</span>,<span class="hljs-string">&#x27;CEM-RL&#x27;</span>,<span class="hljs-string">&#x27;PPO&#x27;</span>,<span class="hljs-string">&#x27;SACD&#x27;</span>,<span class="hljs-string">&#x27;ACKTR&#x27;</span>,<span class="hljs-string">&#x27;Location&#x27;</span>,<span class="hljs-string">&#x27;southeast&#x27;</span>,<span class="hljs-string">&#x27;Orientation&#x27;</span>,<span class="hljs-string">&#x27;vertical&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>, <span class="hljs-number">25</span>);<br><br>figure_FontSize=<span class="hljs-number">48</span>;<br>xlabel(<span class="hljs-string">&#x27;训练回合数&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize,<span class="hljs-string">&#x27;FontWeight&#x27;</span>,<span class="hljs-string">&#x27;bold&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;k&#x27;</span>);<br>txt = ylabel(<span class="hljs-string">&#x27;速度 \rm(\it\fontname&#123;Times New Roman&#125;m/s\rm)&#x27;</span>);<br>set(txt,<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize,<span class="hljs-string">&#x27;FontWeight&#x27;</span>,<span class="hljs-string">&#x27;bold&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;k&#x27;</span>);<br><br>set(findobj(<span class="hljs-string">&#x27;FontSize&#x27;</span>,<span class="hljs-number">15</span>),<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize);<br><br>title(<span class="hljs-string">&#x27;Normal Mode&#x27;</span>);<br><br>load dense;<br><span class="hljs-built_in">figure</span>(<span class="hljs-number">3</span>);<br><br>set(gcf,<span class="hljs-string">&#x27;unit&#x27;</span>,<span class="hljs-string">&#x27;centimeters&#x27;</span>,<span class="hljs-string">&#x27;position&#x27;</span>,[<span class="hljs-number">10</span> <span class="hljs-number">5</span> <span class="hljs-number">12</span> <span class="hljs-number">8</span>])<br><br><span class="hljs-built_in">plot</span>(x, reward, <span class="hljs-string">&#x27;:&#x27;</span>, <span class="hljs-string">&#x27;LineWidth&#x27;</span>, <span class="hljs-number">9</span>, <span class="hljs-string">&#x27;Color&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>(x, reward1, <span class="hljs-string">&#x27;-o&#x27;</span>, x, reward2, <span class="hljs-string">&#x27;-|&#x27;</span>, x, reward3, <span class="hljs-string">&#x27;-^&#x27;</span>, x, reward4, <span class="hljs-string">&#x27;-d&#x27;</span>, <span class="hljs-string">&#x27;markersize&#x27;</span>, <span class="hljs-number">15</span>, <span class="hljs-string">&#x27;MarkerIndices&#x27;</span>, <span class="hljs-number">1</span>:<span class="hljs-number">4</span>:<span class="hljs-number">100</span>, <span class="hljs-string">&#x27;Color&#x27;</span>, <span class="hljs-string">&#x27;k&#x27;</span>, <span class="hljs-string">&#x27;LineWidth&#x27;</span>, <span class="hljs-number">5</span>, <span class="hljs-string">&#x27;MarkerFaceColor&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>);<br><span class="hljs-built_in">hold</span> off;<br><br>grid on;<br><br><span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;ESACD&#x27;</span>,<span class="hljs-string">&#x27;CEM-RL&#x27;</span>,<span class="hljs-string">&#x27;PPO&#x27;</span>,<span class="hljs-string">&#x27;SACD&#x27;</span>,<span class="hljs-string">&#x27;ACKTR&#x27;</span>,<span class="hljs-string">&#x27;Location&#x27;</span>,<span class="hljs-string">&#x27;northwest&#x27;</span>,<span class="hljs-string">&#x27;Orientation&#x27;</span>,<span class="hljs-string">&#x27;vertical&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>, <span class="hljs-number">25</span>);<br><br>figure_FontSize=<span class="hljs-number">48</span>;<br>xlabel(<span class="hljs-string">&#x27;训练回合数&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize,<span class="hljs-string">&#x27;FontWeight&#x27;</span>,<span class="hljs-string">&#x27;bold&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;k&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;训练返回的累计奖励和&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize,<span class="hljs-string">&#x27;FontWeight&#x27;</span>,<span class="hljs-string">&#x27;bold&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;k&#x27;</span>);<br><br>set(findobj(<span class="hljs-string">&#x27;FontSize&#x27;</span>,<span class="hljs-number">10</span>),<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize);<br><br>title(<span class="hljs-string">&#x27;Dense Mode&#x27;</span>);<br><br><span class="hljs-built_in">figure</span>(<span class="hljs-number">4</span>);<br>set(gcf,<span class="hljs-string">&#x27;unit&#x27;</span>,<span class="hljs-string">&#x27;centimeters&#x27;</span>,<span class="hljs-string">&#x27;position&#x27;</span>,[<span class="hljs-number">10</span> <span class="hljs-number">5</span> <span class="hljs-number">12</span> <span class="hljs-number">8</span>])<br><span class="hljs-built_in">plot</span>(x, speed, <span class="hljs-string">&#x27;:&#x27;</span>, <span class="hljs-string">&#x27;LineWidth&#x27;</span>, <span class="hljs-number">9</span>, <span class="hljs-string">&#x27;Color&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>(x, speed1, <span class="hljs-string">&#x27;-o&#x27;</span>, x, speed2, <span class="hljs-string">&#x27;-|&#x27;</span>, x, speed3, <span class="hljs-string">&#x27;-^&#x27;</span>, x, speed4, <span class="hljs-string">&#x27;-d&#x27;</span>, <span class="hljs-string">&#x27;markersize&#x27;</span>, <span class="hljs-number">15</span>, <span class="hljs-string">&#x27;MarkerIndices&#x27;</span>, <span class="hljs-number">1</span>:<span class="hljs-number">4</span>:<span class="hljs-number">100</span>, <span class="hljs-string">&#x27;Color&#x27;</span>, <span class="hljs-string">&#x27;k&#x27;</span>, <span class="hljs-string">&#x27;LineWidth&#x27;</span>, <span class="hljs-number">5</span>, <span class="hljs-string">&#x27;MarkerFaceColor&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>);<br><span class="hljs-built_in">hold</span> off;<br><br>grid on;<br><span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;ESACD&#x27;</span>,<span class="hljs-string">&#x27;CEM-RL&#x27;</span>,<span class="hljs-string">&#x27;PPO&#x27;</span>,<span class="hljs-string">&#x27;SACD&#x27;</span>,<span class="hljs-string">&#x27;ACKTR&#x27;</span>,<span class="hljs-string">&#x27;Location&#x27;</span>,<span class="hljs-string">&#x27;northwest&#x27;</span>,<span class="hljs-string">&#x27;Orientation&#x27;</span>,<span class="hljs-string">&#x27;vertical&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>, <span class="hljs-number">25</span>);<br><br>figure_FontSize=<span class="hljs-number">48</span>;<br>xlabel(<span class="hljs-string">&#x27;训练回合数&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize,<span class="hljs-string">&#x27;FontWeight&#x27;</span>,<span class="hljs-string">&#x27;bold&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;k&#x27;</span>);<br>txt = ylabel(<span class="hljs-string">&#x27;速度 \rm(\it\fontname&#123;Times New Roman&#125;m/s\rm)&#x27;</span>);<br>set(txt,<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize,<span class="hljs-string">&#x27;FontWeight&#x27;</span>,<span class="hljs-string">&#x27;bold&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;k&#x27;</span>);<br><br>set(findobj(<span class="hljs-string">&#x27;FontSize&#x27;</span>,<span class="hljs-number">10</span>),<span class="hljs-string">&#x27;FontSize&#x27;</span>,figure_FontSize);<br><br>title(<span class="hljs-string">&#x27;Dense Mode&#x27;</span>);<br><br><br><br><br><br></code></pre></td></tr></table></figure>
+<p>摘要</p>
+<p><strong>砸到合并 用RL做有什么问题</strong></p>
+<p>提升搜索效率 和</p>
+<p>RL做这个不行-&gt;吞吐率和碰撞率是最重要的东西 不是一个东西-&gt;为什么不行-&gt;提出我的算法</p>
+<p>太罗嗦了 ，不要过于工程化</p>
+<h1 id="摘要">摘要</h1>
+<p>在智能网联汽车（Connected Autonomous Vehicle, CAV）与人类驾驶车辆（Human Driving Vehicle, HDV）共存的混合交通中，高速公路入口匝道合并问题（Highway On-Ramp Merging Problem, HORMP）面临人类驾驶员行为不确定性和匝道有限长度与容量的挑战。</p>
+<p>统的强化学习算法受到欺骗性奖励、鲁棒性差和过早收敛的限制，导致难以有效地搜索到优秀的策略并容易陷入局部最优解[<a href="#_msocom_2">凯鑫2]</a> 。针对上述问题，本研究基于进化论中的变异和自然选择思想，提出了一种基于深度进化强化学习的灵活合并框架FlexMerge（Flexible Merging Framework based on Deep Evolutionary RL）[<a href="#_msocom_3">凯鑫3]</a> ，旨在在CAV和HDV协调过程中做出安全高效的决策。首先，提出了自适应交叉互换和自适应变异，共同作用于参数空间，能够更全面地搜索潜在的优秀策略，提高系统对不同交通情况的应对能力和性能表现。其次，设计了弹性训练种群的机制通过引入随机性和适应性变异操作，扩大参数空间的探索，并促进不同策略的进化。最后，提出了二次考核机制，提高系统的鲁棒性，在CAV和HDV协调过程中做出安全高效的决策，减少车辆碰撞率，提升训练效率。通过在两种不同的交通密度下进行仿真实验，实验结果表明，与传统的演员评论家（Soft Actor-Critic, SAC）算法相比，采用该框架能够更安全高效地完成车联网在入口匝道合并任务，综合提升率达到了8.8%。这验证了该框架能够提升训练效率，<strong>扩大交通吞吐量</strong>。</p>
+<hr />
+<h2 id="什么挑战性">什么挑战性？</h2>
+<p>https://zhuanlan.zhihu.com/p/421637523</p>
+<h3 id="混合交通中连接和自动车辆的安全关键和灵活的协同匝道合并控制"><strong><a target="_blank" rel="noopener" href="https://www.x-mol.com/paperRedirect/1631810965031522304">混合交通中连接和自动车辆的安全关键和灵活的协同匝道合并控制</a></strong></h3>
+<p><a target="_blank" rel="noopener" href="https://www.x-mol.com/paper/journal/71999?r_detail=1631810965031522304&amp;readMode=zh"><em>IEEE Transactions on Intelligent Transportation Systems</em></a> ( IF 8.5 ) <strong>Pub Date : 2023-02-24</strong> , DOI: <a target="_blank" rel="noopener" href="https://www.x-mol.com/paperRedirect/1631810965031522304">10.1109/tits.2022.3224592</a> Haoji Liu, Weichao Zhuang, Guodong Yin, Zhaojian Li, Dongpu Cao</p>
+<p>联网和自动驾驶车辆 (CAV) 的协同匝道合并控制可以有效提高高速公路匝道合并瓶颈处的交通吞吐量和车辆燃油效率。然而，在CAV和人类驾驶车辆（HDV）共存的混合交通场景中，人类驾驶员的不确定机动对安全性和灵活性方面的合并控制提出了重大挑战。为此，本文提出了一种针对 CAV 的分层协作入口匝道合并控制策略，以优化混合交通中具有安全保证的灵活轨迹。首先，在三车协调的情况下考虑 CAV 的入口匝道合并控制问题，从而产生一个最优控制问题 (OCP) 协调入口匝道和主车道 CAV 以高效运行，同时满足多个安全关键约束。其次，开发了一种两级分层控制体系结构来解决具有混合状态控制约束的 OCP。上层规划器利用Pontryagin 最小值原理求解无约束OCP，计算出预期汇流位置，该位置嵌入到下层控制器安全汇流约束的可变时间车头时距中。然后，控制器通过利用控制势垒函数 (CBF) 和控制李雅普诺夫函数 (CLF)，将具有安全关键约束的非线性 OCP 问题转换为二次规划 (QP) 问题。通过有效地求解 QP，可以获得每个 CAV 的时间和能量效率轨迹。此外，采用后退地平线控制框架，使 CAV 能够确定灵活的合并机会并解决 HDV 造成的干扰。最后，</p>
+<h3 id="人类驾驶车辆与自动驾驶车辆共存的混合交通中高速公路入口匝道合并问题highway-on-ramp-merging-problem-hormp具有什么挑战性">人类驾驶车辆与自动驾驶车辆共存的混合交通中，高速公路入口匝道合并问题（Highway On-Ramp Merging Problem, HORMP）具有什么挑战性？</h3>
+<ol type="1">
+<li><p><strong>交通流量不均衡</strong>：高速公路入口匝道通常有限的长度和容量，而人类驾驶车辆和自动驾驶车辆的流量可能不均衡。如果流量不平衡，可能导致拥堵和延误。</p>
+<ol type="1">
+<li>拥堵风险：如果高速公路入口匝道上的交通流量过大，而主干道上的车流量相对较小，就可能导致匝道上的车辆排队等待合并的情况。这可能导致拥堵，延长行程时间，并增加事故的风险。</li>
+<li>流动性差：当主干道上的车流量较大而匝道上的车流量较小时，匝道上的车辆可能很难找到合适的时机和空间来合并到主干道上。这可能导致匝道上的车辆被迫减速或停下来等待，从而降低了整体交通流动性。</li>
+<li>不均衡交通冲突：由于交通流量不均衡，主干道上的车辆可能不太熟悉或不预期匝道上的车辆的存在。这可能导致交通冲突和危险的驾驶行为，如急刹车、迅速变道或违规行驶。</li>
+<li>不公平问题：交通流量不均衡可能导致主干道上的车辆被迫让行给匝道上的车辆，即使它们在主干道上行驶得更快。这可能引起主干道上的车辆的不满和不安全的驾驶行为。</li>
+</ol></li>
+<li><p>不确定性：在HORMP中，存在各种不确定因素，如车辆速度、加速度、间距、人类驾驶员的行为和意图等。这些不确定性使得预测其他车辆的行为变得困难，从而增加了合并的复杂性。</p></li>
+<li><p><strong>人类驾驶员行为</strong>：人类驾驶员在高速公路入口匝道上可能表现出不同的行为，例如不同的加速度模式、合并决策和反应时间。这使得预测和适应人类驾驶员行为变得具有挑战性。</p></li>
+<li><p>安全问题：合并时，车辆之间需要保持安全距离，以避免事故的发生。然而，不同类型的车辆可能具有不同的加速和制动性能，这可能增加合并的风险。</p></li>
+</ol>
+<p>Cooperative SAC-PPO-CEM (CSPC).</p>
+<p>Evolutionary Soft Actor-Critical Discrete-CEM (ESAC-CEM)</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>others</div>
+      <div>https://leopol1d.github.io/2023/07/09/大论文/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Leopold</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/10/prefix-sum/" title="Prefix Sum">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Prefix Sum</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/09/lcp353/" title="lcp353">
+                        <span class="hidden-mobile">lcp353</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"comment-plugin.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
