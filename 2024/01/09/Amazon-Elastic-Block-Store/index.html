@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。   EBS 将数据卷驱动器与 EC2 实例的主机分离开来 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2">
+    <meta name="description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。  EBS 将数据卷驱动器与 EC2 实例的主机分离开来 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Amazon Elastic Block Store">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/09/Amazon-Elastic-Block-Store/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。   EBS 将数据卷驱动器与 EC2 实例的主机分离开来 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2">
+<meta property="og:description" content="实例存储 使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。  EBS 将数据卷驱动器与 EC2 实例的主机分离开来 Amazon Elastic Block Store (Amazon EBS)(opens in a new tab) 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109192706435.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png">
@@ -307,18 +307,18 @@
             
               <div class="markdown-body">
                 
-                <h1 id="实例存储"><a class="markdownIt-Anchor" href="#实例存储"></a> <strong>实例存储</strong></h1>
+                <h1 id="实例存储"><strong>实例存储</strong></h1>
 <p>使用具体某台EC2实例主机的磁盘存储，当EC2实例终止(比如更换EC2实例)，实例存储中的数据会丢失。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109192706435.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="ebs"><a class="markdownIt-Anchor" href="#ebs"></a> EBS</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109192706435.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="ebs">EBS</h1>
 <p><strong>将数据卷驱动器与 EC2 实例的主机分离开来</strong></p>
 <p><a target="_blank" rel="noopener" href="https://aws.amazon.com/ebs"><strong>Amazon Elastic Block Store (Amazon EBS)</strong>(opens in a new tab)</a> 是一项提供块级存储卷的服务，可以将其用于 Amazon EC2 实例。如果停止或终止 Amazon EC2 实例，附加的 EBS 卷上的所有数据仍然可用。</p>
 <p>创建 EBS 卷后，您可以将它附加到 Amazon EC2 实例。</p>
 <p>EBS 卷用于存储需要持久保存的数据，因此备份数据非常重要。您可以通过创建 Amazon EBS 快照为 EBS 卷创建递增备份。</p>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png" srcset="/img/loading.gif" lazyload alt="当 Amazon EC2 实例终止时，附加的 EBS 卷上的所有数据仍然可用。" style="zoom:50%;" />  
-<h1 id="amazon-ebs-快照"><a class="markdownIt-Anchor" href="#amazon-ebs-快照"></a> <strong>Amazon EBS 快照</strong></h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/7gksVnFQ-v-dSLlJ_5ykbGSLISOOFUC8X.png" srcset="/img/loading.gif" lazyload alt="当 Amazon EC2 实例终止时，附加的 EBS 卷上的所有数据仍然可用。" style="zoom:50%;" /></p>
+<h1 id="amazon-ebs-快照"><strong>Amazon EBS 快照</strong></h1>
 <p><strong>增量备份</strong></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/53Hh7hSTmJeGkw18_jH6D5ObLkeNaShEi.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/53Hh7hSTmJeGkw18_jH6D5ObLkeNaShEi.png" srcset="/img/loading.gif" lazyload /></p>
 <p>通过 Amazon EBS 快照为 EBS 卷创建递增备份。第一天，备份两个卷。第 2 天，增加一个新卷，并备份新卷。第 3 天，再增加两个卷，共有五个卷。仅备份两个新卷。</p>
 
                 

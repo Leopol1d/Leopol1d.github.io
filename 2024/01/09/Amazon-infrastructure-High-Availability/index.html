@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="可用区 最佳实践：至少在两个可用区部署基础设施 可用区是一个区域内的单个数据中心或一组数据中心。可用区彼此相距数十英里(光信号毫秒级传输)。这个距离足够近，可以在可用区之间实现低延迟（请求内容与接收内容之间的时间）。但是，如果区域内的某个部分发生灾难，这个距离又足够远，可以降低多个可用区受到影响的几率。   可用区发生故障   边缘站点 边缘站点是靠近客户地理位置的站点，Amazon Cloud">
+    <meta name="description" content="可用区 最佳实践：至少在两个可用区部署基础设施 可用区是一个区域内的单个数据中心或一组数据中心。可用区彼此相距数十英里(光信号毫秒级传输)。这个距离足够近，可以在可用区之间实现低延迟（请求内容与接收内容之间的时间）。但是，如果区域内的某个部分发生灾难，这个距离又足够远，可以降低多个可用区受到影响的几率。  可用区发生故障  边缘站点 边缘站点是靠近客户地理位置的站点，Amazon C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Amazon Infrastructure High Availability">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/09/Amazon-infrastructure-High-Availability/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="可用区 最佳实践：至少在两个可用区部署基础设施 可用区是一个区域内的单个数据中心或一组数据中心。可用区彼此相距数十英里(光信号毫秒级传输)。这个距离足够近，可以在可用区之间实现低延迟（请求内容与接收内容之间的时间）。但是，如果区域内的某个部分发生灾难，这个距离又足够远，可以降低多个可用区受到影响的几率。   可用区发生故障   边缘站点 边缘站点是靠近客户地理位置的站点，Amazon Cloud">
+<meta property="og:description" content="可用区 最佳实践：至少在两个可用区部署基础设施 可用区是一个区域内的单个数据中心或一组数据中心。可用区彼此相距数十英里(光信号毫秒级传输)。这个距离足够近，可以在可用区之间实现低延迟（请求内容与接收内容之间的时间）。但是，如果区域内的某个部分发生灾难，这个距离又足够远，可以降低多个可用区受到影响的几率。  可用区发生故障  边缘站点 边缘站点是靠近客户地理位置的站点，Amazon C">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109152954520.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109153030540.png">
@@ -254,7 +254,7 @@
         
         
         
-          9 分钟
+          10 分钟
         
       </span>
     
@@ -310,13 +310,13 @@
             
               <div class="markdown-body">
                 
-                <h1 id="可用区"><a class="markdownIt-Anchor" href="#可用区"></a> 可用区</h1>
+                <h1 id="可用区">可用区</h1>
 <p><strong>最佳实践：至少在两个可用区部署基础设施</strong></p>
 <p><strong>可用区是一个区域内的单个数据中心或一组数据中心</strong>。可用区彼此相距数十英里(<strong>光信号毫秒级传输</strong>)。这个距离足够近，可以在可用区之间实现低延迟（请求内容与接收内容之间的时间）。但是，如果区域内的某个部分发生灾难，这个距离又足够远，可以降低多个可用区受到影响的几率。</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109152954520.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="可用区发生故障"><a class="markdownIt-Anchor" href="#可用区发生故障"></a> 可用区发生故障</h1>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109153030540.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="边缘站点"><a class="markdownIt-Anchor" href="#边缘站点"></a> 边缘站点</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109152954520.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="可用区发生故障">可用区发生故障</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109153030540.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="边缘站点">边缘站点</h1>
 <p><strong>边缘站点是靠近客户地理位置的站点，Amazon CloudFront 使用它将缓存的内容副本存储在更靠近客户的位置，以便加快分发速度。</strong></p>
 <p><strong>CDN(Content Distribution Network内容分发网络)：一种根据用户的地理位置从边缘站点向他们分发内容的网络</strong></p>
 <p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cloudfront/">Amazon CloudFront</a> 是一种内容分发网络（CDN）服务，旨在获得优异性能、安全性和开发人员便利性。可以使用 Amazon CloudFront 执行以下任务：</p>
@@ -326,20 +326,22 @@
 <li>使用无服务器计算功能自定义您在 AWS 网络边缘运行的代码，以平衡成本、性能和安全性。</li>
 <li>自动扩展，以高传输速率大规模分发软件、游戏补丁和 IoT 更新内容。</li>
 </ul>
-<h1 id="示例1"><a class="markdownIt-Anchor" href="#示例1"></a> 示例1</h1>
-<ol>
+<h1 id="示例1">示例1</h1>
+<ol type="1">
 <li>假设公司的数据存储在巴西，而有客户居住在中国。要向这些客户提供内容，不必将所有内容移动到其中一个中国区域。</li>
 <li>可以在靠近中国客户的边缘站点本地缓存一份副本，而不是要求客户从巴西获取数据。</li>
 <li>当中国客户请求某个文件时，Amazon CloudFront 会从边缘站点的缓存中检索该文件，然后分发给客户。该文件来自中国附近的边缘站点而不是巴西的原始源，因此可以更快地将其分发给客户。</li>
 </ol>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109154149496.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="示例2"><a class="markdownIt-Anchor" href="#示例2"></a> 示例2</h1>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240109154149496.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="示例2">示例2</h1>
 <p><strong>Amazon Route 53 (AWS的DNS服务器)和 Amazon CloudFront 如何分发内容</strong></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/o3oezkHDcQR08fHC_rtUnip7uUZrXyuN3.png" srcset="/img/loading.gif" lazyload alt="Amazon Route 53 和 Amazon CloudFront 协同工作，从多个 EC2 实例传输内容。编号文本中的详细信息。" /></p>
+<figure>
+<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/o3oezkHDcQR08fHC_rtUnip7uUZrXyuN3.png" srcset="/img/loading.gif" lazyload alt="Amazon Route 53 和 Amazon CloudFront 协同工作，从多个 EC2 实例传输内容。编号文本中的详细信息。" /><figcaption aria-hidden="true">Amazon Route 53 和 Amazon CloudFront 协同工作，从多个 EC2 实例传输内容。编号文本中的详细信息。</figcaption>
+</figure>
 <p>假设 AnyCompany 的应用程序正在多个 Amazon EC2 实例上运行。这些实例位于附加到 Application Load Balancer 的 Auto Scaling 组。</p>
 <ul>
 <li>客户通过访问 AnyCompany 网站向应用程序请求数据。</li>
-<li>Amazon Route 53 利用 DNS 解析来识别 <a target="_blank" rel="noopener" href="http://AnyCompany.com">AnyCompany.com</a> 对应的 IP 地址，即 192.0.2.0。系统将这一信息发送给客户。</li>
+<li>Amazon Route 53 利用 DNS 解析来识别 AnyCompany.com 对应的 IP 地址，即 192.0.2.0。系统将这一信息发送给客户。</li>
 <li>客户的请求通过 Amazon CloudFront 发送到最近的边缘站点。</li>
 <li>Amazon CloudFront 连接到 Application Load Balancer，后者将传入的数据包发送到 Amazon EC2 实例。</li>
 </ul>
