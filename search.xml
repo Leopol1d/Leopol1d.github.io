@@ -18,10 +18,53 @@
       </tags>
   </entry>
   <entry>
-    <title>Android_Activity</title>
+    <title>Android Captain Game</title>
+    <url>/2024/02/21/Android-CaptainGame/</url>
+    <content><![CDATA[<h2 id="编写海盗游戏的-compose-ui">编写海盗游戏的 Compose UI</h2>
+<p>在这个博客中，我将向大家展示如何使用 Jetpack Compose 编写一个简单的海盗游戏界面。通过这个游戏，玩家可以探索海洋、寻找宝藏和应对风暴。</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240221152305661.png" /></p>
+<h3 id="设置界面">设置界面</h3>
+<p>我们首先需要设置界面的基本结构。在 <code>MainActivity</code> 中，我们使用 <code>setContent</code> 函数将界面内容设置为 <code>CaptainGame</code> 组件。这个组件是一个 <code>@Composable</code> 函数，负责渲染游戏界面。</p>
+<h3 id="游戏状态和逻辑">游戏状态和逻辑</h3>
+<p>在 <code>CaptainGame</code> 中，我们使用 <code>mutableStateOf</code> 来定义游戏的状态。这些状态包括已找到的宝藏数量、遭遇的风暴次数、玩家的生命值和当前航行方向。我们还有一个 <code>gameOver</code> 状态，用于判断游戏是否结束。</p>
+<p>根据游戏规则，如果生命值小于等于零且游戏还没有结束，那么游戏应该结束。在这种情况下，我们将 <code>gameOver</code> 设置为 <code>true</code>。</p>
+<p>根据游戏是否结束，我们渲染不同的界面。如果游戏结束，我们显示一条消息，告诉玩家游戏结束并显示他们的得分。此外，我们还提供一个 "重新开始" 按钮，玩家可以点击它来重新开始游戏。</p>
+<p>如果游戏没有结束，我们显示当前的游戏状态，比如已找到的宝藏数量、遭遇的风暴次数、当前航行方向和生命值。我们还提供了四个按钮，玩家可以点击它们来改变航行方向，并根据一定的概率遭遇风暴或找到宝藏。</p>
+<h3 id="界面布局和样式">界面布局和样式</h3>
+<p>为了使界面更美观，我们使用了 <code>Column</code> 组件来垂直布局界面元素。对于游戏结束时的界面，我们使用了 <code>Modifier.fillMaxSize()</code> 来使其占据整个可用空间，并使用 <code>verticalArrangement</code> 和 <code>horizontalAlignment</code> 属性来进行居中对齐。</p>
+<p>我们还为重新开始按钮设置了最大宽度，并对其他按钮应用了默认样式。</p>
+<h3 id="代码">代码</h3>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">package</span> com.samsung.captaingame<br><br><span class="hljs-keyword">import</span> android.content.Context<br><span class="hljs-keyword">import</span> android.os.Bundle<br><span class="hljs-keyword">import</span> android.widget.Toast<br><span class="hljs-keyword">import</span> androidx.activity.ComponentActivity<br><span class="hljs-keyword">import</span> androidx.activity.compose.setContent<br><span class="hljs-keyword">import</span> androidx.compose.foundation.layout.Arrangement<br><span class="hljs-keyword">import</span> androidx.compose.foundation.layout.Column<br><span class="hljs-keyword">import</span> androidx.compose.foundation.layout.fillMaxSize<br><span class="hljs-keyword">import</span> androidx.compose.material3.Button<br><span class="hljs-keyword">import</span> androidx.compose.material3.MaterialTheme<br><span class="hljs-keyword">import</span> androidx.compose.material3.Surface<br><span class="hljs-keyword">import</span> androidx.compose.material3.Text<br><span class="hljs-keyword">import</span> androidx.compose.runtime.Composable<br><span class="hljs-keyword">import</span> androidx.compose.runtime.mutableStateOf<br><span class="hljs-keyword">import</span> androidx.compose.runtime.remember<br><span class="hljs-keyword">import</span> androidx.compose.ui.Alignment<br><span class="hljs-keyword">import</span> androidx.compose.ui.Modifier<br><span class="hljs-keyword">import</span> androidx.compose.ui.tooling.preview.Preview<br><span class="hljs-keyword">import</span> com.samsung.captaingame.ui.theme.CaptainGameTheme<br><span class="hljs-keyword">import</span> kotlin.random.Random<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainActivity</span> : <span class="hljs-type">ComponentActivity</span>() &#123;<br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)<br>        setContent &#123;<br>            CaptainGameTheme &#123;<br>                <span class="hljs-comment">// A surface container using the &#x27;background&#x27; color from the theme</span><br>                Surface(<br>                    modifier = Modifier.fillMaxSize(),<br>                    color = MaterialTheme.colorScheme.background<br>                ) &#123;<br>                    CaptainGame(<span class="hljs-keyword">this</span>)<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-meta">@Composable</span><br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">CaptainGame</span><span class="hljs-params">(context: <span class="hljs-type">Context</span>)</span></span> &#123;<br>    <span class="hljs-keyword">val</span> treasuresFound = remember&#123; mutableStateOf(<span class="hljs-number">0</span>) &#125;<br>    <span class="hljs-keyword">val</span> stormOccurred = remember &#123; mutableStateOf(<span class="hljs-number">0</span>) &#125;<br>    <span class="hljs-keyword">val</span> hp = remember &#123; mutableStateOf(<span class="hljs-number">100</span>) &#125;<br>    <span class="hljs-keyword">val</span> direction =  remember&#123; mutableStateOf(<span class="hljs-string">&quot;North&quot;</span>) &#125;<br>    <span class="hljs-keyword">val</span> gameOver = remember&#123; mutableStateOf(<span class="hljs-literal">false</span>) &#125;<br>    <span class="hljs-keyword">if</span> (hp.value &lt;= <span class="hljs-number">0</span> &amp;&amp; !gameOver.value) &#123;<br>        gameOver.value = <span class="hljs-literal">true</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> (gameOver.value) &#123;<br>        Column(<br>            modifier = Modifier.fillMaxSize(),<br>            verticalArrangement = Arrangement.Center,<br>            horizontalAlignment = Alignment.CenterHorizontally<br>        ) &#123;<br>            Text(text = <span class="hljs-string">&quot;Game Over! Score: <span class="hljs-subst">$&#123;treasuresFound.value * <span class="hljs-number">100</span>&#125;</span>&quot;</span>)<br>            Button(onClick = &#123;<br>                treasuresFound.value = <span class="hljs-number">0</span><br>                stormOccurred.value = <span class="hljs-number">0</span><br>                hp.value = <span class="hljs-number">100</span><br>                gameOver.value = <span class="hljs-literal">false</span><br>            &#125;) &#123;<br>                Text(<span class="hljs-string">&quot;Restart&quot;</span>)<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        Column &#123;<br>            Text(text = <span class="hljs-string">&quot;Treasures Found: <span class="hljs-subst">$&#123;treasuresFound.value&#125;</span>&quot;</span>)<br>            Text(text = <span class="hljs-string">&quot;Storm Occurred: <span class="hljs-subst">$&#123;stormOccurred.value&#125;</span>&quot;</span>)<br>            Text(text = <span class="hljs-string">&quot;Current Direction:  <span class="hljs-subst">$&#123;direction.value&#125;</span>&quot;</span>)<br>            Text(text = <span class="hljs-string">&quot;HP <span class="hljs-subst">$&#123;hp.value&#125;</span>&quot;</span>)<br>            Button(onClick = &#123;<br>                direction.value = <span class="hljs-string">&quot;East&quot;</span><br>                <span class="hljs-keyword">if</span> (Random.nextDouble() &lt; <span class="hljs-number">0.2</span>) &#123;<br>                    stormOccurred.value += <span class="hljs-number">1</span><br>                    Toast.makeText(context, <span class="hljs-string">&quot;Storm Ahead!&quot;</span>, Toast.LENGTH_SHORT).show()<br>                    hp.value -= <span class="hljs-number">50</span><br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Random.nextDouble() &lt; <span class="hljs-number">0.5</span>) &#123;<br>                    treasuresFound.value += <span class="hljs-number">1</span><br>                    Toast.makeText(context, <span class="hljs-string">&quot;Treasure Found!&quot;</span>, Toast.LENGTH_SHORT).show()<br>                    hp.value += <span class="hljs-number">1</span><br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    hp.value += <span class="hljs-number">2</span><br>                &#125;<br>            &#125;) &#123;<br>                Text(<span class="hljs-string">&quot;Sail East&quot;</span>)<br>            &#125;<br>            Button(onClick = &#123;<br>                direction.value = <span class="hljs-string">&quot;West&quot;</span><br>                <span class="hljs-keyword">if</span> (Random.nextDouble() &lt; <span class="hljs-number">0.2</span>) &#123;<br>                    stormOccurred.value += <span class="hljs-number">1</span><br>                    Toast.makeText(context, <span class="hljs-string">&quot;Storm Ahead!&quot;</span>, Toast.LENGTH_SHORT).show()<br>                    hp.value -= <span class="hljs-number">50</span><br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Random.nextDouble() &lt; <span class="hljs-number">0.5</span>) &#123;<br>                    treasuresFound.value += <span class="hljs-number">1</span><br>                    Toast.makeText(context, <span class="hljs-string">&quot;Treasure Found!&quot;</span>, Toast.LENGTH_SHORT).show()<br>                    hp.value += <span class="hljs-number">1</span><br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    hp.value += <span class="hljs-number">2</span><br>                &#125;<br>            &#125;) &#123;<br>                Text(<span class="hljs-string">&quot;Sail West&quot;</span>)<br>            &#125;<br>            Button(onClick = &#123;<br>                direction.value = <span class="hljs-string">&quot;North&quot;</span><br>                <span class="hljs-keyword">if</span> (Random.nextDouble() &lt; <span class="hljs-number">0.2</span>) &#123;<br>                    stormOccurred.value += <span class="hljs-number">1</span><br>                    Toast.makeText(context, <span class="hljs-string">&quot;Storm Ahead!&quot;</span>, Toast.LENGTH_SHORT).show()<br>                    hp.value -= <span class="hljs-number">50</span><br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Random.nextDouble() &lt; <span class="hljs-number">0.5</span>) &#123;<br>                    treasuresFound.value += <span class="hljs-number">1</span><br>                    Toast.makeText(context, <span class="hljs-string">&quot;Treasure Found!&quot;</span>, Toast.LENGTH_SHORT).show()<br>                    hp.value += <span class="hljs-number">1</span><br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    hp.value += <span class="hljs-number">2</span><br>                &#125;<br>            &#125;) &#123;<br>                Text(<span class="hljs-string">&quot;Sail North&quot;</span>)<br>            &#125;<br>            Button(onClick = &#123;<br>                direction.value = <span class="hljs-string">&quot;South&quot;</span><br>                <span class="hljs-keyword">if</span> (Random.nextDouble() &lt; <span class="hljs-number">0.2</span>) &#123;<br>                    stormOccurred.value += <span class="hljs-number">1</span><br>                    Toast.makeText(context, <span class="hljs-string">&quot;Storm Ahead!&quot;</span>, Toast.LENGTH_SHORT).show()<br>                    hp.value -= <span class="hljs-number">50</span><br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Random.nextDouble() &lt; <span class="hljs-number">0.5</span>) &#123;<br>                    treasuresFound.value += <span class="hljs-number">1</span><br>                    Toast.makeText(context, <span class="hljs-string">&quot;Treasure Found!&quot;</span>, Toast.LENGTH_SHORT).show()<br>                    hp.value += <span class="hljs-number">1</span><br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    hp.value += <span class="hljs-number">2</span><br>                &#125;<br>            &#125;) &#123;<br>                Text(<span class="hljs-string">&quot;Sail South&quot;</span>)<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="游戏界面">游戏界面</h3>
+<h3 id="总结">总结</h3>
+<p>通过这个简单的海盗游戏示例，我们展示了如何使用 Jetpack Compose 构建一个基于状态的界面，并处理用户交互和游戏逻辑。希望这个示例能为你提供一些关于使用 Compose 构建应用程序的启示。</p>
+<p>完整的代码示例可以在 <a href="https://github.com/your-github-repo">GitHub</a> 上找到。</p>
+<p>如果你对此感兴趣，可以尝试扩展游戏功能，比如增加更多的交互元素和游戏规则。祝你编写出令人愉快的海盗游戏！</p>
+<h2 id="知识点">知识点</h2>
+<ul>
+<li><code>remember</code>： <code>remember</code> 是一个用于在 Compose 组件中创建可记忆状态的函数。它接收一个初始值，并返回一个包含状态值的可记忆对象。这个记忆对象在组件的重组或重新绘制过程中会被保留，以确保状态的连续性和一致性。当组件被重新绘制时，它会重新获取之前的记忆对象，而不是重新创建一个新的对象。</li>
+<li><code>mutableStateOf</code>： <code>mutableStateOf</code> 是一个函数，用于创建可变的状态对象。它接收一个初始值，并返回一个包含状态值和更新状态值的函数的对象。通过调用返回的函数，我们可以在组件中修改状态的值。每当状态值发生变化时，Compose 会重新绘制组件，并在界面上反映出新的状态。</li>
+</ul>
+<p><code>val</code> 关键字用于声明不可变的引用，即一旦引用被初始化后，它将无法指向其他对象，为什么<code>treasuresFound</code>用val修饰呢？</p>
+<p><strong>内容(mutableStateOf)是可变的，但remember内存地址是不变的</strong></p>
+<p>总之，使用 <code>val</code> 来修饰 <code>treasuresFound</code> 可以确保其引用的不可变性，而通过返回的 <code>mutableStateOf</code> 对象可以修改其值，从而同时满足状态的稳定性和可变性的需求</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> treasuresFound = remember&#123; mutableStateOf(<span class="hljs-number">0</span>) &#125;<br></code></pre></td></tr></table></figure>
+<p>当<code>treasuresFound</code>的值变化了(<code>mutableStateOf</code>)，Compose 将会自动检测到状态的变化并更新相关的 UI</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+        <category>The Complete Android 14 &amp; Kotlin Development Masterclass</category>
+        <category>Lecture5</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android Activity</title>
     <url>/2024/02/14/Android-Activity/</url>
-    <content><![CDATA[<h2 id="intent">Intent</h2>
-<h3 id="显式intent">显式intent</h3>
+    <content><![CDATA[<h1 id="intent">Intent</h1>
+<h2 id="显式intent">显式intent</h2>
 <ul>
 <li>明确指定了要启动的目标组件，适用于启动应用内的组件。</li>
 <li>适合用于应用内部的组件通信，例如从一个 Activity 启动另一个 Activity。</li>
@@ -32,7 +75,7 @@
 <p>eg.有两个Activity，点击activity_main(左图)中的button，可以跳转到activity_button，核心代码如下</p>
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> btn: Button = findViewById(R.id.button)<br>btn.setOnClickListener &#123;<br>    <span class="hljs-keyword">val</span> intent = Intent(<span class="hljs-keyword">this</span>, SecondActivity::<span class="hljs-keyword">class</span>.java)<br>    startActivity(intent)<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240214213201435.png" /></p>
-<h3 id="隐式intent">隐式intent</h3>
+<h2 id="隐式intent">隐式intent</h2>
 <ul>
 <li>不指定目标组件的类名，而是根据 Intent 的内容和 Intent Filter 动态地查找适合处理该 Intent 的组件。</li>
 <li>适用于希望系统为我们选择合适的组件来处理某个动作的情况，例如发送邮件、分享内容等。</li>
@@ -58,6 +101,28 @@
 <li>如果设为 <code>true</code>，则任何应用都可以访问相应的 activity，并通过其确切类名称启动它。</li>
 <li>如果设为 <code>false</code>，则只有同一应用的组件、具有相同用户 ID 的应用或具有特权的系统组件可以启动该 activity。</li>
 </ul>
+<h2 id="其他隐式intent用法">其他隐式intent用法</h2>
+<h3 id="访问网页">访问网页</h3>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin">btn.setOnClickListener &#123;<br>    <span class="hljs-keyword">val</span> intent = Intent(Intent.ACTION_VIEW)<br>    intent.<span class="hljs-keyword">data</span> = Uri.parse(<span class="hljs-string">&quot;https://www.google.com&quot;</span>)<br>    startActivity(intent)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Intent.ACTION_VIEW常量："android.intent.action.VIEW"表示<strong>浏览动作</strong></p>
+<p>Uri.parse("https://www.google.com")表示将一个网址字符串解析成一个Uri对象，在调用Intent的setData()(kotlin语法糖)将这个Uri对象传递给intent。</p>
+<div class="note note-danger">
+            <h3 id="bug">bug</h3><p>点击按钮跳转至谷歌浏览器，然后整个电脑死机！尝试分配更大的内存以及磁盘，还没解决！</p>
+          </div>
+<h3 id="向下一个activity传递数据">向下一个Activity传递数据</h3>
+<p>使用<strong>putExtra</strong>与<strong>get$typeExtra</strong></p>
+<p>MainActivity.kt</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin">btn.setOnClickListener &#123;<br>    <span class="hljs-keyword">val</span> <span class="hljs-keyword">data</span> = <span class="hljs-string">&quot;Hello SecondActivity&quot;</span><br>    <span class="hljs-keyword">val</span> intent = Intent(<span class="hljs-keyword">this</span>, SecondActivity::<span class="hljs-keyword">class</span>.java)<br>    intent.putExtra(<span class="hljs-string">&quot;extra_data&quot;</span>, <span class="hljs-keyword">data</span>)<br>    startActivity(intent)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>SecondActivity.kt</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> extraData = intent.getStringExtra(<span class="hljs-string">&quot;extra_data&quot;</span>)<br>Log.d(<span class="hljs-string">&quot;SecondActivity&quot;</span>, <span class="hljs-string">&quot;extra data is <span class="hljs-variable">$extraData</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>在logcat检索verbose level的日志</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240215235147789.png" /></p>
+<h3 id="返回数据给上一个activity">返回数据给上一个Activity</h3>
+<p>MainActivity使用startActivityForResult(新版本已废弃)启动SecondActivity，其中startActivityForResult的第二个参数是全局唯一的<strong>请求码</strong>，</p>
+<p>MainActivity.kt</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin">btn.setOnClickListener &#123;<br>    <span class="hljs-keyword">val</span> intent = Intent(<span class="hljs-keyword">this</span>, SecondActivity::<span class="hljs-keyword">class</span>.java)<br>    startActivityForResult(intent, <span class="hljs-number">1</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>SecondActivity.kt</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> extraData = intent.getStringExtra(<span class="hljs-string">&quot;extra_data&quot;</span>)<br>Log.d(<span class="hljs-string">&quot;SecondActivity&quot;</span>, <span class="hljs-string">&quot;extra data is <span class="hljs-variable">$extraData</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
 <p>Inflate的含义</p>
 <p>当编写了一个XML layout，它会通过在内存中创建视图对象下·来被<strong>渲染</strong></p>
 <p>When you write an XML layout, it will be <em>inflated</em> by the Android OS which basically means that it will be rendered by creating view object in memory. Let's call that <em>implicit inflation</em> (the OS will inflate the view for you). For instance:</p>
@@ -106,7 +171,24 @@
   <entry>
     <title>Android Unit Converter</title>
     <url>/2024/01/27/Android-Unit-Converter/</url>
-    <content><![CDATA[
+    <content><![CDATA[<p>可组合函数可以使用 <a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary?hl=zh-cn#remember(kotlin.Function0)"><code>remember</code></a> API 将对象存储在内存中。系统会在初始组合期间将由 <code>remember</code> 计算的值存储在组合中，并在重组期间返回存储的值。<code>remember</code> 既可用于存储可变对象，又可用于存储不可变对象。</p>
+<p><strong>注意</strong> ：<code>remember</code> 会将对象存储在组合中，而当调用 <code>remember</code> 的可组合项从组合中移除后，它会忘记该对象。</p>
+<p><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary?hl=zh-cn#mutableStateOf(kotlin.Any,androidx.compose.runtime.SnapshotMutationPolicy)"><code>mutableStateOf</code></a> 会创建可观察的 <a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/MutableState?hl=zh-cn"><code>MutableState</code></a>，后者是与 Compose 运行时集成的可观察类型。</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">MutableState</span>&lt;<span class="hljs-type">T</span>&gt; : <span class="hljs-type">State</span>&lt;<span class="hljs-type">T</span>&gt; &#123;<br>    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> value: T<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果 <code>value</code> 有任何变化，系统就会为读取 <code>value</code> 的所有可组合函数安排重组。</p>
+<p>在可组合项中声明 <code>MutableState</code> 对象的方法有三种：</p>
+<ul>
+<li><code>val mutableState = remember &#123; mutableStateOf(default) &#125;</code></li>
+<li><code>var value by remember &#123; mutableStateOf(default) &#125;</code></li>
+<li><code>val (value, setValue) = remember &#123; mutableStateOf(default) &#125;</code></li>
+</ul>
+<p>这些声明是等效的，以语法糖的形式针对状态的不同用法提供。您选择的声明应该能够在您编写的可组合项中生成可读性最高的代码。</p>
+<p><code>by</code> 委托语法需要以下导入：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">import</span> androidx.compose.runtime.getValue<br><span class="hljs-keyword">import</span> androidx.compose.runtime.setValue<br></code></pre></td></tr></table></figure>
+<p>您可以将记住的值用作其他可组合项的参数，甚至用作语句中的逻辑来更改要显示的可组合项。例如，如果您不想在姓名为空时显示问候语，请使用 <code>if</code> 语句中的状态：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Composable</span><br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">HelloContent</span><span class="hljs-params">()</span></span> &#123;<br>    Column(modifier = Modifier.padding(<span class="hljs-number">16.</span>dp)) &#123;<br>        <span class="hljs-keyword">var</span> name <span class="hljs-keyword">by</span> remember &#123; mutableStateOf(<span class="hljs-string">&quot;&quot;</span>) &#125;<br>        <span class="hljs-keyword">if</span> (name.isNotEmpty()) &#123;<br>            Text(<br>                text = <span class="hljs-string">&quot;Hello, <span class="hljs-variable">$name</span>!&quot;</span>,<br>                modifier = Modifier.padding(bottom = <span class="hljs-number">8.</span>dp),<br>                style = MaterialTheme.typography.bodyMedium<br>            )<br>        &#125;<br>        OutlinedTextField(<br>            value = name,<br>            onValueChange = &#123; name = it &#125;,<br>            label = &#123; Text(<span class="hljs-string">&quot;Name&quot;</span>) &#125;<br>        )<br>    &#125;<br>&#125;<br>StateOverviewSnippets.kt<br></code></pre></td></tr></table></figure>
+<p>虽然 <code>remember</code> 可帮助您在重组后保持状态，但不会帮助您在配置更改后保持状态。为此，您必须使用 <code>rememberSaveable</code>。<code>rememberSaveable</code> 会自动保存可保存在 <code>Bundle</code> 中的任何值。对于其他值，您可以将其传入自定义 Saver 对象。</p>
+<p><strong>注意</strong>：在 Compose 中将可变对象（如 <code>ArrayList&lt;T&gt;</code> 或 <code>mutableListOf()</code>）用作状态会导致用户在您的应用中看到不正确或过时的数据。不可观察的可变对象（如 ArrayList 或可变数据类）不能由 Compose 观察，且在发生变化后不会触发重组。建议您使用可观察的数据存储器（如 <code>State&lt;List&lt;T&gt;&gt;</code>）和不可变的 <code>listOf()</code>，而不是使用不可观察的可变对象。</p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -359,10 +441,10 @@
         <category>ELB &amp; ASG</category>
       </categories>
       <tags>
-        <tag>Cloud Computing</tag>
-        <tag>AWS</tag>
         <tag>Scalability</tag>
         <tag>High Availability</tag>
+        <tag>Cloud Computing</tag>
+        <tag>AWS</tag>
       </tags>
   </entry>
   <entry>
@@ -983,10 +1065,10 @@
         <category>AWS Cloud Practitioner Essentials</category>
       </categories>
       <tags>
+        <tag>High Availability</tag>
         <tag>Cloud Computing</tag>
         <tag>AWS</tag>
         <tag>AWS Cloud Practitioner Essentials</tag>
-        <tag>High Availability</tag>
         <tag>Disaster Tolerance</tag>
       </tags>
   </entry>
@@ -3111,6 +3193,110 @@
 </ol>
 <p>Cooperative SAC-PPO-CEM (CSPC).</p>
 <p>Evolutionary Soft Actor-Critical Discrete-CEM (ESAC-CEM)</p>
+<h1 id="进化强化学习的缺陷">进化强化学习的缺陷</h1>
+<p>erl算法之后不久，cerl（Khadka等人，2019年）将erl从RL扩展到分布式RL，在分布式RL中，多个代理并行学习，所有这些代理都被注入进化种群。erl和cerl的主要弱点是依赖于遗传算法，该算法将标准的基于n点的交叉和高斯权重突变算子直接编码为简单的参数向量的神经网络架构。众所周知，这种方法需要进行繁琐的超参数调整，其性能通常比进化策略差，而进化策略在数学上也更有基础（Salimans 等人，2017 年）。特别是，erl 和 cerl 中使用的基于直接编码的遗传算子已被证明有可能导致高效个体行为的灾难性遗忘。</p>
+<p><strong>每个创新点最好都要有公式</strong></p>
+<h2 id="一种基于xxx的父代选择机制">一种基于XXX的父代选择机制</h2>
+<p>An interesting question is how parents should be selected for this crossover. A general approach is to define a mating score function m : Π × Π → R that takes as input two policies and provides a score. The pairs with higher scores are more likely to be selected. Two ways of computing this score can be distinguished: greedy and distance-based. Greedy. The score m(µx, µy) = f(µx) + f(µy) can be greedily determined by the sum of the fitness of the two parents. This type of selection generally increases the stability of the population and makes it unlikely that good individuals are not selected. Distance based. The score m(µx, µy) = dΠ(µx, µy) can be computed using a distance metric in the space of all possible policies. “Different” policies are more likely to be selected for mating. The exact notion of “different” depends on the precise form of the distance metric dΠ. While previous approaches generally compute distances between individuals in the parameter space (Eiben and Smith 2015), here we propose a novel distance between behaviours. This distance metric takes the form from Equation 2, where ρx and ρy are the state-visitation distributions of the two agents:</p>
+<p>This distance metric measures the expected difference in the actions taken by the two parent policies over states coming from a mixture of their state visitation distributions. This expectation is in practice stochastically approximated by sampling a large batch from the genetic memories of the two agents. While this strategy does indeed introduce more novel behaviours into the population, it also makes the population more unstable by increasing the probability that fit individuals are not selected. We note that a linear combination of the two methods could also be performed with m(µx, µy) = α · (f(µx) + f(µy)) + (1 − α) · dΠ(µx, µy) to exploit the benefits of both methods. In the beginning, α could be set to zero to encourage more exploratory behaviour, and as the training approaches the end, α could be increased towards one to shift the population towards exploitation. We leave this possible improvement for future work.</p>
+<p>一个有趣的问题是如何为这种交叉选择亲本。一般的方法是定义一个交配得分函数 m : Π × Π → R，输入两个策略并给出一个得分。得分越高的政策对越有可能被选中。计算分数的方法有两种：贪婪法和基于距离法。贪婪。分数 m(µx, µy) = f(µx) + f(µy) 可以通过两个亲本的适合度之和贪婪地确定。这种选择方式通常能提高种群的稳定性，并避免出现优秀个体未被选中的情况。基于距离。得分 m(µx, µy) = dΠ(µx, µy) 可以使用所有可能策略空间中的距离度量来计算。"不同 "的策略更有可能被选中交配。不同 "的确切概念取决于距离度量 dΠ 的精确形式。以前的方法通常计算参数空间中个体之间的距离（Eiben 和 Smith，2015 年），而在这里，我们提出了一种新的行为间距离。这种距离度量的形式如公式 2 所示，其中 ρx 和 ρy 是两个代理的状态-访问分布：</p>
+<p>这一距离度量的是，父母双方的政策在各州采取的行动之间的预期差异，而这些差异来自于父母双方在各州的探视分布情况。在实践中，通过从两个代理的遗传记忆中抽取一大批样本，可以随机逼近这一期望值。虽然这种策略确实能在群体中引入更多新行为，但也会增加合适个体未被选中的概率，从而使群体更加不稳定。我们注意到，两种方法的线性组合也可以用 m(µx, µy) = α - (f(µx) + f(µy)) + (1 - α) - dΠ(µx, µy) 来实现，以利用两种方法的优势。开始时，α 可以设为零，以鼓励更多的探索行为；随着训练接近尾声，α 可以向 1 的方向增加，使群体转向开发。我们将这一 我们将这一可能的改进留待今后的工作中进行。</p>
+<h2 id="进化强化学习中有哪些父代选择方法">进化强化学习中有哪些父代选择方法</h2>
+<p>在进化强化学习中，有几种常见的父代选择方法。这些方法旨在选择适应度高的个体作为下一代的父代，以促进优秀基因的遗传传递。以下是一些常见的父代选择方法：</p>
+<ol type="1">
+<li><p>选择最佳个体（Best Selection）：选择适应度最高的个体作为父代。这种方法确保了每一代中都会传递最优秀的基因，但可能会导致缺乏多样性。</p></li>
+<li><p>轮盘赌选择（Roulette Wheel Selection）：根据个体的适应度值，将个体按比例放在一个“轮盘”上，然后通过随机选择来确定下一代的父代个体。适应度高的个体在轮盘上的占比更大，因此更有可能被选择为父代。</p></li>
+<li><p>锦标赛选择（Tournament Selection）：从种群中随机选择一定数量的个体，然后从中选择适应度最高的个体作为父代。这个过程可以重复多次，以增加个体的竞争机会。</p></li>
+<li><p>排序选择（Rank Selection）：将种群中的个体按适应度进行排序，然后根据排序位置来选择父代。适应度较高的个体在排序中占据较高的位置，因此更有可能被选择。</p></li>
+<li><p>按比例选择（Proportional Selection）：根据个体的适应度值计算选择概率，然后使用随机数来选择下一代的父代。适应度高的个体具有更高的选择概率，但适应度较低的个体仍然有一定的机会被选择。</p></li>
+</ol>
+<p>这些父代选择方法在进化强化学习中都有应用，并且每种方法都有其优势和适用场景。选择适当的父代选择方法取决于具体的问题和算法设计。研究人员通常会根据实际情况进行选择和调整，以获得最佳的性能和收敛速度。</p>
+<p>根据您提供的论文内容描述，可以将附带选择方法归类为以下几种父代选择方法的组合：</p>
+<ol type="1">
+<li><p>排序选择（Rank Selection）：根据个体的适应度值对种群进行排序，然后根据排名来选择父代。在您的描述中，将排名前1/4的actor定义为精英，并选择它们作为下一代的父代。</p></li>
+<li><p>混合交叉种群（Mixture Crossover Population）：将交互种群中排名为前50%~25%的actor与精英进行自适应交叉互换，形成混合交叉种群。这是一种选择父代进行交叉互换的方法。</p></li>
+</ol>
+<p>因此，您的论文中采用了排序选择作为父代选择的基础，并结合了自适应交叉互换和自适应变异来根据个体的适应度或奖励值进行个性化处理。这些方法可以增加种群的多样性，同时保留适应度高的个体，并提供更大的参数空间探索范围。</p>
+<h2 id="进化强化学习中有哪些训练种群">进化强化学习中有哪些训练种群</h2>
+<p>在进化强化学习中，常见的训练种群包括以下几种：</p>
+<ol type="1">
+<li><p>单种群（Single Population）：这是最简单的形式，所有个体都存在于同一个种群中。在每一代中，个体通过交叉互换和变异操作进行进化。</p></li>
+<li><p>多种群（Multiple Populations）：将种群分为多个子群，每个子群都有自己的进化过程。可以采用不同的策略、参数设置或环境设置来驱动每个子群的进化，以促进种群的多样性和探索能力。</p></li>
+<li><p>岛模型（Island Model）：将种群划分为多个孤立的子种群（称为岛屿），每个岛屿都有自己的进化过程。在每一代中，一些个体可以从一个岛屿迁移到另一个岛屿，以促进信息的交流和基因的传播。</p></li>
+<li><p>基因池（Gene Pool）：基因池是一种共享基因信息的方法。所有个体都存在于同一个种群中，但每个个体可以从基因池中选择和组合基因进行交叉互换。这种方法可以增加种群的多样性，并支持基因的重组和再利用。</p></li>
+</ol>
+<p>这些训练种群的选择取决于具体的问题和算法设计。不同的种群组织方式可以在进化过程中产生不同的效果，并影响进化算法的性能和收敛速度。研究人员根据实际需求选择适当的训练种群策略，以获得最佳的结果。</p>
+<p>根据您的描述，您提出的方法可以基于"多种群"（Multiple Populations）的概念。您使用了交互种群和训练种群，二者之间通过二次考核机制进行信息交流和个体插入。这种设计类似于多种群方法中，通过不同的策略、参数设置或环境设置来驱动每个子群的进化，以促进种群的多样性和探索能力。</p>
+<p>您还采用了缩容策略，在训练种群规模达到或超过最大规模的三分之二时，淘汰平均适应度较低的个体。这种策略类似于岛模型中的操作，其中个体可以从一个岛屿迁移到另一个岛屿，同时通过淘汰机制保持种群规模的稳定。</p>
+<p>综上所述，您的方法基于<strong>"多种群"（Multiple Populations）</strong>的概念，并结合了二次考核机制和缩容策略。</p>
+<h2 id="进化强化学习中有哪些考核机制">进化强化学习中有哪些考核机制？</h2>
+<p>在进化强化学习中，常见的考核机制包括以下几种：</p>
+<ol type="1">
+<li><p>适应度评估（Fitness Evaluation）：适应度是衡量个体在环境中表现好坏的度量。适应度评估通过将个体放入环境中执行任务，并根据任务完成情况或目标达成程度来计算个体的适应度。适应度评估是进化算法中重要的一步，用于对个体进行排序和选择。</p></li>
+<li><p>选择机制（Selection Mechanism）：选择机制根据个体的适应度值，按照一定的概率选择优秀个体作为下一代的父代。常见的选择机制包括轮盘赌选择、排名选择和锦标赛选择等。选择机制有助于保留适应度较高的个体，并促进优秀基因的传递。</p></li>
+<li><p>交叉互换（Crossover）：交叉互换是指从父代个体中选择一定的基因片段，并将其组合形成新的个体。交叉互换操作有助于基因的重组和多样性的引入，从而产生具有新特征的个体。</p></li>
+<li><p>变异（Mutation）：变异是在个体基因中引入随机改变的操作。通过变异，可以在个体的基因组中引入新的基因或改变现有基因的值。变异操作有助于探索搜索空间，以发现可能更优的解。</p></li>
+</ol>
+<p>这些考核机制在进化强化学习中起着关键的作用，帮助个体适应环境并产生更好的解。具体使用哪种考核机制取决于具体的进化算法和问题设置。</p>
+<p>是的，您可以将其称为"Fitness Evaluation-based Secondary Assessment Mechanism"，缩写为"FESAM"。这个名称强调了该机制是基于适应度评估的，并突出了其在进行二次考核时的作用。</p>
+<h1 id="基于rsrank-selection的父代选择与交叉互换方法">基于RS(Rank Selection)的父代选择与交叉互换方法</h1>
+<h2 id="进化强化学习可以解决hdv与cav共存混合交通中高速公路入口匝道合并问题如果使用传统的父代选择与交叉互换方法会遇到什么问题有哪些缺陷使用我提出的基于rsrank-selection的父代选择与交叉互换方法有什么优势">进化强化学习可以解决HDV与CAV共存混合交通中高速公路入口匝道合并问题，如果使用传统的父代选择与交叉互换方法，会遇到什么问题？有哪些缺陷？使用我提出的基于RS(Rank Selection)的父代选择与交叉互换方法有什么优势</h2>
+<p>erl算法之后不久，cerl（Khadka等人，2019年）将erl从RL扩展到分布式RL，在分布式RL中，多个代理并行学习，所有这些代理都被注入进化种群。erl和cerl的主要弱点是依赖于遗传算法，该算法将标准的基于n点的交叉和高斯权重突变算子直接编码为简单的参数向量的神经网络架构。众所周知，这种方法需要进行繁琐的超参数调整，其性能通常比进化策略差，而进化策略在数学上也更有基础（Salimans 等人，2017 年）。特别是，erl 和 cerl 中使用的基于直接编码的遗传算子已被证明有<strong>可能导致高效个体行为的灾难性遗忘。</strong></p>
+<h3 id="回答一">回答一</h3>
+<p>如果使用传统的父代选择与交叉互换方法解决HDV与CAV共存混合交通中高速公路入口匝道合并问题，可能会遇到以下问题和缺陷：</p>
+<ol type="1">
+<li>缺乏适应度表达：传统的父代选择与交叉互换方法通常使用固定的适应度函数来评估个体的性能。然而，在高速公路入口匝道合并问题中，适应度函数的设计可能会很困难，因为涉及到复杂的交通流动、安全性和效率等多个因素。</li>
+<li>高度耦合的决策空间：在高速公路入口匝道合并问题中，HDV和CAV之间的交互决策是高度耦合的。传统的父代选择与交叉互换方法往往无法有效处理这种复杂的决策空间，导致搜索过程困难、收敛速度慢。</li>
+<li>局部最优解问题：传统的父代选择与交叉互换方法容易陷入局部最优解，无法全局优化问题。在高速公路入口匝道合并问题中，局部最优解可能导致不安全或低效的交通行为，无法达到理想的整体交通流动效果。</li>
+</ol>
+<p>基于RS（Rank Selection）的父代选择与交叉互换方法相对传统方法具有以下优势：</p>
+<ol type="1">
+<li>多样性保持：RS方法通过排名选择，可以保持种群中个体的多样性，避免过早陷入局部最优解，有助于全局搜索。</li>
+<li>适应度导向：RS方法基于适应度级别选择个体，可以更好地引导进化算法向适应度更高的个体进化，提高求解效率和性能。</li>
+<li>灵活性：RS方法可以根据个体的适应度级别进行选择，适应度高的个体更有可能被选择，从而加速进化过程。</li>
+</ol>
+<p>综上所述，基于RS的父代选择与交叉互换方法在解决高速公路入口匝道合并问题时，可以更好地保持种群多样性、引导进化算法向适应度更高的个体进化，并具有更好的灵活性，有助于提高问题的求解效率和性能。</p>
+<h3 id="回答二">回答二</h3>
+<p>在动态混合交通环境中，传统使用静态适应度函数可能导致以下问题：</p>
+<ol type="1">
+<li><p>安全问题：由于交通流量、车辆类型和行驶策略的不断变化，静态适应度函数无法准确评估个体在动态环境中的安全性能。这可能导致个体在实际情况下存在安全隐患，增加事故风险。</p></li>
+<li><p>合并效率低下：<strong>静态适应度函数无法充分考虑动态变化的交通流量和车辆类型对合并操作的影响。因此，传统方法可能无法有效地优化合并操作，导致合并效率低下，延长车辆等待时间。</strong></p></li>
+<li><p>吞吐率降低：静态适应度函数无法动态适应交通流量的变化，因此无法准确评估个体在不同流量情况下的性能。这可能导致传统方法无法优化交通流动性，降低系统的吞吐率。</p></li>
+</ol>
+<p>因此，传统方法使用静态适应度函数可能导致安全问题、合并效率低下和吞吐率降低等方面的性能下降。</p>
+<h3 id="回答三">回答三</h3>
+<p>我觉得使用传统的父代选择与交叉互换方法，可能导致高效个体行为的灾难性遗忘。</p>
+<p>传统进化强化学习方法容易忘记先前获得的高效个体，造成灾难性遗忘[20]。原因在于传统方法使用固定的选择和交叉操作，可能导致优秀个体的基因被替换或丢失。</p>
+<p>如果没有足够的机制来保存和传递这些高效个体行为的基因信息，在后续进化过程中，它们会逐渐被新生成的个体所取代。</p>
+<p>您提到的高效个体行为的灾难性遗忘是传统的父代选择与交叉互换方法可能面临的一个重要问题。在高速公路入口匝道合并问题中，进化算法会通过选择和交叉互换来演化种群中的个体。然而，传统方法可能无法有效地保留先前已经获得的高效个体行为，容易导致这些行为被遗忘或丧失。</p>
+<p>这种灾难性遗忘的原因主要是传统方法使用固定的选择和交叉操作，可能会导致较好解的基因被替换或丢失。如果在后续的进化过程中，没有足够的机制来保留和传递这些高效个体行为的基因信息，那么它们将被新生成的个体所覆盖，随着时间的推移逐渐消失。</p>
+<p>为了解决这个问题，可以采用一些改进的进化算法方法，如遗传算法中的保留策略、多目标优化方法或演化策略等。这些方法可以通过合理的选择和交叉策略，以及适当的选择操作，更好地保留和传递高效个体行为的基因信息，从而避免灾难性遗忘问题的发生。</p>
+<p>此外，还可以考虑引入记忆机制或经验回放技术，以便在进化过程中回顾和重复利用以前的高效个体行为。这些方法可以帮助进化算法更好地利用已有的知识和经验，避免灾难性遗忘，提高解决问题的效率和性能。</p>
+<p>综上所述，传统的父代选择与交叉互换方法可能存在高效个体行为的灾难性遗忘问题。为了克服这个问题，可以采用改进的进化算法方法，并引入合适的保留策略、多目标优化方法或记忆机制等，以更好地保留和传递高效个体行为，提高解决方案的质量和效率。</p>
+<h1 id="基于mpmultiple-populations的弹性训练种群">基于MP(Multiple Populations)的弹性训练种群</h1>
+<h2 id="弹性规模训练种群能解决混合交通中高速公路入口匝道中的什么问题">弹性规模训练种群能解决混合交通中高速公路入口匝道中的什么问题</h2>
+<p>弹性规模训练种群可以帮助解决混合交通中高速公路入口匝道中的拥堵问题。</p>
+<p>在高速公路入口匝道上，车辆通常需要合并到主干道上。然而，当交通流量较大或车辆类型多样时，传统的合并操作可能导致拥堵和延长车辆的等待时间。</p>
+<p>弹性规模训练种群的方法可以根据动态变化的交通流量和车辆类型，优化合并操作，提高合并效率。通过引入二次考核机制和筛选机制，该方法能够将交互种群中表现优异的个体插入训练种群，增加在参数空间上的探索性。这样，种群中的个体可以更好地适应和应对不同的交通情况，减少拥堵并提高交通流的顺畅性。</p>
+<p>通过弹性规模训练种群，我们可以更好地优化高速公路入口匝道的车辆合并操作，以应对动态变化的交通流量和车辆类型。这将有助于减少拥堵，提高交通效率，并改善混合交通中的行车体验。</p>
+<h2 id="弹性规模训练种群相对普通训练种群在解决混合交通中高速公路入口匝道问题上有什么优势">弹性规模训练种群相对普通训练种群在解决混合交通中高速公路入口匝道问题上有什么优势</h2>
+<p>弹性规模训练种群相对于普通训练种群在解决混合交通中高速公路入口匝道问题上具有以下优势：</p>
+<ol type="1">
+<li><p>鲁棒性增强：弹性规模训练种群通过二次考核机制将优秀的个体插入训练种群，增加了系统在参数空间上的探索性。这意味着在面对不同的交通流量和车辆类型时，弹性规模训练种群能够更好地适应和应对变化，提高系统的鲁棒性。</p></li>
+<li><p>个体筛选更精准：随着训练种群数量的增加，弹性规模训练种群通过二次考核机制的筛选机制变得更加严格。这意味着从交互种群中筛选出的个体更为优秀，具有更好的适应性和表现。在解决高速公路入口匝道问题时，优秀的个体能够更准确地进行车辆合并操作，降低拥堵程度。</p></li>
+<li><p>训练效率提高：普通训练种群在训练过程中，随着种群规模的增加，训练时间也会显著增加，影响算法的整体效率。而弹性规模训练种群通过缩容策略，在种群规模达到或超过最大规模的三分之二时淘汰平均适应度较低的个体，从而减小了种群规模，提高了训练效率，缩短了训练时间。</p></li>
+<li><p>专注性增强：通过缩容策略淘汰表现较差的个体，弹性规模训练种群能够将训练集中在适应度较高的个体上。这使得训练过程更加专注和高效，加速了算法的收敛速度，并提高了整体训练效率。</p></li>
+</ol>
+<p>综上所述，相较于普通训练种群，弹性规模训练种群在解决混合交通中高速公路入口匝道问题上具有鲁棒性增强、个体筛选更精准、训练效率提高和专注性增强等优势。这些优势使得弹性规模训练种群能够更好地适应和解决复杂的交通环境，减少拥堵，提高交通效率。</p>
+<h2 id="普通训练种群在解决混合交通中高速公路入口匝道问题上相对弹性训练种群会遇到什么问题">普通训练种群在解决混合交通中高速公路入口匝道问题上相对弹性训练种群会遇到什么问题？</h2>
+<p>相对于弹性训练种群，普通训练种群在解决混合交通中高速公路入口匝道问题上可能会遇到以下问题：</p>
+<ol type="1">
+<li><p>缺乏适应性：普通训练种群在训练过程中通常使用固定的种群规模，不具备自适应能力。这意味着无论交通流量和车辆类型如何变化，种群规模都保持不变。在面对动态变化的交通环境时，普通训练种群可能无法快速适应并找到最佳的解决方案。</p></li>
+<li><p>缺乏探索性：普通训练种群的探索能力有限。由于种群规模固定，参数空间的探索范围有限，可能无法发现参数空间中的更优解。在解决复杂的高速公路入口匝道问题时，缺乏足够的探索性可能导致无法充分发掘最佳的车辆合并策略，影响交通效率的提升。</p></li>
+<li><p>训练效率下降：普通训练种群在面对较大规模的交通流量和复杂的车辆类型时，由于种群规模固定，训练时间可能会显著增加。每个个体的评估和更新所需的时间成本较高，从而导致训练时间延长，影响算法的整体效率。</p></li>
+<li><p>难以解决复杂问题：普通训练种群可能无法有效解决复杂的高速公路入口匝道问题。这种问题往往涉及多变量、多约束条件和动态变化的环境因素，需要更强的适应性和探索性。普通训练种群由于缺乏这些特性，可能无法提供足够的解决方案来应对复杂的交通情况。</p></li>
+</ol>
+<p>综上所述，相对于弹性训练种群，普通训练种群在解决混合交通中高速公路入口匝道问题上可能面临适应性不足、探索性不足、训练效率下降以及难以解决复杂问题等问题。这些限制可能影响算法的性能和能力，使得普通训练种群在应对复杂的交通环境时表现不佳。</p>
 ]]></content>
   </entry>
   <entry>

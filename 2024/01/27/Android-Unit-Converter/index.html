@@ -16,13 +16,15 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="可组合函数可以使用 remember API 将对象存储在内存中。系统会在初始组合期间将由 remember 计算的值存储在组合中，并在重组期间返回存储的值。remember 既可用于存储可变对象，又可用于存储不可变对象。 注意 ：remember 会将对象存储在组合中，而当调用 remember 的可组合项从组合中移除后，它会忘记该对象。 mutableStateOf 会创建可观察的 Mut">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Android Unit Converter">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/27/Android-Unit-Converter/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
+<meta property="og:description" content="可组合函数可以使用 remember API 将对象存储在内存中。系统会在初始组合期间将由 remember 计算的值存储在组合中，并在重组期间返回存储的值。remember 既可用于存储可变对象，又可用于存储不可变对象。 注意 ：remember 会将对象存储在组合中，而当调用 remember 的可组合项从组合中移除后，它会忘记该对象。 mutableStateOf 会创建可观察的 Mut">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-27T00:46:17.000Z">
-<meta property="article:modified_time" content="2024-02-14T10:14:53.535Z">
+<meta property="article:modified_time" content="2024-02-20T10:06:34.624Z">
 <meta property="article:author" content="Leopold">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary_large_image">
@@ -232,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.6k 字
         
       </span>
     
@@ -243,7 +245,7 @@
         
         
         
-          1 分钟
+          13 分钟
         
       </span>
     
@@ -299,7 +301,24 @@
             
               <div class="markdown-body">
                 
-                
+                <p>可组合函数可以使用 <a target="_blank" rel="noopener" href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary?hl=zh-cn#remember(kotlin.Function0)"><code>remember</code></a> API 将对象存储在内存中。系统会在初始组合期间将由 <code>remember</code> 计算的值存储在组合中，并在重组期间返回存储的值。<code>remember</code> 既可用于存储可变对象，又可用于存储不可变对象。</p>
+<p><strong>注意</strong> ：<code>remember</code> 会将对象存储在组合中，而当调用 <code>remember</code> 的可组合项从组合中移除后，它会忘记该对象。</p>
+<p><a target="_blank" rel="noopener" href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary?hl=zh-cn#mutableStateOf(kotlin.Any,androidx.compose.runtime.SnapshotMutationPolicy)"><code>mutableStateOf</code></a> 会创建可观察的 <a target="_blank" rel="noopener" href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/MutableState?hl=zh-cn"><code>MutableState</code></a>，后者是与 Compose 运行时集成的可观察类型。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">MutableState</span>&lt;<span class="hljs-type">T</span>&gt; : <span class="hljs-type">State</span>&lt;<span class="hljs-type">T</span>&gt; &#123;<br>    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> value: T<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果 <code>value</code> 有任何变化，系统就会为读取 <code>value</code> 的所有可组合函数安排重组。</p>
+<p>在可组合项中声明 <code>MutableState</code> 对象的方法有三种：</p>
+<ul>
+<li><code>val mutableState = remember &#123; mutableStateOf(default) &#125;</code></li>
+<li><code>var value by remember &#123; mutableStateOf(default) &#125;</code></li>
+<li><code>val (value, setValue) = remember &#123; mutableStateOf(default) &#125;</code></li>
+</ul>
+<p>这些声明是等效的，以语法糖的形式针对状态的不同用法提供。您选择的声明应该能够在您编写的可组合项中生成可读性最高的代码。</p>
+<p><code>by</code> 委托语法需要以下导入：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">import</span> androidx.compose.runtime.getValue<br><span class="hljs-keyword">import</span> androidx.compose.runtime.setValue<br></code></pre></td></tr></table></figure>
+<p>您可以将记住的值用作其他可组合项的参数，甚至用作语句中的逻辑来更改要显示的可组合项。例如，如果您不想在姓名为空时显示问候语，请使用 <code>if</code> 语句中的状态：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Composable</span><br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">HelloContent</span><span class="hljs-params">()</span></span> &#123;<br>    Column(modifier = Modifier.padding(<span class="hljs-number">16.</span>dp)) &#123;<br>        <span class="hljs-keyword">var</span> name <span class="hljs-keyword">by</span> remember &#123; mutableStateOf(<span class="hljs-string">&quot;&quot;</span>) &#125;<br>        <span class="hljs-keyword">if</span> (name.isNotEmpty()) &#123;<br>            Text(<br>                text = <span class="hljs-string">&quot;Hello, <span class="hljs-variable">$name</span>!&quot;</span>,<br>                modifier = Modifier.padding(bottom = <span class="hljs-number">8.</span>dp),<br>                style = MaterialTheme.typography.bodyMedium<br>            )<br>        &#125;<br>        OutlinedTextField(<br>            value = name,<br>            onValueChange = &#123; name = it &#125;,<br>            label = &#123; Text(<span class="hljs-string">&quot;Name&quot;</span>) &#125;<br>        )<br>    &#125;<br>&#125;<br>StateOverviewSnippets.kt<br></code></pre></td></tr></table></figure>
+<p>虽然 <code>remember</code> 可帮助您在重组后保持状态，但不会帮助您在配置更改后保持状态。为此，您必须使用 <code>rememberSaveable</code>。<code>rememberSaveable</code> 会自动保存可保存在 <code>Bundle</code> 中的任何值。对于其他值，您可以将其传入自定义 Saver 对象。</p>
+<p><strong>注意</strong>：在 Compose 中将可变对象（如 <code>ArrayList&lt;T&gt;</code> 或 <code>mutableListOf()</code>）用作状态会导致用户在您的应用中看到不正确或过时的数据。不可观察的可变对象（如 ArrayList 或可变数据类）不能由 Compose 观察，且在发生变化后不会触发重组。建议您使用可观察的数据存储器（如 <code>State&lt;List&lt;T&gt;&gt;</code>）和不可变的 <code>listOf()</code>，而不是使用不可观察的可变对象。</p>
 
                 
               </div>

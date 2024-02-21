@@ -18,14 +18,15 @@
   
     <meta name="description" content="Intent 显式intent  明确指定了要启动的目标组件，适用于启动应用内的组件。 适合用于应用内部的组件通信，例如从一个 Activity 启动另一个 Activity。 显式 Intent 的启动速度相对较快，因为系统直接知道要启动的组件。  Intent有多个构造函数的重载，其中一个是Intent(Context packageContext, Class&lt;?&gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android_Activity">
+<meta property="og:title" content="Android Activity">
 <meta property="og:url" content="https://leopol1d.github.io/2024/02/14/Android-Activity/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
 <meta property="og:description" content="Intent 显式intent  明确指定了要启动的目标组件，适用于启动应用内的组件。 适合用于应用内部的组件通信，例如从一个 Activity 启动另一个 Activity。 显式 Intent 的启动速度相对较快，因为系统直接知道要启动的组件。  Intent有多个构造函数的重载，其中一个是Intent(Context packageContext, Class&lt;?&gt;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240214213201435.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240215235147789.png">
 <meta property="article:published_time" content="2024-02-14T10:13:53.000Z">
-<meta property="article:modified_time" content="2024-02-15T15:02:48.821Z">
+<meta property="article:modified_time" content="2024-02-15T16:01:47.684Z">
 <meta property="article:author" content="Leopold">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +36,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Android_Activity - Leopold&#39;s Blog</title>
+  <title>Android Activity - Leopold&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Android_Activity"></span>
+            <span id="subtitle" data-typed-text="Android Activity"></span>
           
         </div>
 
@@ -236,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k 字
+          4.4k 字
         
       </span>
     
@@ -247,7 +248,7 @@
         
         
         
-          27 分钟
+          37 分钟
         
       </span>
     
@@ -298,13 +299,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Android_Activity</h1>
+            <h1 style="display: none">Android Activity</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="intent">Intent</h2>
-<h3 id="显式intent">显式intent</h3>
+                <h1 id="intent">Intent</h1>
+<h2 id="显式intent">显式intent</h2>
 <ul>
 <li>明确指定了要启动的目标组件，适用于启动应用内的组件。</li>
 <li>适合用于应用内部的组件通信，例如从一个 Activity 启动另一个 Activity。</li>
@@ -315,7 +316,7 @@
 <p>eg.有两个Activity，点击activity_main(左图)中的button，可以跳转到activity_button，核心代码如下</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> btn: Button = findViewById(R.id.button)<br>btn.setOnClickListener &#123;<br>    <span class="hljs-keyword">val</span> intent = Intent(<span class="hljs-keyword">this</span>, SecondActivity::<span class="hljs-keyword">class</span>.java)<br>    startActivity(intent)<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240214213201435.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="隐式intent">隐式intent</h3>
+<h2 id="隐式intent">隐式intent</h2>
 <ul>
 <li>不指定目标组件的类名，而是根据 Intent 的内容和 Intent Filter 动态地查找适合处理该 Intent 的组件。</li>
 <li>适用于希望系统为我们选择合适的组件来处理某个动作的情况，例如发送邮件、分享内容等。</li>
@@ -341,6 +342,28 @@
 <li>如果设为 <code>true</code>，则任何应用都可以访问相应的 activity，并通过其确切类名称启动它。</li>
 <li>如果设为 <code>false</code>，则只有同一应用的组件、具有相同用户 ID 的应用或具有特权的系统组件可以启动该 activity。</li>
 </ul>
+<h2 id="其他隐式intent用法">其他隐式intent用法</h2>
+<h3 id="访问网页">访问网页</h3>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">btn.setOnClickListener &#123;<br>    <span class="hljs-keyword">val</span> intent = Intent(Intent.ACTION_VIEW)<br>    intent.<span class="hljs-keyword">data</span> = Uri.parse(<span class="hljs-string">&quot;https://www.google.com&quot;</span>)<br>    startActivity(intent)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Intent.ACTION_VIEW常量："android.intent.action.VIEW"表示<strong>浏览动作</strong></p>
+<p>Uri.parse("https://www.google.com")表示将一个网址字符串解析成一个Uri对象，在调用Intent的setData()(kotlin语法糖)将这个Uri对象传递给intent。</p>
+<div class="note note-danger">
+            <h3 id="bug">bug</h3><p>点击按钮跳转至谷歌浏览器，然后整个电脑死机！尝试分配更大的内存以及磁盘，还没解决！</p>
+          </div>
+<h3 id="向下一个activity传递数据">向下一个Activity传递数据</h3>
+<p>使用<strong>putExtra</strong>与<strong>get$typeExtra</strong></p>
+<p>MainActivity.kt</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">btn.setOnClickListener &#123;<br>    <span class="hljs-keyword">val</span> <span class="hljs-keyword">data</span> = <span class="hljs-string">&quot;Hello SecondActivity&quot;</span><br>    <span class="hljs-keyword">val</span> intent = Intent(<span class="hljs-keyword">this</span>, SecondActivity::<span class="hljs-keyword">class</span>.java)<br>    intent.putExtra(<span class="hljs-string">&quot;extra_data&quot;</span>, <span class="hljs-keyword">data</span>)<br>    startActivity(intent)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>SecondActivity.kt</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> extraData = intent.getStringExtra(<span class="hljs-string">&quot;extra_data&quot;</span>)<br>Log.d(<span class="hljs-string">&quot;SecondActivity&quot;</span>, <span class="hljs-string">&quot;extra data is <span class="hljs-variable">$extraData</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>在logcat检索verbose level的日志</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240215235147789.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="返回数据给上一个activity">返回数据给上一个Activity</h3>
+<p>MainActivity使用startActivityForResult(新版本已废弃)启动SecondActivity，其中startActivityForResult的第二个参数是全局唯一的<strong>请求码</strong>，</p>
+<p>MainActivity.kt</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">btn.setOnClickListener &#123;<br>    <span class="hljs-keyword">val</span> intent = Intent(<span class="hljs-keyword">this</span>, SecondActivity::<span class="hljs-keyword">class</span>.java)<br>    startActivityForResult(intent, <span class="hljs-number">1</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>SecondActivity.kt</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> extraData = intent.getStringExtra(<span class="hljs-string">&quot;extra_data&quot;</span>)<br>Log.d(<span class="hljs-string">&quot;SecondActivity&quot;</span>, <span class="hljs-string">&quot;extra data is <span class="hljs-variable">$extraData</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
 <p>Inflate的含义</p>
 <p>当编写了一个XML layout，它会通过在内存中创建视图对象下·来被<strong>渲染</strong></p>
 <p>When you write an XML layout, it will be <em>inflated</em> by the Android OS which basically means that it will be rendered by creating view object in memory. Let's call that <em>implicit inflation</em> (the OS will inflate the view for you). For instance:</p>
@@ -413,7 +436,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Android_Activity</div>
+      <div>Android Activity</div>
       <div>https://leopol1d.github.io/2024/02/14/Android-Activity/</div>
     </div>
     <div class="license-meta">
@@ -457,6 +480,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/02/21/Android-CaptainGame/" title="Android Captain Game">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android Captain Game</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
