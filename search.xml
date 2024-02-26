@@ -18,6 +18,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Android Shopping List App-Learning Loads of UI Features</title>
+    <url>/2024/02/21/Android-Shopping-List-App-Learning-Loads-of-UI-Features/</url>
+    <content><![CDATA[
+]]></content>
+      <categories>
+        <category>Android</category>
+        <category>The Complete Android 14 &amp; Kotlin Development Masterclass</category>
+        <category>Lecture7</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android Captain Game</title>
     <url>/2024/02/21/Android-CaptainGame/</url>
     <content><![CDATA[<h2 id="编写海盗游戏的-compose-ui">编写海盗游戏的 Compose UI</h2>
@@ -43,10 +57,9 @@
 <h2 id="知识点">知识点</h2>
 <ul>
 <li><code>remember</code>： <code>remember</code> 是一个用于在 Compose 组件中创建可记忆状态的函数。它接收一个初始值，并返回一个包含状态值的可记忆对象。这个记忆对象在组件的重组或重新绘制过程中会被保留，以确保状态的连续性和一致性。当组件被重新绘制时，它会重新获取之前的记忆对象，而不是重新创建一个新的对象。</li>
-<li><code>mutableStateOf</code>： <code>mutableStateOf</code> 是一个函数，用于创建可变的状态对象。它接收一个初始值，并返回一个包含状态值和更新状态值的函数的对象。通过调用返回的函数，我们可以在组件中修改状态的值。每当状态值发生变化时，Compose 会重新绘制组件，并在界面上反映出新的状态。</li>
+<li><code>mutableStateOf</code>：Compose 中的一种可变状态容器 <code>mutableStateOf</code> 是一个函数，用于创建可变的状态对象。它接收一个初始值，并返回一个包含状态值和更新状态值的函数的对象。通过调用返回的函数，我们可以在组件中修改状态的值。<strong>每当状态值发生变化时，Compose 会重新绘制组件，并在界面上反映出新的状态。</strong></li>
 </ul>
 <p><code>val</code> 关键字用于声明不可变的引用，即一旦引用被初始化后，它将无法指向其他对象，为什么<code>treasuresFound</code>用val修饰呢？</p>
-<p><strong>内容(mutableStateOf)是可变的，但remember内存地址是不变的</strong></p>
 <p>总之，使用 <code>val</code> 来修饰 <code>treasuresFound</code> 可以确保其引用的不可变性，而通过返回的 <code>mutableStateOf</code> 对象可以修改其值，从而同时满足状态的稳定性和可变性的需求</p>
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> treasuresFound = remember&#123; mutableStateOf(<span class="hljs-number">0</span>) &#125;<br></code></pre></td></tr></table></figure>
 <p>当<code>treasuresFound</code>的值变化了(<code>mutableStateOf</code>)，Compose 将会自动检测到状态的变化并更新相关的 UI</p>

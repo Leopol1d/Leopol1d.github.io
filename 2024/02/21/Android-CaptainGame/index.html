@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240221152305661.png">
 <meta property="article:published_time" content="2024-02-21T05:55:17.000Z">
-<meta property="article:modified_time" content="2024-02-21T14:23:47.682Z">
+<meta property="article:modified_time" content="2024-02-26T06:38:15.961Z">
 <meta property="article:author" content="Leopold">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,10 +326,9 @@
 <h2 id="知识点">知识点</h2>
 <ul>
 <li><code>remember</code>： <code>remember</code> 是一个用于在 Compose 组件中创建可记忆状态的函数。它接收一个初始值，并返回一个包含状态值的可记忆对象。这个记忆对象在组件的重组或重新绘制过程中会被保留，以确保状态的连续性和一致性。当组件被重新绘制时，它会重新获取之前的记忆对象，而不是重新创建一个新的对象。</li>
-<li><code>mutableStateOf</code>： <code>mutableStateOf</code> 是一个函数，用于创建可变的状态对象。它接收一个初始值，并返回一个包含状态值和更新状态值的函数的对象。通过调用返回的函数，我们可以在组件中修改状态的值。每当状态值发生变化时，Compose 会重新绘制组件，并在界面上反映出新的状态。</li>
+<li><code>mutableStateOf</code>：Compose 中的一种可变状态容器 <code>mutableStateOf</code> 是一个函数，用于创建可变的状态对象。它接收一个初始值，并返回一个包含状态值和更新状态值的函数的对象。通过调用返回的函数，我们可以在组件中修改状态的值。<strong>每当状态值发生变化时，Compose 会重新绘制组件，并在界面上反映出新的状态。</strong></li>
 </ul>
 <p><code>val</code> 关键字用于声明不可变的引用，即一旦引用被初始化后，它将无法指向其他对象，为什么<code>treasuresFound</code>用val修饰呢？</p>
-<p><strong>内容(mutableStateOf)是可变的，但remember内存地址是不变的</strong></p>
 <p>总之，使用 <code>val</code> 来修饰 <code>treasuresFound</code> 可以确保其引用的不可变性，而通过返回的 <code>mutableStateOf</code> 对象可以修改其值，从而同时满足状态的稳定性和可变性的需求</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> treasuresFound = remember&#123; mutableStateOf(<span class="hljs-number">0</span>) &#125;<br></code></pre></td></tr></table></figure>
 <p>当<code>treasuresFound</code>的值变化了(<code>mutableStateOf</code>)，Compose 将会自动检测到状态的变化并更新相关的 UI</p>
@@ -436,6 +435,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/02/21/Android-Shopping-List-App-Learning-Loads-of-UI-Features/" title="Android Shopping List App-Learning Loads of UI Features">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android Shopping List App-Learning Loads of UI Features</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
