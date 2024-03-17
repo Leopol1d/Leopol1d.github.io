@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Scalability  可扩展性是指应用&#x2F;系统能通过调整，承担更大的负荷 可拓展性分为：纵向可拓展性(为单个实例分配更多的CPU，内存)和横向可拓展性(elasticity)  Horizontal Scalability Scale out &#x2F; in  Vertical Scalability Scale up &#x2F; down  High Availability  可">
+    <meta name="description" content="Scalability 可扩展性是指应用&#x2F;系统能通过调整，承担更大的负荷 可拓展性分为：纵向可拓展性(为单个实例分配更多的CPU，内存)和横向可拓展性(elasticity)  Horizontal ScalabilityScale out &#x2F; in   Vertical ScalabilityScale up &#x2F; down   High Availability 可拓展性、高可用是紧密相关的 高">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS ELB &amp; ASG">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/15/AWS-ELB-ASG/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="Scalability  可扩展性是指应用&#x2F;系统能通过调整，承担更大的负荷 可拓展性分为：纵向可拓展性(为单个实例分配更多的CPU，内存)和横向可拓展性(elasticity)  Horizontal Scalability Scale out &#x2F; in  Vertical Scalability Scale up &#x2F; down  High Availability  可">
+<meta property="og:description" content="Scalability 可扩展性是指应用&#x2F;系统能通过调整，承担更大的负荷 可拓展性分为：纵向可拓展性(为单个实例分配更多的CPU，内存)和横向可拓展性(elasticity)  Horizontal ScalabilityScale out &#x2F; in   Vertical ScalabilityScale up &#x2F; down   High Availability 可拓展性、高可用是紧密相关的 高">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120349964.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120415607.png">
@@ -64,10 +64,10 @@
 <meta property="article:published_time" content="2024-01-15T03:37:16.000Z">
 <meta property="article:modified_time" content="2024-01-15T12:03:46.848Z">
 <meta property="article:author" content="Leopold">
-<meta property="article:tag" content="Cloud Computing">
-<meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Scalability">
 <meta property="article:tag" content="High Availability">
+<meta property="article:tag" content="Cloud Computing">
+<meta property="article:tag" content="AWS">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120349964.png">
   
@@ -343,122 +343,130 @@
             
               <div class="markdown-body">
                 
-                <h1 id="scalability">Scalability</h1>
-<ul>
+                <h1 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h1><ul>
 <li>可扩展性是指应用/<strong>系统能通过调整，承担更大的负荷</strong></li>
 <li>可拓展性分为：<strong>纵向可拓展性(为单个实例分配更多的CPU，内存)</strong>和<strong>横向可拓展性(elasticity)</strong></li>
 </ul>
-<h2 id="horizontal-scalability">Horizontal Scalability</h2>
-<p>Scale out / in</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120349964.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="vertical-scalability">Vertical Scalability</h2>
-<p>Scale up / down</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120415607.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="high-availability">High Availability</h1>
-<ul>
+<h2 id="Horizontal-Scalability"><a href="#Horizontal-Scalability" class="headerlink" title="Horizontal Scalability"></a>Horizontal Scalability</h2><p>Scale out / in</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120349964.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<h2 id="Vertical-Scalability"><a href="#Vertical-Scalability" class="headerlink" title="Vertical Scalability"></a>Vertical Scalability</h2><p>Scale up / down</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120415607.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<h1 id="High-Availability"><a href="#High-Availability" class="headerlink" title="High Availability"></a>High Availability</h1><ul>
 <li>可拓展性、高可用是紧密相关的</li>
 <li>高可用在AWS中指系统或应用至少运行在两个可用区</li>
 <li>高可用性的目标是在某个数据中心发生故障（灾难）时，另一个数据中心能够<strong>失效备援</strong></li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120433882.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="elastic-load-balancer">Elastic Load Balancer</h1>
-<ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115120433882.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<h1 id="Elastic-Load-Balancer"><a href="#Elastic-Load-Balancer" class="headerlink" title="Elastic Load Balancer"></a>Elastic Load Balancer</h1><ul>
 <li>将流量转发给下游的EC2实例</li>
 <li>为你的应用暴露DNS(单点入口)</li>
 <li>处理下游EC2实例的failures</li>
 <li>定期检查EC2实例的健康状况</li>
 <li><strong>跨可用区</strong></li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115125443439.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="elb-hands-on">ELB Hands On</h1>
-<ol type="1">
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115125443439.png" srcset="/img/loading.gif" lazyload alt="">  </p>
+<h1 id="ELB-Hands-On"><a href="#ELB-Hands-On" class="headerlink" title="ELB Hands On"></a>ELB Hands On</h1><ol>
 <li><p>创建两台EC2实例</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150358728.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150358728.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>使用公共IP访问他们</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150450604.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>创建一个ALB(layer 7)，用一个单点入口(DNS)来访问EC2实例 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150739340.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150812997.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150450604.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
+<li><p>创建一个ALB(layer 7)，用一个单点入口(DNS)来访问EC2实例<br><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150739340.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115150812997.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 <li><p><strong>将ALB部署在以下两个可用区</strong></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115152158255.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>创建一个新的<code>安全组</code>，只允许HTTP请求(80)与HTTPS请求(443)</p></li>
-</ol>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151301553.png" srcset="/img/loading.gif" lazyload /></p>
-<ol start="7" type="1">
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115152158255.png" srcset="/img/loading.gif" lazyload alt="">  </p>
+</li>
+<li><p>创建一个新的<code>安全组</code>，只允许HTTP请求(80)与HTTPS请求(443)</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151301553.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>创建一个目标组(EC2实例组)</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151710271.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151710271.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>将两个实例加入目标组</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151751647.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151751647.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>绑定在ALB上</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151834008.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115151834008.png" srcset="/img/loading.gif" lazyload alt="">   </p>
+</li>
 <li><p>成功创建ALB</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115152638399.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115152638399.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>访问DNS名称ALB-1723269650.us-east-1.elb.amazonaws.com，报错</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154022090.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154022090.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>发现目标组未注册目标(第7步)</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154214179.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154214179.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>重新注册</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154331673.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154331673.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+</li>
 <li><p>再次根据DNS名称访问，成功！并且多次访问，流量会被分发到不同的EC2实例</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154356552.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154431653.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154356552.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154431653.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 <li><p>终止第二个EC2实例，注意私有IP</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154608379.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154608379.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>在目标组中查看到，第二个是李的运行状态是<strong>Unused</strong></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154843308.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154843308.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>之后通过ALB访问，流量只会被转发给第一台EC2实例</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154952391.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115154952391.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 </ol>
-<h1 id="auto-scaling-group">Auto Scaling Group</h1>
-<ul>
+<h1 id="Auto-Scaling-Group"><a href="#Auto-Scaling-Group" class="headerlink" title="Auto Scaling Group"></a>Auto Scaling Group</h1><ul>
 <li>根据流量迅速自动创建(scale out)与删除(scale in)EC2实例</li>
 <li><strong>自动注册新的EC2实例到Load Balancer</strong></li>
 <li><strong>自动替换不健康的EC2实例</strong></li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161118380.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="asg-alb-hands-on">ASG + ALB Hands On</h1>
-<ol type="1">
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161118380.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<h1 id="ASG-ALB-Hands-On"><a href="#ASG-ALB-Hands-On" class="headerlink" title="ASG + ALB Hands On"></a>ASG + ALB Hands On</h1><ol>
 <li><p>创建ASG</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161618565.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161618565.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>创建<strong>启动模板</strong></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161657746.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161750919.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161657746.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161750919.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 <li><p>选择所有的可用区和子网</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161929048.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115161929048.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>新建一个ALB，选择之前创建的目标组</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162157980.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162157980.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>配置组大小</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162323859.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162323859.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>创建成功</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162654083.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162715745.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162654083.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115162715745.png" srcset="/img/loading.gif" lazyload alt="">  </p>
+</li>
 <li><p>创建好ASG后，EC2实例会被自动创建，目标组自动关联这些实例</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115170816506.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171233562.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115170816506.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171233562.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>根据ALB的DNS NAME来访问</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115170937327.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115170937327.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>终止一个实例，看看会发生什么</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171559094.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171559094.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+</li>
 <li><p>activity页面，检测到<strong>不健康实例</strong>，所以自动扩展了一个新的实例</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171912756.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115172002261.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115171912756.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115172002261.png" srcset="/img/loading.gif" lazyload alt="">   </p>
+</li>
 </ol>
-<h1 id="asg---scaling-strategies">ASG - Scaling Strategies</h1>
-<h2 id="manual-scaling">Manual Scaling</h2>
-<h2 id="dynamic-scaling">Dynamic Scaling</h2>
-<h3 id="simple-scaling">Simple Scaling</h3>
-<ul>
+<h1 id="ASG-Scaling-Strategies"><a href="#ASG-Scaling-Strategies" class="headerlink" title="ASG - Scaling Strategies"></a>ASG - Scaling Strategies</h1><h2 id="Manual-Scaling"><a href="#Manual-Scaling" class="headerlink" title="Manual Scaling"></a>Manual Scaling</h2><h2 id="Dynamic-Scaling"><a href="#Dynamic-Scaling" class="headerlink" title="Dynamic Scaling"></a>Dynamic Scaling</h2><h3 id="Simple-Scaling"><a href="#Simple-Scaling" class="headerlink" title="Simple Scaling"></a>Simple Scaling</h3><ul>
 <li>当<code>CloudWatch alarm</code>被触发，比如CPU使用率 &gt; 70%，增加两个EC2实例</li>
 <li>当<code>CloudWatch alarm</code>被触发，比如CPU使用率 &lt; 30%，删除一个EC2实例</li>
 </ul>
-<h3 id="target-tracking-scaling">Target Tracking Scaling</h3>
-<p>比如：我想让ASG CPU的平均使用率为60%，高于或者低于都可能进行缩放</p>
-<h3 id="scheduled-scaling">Scheduled Scaling</h3>
-<p>根据已知的使用模式预测缩放，比如：每天晚上十点缩容，每天上午八点扩容</p>
-<h2 id="predictive-scaling">Predictive Scaling</h2>
-<ul>
+<h3 id="Target-Tracking-Scaling"><a href="#Target-Tracking-Scaling" class="headerlink" title="Target Tracking Scaling"></a>Target Tracking Scaling</h3><p>比如：我想让ASG CPU的平均使用率为60%，高于或者低于都可能进行缩放</p>
+<h3 id="Scheduled-Scaling"><a href="#Scheduled-Scaling" class="headerlink" title="Scheduled Scaling"></a>Scheduled Scaling</h3><p>根据已知的使用模式预测缩放，比如：每天晚上十点缩容，每天上午八点扩容</p>
+<h2 id="Predictive-Scaling"><a href="#Predictive-Scaling" class="headerlink" title="Predictive Scaling"></a>Predictive Scaling</h2><ul>
 <li>使用机器学习预测未来的流量，并调整EC2实例的个数</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115200204556.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240115200204556.png" srcset="/img/loading.gif" lazyload alt=""> </p>
 
                 
               </div>
@@ -506,13 +514,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Cloud-Computing/">#Cloud Computing</a>
-      
-        <a href="/tags/AWS/">#AWS</a>
-      
         <a href="/tags/Scalability/">#Scalability</a>
       
         <a href="/tags/High-Availability/">#High Availability</a>
+      
+        <a href="/tags/Cloud-Computing/">#Cloud Computing</a>
+      
+        <a href="/tags/AWS/">#AWS</a>
       
     </div>
   

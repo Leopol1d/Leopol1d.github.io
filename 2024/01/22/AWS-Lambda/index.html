@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="EC2 vs Lambda  Benifit of Lambda  价格优惠，只按照调用次数和耐用性(400000 seconds if function is 1GB RAM)计费 与其他AWS服务集成 事件触发：function只有在需要的时候才被调用 通过CloudWatch监控  Example 事件触发条件：在S3中上传图片 触发事件：将图片的缩略图(thumbna">
+    <meta name="description" content="EC2 vs Lambda  Benifit of Lambda 价格优惠，只按照调用次数和耐用性(400000 seconds if function is 1GB RAM)计费 与其他AWS服务集成 事件触发：function只有在需要的时候才被调用 通过CloudWatch监控  Example事件触发条件：在S3中上传图片 触发事件：将图片的缩略图(thumbnail)上传至S3，并将图片">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS Lambda">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/22/AWS-Lambda/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="EC2 vs Lambda  Benifit of Lambda  价格优惠，只按照调用次数和耐用性(400000 seconds if function is 1GB RAM)计费 与其他AWS服务集成 事件触发：function只有在需要的时候才被调用 通过CloudWatch监控  Example 事件触发条件：在S3中上传图片 触发事件：将图片的缩略图(thumbna">
+<meta property="og:description" content="EC2 vs Lambda  Benifit of Lambda 价格优惠，只按照调用次数和耐用性(400000 seconds if function is 1GB RAM)计费 与其他AWS服务集成 事件触发：function只有在需要的时候才被调用 通过CloudWatch监控  Example事件触发条件：在S3中上传图片 触发事件：将图片的缩略图(thumbnail)上传至S3，并将图片">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142223658.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142656330.png">
@@ -306,21 +306,18 @@
             
               <div class="markdown-body">
                 
-                <h1 id="ec2-vs-lambda">EC2 vs Lambda</h1>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142223658.png" srcset="/img/loading.gif" lazyload /></p>
-<h1 id="benifit-of-lambda">Benifit of Lambda</h1>
-<ul>
+                <h1 id="EC2-vs-Lambda"><a href="#EC2-vs-Lambda" class="headerlink" title="EC2 vs Lambda"></a>EC2 vs Lambda</h1><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142223658.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<h1 id="Benifit-of-Lambda"><a href="#Benifit-of-Lambda" class="headerlink" title="Benifit of Lambda"></a>Benifit of Lambda</h1><ul>
 <li>价格优惠，只按照<strong>调用次数</strong>和<strong>耐用性(400000 seconds if function is 1GB RAM)</strong>计费</li>
 <li>与其他AWS服务集成</li>
 <li><strong>事件触发</strong>：function只有在需要的时候才被调用</li>
 <li>通过CloudWatch监控</li>
 </ul>
-<h1 id="example">Example</h1>
-<p>事件触发条件：在S3中上传图片</p>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><p>事件触发条件：在S3中上传图片</p>
 <p>触发事件：将图片的缩略图(thumbnail)上传至S3，并将图片的元数据存储在DynamoDB中</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142656330.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142656330.png" srcset="/img/loading.gif" lazyload alt=""> </p>
 <p>除此之外，还可以使用Lambda执行定时任务(CRON Job)</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142858556.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240122142858556.png" srcset="/img/loading.gif" lazyload alt=""> </p>
 
                 
               </div>
