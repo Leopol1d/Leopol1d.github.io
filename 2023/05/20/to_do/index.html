@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2024&#x2F;03&#x2F;01密封类在安卓开发中，Sealed Class（密封类）是一种特殊的类别，它用于表示受限的类继承结构。密封类可以有多个子类，但是这些子类必须是在密封类内部定义的，并且在同一个文件中。 密封类在类定义前使用 sealed 关键字进行声明。它的目的是为了限制类的继承结构，确保所有的子类都是已知的，并且不允许在其他文件或类中进行扩展。这样可以提供更好的代码组织和类型安全性。 当使用密封">
+    <meta name="description" content="2024&#x2F;03&#x2F;01 密封类 在安卓开发中，Sealed Class（密封类）是一种特殊的类别，它用于表示受限的类继承结构。密封类可以有多个子类，但是这些子类必须是在密封类内部定义的，并且在同一个文件中。 密封类在类定义前使用 sealed 关键字进行声明。它的目的是为了限制类的继承结构，确保所有的子类都是已知的，并且不允许在其他文件或类中进行扩展。这样可以提供更好的代码组织和类型安全性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leopold&#39;s Blog">
 <meta property="og:url" content="https://leopol1d.github.io/2023/05/20/to_do/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="2024&#x2F;03&#x2F;01密封类在安卓开发中，Sealed Class（密封类）是一种特殊的类别，它用于表示受限的类继承结构。密封类可以有多个子类，但是这些子类必须是在密封类内部定义的，并且在同一个文件中。 密封类在类定义前使用 sealed 关键字进行声明。它的目的是为了限制类的继承结构，确保所有的子类都是已知的，并且不允许在其他文件或类中进行扩展。这样可以提供更好的代码组织和类型安全性。 当使用密封">
+<meta property="og:description" content="2024&#x2F;03&#x2F;01 密封类 在安卓开发中，Sealed Class（密封类）是一种特殊的类别，它用于表示受限的类继承结构。密封类可以有多个子类，但是这些子类必须是在密封类内部定义的，并且在同一个文件中。 密封类在类定义前使用 sealed 关键字进行声明。它的目的是为了限制类的继承结构，确保所有的子类都是已知的，并且不允许在其他文件或类中进行扩展。这样可以提供更好的代码组织和类型安全性。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-20T06:09:52.974Z">
 <meta property="article:modified_time" content="2024-03-01T06:18:53.699Z">
@@ -300,7 +300,9 @@
             
               <div class="markdown-body">
                 
-                <h1 id="2024-03-01"><a href="#2024-03-01" class="headerlink" title="2024/03/01"></a>2024/03/01</h1><h2 id="密封类"><a href="#密封类" class="headerlink" title="密封类"></a>密封类</h2><p>在安卓开发中，Sealed Class（密封类）是一种特殊的类别，它用于表示受限的类继承结构。密封类可以有多个子类，但是这些子类必须是在密封类内部定义的，并且在同一个文件中。</p>
+                <h1 id="section">2024/03/01</h1>
+<h2 id="密封类">密封类</h2>
+<p>在安卓开发中，Sealed Class（密封类）是一种特殊的类别，它用于表示受限的类继承结构。密封类可以有多个子类，但是这些子类必须是在密封类内部定义的，并且在同一个文件中。</p>
 <p>密封类在类定义前使用 <code>sealed</code> 关键字进行声明。它的目的是为了限制类的继承结构，确保所有的子类都是已知的，并且不允许在其他文件或类中进行扩展。这样可以提供更好的代码组织和类型安全性。</p>
 <p>当使用密封类时，通常会在代码中使用 <code>when</code> 表达式来处理密封类的实例。<code>when</code> 表达式会检查密封类的所有可能子类，并针对每个子类提供相应的分支处理逻辑。由于密封类的子类是有限的，因此编译器可以在 <code>when</code> 表达式中确保所有情况都被处理，从而避免遗漏分支的问题。</p>
 <p>以下是一个简单的示例，展示了如何使用密封类和 <code>when</code> 表达式：</p>

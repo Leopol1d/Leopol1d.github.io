@@ -16,12 +16,12 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="RDB (Relational Database)解决方案架构一：读副本(左)    解决方案架构二：多可用区(右)可用区概念  读副本有助于提升读效率，多可用区支持灾难恢复 共同点是只能写入数据至主数据库    解决方案架构三：多区域读副本请注意可用区和区域的概念！ 可用区是一个区域内的单个数据中心或一组数据中心。可用区彼此相距数十英里(光信号毫秒级传输)。这个距离足够近，可以在可用区之间实现低">
+    <meta name="description" content="RDB (Relational Database) 解决方案架构一：读副本(左) 解决方案架构二：多可用区(右) 可用区概念  读副本有助于提升读效率，多可用区支持灾难恢复 共同点是只能写入数据至主数据库   解决方案架构三：多区域读副本 请注意可用区和区域的概念！ 可用区是一个区域内的单个数据中心或一组数据中心。可用区彼此相距数十英里(光信号毫秒级传输)。这个距离足够近，可以在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS Solutions Architecture of DBS">
 <meta property="og:url" content="https://leopol1d.github.io/2024/01/12/AWS-Solutions-Architecture-of-DBS/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="RDB (Relational Database)解决方案架构一：读副本(左)    解决方案架构二：多可用区(右)可用区概念  读副本有助于提升读效率，多可用区支持灾难恢复 共同点是只能写入数据至主数据库    解决方案架构三：多区域读副本请注意可用区和区域的概念！ 可用区是一个区域内的单个数据中心或一组数据中心。可用区彼此相距数十英里(光信号毫秒级传输)。这个距离足够近，可以在可用区之间实现低">
+<meta property="og:description" content="RDB (Relational Database) 解决方案架构一：读副本(左) 解决方案架构二：多可用区(右) 可用区概念  读副本有助于提升读效率，多可用区支持灾难恢复 共同点是只能写入数据至主数据库   解决方案架构三：多区域读副本 请注意可用区和区域的概念！ 可用区是一个区域内的单个数据中心或一组数据中心。可用区彼此相距数十英里(光信号毫秒级传输)。这个距离足够近，可以在">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112191553170.png">
 <meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112191929931.png">
@@ -334,13 +334,16 @@
             
               <div class="markdown-body">
                 
-                <h1 id="RDB-Relational-Database"><a href="#RDB-Relational-Database" class="headerlink" title="RDB (Relational Database)"></a>RDB (<strong>Relational Database</strong>)</h1><h2 id="解决方案架构一：读副本-左-解决方案架构二：多可用区-右"><a href="#解决方案架构一：读副本-左-解决方案架构二：多可用区-右" class="headerlink" title="解决方案架构一：读副本(左)    解决方案架构二：多可用区(右)"></a>解决方案架构一：读副本(左)    解决方案架构二：多可用区(右)</h2><p><a href="https://leopol1d.github.io/2024/01/09/Amazon-infrastructure-High-Availability/">可用区概念</a></p>
+                <h1 id="rdb-relational-database">RDB (<strong>Relational Database</strong>)</h1>
+<h2 id="解决方案架构一读副本左-解决方案架构二多可用区右">解决方案架构一：读副本(左) 解决方案架构二：多可用区(右)</h2>
+<p><a href="https://leopol1d.github.io/2024/01/09/Amazon-infrastructure-High-Availability/">可用区概念</a></p>
 <ul>
 <li><strong>读副本</strong>有助于提升读效率，<strong>多可用区</strong>支持灾难恢复</li>
 <li>共同点是只能写入数据至<strong>主数据库</strong></li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112191553170.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h2 id="解决方案架构三：多区域读副本"><a href="#解决方案架构三：多区域读副本" class="headerlink" title="解决方案架构三：多区域读副本"></a>解决方案架构三：多区域读副本</h2><p><strong>请注意可用区和区域的概念！</strong> <strong>可用区是一个区域内的单个数据中心或一组数据中心</strong>。可用区彼此相距数十英里(<strong>光信号毫秒级传输</strong>)。这个距离足够近，可以在可用区之间实现低延迟（请求内容与接收内容之间的时间）。但是，如果区域内的某个部分发生灾难，这个距离又足够远，可以降低多个可用区受到影响的几率。</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112191553170.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="解决方案架构三多区域读副本">解决方案架构三：多区域读副本</h2>
+<p><strong>请注意可用区和区域的概念！</strong> <strong>可用区是一个区域内的单个数据中心或一组数据中心</strong>。可用区彼此相距数十英里(<strong>光信号毫秒级传输</strong>)。这个距离足够近，可以在可用区之间实现低延迟（请求内容与接收内容之间的时间）。但是，如果区域内的某个部分发生灾难，这个距离又足够远，可以降低多个可用区受到影响的几率。</p>
 <p><strong>区域的距离远超过数十英里</strong></p>
 <p>方案优势</p>
 <ul>
@@ -348,80 +351,94 @@
 <li>部署在不同区域(如中国、美国)，全球读效率高</li>
 <li>主节点将数据备份给从节点需要付费(流量传输)</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112191929931.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>RDS Multi-AZ 部署的主要目的是<strong>高可用性</strong>，而 RDS Read Replicas 的主要目的是<strong>可扩展性</strong>。此外，多区域部署的主要目的是<strong>灾难恢复和本地性能</strong>。</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112191929931.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="总结">总结</h2>
+<p>RDS Multi-AZ 部署的主要目的是<strong>高可用性</strong>，而 RDS Read Replicas 的主要目的是<strong>可扩展性</strong>。此外，多区域部署的主要目的是<strong>灾难恢复和本地性能</strong>。</p>
 <p><strong>高可用</strong>是指数据库的持久性、冗余性和自动故障转移能力。 <strong>容灾</strong>是指在相隔较远的异地，搭建一个完整的集群环境，当一个地方发生灾难停止工作时，可以切换到另一处，使得系统可以正常提供服务。</p>
-<h2 id="Aurora"><a href="#Aurora" class="headerlink" title="Aurora"></a>Aurora</h2><p>可以看作是<strong>云原生</strong>(cloud-native)版本的RDB</p>
-<h1 id="ElasticCache"><a href="#ElasticCache" class="headerlink" title="ElasticCache"></a>ElasticCache</h1><p>类似于redis，不过拥有AWS的features：<strong>弹性伸缩，故障恢复，自动备份</strong></p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112193247428.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h1 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a>DynamoDB</h1><p>AWS旗舰产品，features:</p>
-<ol>
+<h2 id="aurora">Aurora</h2>
+<p>可以看作是<strong>云原生</strong>(cloud-native)版本的RDB</p>
+<h1 id="elasticcache">ElasticCache</h1>
+<p>类似于redis，不过拥有AWS的features：<strong>弹性伸缩，故障恢复，自动备份</strong></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112193247428.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="dynamodb">DynamoDB</h1>
+<p>AWS旗舰产品，features:</p>
+<ol type="1">
 <li>自动托管在三个可用区</li>
 <li>NoSQL database</li>
 <li>serveless(无法访问服务器底层)</li>
 <li>low latency</li>
 </ol>
-<h2 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112194302586.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h2 id="结合DAX-DynamoDB专用缓存"><a href="#结合DAX-DynamoDB专用缓存" class="headerlink" title="结合DAX(DynamoDB专用缓存)"></a>结合DAX(DynamoDB专用缓存)</h2><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112194403253.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h1 id="DynamoDB-Global-Tables"><a href="#DynamoDB-Global-Tables" class="headerlink" title="DynamoDB Global Tables"></a>DynamoDB Global Tables</h1><h2 id="解决方案架构"><a href="#解决方案架构" class="headerlink" title="解决方案架构"></a>解决方案架构</h2><ol>
+<h2 id="表结构">表结构</h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112194302586.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="结合daxdynamodb专用缓存">结合DAX(DynamoDB专用缓存)</h2>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112194403253.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="dynamodb-global-tables">DynamoDB Global Tables</h1>
+<h2 id="解决方案架构">解决方案架构</h2>
+<ol type="1">
 <li>多区域部署，实现低延迟</li>
 <li>Active-Active replication，任何副本都能进行读和<strong>写</strong></li>
 </ol>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112194613397.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h1 id="Redshift"><a href="#Redshift" class="headerlink" title="Redshift"></a>Redshift</h1><ol>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112194613397.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="redshift">Redshift</h1>
+<ol type="1">
 <li>数仓</li>
 <li>serverless</li>
 </ol>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112195537590.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h1 id="EMR-Elastic-MapReduce"><a href="#EMR-Elastic-MapReduce" class="headerlink" title="EMR(Elastic MapReduce)"></a>EMR(Elastic MapReduce)</h1><ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112195537590.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="emrelastic-mapreduce">EMR(Elastic MapReduce)</h1>
+<ul>
 <li>用于创建Hadoop集群(包含数百个EC2实例)处理大数据</li>
 <li>支持Spark, HBase, Presto, Flink</li>
 </ul>
-<h1 id="Athena"><a href="#Athena" class="headerlink" title="Athena"></a>Athena</h1><ul>
-<li><p><strong>serverless，用于分析存储在S3中的数据</strong></p>
-</li>
-<li><p>使用标准SQL</p>
-</li>
-<li><p>Use Cases: BI(Business Intelligence/analytic/reportings/<strong>logs</strong>/CloudTrail trails)</p>
-</li>
+<h1 id="athena">Athena</h1>
+<ul>
+<li><p><strong>serverless，用于分析存储在S3中的数据</strong></p></li>
+<li><p>使用标准SQL</p></li>
+<li><p>Use Cases: BI(Business Intelligence/analytic/reportings/<strong>logs</strong>/CloudTrail trails)</p></li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112202852443.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  </p>
-<h1 id="QuickSight"><a href="#QuickSight" class="headerlink" title="QuickSight"></a>QuickSight</h1><ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112202852443.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
+<h1 id="quicksight">QuickSight</h1>
+<ul>
 <li>基于机器学习生成交互dashboard</li>
 <li>主要用于分析，可视化</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112203149446.png" srcset="/img/loading.gif" lazyload alt=" "> </p>
-<h1 id="DocumentDB"><a href="#DocumentDB" class="headerlink" title="DocumentDB"></a>DocumentDB</h1><p>类似于云原生版本的MongoDB</p>
-<h1 id="Neptune"><a href="#Neptune" class="headerlink" title="Neptune"></a>Neptune</h1><ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112203149446.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="documentdb">DocumentDB</h1>
+<p>类似于云原生版本的MongoDB</p>
+<h1 id="neptune">Neptune</h1>
+<ul>
 <li>图数据库</li>
 <li>主要用于<strong>社交网络</strong></li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112204026623.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h1 id="Timestream"><a href="#Timestream" class="headerlink" title="Timestream"></a>Timestream</h1><p>时间序列数据库</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112204157584.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h1 id="QLDB"><a href="#QLDB" class="headerlink" title="QLDB"></a>QLDB</h1><ol>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112204026623.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="timestream">Timestream</h1>
+<p>时间序列数据库</p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112204157584.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="qldb">QLDB</h1>
+<ol type="1">
 <li>Quantum Ledger Database:量子分类账数据库</li>
 <li>检阅所有发生改变的应用数据的历史记录</li>
 <li>immutable(无法被修改或者删除)</li>
 <li>主要用于<strong>财务</strong></li>
 </ol>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112204613549.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h1 id="Managed-Blockchain"><a href="#Managed-Blockchain" class="headerlink" title="Managed Blockchain"></a>Managed Blockchain</h1><ul>
-<li><p>区块链：在多方执行事务时，无需授权，构建应用</p>
-</li>
-<li><p>兼容两种框架</p>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112204847190.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-</li>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112204613549.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="managed-blockchain">Managed Blockchain</h1>
+<ul>
+<li><p>区块链：在多方执行事务时，无需授权，构建应用</p></li>
+<li><p>兼容两种框架</p></li>
 </ul>
-<h1 id="Glue"><a href="#Glue" class="headerlink" title="Glue"></a>Glue</h1><ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112204847190.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="glue">Glue</h1>
+<ul>
 <li>serverless，ETL(extract, transform, load)服务</li>
 <li>从S3或者RDS中提取数据，清洗，导入到RedShift中进行分析</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112205630311.png" srcset="/img/loading.gif" lazyload alt=""> </p>
-<h1 id="DMS-Database-Migration-Service"><a href="#DMS-Database-Migration-Service" class="headerlink" title="DMS(Database Migration Service)"></a>DMS(Database Migration Service)</h1><ul>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112205630311.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="dmsdatabase-migration-service">DMS(Database Migration Service)</h1>
+<ul>
 <li>提供<strong>同质数据迁移</strong>(oracle to oracle)与异质数据迁移(Microsoft SQL Server to Aurora)</li>
 </ul>
-<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112210129820.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />  </p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20240112210129820.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
 
                 
               </div>
