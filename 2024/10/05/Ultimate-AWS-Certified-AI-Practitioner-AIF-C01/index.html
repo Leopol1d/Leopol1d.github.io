@@ -16,23 +16,27 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DSFDSDSFDS">
+    <meta name="description" content="AWS Elastic Inference vs Amazon SageMaker Serverless Inference      AWS Elastic Inference Amazon SageMaker Serverless Inference     服务定位 提供GPU加速的推理加速服务，降低深度学习推理成本 提供无服务器推理选项，简化机器学习模型部署和扩">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ultimate_AWS_Certified_AI_Practitioner_AIF_C01">
+<meta property="og:title" content="Ultimate-AWS-Certified-AI-Practitioner-AIF-C01">
 <meta property="og:url" content="https://leopol1d.github.io/2024/10/05/Ultimate-AWS-Certified-AI-Practitioner-AIF-C01/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="DSFDSDSFDS">
+<meta property="og:description" content="AWS Elastic Inference vs Amazon SageMaker Serverless Inference      AWS Elastic Inference Amazon SageMaker Serverless Inference     服务定位 提供GPU加速的推理加速服务，降低深度学习推理成本 提供无服务器推理选项，简化机器学习模型部署和扩">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-10-05T09:47:24.000Z">
-<meta property="article:modified_time" content="2024-10-05T09:48:01.686Z">
+<meta property="article:published_time" content="2024-10-05T09:47:24.489Z">
+<meta property="article:modified_time" content="2025-01-01T07:29:41.401Z">
 <meta property="article:author" content="Leopold">
+<meta property="article:tag" content="Cloud Computing">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="DDoS">
+<meta property="article:tag" content="Ultimate-AWS-Certified-AI_Practitioner-AIF-C01">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Ultimate_AWS_Certified_AI_Practitioner_AIF_C01 - Leopold&#39;s Blog</title>
+  <title>Ultimate-AWS-Certified-AI-Practitioner-AIF-C01 - Leopold&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Ultimate_AWS_Certified_AI_Practitioner_AIF_C01"></span>
+            <span id="subtitle" data-typed-text="Ultimate-AWS-Certified-AI-Practitioner-AIF-C01"></span>
           
         </div>
 
@@ -233,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10 字
+          3.8k 字
         
       </span>
     
@@ -244,7 +248,7 @@
         
         
         
-          1 分钟
+          32 分钟
         
       </span>
     
@@ -295,12 +299,290 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Ultimate_AWS_Certified_AI_Practitioner_AIF_C01</h1>
+            <h1 style="display: none">Ultimate-AWS-Certified-AI-Practitioner-AIF-C01</h1>
             
             
               <div class="markdown-body">
                 
-                <p>DSFDSDSFDS</p>
+                <h2 id="aws-elastic-inference-vs-amazon-sagemaker-serverless-inference">AWS Elastic Inference vs Amazon SageMaker Serverless Inference</h2>
+<table>
+
+<thead>
+<tr class="header">
+<th></th>
+<th>AWS Elastic Inference</th>
+<th>Amazon SageMaker Serverless Inference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>服务定位</strong></td>
+<td>提供GPU加速的推理加速服务，降低深度学习推理成本</td>
+<td>提供无服务器推理选项，简化机器学习模型部署和扩展</td>
+</tr>
+<tr class="even">
+<td><strong>核心功能</strong></td>
+<td>为Amazon EC2实例、SageMaker实例或ECS任务附加GPU加速的推理加速能力</td>
+<td>自动预置、扩展和关闭计算容量，根据推理请求的数量进行扩展</td>
+</tr>
+<tr class="odd">
+<td><strong>使用场景</strong></td>
+<td>适用于需要高性能推理加速的深度学习应用</td>
+<td>适用于具有间歇性或不可预测流量的应用程序</td>
+</tr>
+<tr class="even">
+<td><strong>计费方式</strong></td>
+<td>按使用的推理加速容量计费</td>
+<td>按运行推理代码的持续时间和处理的数据量计费，无空闲时间费用</td>
+</tr>
+<tr class="odd">
+<td><strong>集成与支持</strong></td>
+<td>集成到Amazon SageMaker、EC2和ECS中，支持TensorFlow、MXNet和PyTorch等框架</td>
+<td>集成到SageMaker中，支持多种机器学习框架和模型部署选项</td>
+</tr>
+<tr class="even">
+<td><strong>性能与灵活性</strong></td>
+<td>提供灵活的GPU加速选项，支持单精度和混合精度操作</td>
+<td>自动扩展计算容量，无需预先预测流量需求或管理扩展策略</td>
+</tr>
+<tr class="odd">
+<td><strong>部署与管理</strong></td>
+<td>附加到现有实例或任务上，无需修改代码</td>
+<td>无服务器选项，简化部署和管理，无需配置或管理底层基础设施</td>
+</tr>
+<tr class="even">
+<td><strong>优势</strong></td>
+<td>降低推理成本，提高推理性能</td>
+<td>适用于间歇性或不可预测流量的应用程序，成本效益高</td>
+</tr>
+<tr class="odd">
+<td><strong>使用建议</strong></td>
+<td>适用于需要高性能推理加速的深度学习场景</td>
+<td>适用于需要灵活扩展和成本效益的机器学习推理场景</td>
+</tr>
+</tbody>
+</table>
+<h2 id="aws-glue-vs-sagemaker-data-wrangler">AWS Glue vs SageMaker Data Wrangler</h2>
+<table>
+
+<thead>
+<tr class="header">
+<th></th>
+<th>AWS Glue</th>
+<th>SageMaker Data Wrangler</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>定位</strong></td>
+<td>完全托管的ETL（提取、转换、加载）服务</td>
+<td>SageMaker Studio Classic中的功能，专注于简化机器学习数据准备过程</td>
+</tr>
+<tr class="even">
+<td><strong>数据处理引擎</strong></td>
+<td>Apache Spark</td>
+<td>支持PySpark，但主要优势在于可视化用户界面</td>
+</tr>
+<tr class="odd">
+<td><strong>主要功能</strong></td>
+<td>数据发现、转换、加载的完整ETL工作流</td>
+<td>简化数据准备过程，提供300多种内置数据转换功能，无需编写代码</td>
+</tr>
+<tr class="even">
+<td><strong>用户界面</strong></td>
+<td>提供可视化的ETL管道开发环境，但需编写Spark作业脚本</td>
+<td>完全可视化的用户界面，通过拖放操作完成数据准备</td>
+</tr>
+<tr class="odd">
+<td><strong>数据准备流程</strong></td>
+<td>创建作业，定义数据源、转换逻辑和目标位置，调度作业执行</td>
+<td>创建数据流，通过可视化界面选择和转换数据，可直接用于机器学习模型训练</td>
+</tr>
+<tr class="even">
+<td><strong>数据质量和洞察</strong></td>
+<td>提供数据目录服务，但数据质量和洞察分析需自行编写代码或脚本</td>
+<td>内置数据质量和洞察功能，自动分析数据异常，生成直观报告</td>
+</tr>
+<tr class="odd">
+<td><strong>集成和扩展性</strong></td>
+<td>与其他AWS服务紧密集成，支持自定义Spark作业</td>
+<td>与SageMaker其他功能紧密集成，支持将数据流导出为Jupyter Notebook或Python脚本</td>
+</tr>
+<tr class="even">
+<td><strong>适用场景</strong></td>
+<td>处理大规模数据、构建复杂ETL工作流的企业</td>
+<td>专注于机器学习项目、希望简化数据准备过程的数据科学家和工程师</td>
+</tr>
+<tr class="odd">
+<td><strong>优势</strong></td>
+<td>强大的数据处理和转换能力，支持多种数据源和目标</td>
+<td>直观的可视化界面，丰富的内置转换功能，快速准备机器学习数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sagemaker-autopilot-vs-sagemaker-pipelines">SageMaker AutoPilot vs SageMaker Pipelines</h2>
+<table>
+
+<thead>
+<tr class="header">
+<th></th>
+<th>SageMaker AutoPilot</th>
+<th>SageMaker Pipelines</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>核心功能</strong></td>
+<td>自动构建、训练和调整最佳机器学习模型</td>
+<td>自动化机器学习工作流，包括数据加载、预处理、训练、评估、部署等</td>
+</tr>
+<tr class="even">
+<td><strong>主要目的</strong></td>
+<td>简化机器学习模型的开发过程，减少手动干预</td>
+<td>实现机器学习工作流的自动化和可重复性，提高开发效率</td>
+</tr>
+<tr class="odd">
+<td><strong>关键特性</strong></td>
+<td>- 自动数据预处理<br>- 自动算法选择和超参数调优<br>- 提供最佳模型建议<br>- 可视化模型性能和结果</td>
+<td>- 可视化工作流构建<br>- 支持多种数据源和预处理步骤<br>- 自动执行和监控机器学习工作流<br>- 支持版本控制和团队协作</td>
+</tr>
+<tr class="even">
+<td><strong>使用场景</strong></td>
+<td>- 快速构建和测试机器学习模型<br>- 初学者或希望快速获得初步结果的场景<br>- 需要快速迭代和测试多种算法的场景</td>
+<td>- 复杂的机器学习项目<br>- 需要自动化和可重复的工作流<br>- 团队协作和版本控制<br>- 需要持续集成和持续交付（CI/CD）的场景</td>
+</tr>
+<tr class="odd">
+<td><strong>集成与支持</strong></td>
+<td>与SageMaker Model Registry、SageMaker Experiments等集成<br>支持多种机器学习框架和算法</td>
+<td>与SageMaker其他功能（如Training、Notebook、Model Registry等）无缝集成<br>支持多种数据源和预处理步骤<br>支持Python SDK和可视化界面</td>
+</tr>
+<tr class="even">
+<td><strong>优势</strong></td>
+<td>- 减少手动干预，加快模型开发速度<br>- 自动选择最佳算法和超参数<br>- 提供易于理解的模型性能和结果<br>- 降低机器学习入门门槛</td>
+<td>- 提高机器学习工作流的自动化和可重复性<br>- 简化复杂的机器学习项目<br>- 支持团队协作和版本控制<br>- 实现CI/CD，提高开发效率</td>
+</tr>
+<tr class="odd">
+<td><strong>定价</strong></td>
+<td>作为SageMaker服务的一部分，定价根据使用的资源和功能而定</td>
+<td>同样作为SageMaker服务的一部分，定价根据使用的资源和功能而定</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sagemaker-model-registry-vs-amazon-sagemaker-multi-model-endpoints">SageMaker Model Registry vs Amazon SageMaker Multi-Model Endpoints</h2>
+<table>
+
+<thead>
+<tr class="header">
+<th></th>
+<th>SageMaker Model Registry</th>
+<th>Amazon SageMaker Multi-Model Endpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>核心功能</strong></td>
+<td>模型管理与版本控制</td>
+<td>部署和管理多个模型于单一端点</td>
+</tr>
+<tr class="even">
+<td><strong>主要用途</strong></td>
+<td>存储、版本控制和共享机器学习模型</td>
+<td>在一个端点上托管和调用多个模型，简化部署和管理</td>
+</tr>
+<tr class="odd">
+<td><strong>关键特性</strong></td>
+<td>- 模型注册与版本追踪<br>- 模型元数据管理<br>- 模型审批流程<br>- 与SageMaker其他功能集成</td>
+<td>- 支持多个模型在同一端点<br>- 动态路由请求到正确模型<br>- 自动扩展和负载均衡<br>- 简化模型更新和回滚</td>
+</tr>
+<tr class="even">
+<td><strong>使用场景</strong></td>
+<td>- 机器学习生命周期管理<br>- 模型版本控制和审计<br>- 团队协作与模型共享<br>- 合规性和治理</td>
+<td>- 多模型服务部署<br>- 简化模型管理复杂性<br>- 提高资源利用率<br>- 快速响应模型更新需求</td>
+</tr>
+<tr class="odd">
+<td><strong>集成与支持</strong></td>
+<td>与SageMaker Pipelines、SageMaker Experiments等集成<br>支持模型的自动化工作流和审批流程</td>
+<td>与SageMaker Studio、SageMaker Training等集成<br>支持模型的快速部署和更新</td>
+</tr>
+<tr class="even">
+<td><strong>优势</strong></td>
+<td>- 提供集中化的模型存储和版本控制<br>- 简化模型审批和共享流程<br>- 增强模型的可追溯性和合规性</td>
+<td>- 降低模型部署和管理成本<br>- 提高模型服务的灵活性和可扩展性<br>- 简化模型更新和回滚过程<br>- 优化资源利用和性能</td>
+</tr>
+<tr class="odd">
+<td><strong>定价</strong></td>
+<td>作为SageMaker服务的一部分，定价可能包括模型存储、版本控制等费用</td>
+<td>根据端点使用的实例类型、数量以及请求量等因素定价</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sagemaker-studio-vs-sagemaker-experiments">SageMaker Studio vs SageMaker Experiments</h2>
+<table>
+
+<thead>
+<tr class="header">
+<th></th>
+<th>SageMaker Studio</th>
+<th>SageMaker Experiments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>核心功能</strong></td>
+<td>集成开发环境（IDE）</td>
+<td>实验管理与跟踪</td>
+</tr>
+<tr class="even">
+<td><strong>主要用途</strong></td>
+<td>提供基于Web的可视化界面，用于机器学习模型构建、训练和部署的全流程开发</td>
+<td>组织、跟踪、比较和评估不同的机器学习实验和模型版本</td>
+</tr>
+<tr class="odd">
+<td><strong>用户界面</strong></td>
+<td>统一的Web界面，包含笔记本、实验管理、自动创建模型、调试等功能</td>
+<td>可视化界面，支持浏览进行中的实验、搜索先前的实验、查看结果和比较实验</td>
+</tr>
+<tr class="even">
+<td><strong>关键特性</strong></td>
+<td>- 快速上传数据<br>- 创建新笔记本<br>- 训练和调优模型<br>- 部署模型到生产环境<br>- 实时协作<br>- 生成式AI驱动的编程辅助工具</td>
+<td>- 自动捕获输入参数、配置和结果<br>- 存储实验信息以供后续查看和分析<br>- 支持实验比较和评估<br>- 集成到SageMaker工作流中</td>
+</tr>
+<tr class="odd">
+<td><strong>使用场景</strong></td>
+<td>- 端到端的机器学习模型开发<br>- 数据可视化与分析<br>- 模型调试与优化<br>- 团队协作与版本控制</td>
+<td>- 机器学习实验的管理和跟踪<br>- 模型版本比较与选择<br>- 实验结果分析与报告<br>- 科研与产品开发中的实验迭代</td>
+</tr>
+<tr class="even">
+<td><strong>集成与支持</strong></td>
+<td>集成SageMaker其他功能，如Autopilot、Ground Truth等<br>支持多种机器学习框架和算法</td>
+<td>与SageMaker Studio、Jupyter Notebook等集成<br>支持实验数据的可视化与分析</td>
+</tr>
+<tr class="odd">
+<td><strong>优势</strong></td>
+<td>- 简化机器学习模型开发流程<br>- 提高团队协作效率<br>- 提供丰富的开发工具和资源<br>- 支持大规模模型构建与部署</td>
+<td>- 提高实验管理效率<br>- 便于实验结果的分析与比较<br>- 支持实验数据的长期存储与检索<br>- 促进机器学习模型的迭代与优化</td>
+</tr>
+<tr class="even">
+<td><strong>定价</strong></td>
+<td>作为SageMaker服务的一部分，定价根据使用的SageMaker资源（如实例类型、训练时间等）计算</td>
+<td>同样作为SageMaker服务的一部分，定价包含在SageMaker的整体使用费用中</td>
+</tr>
+</tbody>
+</table>
+<h2 id="amazon-sagemaker-endpoint">Amazon SageMaker Endpoint</h2>
+<p><strong>Amazon SageMaker Endpoint</strong> 是Amazon SageMaker提供的一项关键服务，用于部署和托管机器学习模型，以便进行<strong>实时推理</strong>。</p>
+<h3 id="核心功能">核心功能</h3>
+<ul>
+<li><strong>模型部署</strong>：SageMaker Endpoint允许用户将训练好的机器学习模型部署到云端，从而可以通过API进行实时请求。无论是文本处理、图像识别，还是深度学习的其他应用场景，SageMaker Endpoint都能轻松应对。</li>
+<li><strong>实时推理</strong>：部署在SageMaker Endpoint上的模型可以实时处理输入数据，并返回预测结果。这对于需要快速响应的应用场景至关重要。</li>
+<li><strong>可扩展性</strong>：SageMaker Endpoint支持自动扩展和负载均衡，能够根据请求量动态调整资源分配，确保服务的可用性和性能。</li>
+</ul>
+<h3 id="使用场景">使用场景</h3>
+<ul>
+<li><strong>实时预测</strong>：SageMaker Endpoint适用于需要<strong>实时</strong>预测的应用场景，如推荐系统、欺诈检测等。</li>
+<li><strong>模型服务</strong>：用户可以将训练好的模型部署到SageMaker Endpoint上，作为服务提供给内部或外部用户使用。</li>
+<li><strong>模型迭代</strong>：SageMaker Endpoint支持快速迭代和更新模型，用户可以根据新的数据或算法重新训练模型，并轻松地将其部署到生产环境中。</li>
+</ul>
 
                 
               </div>
@@ -309,6 +591,47 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AWS/" class="category-chain-item">AWS</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/AWS/Ultimate-AWS-Certified-AI-Practitioner-AIF-C01/" class="category-chain-item">Ultimate AWS Certified AI Practitioner AIF C01</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Cloud-Computing/">#Cloud Computing</a>
+      
+        <a href="/tags/AWS/">#AWS</a>
+      
+        <a href="/tags/DDoS/">#DDoS</a>
+      
+        <a href="/tags/Ultimate-AWS-Certified-AI-Practitioner-AIF-C01/">#Ultimate-AWS-Certified-AI_Practitioner-AIF-C01</a>
+      
+    </div>
   
 </div>
 
@@ -318,7 +641,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Ultimate_AWS_Certified_AI_Practitioner_AIF_C01</div>
+      <div>Ultimate-AWS-Certified-AI-Practitioner-AIF-C01</div>
       <div>https://leopol1d.github.io/2024/10/05/Ultimate-AWS-Certified-AI-Practitioner-AIF-C01/</div>
     </div>
     <div class="license-meta">
