@@ -16,27 +16,31 @@
   <meta name="author" content="Leopold">
   <meta name="keywords" content="">
   
-    <meta name="description" content="3412. 计算字符串的镜像分数 方法一：26个栈 stacks[25 - c]即可找出存放当前字符的镜像字符的栈 123456789101112131415class Solution &amp;#123;    public long calculateScore(String s) &amp;#123;        Deque&lt;Integer&gt;[] stacks &#x3D; new Deque[">
+    <meta name="description" content="实现执行Terminal命令的server  配置uv 配置MCP Python Sdk（百度地图api网址） 在cursor.directory找python expert的prompt vibe code  1I want you to implement me a simple MCP Server from @MCP . Use the python sdk @MCP Pyth">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lcp431">
-<meta property="og:url" content="https://leopol1d.github.io/2025/01/11/lcp431/index.html">
+<meta property="og:title" content="MCP">
+<meta property="og:url" content="https://leopol1d.github.io/2025/04/21/MCP/index.html">
 <meta property="og:site_name" content="Leopold&#39;s Blog">
-<meta property="og:description" content="3412. 计算字符串的镜像分数 方法一：26个栈 stacks[25 - c]即可找出存放当前字符的镜像字符的栈 123456789101112131415class Solution &amp;#123;    public long calculateScore(String s) &amp;#123;        Deque&lt;Integer&gt;[] stacks &#x3D; new Deque[">
+<meta property="og:description" content="实现执行Terminal命令的server  配置uv 配置MCP Python Sdk（百度地图api网址） 在cursor.directory找python expert的prompt vibe code  1I want you to implement me a simple MCP Server from @MCP . Use the python sdk @MCP Pyth">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250111162413400.png">
-<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250111163641351.png">
-<meta property="article:published_time" content="2025-01-11T08:12:52.000Z">
-<meta property="article:modified_time" content="2025-01-11T08:36:48.480Z">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421104229828.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421110205943.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421111843396.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421134502664.png">
+<meta property="og:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421134525573.png">
+<meta property="article:published_time" content="2025-04-21T05:49:26.000Z">
+<meta property="article:modified_time" content="2025-04-21T05:50:29.109Z">
 <meta property="article:author" content="Leopold">
-<meta property="article:tag" content="力扣杯">
+<meta property="article:tag" content="MCP">
+<meta property="article:tag" content="LLM">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250111162413400.png">
+<meta name="twitter:image" content="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421104229828.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>lcp431 - Leopold&#39;s Blog</title>
+  <title>MCP - Leopold&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="lcp431"></span>
+            <span id="subtitle" data-typed-text="MCP"></span>
           
         </div>
 
@@ -225,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-11 16:12" pubdate>
-          2025年1月11日 下午
+        <time datetime="2025-04-21 13:49" pubdate>
+          2025年4月21日 下午
         </time>
       </span>
     
@@ -237,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          457 字
+          831 字
         
       </span>
     
@@ -248,7 +252,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -299,20 +303,30 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">lcp431</h1>
+            <h1 style="display: none">MCP</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="计算字符串的镜像分数image-20250111162413400"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-mirror-score-of-a-string/">3412. 计算字符串的镜像分数</a><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250111162413400.png" srcset="/img/loading.gif" lazyload alt="image-20250111162413400" /></h1>
-<h2 id="方法一26个栈">方法一：26个栈</h2>
-<p>stacks[25 - c]即可找出存放当前字符的镜像字符的栈</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">calculateScore</span><span class="hljs-params">(String s)</span> &#123;<br>        Deque&lt;Integer&gt;[] stacks = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Deque</span>[<span class="hljs-number">26</span>];<br>        Arrays.setAll(stacks, i -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;());<br>        <span class="hljs-type">long</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); ++i) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>;<br>            <span class="hljs-keyword">if</span> (!stacks[<span class="hljs-number">25</span> - c].isEmpty())<br>                res += i - stacks[<span class="hljs-number">25</span> - c].pop();<br>            <span class="hljs-keyword">else</span><br>                stacks[c].push(i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="收集连续-k-个袋子可以获得的最多硬币数量"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-coins-from-k-consecutive-bags/">3413. 收集连续 K 个袋子可以获得的最多硬币数量</a></h1>
-<figure>
-<img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250111163641351.png" srcset="/img/loading.gif" lazyload alt="image-20250111163641351" /><figcaption aria-hidden="true">image-20250111163641351</figcaption>
-</figure>
-<h2 id="方法一">方法一：</h2>
+                <h1 id="实现执行terminal命令的server">实现执行Terminal命令的server</h1>
+<ol type="1">
+<li><p>配置uv</p></li>
+<li><p>配置MCP Python Sdk（百度地图api网址）</p></li>
+<li><p>在cursor.directory找python expert的prompt</p></li>
+<li><p>vibe code <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421104229828.png" srcset="/img/loading.gif" lazyload /></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">I want you to implement me a simple MCP Server from @MCP . Use the python sdk @MCP Python SDK and the server should expose one tool which is called terminal tool which will allow user to run terminal commands, make it simple.<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421110205943.png" srcset="/img/loading.gif" lazyload /></p>
+<p>模型效果不好，高级模型需要升级会员，先复制粘贴课程的</p></li>
+<li><p>运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">uv run .\server.py<br></code></pre></td></tr></table></figure>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421111843396.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>配置mcp.json</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">&#123;<br>    &quot;mcpServers&quot;: &#123;<br>        &quot;weather&quot;: &#123;<br>            &quot;command&quot;: &quot;node&quot;,<br>            &quot;args&quot;: [<br>                &quot;E:/software/work/Cursor/mcpspace/quickstart-resources/weather-server-typescript/build/index.js&quot;<br>            ]<br>        &#125;,<br>        &quot;shell&quot;: &#123;<br>            &quot;command&quot;: &quot;uv&quot;,<br>            &quot;args&quot;: [<br>                &quot;--directory&quot;, &quot;E:/software/work/Cursor/mcpspace/shellserver&quot;, &quot;run&quot;, &quot;server.py&quot;<br>            ]<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>测试：显示E盘所有文件夹 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421134502664.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421134525573.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li></li>
+</ol>
+<h1 id="使server暴露resources">使server暴露Resources</h1>
 
                 
               </div>
@@ -331,12 +345,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Contest/" class="category-chain-item">Contest</a>
+  <a href="/categories/GenAI/" class="category-chain-item">GenAI</a>
   
   
     <span>></span>
     
-  <a href="/categories/Contest/LCP/" class="category-chain-item">LCP</a>
+  <a href="/categories/GenAI/MCP/" class="category-chain-item">MCP</a>
   
   
 
@@ -353,7 +367,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8A%9B%E6%89%A3%E6%9D%AF/">#力扣杯</a>
+        <a href="/tags/MCP/">#MCP</a>
+      
+        <a href="/tags/LLM/">#LLM</a>
       
     </div>
   
@@ -365,8 +381,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>lcp431</div>
-      <div>https://leopol1d.github.io/2025/01/11/lcp431/</div>
+      <div>MCP</div>
+      <div>https://leopol1d.github.io/2025/04/21/MCP/</div>
     </div>
     <div class="license-meta">
       
@@ -378,7 +394,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月11日</div>
+          <div>2025年4月21日</div>
         </div>
       
       
@@ -410,18 +426,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/21/MCP/" title="MCP">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MCP</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/05/AWS-Machine-Learning-Engineer-Associate/" title="AWS Machine Learning Engineer Associate MLA-C01">
-                        <span class="hidden-mobile">AWS Machine Learning Engineer Associate MLA-C01</span>
+                      <a href="/2025/01/11/lcp431/" title="lcp431">
+                        <span class="hidden-mobile">lcp431</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

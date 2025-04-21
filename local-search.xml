@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>MCP</title>
+    <link href="/2025/04/21/MCP/"/>
+    <url>/2025/04/21/MCP/</url>
+    
+    <content type="html"><![CDATA[<h1 id="实现执行terminal命令的server">实现执行Terminal命令的server</h1><ol type="1"><li><p>配置uv</p></li><li><p>配置MCP Python Sdk（百度地图api网址）</p></li><li><p>在cursor.directory找python expert的prompt</p></li><li><p>vibe code <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421104229828.png" /></p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">I want you to implement me a simple MCP Server from @MCP . Use the python sdk @MCP Python SDK and the server should expose one tool which is called terminal tool which will allow user to run terminal commands, make it simple.<br></code></pre></td></tr></table></figure><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421110205943.png" /></p><p>模型效果不好，高级模型需要升级会员，先复制粘贴课程的</p></li><li><p>运行</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">uv run .\server.py<br></code></pre></td></tr></table></figure><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421111843396.png" /></p></li><li><p>配置mcp.json</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">&#123;<br>    &quot;mcpServers&quot;: &#123;<br>        &quot;weather&quot;: &#123;<br>            &quot;command&quot;: &quot;node&quot;,<br>            &quot;args&quot;: [<br>                &quot;E:/software/work/Cursor/mcpspace/quickstart-resources/weather-server-typescript/build/index.js&quot;<br>            ]<br>        &#125;,<br>        &quot;shell&quot;: &#123;<br>            &quot;command&quot;: &quot;uv&quot;,<br>            &quot;args&quot;: [<br>                &quot;--directory&quot;, &quot;E:/software/work/Cursor/mcpspace/shellserver&quot;, &quot;run&quot;, &quot;server.py&quot;<br>            ]<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>测试：显示E盘所有文件夹 <img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421134502664.png" /></p><p><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250421134525573.png" /></p></li><li></li></ol><h1 id="使server暴露resources">使server暴露Resources</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>GenAI</category>
+      
+      <category>MCP</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MCP</tag>
+      
+      <tag>LLM</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>lcp431</title>
     <link href="/2025/01/11/lcp431/"/>
     <url>/2025/01/11/lcp431/</url>
