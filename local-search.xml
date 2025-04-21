@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>lcp431</title>
+    <link href="/2025/01/11/lcp431/"/>
+    <url>/2025/01/11/lcp431/</url>
+    
+    <content type="html"><![CDATA[<h1 id="计算字符串的镜像分数image-20250111162413400"><a href="https://leetcode.cn/problems/find-mirror-score-of-a-string/">3412. 计算字符串的镜像分数</a><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250111162413400.png" alt="image-20250111162413400" /></h1><h2 id="方法一26个栈">方法一：26个栈</h2><p>stacks[25 - c]即可找出存放当前字符的镜像字符的栈</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">calculateScore</span><span class="hljs-params">(String s)</span> &#123;<br>        Deque&lt;Integer&gt;[] stacks = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Deque</span>[<span class="hljs-number">26</span>];<br>        Arrays.setAll(stacks, i -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;());<br>        <span class="hljs-type">long</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); ++i) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>;<br>            <span class="hljs-keyword">if</span> (!stacks[<span class="hljs-number">25</span> - c].isEmpty())<br>                res += i - stacks[<span class="hljs-number">25</span> - c].pop();<br>            <span class="hljs-keyword">else</span><br>                stacks[c].push(i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="收集连续-k-个袋子可以获得的最多硬币数量"><a href="https://leetcode.cn/problems/maximum-coins-from-k-consecutive-bags/">3413. 收集连续 K 个袋子可以获得的最多硬币数量</a></h1><figure><img src="https://leopold-bucket.oss-cn-guangzhou.aliyuncs.com/img/image-20250111163641351.png" alt="image-20250111163641351" /><figcaption aria-hidden="true">image-20250111163641351</figcaption></figure><h2 id="方法一">方法一：</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>Contest</category>
+      
+      <category>LCP</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣杯</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AWS Machine Learning Engineer Associate MLA-C01</title>
     <link href="/2025/01/05/AWS-Machine-Learning-Engineer-Associate/"/>
     <url>/2025/01/05/AWS-Machine-Learning-Engineer-Associate/</url>
